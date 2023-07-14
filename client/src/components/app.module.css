@@ -1,0 +1,61 @@
+@import "./variable.module.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+
+}
+
+/* body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+} */
+
+.app {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: 70px minmax(0, 1fr);
+  grid-template-columns: 100%;
+  grid-template-areas:
+    "appHeaderStylesWrapper"
+    "appPageWrapperStyles"
+  ;
+  /* background: linear-gradient(180deg, #DFEDF4 33.14%, #E8F0EC 51.89%, #F7F9F6 76.37%); */
+  background: var(--app-main-bg);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+
+.lottieWrapper {
+  /* border: 1px solid white; */
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1C1F2C;
+  width: clamp(4.0rem, -2.0rem + 30.0vw, 7.0rem) !important;
+  border-radius: clamp(1.2rem, -1.4000000000000001rem + 13.0vw, 2.5rem) !important;
+}
+
+.app::-webkit-scrollbar {
+  display: none;
+}

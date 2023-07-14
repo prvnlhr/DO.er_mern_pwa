@@ -1,0 +1,63 @@
+.outerWrapper {
+    width: 80%;
+    height: 90%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.infoElementWrapper {
+    width: 30%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "infoIconWrapper infoAttributeWrapper"
+        "infoIconWrapper infoValueWrapper";
+}
+
+.infoIconWrapper {
+    grid-area: infoIconWrapper;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid white; */
+}
+
+.infoAttributeWrapper {
+    grid-area: infoAttributeWrapper;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid white; */
+
+}
+
+.infoAtrrText {
+    color: white;
+    font-size: 13px;
+    margin-bottom: 2%;
+}
+
+.infoValueWrapper {
+    grid-area: infoValueWrapper;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid white; */
+}
+
+.infoValueText {
+    color: white;
+    font-size: 13px;
+    margin-top: 2%;
+
+}

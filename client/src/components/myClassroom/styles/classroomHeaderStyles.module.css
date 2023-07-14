@@ -1,0 +1,161 @@
+@import "../../variable.module.css";
+
+.classroomHeaderWrapper {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid orange; */
+    grid-area: classroomHeaderWrapper;
+
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 60% 40%;
+
+    grid-template-areas:
+        "overviewSectionWrapper productivitySectionWrapper";
+    background-color: var(--sub-page-header-bg);
+}
+
+
+/* overview section */
+
+.overviewSectionWrapper {
+    grid-area: overviewSectionWrapper;
+    display: grid;
+    grid-template-rows: 20% 20% 60%;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "mainHeadingWrapper"
+        "overViewHeadingWrapper "
+        "overviewContentWrapper";
+}
+
+.mainHeadingWrapper {
+    grid-area: mainHeadingWrapper;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+}
+
+.headingIndicator {
+    width: 12px;
+    min-width: 12px;
+    height: 50%;
+    border-radius: 3px;
+    background-color: var(--app-ui-scheme-color);
+    margin-right: 1%;
+}
+
+.mainHeadingText {
+    /* font-family: "Poppins", sans-serif; */
+    font-size: 1.8rem;
+    color: var(--primary-heading);
+}
+
+.overViewHeadingWrapper {
+    grid-area: overViewHeadingWrapper;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-left: 5%;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+}
+
+.overHeadingText {
+    /* font-family: "Poppins", sans-serif; */
+    font-size: 1.2rem;
+    color: var(--primary-heading);
+}
+
+.overviewContentWrapper {
+    grid-area: overviewContentWrapper;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+}
+
+
+
+/* graph section */
+
+.productivitySectionWrapper {
+
+    grid-area: productivitySectionWrapper;
+
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 30% minmax(0, 1fr);
+    grid-template-areas:
+        "productivityHeadingWrapper timeSpentWrapper"
+        "graphWrapper graphWrapper";
+}
+
+
+.productivityHeadingWrapper {
+    grid-area: productivityHeadingWrapper;
+    width: auto;
+    height: 100%;
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.prodHeadingText {
+    font-size: 1.2rem;
+    color: var(--primary-heading);
+    margin-left: 3%;
+}
+
+.timeSpentWrapper {
+    grid-area: timeSpentWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+.timeSpentIconWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 50%; */
+    aspect-ratio: 1/1;
+    height: 80%;
+    /* border: 1px solid white; */
+}
+
+.timeSpentTextWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    /* border: 1px solid white; */
+}
+
+.timeSpentText {
+    font-size: 18px;
+    color: white;
+    margin-left: 2%;
+}
+
+.graphWrapper {
+    grid-area: graphWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+}

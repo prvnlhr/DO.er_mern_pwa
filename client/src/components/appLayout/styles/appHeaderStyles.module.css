@@ -1,0 +1,9 @@
+@import "../../variable.module.css";
+
+.appHeaderStylesWrapper {
+    grid-area: appHeaderStylesWrapper;
+    width: 100%;
+    height: 100%;
+    background-color: var(--app-header-bg);
+    /* border: 1px solid red; */
+}
