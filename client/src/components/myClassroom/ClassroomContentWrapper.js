@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./styles/classroomContentWrapperStyles.module.css"
-import CourseModule from '../course/CourseModule';
+import CourseCard from '../course/CourseCard';
 const ClassroomContentWrapper = () => {
     return (
         <div className={styles.classroomContentWrapper} >
@@ -13,13 +13,7 @@ const ClassroomContentWrapper = () => {
                     </p>
                 </div>
                 <div className={styles.inProgressListWrapper} >
-                    <CourseModule />
-                    {/* <CourseModule /> */}
-                    {/* <CourseModule /> */}
-                    {/* <CourseModule /> */}
-                    {/* <CourseModule /> */}
-                    {/* <CourseModule /> */}
-                    {/* <CourseModule /> */}
+                    <CourseCard />
                 </div>
 
 

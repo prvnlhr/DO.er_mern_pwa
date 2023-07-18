@@ -1,0 +1,41 @@
+@import "../../variable.module.css";
+
+.bodyWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    grid-area: bodyWrapper;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid salmon; */
+    /* background-color: sandybrown; */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    .bodyWrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        grid-area: bodyWrapper;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid salmon; */
+        /* overflow-y: scroll; */
+        /* border: 1px solid black; */
+        overflow-x: hidden;
+
+        /* margin-top: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto; */
+    }
+
+    .bodyWrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+
+}

@@ -1,14 +1,16 @@
 import React from "react";
 import appStyles from "./app.module.css";
 import AppHeader from "./appLayout/AppHeader"
-import AppPagesWrapper from "./appLayout/AppPagesWrapper"
+import AppSubPagesWrapper from "./appLayout/AppSubPagesWrapper"
 const App = () => {
 
     return (
 
         <div className={appStyles.app}>
-            <AppHeader />
-            <AppPagesWrapper />
+            <div className={appStyles.appInnerwrapper} >
+                <AppHeader />
+                <AppSubPagesWrapper />
+            </div>
         </div>
 
     )

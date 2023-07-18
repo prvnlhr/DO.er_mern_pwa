@@ -5,29 +5,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 35%;
-    min-width: 30%;
-    height: 90%;
+    width: 28%;
+    min-width: 28%;
+    height: 75%;
     /* border: 1px solid black; */
     margin-left: 2%;
     margin-right: 2%;
-    border-radius: 20px;
+    border-radius: 25px;
     background-color: white;
     box-shadow: var(--list-wrapper-box-shadow);
     box-sizing: border-box;
 }
 
 .moduleWrapper {
-    width: 85%;
-    min-width: 85%;
+    width: 80%;
+    min-width: 80%;
     height: 90%;
     /* border: 1px solid black; */
     box-sizing: border-box;
     border-radius: 20px;
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-    /* grid-template-rows: 16.2% 16.2% 16.2% 16.2% 16.2% 16.2%; */
+    /* display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+        "moduleLogoWrapper moduleTextWrapper moduleTextWrapper moduleTimeWrapper moduleBookmarkWrapper"
+        "moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper"
+        "moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper"
+        "moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper"
+        "moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleArrowLinkWrapper"
+    ;
 
     grid-template-areas:
         "courseLogoWrapper courseLogoWrapper courseClickArrowWrapper courseClickArrowWrapper"
@@ -36,11 +42,42 @@
         "courseDescriptionWrapper courseDescriptionWrapper courseDescriptionWrapper courseDescriptionWrapper"
         "lessonHeadingTextWrapper lessonHeadingTextWrapper lessonHeadingTextWrapper lessonHeadingTextWrapper"
         "lessonContentWrapper lessonContentWrapper lessonContentWrapper lessonContentWrapper"
+    ; */
+
+    /* display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+        "courseLogoWrapper courseLogoWrapper courseClickArrowWrapper courseClickArrowWrapper"
+        "courseLogoWrapper courseLogoWrapper courseClickArrowWrapper courseClickArrowWrapper"
+        "courseNameWrapper courseNameWrapper courseNameWrapper courseNameWrapper"
+        "courseDescriptionWrapper courseDescriptionWrapper courseDescriptionWrapper courseDescriptionWrapper"
+        "lessonHeadingTextWrapper lessonHeadingTextWrapper lessonHeadingTextWrapper lessonHeadingTextWrapper"
+        "lessonContentWrapper lessonContentWrapper lessonContentWrapper lessonContentWrapper"
+    ; */
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    /* grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); */
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+        "moduleLogoWrapper moduleTextWrapper moduleTextWrapper moduleTextWrapper moduleTextWrapper moduleTimeWrapper moduleTimeWrapper moduleBookmarkWrapper"
+        "moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper"
+        "moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleArrowLinkWrapper moduleArrowLinkWrapper"
+        "moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleArrowLinkWrapper moduleArrowLinkWrapper"
+        "moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleArrowLinkWrapper moduleArrowLinkWrapper"
     ;
+
+    /* "moduleLogoWrapper moduleTextWrapper moduleTextWrapper moduleTimeWrapper moduleBookmarkWrapper"
+    "moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper moduleTopicNameWrapper"
+    "moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper"
+    "moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper"
+    "moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleTopicListWrapper moduleArrowLinkWrapper" */
 }
 
-.courseLogoWrapper {
-    grid-area: courseLogoWrapper;
+
+.moduleLogoWrapper {
+    grid-area: moduleLogoWrapper;
     width: 100%;
     height: 100%;
     /* border: 1px solid red; */
@@ -49,19 +86,175 @@
     align-items: center;
 }
 
-.courseClickArrowWrapper {
-    grid-area: courseClickArrowWrapper;
+
+.moduleTextWrapper {
+    position: relative;
+    grid-area: moduleTextWrapper;
     width: 100%;
     height: 100%;
-    /* border: 1px solid red; */
+    /* border: 1px solid greenyellow; */
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    /* padding-top: 2%; */
+    justify-content: center;
+    align-items: center;
 }
 
-.arrowLinkDiv {
-    width: 50%;
+.moduleTextWrapper::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    aspect-ratio: 1/1;
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 50%;
+    right: 5%;
+}
+
+.moduleText {
+    font-size: 10px;
+    color: #7E8DA4;
+    font-weight: 500;
+}
+
+.moduleTimeWrapper {
+    grid-area: moduleTimeWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid blueviolet; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.moduleTimeText {
+    font-size: 8px;
+    color: #7E8DA4;
+    font-weight: 500;
+}
+
+.moduleBookmarkWrapper {
+    grid-area: moduleBookmarkWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moduleTopicNameWrapper {
+    grid-area: moduleTopicNameWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid peru; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.moduleTopicNameText {
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    margin-left: 1%;
+}
+
+/* ---------------------------------- */
+
+.moduleTopicListWrapper {
+    grid-area: moduleTopicListWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topicListContainer {
+    width: 95%;
+    height: 95%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.topicListContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.topicElementContainer {
+    width: 100%;
+    height: 15%;
+    min-height: 15%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+
+
+.topicElementIndicatorDiv {
+    position: relative;
+    width: 5%;
+    height: 60%;
+    border-radius: 2px;
+    background-color: var(--app-ui-scheme-color);
+}
+
+.topicElementIndicatorDiv::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background-color: #ECECEC;
+    height: 110%;
+    top: -150%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+
+.topicElementTextDiv {
+    width: 80%;
+    height: 90%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.topicElementNameText {
+    font-size: 10px;
+    color: #7E8DA4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+/* ---------------------------------- */
+
+.moduleArrowLinkWrapper {
+    grid-area: moduleArrowLinkWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid cyan; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.tiltedIconDiv {
+    width: 80%;
     /* height: 50%; */
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -69,125 +262,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.courseNameWrapper {
-    grid-area: courseNameWrapper;
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* padding-left: 5%; */
-}
-
-.courseNameText {
-    font-size: 1rem;
-    color: black;
-    font-weight: 500;
-}
-
-.courseDescriptionWrapper {
-    grid-area: courseDescriptionWrapper;
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* padding-left: 5%; */
-}
-
-.courseDesText {
-    font-size: 0.6rem;
-    color: #7E8DA4;
-}
-
-.lessonHeadingTextWrapper {
-    grid-area: lessonHeadingTextWrapper;
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    /* padding-left: 5%; */
-}
-
-.lessonText {
-    font-size: 0.8rem;
-    color: black;
-    font-weight: 500;
-}
-
-.lessonContentWrapper {
-    grid-area: lessonContentWrapper;
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid black; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-}
-
-.lessonPercentTextWrapper {
-    width: 20%;
-    height: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.lessonPercText {
-    font-size: 0.6rem;
-    color: black;
-    font-weight: 500;
-}
-
-
-.lessonBarWrapper {
-    width: 60%;
-    height: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.lessonBarContainer {
-    width: 90%;
-    height: 10%;
-    background-color: #7e8da445;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border-radius: 20px;
-}
-
-.lessonBarDiv {
-    width: 45%;
-    height: 100%;
-    background-color: var(--app-ui-scheme-color);
-    /* background-color: red; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border-radius: 20px;
-}
-
-.lessonCompletedNumWrapper {
-    width: 20%;
-    height: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.lessonComNumText {
-    font-size: 0.6rem;
-    color: black;
-    font-weight: 500;
+    margin-bottom: 15%;
 }

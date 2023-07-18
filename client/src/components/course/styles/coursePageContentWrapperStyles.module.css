@@ -1,0 +1,45 @@
+.contentWrapper {
+    grid-area: contentWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid salmon; */
+    padding-left: 2%;
+}
+
+.courseModulesListWrapper {
+    width: 50%;
+    height: 90%;
+    /* border: 1px solid black; */
+}
+
+.courseModuleListHeadingContainer {
+    width: 100%;
+    height: 20%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.headingIndicator {
+    width: 12px;
+    height: 40%;
+    border-radius: 3px;
+    background-color: var(--app-ui-scheme-color);
+}
+
+.headingText {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 2%;
+}
+
+.courseModuleCardListContainer {
+    width: 100%;
+    height: 80%;
+    /* border: 1px solid black; */
+    display: flex;
+}
