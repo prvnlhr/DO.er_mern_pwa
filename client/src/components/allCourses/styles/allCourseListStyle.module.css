@@ -1,0 +1,171 @@
+.listComponentWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+}
+
+.listComponentInnerWrapper {
+    width: 98%;
+    height: 95%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 90%;
+    grid-template-areas:
+        "listHeadingWrapper"
+        "listWrapper";
+    /* border: 1px solid red; */
+}
+
+.listHeadingWrapper {
+    grid: listHeadingWrapper;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid black; */
+}
+
+.listHeadingIndicatorDiv {
+    aspect-ratio: 1/1;
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.indicator {
+    /* width: 15%; */
+    height: 50%;
+    aspect-ratio: 9/16;
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 0.2rem;
+}
+
+.listHeadingDiv {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid blue; */
+}
+
+.listHeadingDiv p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 0%;
+}
+
+.listWrapper {
+    grid: listWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid red; */
+    padding-left: 3%;
+}
+
+.listInnerWrapper {
+    width: 95%;
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid red; */
+    overflow-y: scroll;
+    flex-wrap: wrap;
+
+}
+
+.listInnerWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .listComponentWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid red; */
+        width: 100%;
+        height: 100%;
+    }
+
+    .listComponentInnerWrapper {
+        width: 90%;
+        height: 90%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 90%;
+        grid-template-areas:
+            "listHeadingWrapper"
+            "listWrapper";
+        /* border: 1px solid red; */
+    }
+
+    .listHeadingIndicatorDiv {
+        /* width: 10%; */
+        height: 100%;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    /* .indicator {
+        width: 30%;
+        height: 70%;
+        background-color: var(--app-ui-scheme-color);
+        border-radius: 0.2rem;
+    } */
+
+    .listHeadingDiv {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid blue; */
+    }
+
+    .listHeadingDiv p {
+        font-size: 20px;
+        font-weight: 500;
+        margin-left: 2%;
+    }
+
+    .listInnerWrapper {
+        width: 100%;
+        height: 90%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid red; */
+        overflow-y: scroll;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px;
+        margin: 0;
+        list-style-type: none;
+        padding-top: 5%;
+        padding-bottom: 20%;
+        padding: unset;
+        /* padding-left: 5%; */
+        /* padding-right: 5%; */
+        box-sizing: border-box;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transform: perspective(1px) translateZ(0);
+        backface-visibility: hidden;
+    }
+}

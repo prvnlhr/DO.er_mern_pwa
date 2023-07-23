@@ -9,6 +9,30 @@
     grid-template-columns: 100%;
     grid-template-areas:
         "classroomHeaderWrapper"
-        "classroomContentWrapper";
+        "classroomBodyWrapper";
+
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    .classroomPageStylesWrapper {
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid black; */
+        display: grid;
+        grid-template-rows: 100% 100%;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "classroomHeaderWrapper"
+            "classroomBodyWrapper";
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+
+    }
+
+    .classroomPageStylesWrapper::-webkit-scrollbar {
+        display: none;
+    }
 
 }

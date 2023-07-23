@@ -5,13 +5,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 35%;
+    width: 30%;
     min-width: 30%;
-    height: 90%;
+    height: 75%;
     /* border: 1px solid black; */
     margin-left: 2%;
     margin-right: 2%;
-    border-radius: 20px;
+    border-radius: 25px;
     background-color: white;
     box-shadow: var(--list-wrapper-box-shadow);
     box-sizing: border-box;
@@ -190,4 +190,29 @@
     font-size: 0.6rem;
     color: black;
     font-weight: 500;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .cardOuterWrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 19px;
+        background-color: white;
+        box-shadow: var(--list-wrapper-box-shadow);
+        box-sizing: border-box;
+        width: 90%;
+        height: 200px;
+        /* height: unset; */
+        /* aspect-ratio: 1/1.1; */
+        margin: unset;
+        overflow: hidden;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
 }

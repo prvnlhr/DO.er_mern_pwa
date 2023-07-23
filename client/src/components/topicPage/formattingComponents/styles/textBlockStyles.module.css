@@ -2,20 +2,23 @@
     width: 100%;
     height: auto;
     /* border: 1px solid black; */
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 0%;
+    padding-bottom: 0%;
     padding-left: 3%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
 .textStyles {
 
-    font-size: 13px;
+    font-size: 0.9rem;
     color: #51637D;
     line-height: 2;
     text-align: justify;
+    font-weight: 300;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -34,10 +37,6 @@
 
     .textStyles {
         font-size: 0.9rem;
-        color: #51637D;
-        line-height: 2;
-        text-align: justify;
-        font-weight: 400;
     }
 
 }

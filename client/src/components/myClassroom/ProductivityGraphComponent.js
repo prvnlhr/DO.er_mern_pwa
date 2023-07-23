@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "./styles/productivityGraphStyles.module.css"
+import ClockIcon from '../icons/ClockIcon'
 const ProductivityGraphComponent = () => {
 
     let graphData = [
@@ -36,48 +37,75 @@ const ProductivityGraphComponent = () => {
     ]
 
     let hoursData = [
-        { hr: "08" },
-        { hr: "07" },
-        { hr: "06" },
-        { hr: "05" },
-        { hr: "04" },
-        { hr: "03" },
-        { hr: "02" },
-        { hr: "01" },
-        { hr: "00" },
+        { hr: "8" },
+        { hr: "7" },
+        { hr: "6" },
+        { hr: "5" },
+        { hr: "4" },
+        { hr: "3" },
+        { hr: "2" },
+        { hr: "1" },
+        { hr: "0" },
     ]
     return (
-        <div className={styles.graphWrapper}  >
-            <div className={styles.hoursTextWrapper} >
-                {
-                    hoursData.map((hrData, index) => (
-                        <p className={styles.hrText}>{hrData.hr}</p>
-                    ))}
-            </div>
-            <div className={styles.dayBarWrapper} >
-                {
-                    graphData.map((data, index) => (
-                        <div className={styles.dayBarContainer}  >
 
-                            <div className={styles.dayTextDiv} >
-                                <p className={styles.dayText} >{data.day}</p>
-                            </div>
+        <div className={styles.graphComponentWrapper} >
+            <div className={styles.headingTimeWrapper} >
+                <div className={styles.headingIndicatorContainer}>
+                    <div className={styles.indicatorDiv} >
+                    </div>
+                </div>
 
-                            <div className={styles.barContainer} >
-                                <div
-                                    style={{ height: `${(data.hoursSpent / 8) * 100}%` }}
-                                    className={styles.barDiv} >
-                                </div>
-                            </div>
-
+                <div className={styles.headingContainer}>
+                    <p>Productivity</p>
+                </div>
+                <div className={styles.clockTimeContainer} >
+                    <div className={styles.clockIconContainer} >
+                        <div className={styles.clockIconDiv} >
+                            <ClockIcon />
                         </div>
-                    ))
-                }
-
-
-
-
+                    </div>
+                    <div className={styles.timeTextContainer} >
+                        <p>23h 52min</p>
+                    </div>
+                </div>
             </div>
+            <div className={styles.graphWrapper} >
+
+                <div className={styles.graphInnerWrapper}  >
+                    <div className={styles.hoursTextWrapper} >
+
+                        {
+                            hoursData.map((hrData, index) => (
+                                <div className={styles.hrTextDiv} >
+                                    <p className={styles.hrText}>{hrData.hr}</p>
+                                </div>
+                            ))}
+                    </div>
+                    <div className={styles.dayBarWrapper} >
+                        {
+                            graphData.map((data, index) => (
+                                <div className={styles.dayBarContainer}  >
+
+                                    <div className={styles.dayTextDiv} >
+                                        <p className={styles.dayText} >{data.day}</p>
+                                    </div>
+
+                                    <div className={styles.barContainer} >
+                                        <div
+                                            style={{ height: `${(data.hoursSpent / 8) * 100}%` }}
+                                            className={styles.barDiv} >
+                                        </div>
+                                    </div>
+
+                                </div>
+                            ))
+                        }
+
+                    </div>
+                </div>
+            </div>
+
         </div >
     )
 }

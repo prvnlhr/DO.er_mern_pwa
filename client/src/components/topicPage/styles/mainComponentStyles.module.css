@@ -43,6 +43,9 @@
         -o-transition: left 0.3s ease-out;
         transition: left 0.3s ease-out;
         left: 100%;
+
+        /* left: 90%; */
+
     }
 
     .mainWrapper::-webkit-scrollbar {

@@ -1,7 +1,125 @@
+.graphComponentWrapper {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:
+        "headingTimeWrapper"
+        "graphWrapper";
+    /* border: 1px solid red; */
+}
+
+/* ---------------------------------------- */
+.headingTimeWrapper {
+    grid-area: headingTimeWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid white; */
+}
+
+
+.headingIndicatorContainer {
+    aspect-ratio: 1/1;
+    height: 100%;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indicatorDiv {
+    width: 20%;
+    height: 40%;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 2px;
+}
+
+
+.headingContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    height: 100%;
+    /* border: 1px solid white; */
+    padding-left: 0%;
+}
+
+.headingContainer p {
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.clockTimeContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    padding-right: 10%;
+}
+
+.clockIconContainer {
+    aspect-ratio: 1/1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid white; */
+}
+
+.clockIconDiv {
+    width: 60%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeTextContainer {
+    width: auto;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeTextContainer p {
+    color: white;
+    font-size: 0.8rem;
+}
+
+/* ---------------------------------------- */
+
+
 .graphWrapper {
     width: 100%;
+    height: 100%;
+    grid-area: graphWrapper;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid springgreen; */
+
+}
+
+.graphInnerWrapper {
+    grid-area: graphInnerWrapper;
+    width: 80%;
     height: 90%;
-    /* border-bottom: 1px solid salmon; */
+    /* border: 1px solid salmon; */
     display: grid;
     grid-template-columns: 10% 90%;
     grid-template-rows: 100%;
@@ -17,22 +135,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     /* border: 1px solid white; */
+}
+
+.hrTextDiv {
+    width: 80%;
+    height: 10%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .hrText {
     color: white;
-    font-size: 9px;
-    margin-top: auto;
-    margin-bottom: auto;
+    font-size: 0.5rem;
+    font-weight: 300;
+    /* margin-top: auto; */
+    /* margin-bottom: auto; */
     /* margin: 0; */
     /* padding: 0; */
 }
 
 .dayBarWrapper {
     grid-area: dayBarWrapper;
-    width: 80%;
+    width: 100%;
     height: 100%;
     display: flex;
     /* border: 1px solid white; */
@@ -40,7 +168,7 @@
 
 .dayBarContainer {
     width: 14%;
-    height: 98%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -63,7 +191,7 @@
 .barDiv {
     width: 5%;
     height: 100%;
-    background-color: aquamarine;
+    background-color: var(--app-ui-scheme-color);
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -77,6 +205,111 @@
 }
 
 .dayText {
-    font-size: 12px;
+    font-size: 0.8rem;
+    font-weight: 300;
     color: white;
+}
+
+
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    .graphComponentWrapper {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 15% 85%;
+        grid-template-areas:
+            "headingTimeWrapper"
+            "graphWrapper";
+        /* border: 1px solid red; */
+    }
+
+    .graphInnerWrapper {
+        width: 90%;
+        height: 90%;
+    }
+
+
+    .headingIndicatorContainer {
+        aspect-ratio: 1/1;
+        height: 100%;
+        /* border: 1px solid white; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .indicatorDiv {
+        width: 25%;
+        height: 45%;
+        /* border: 1px solid white; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--app-ui-scheme-color);
+        border-radius: 2px;
+    }
+
+
+    .headingContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: auto;
+        height: 100%;
+        /* border: 1px solid white; */
+        padding-left: 0%;
+    }
+
+    .headingContainer p {
+        color: white;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    .clockTimeContainer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid red; */
+        padding-right: 10%;
+    }
+
+    .clockIconContainer {
+        aspect-ratio: 1/1;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid white; */
+    }
+
+    .clockIconDiv {
+        width: 60%;
+        aspect-ratio: 1/1;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .timeTextContainer {
+        width: auto;
+        height: 100%;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .timeTextContainer p {
+        color: white;
+        font-size: 0.8rem;
+    }
+
 }

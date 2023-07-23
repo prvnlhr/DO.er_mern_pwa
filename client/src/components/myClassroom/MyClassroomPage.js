@@ -2,12 +2,12 @@ import React from 'react'
 
 import styles from "./styles/classroomPageStyles.module.css"
 import ClassroomHeader from "./ClassroomHeader"
-import ClassroomContentWrapper from "./ClassroomContentWrapper"
+import ClassroomBody from "./ClassroomBody"
 const MyClassroomPage = () => {
     return (
         <div className={styles.classroomPageStylesWrapper} >
             <ClassroomHeader />
-            <ClassroomContentWrapper />
+            <ClassroomBody />
         </div>
     )
 }

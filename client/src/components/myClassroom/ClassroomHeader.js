@@ -1,51 +1,35 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import styles from "./styles/classroomHeaderStyles.module.css"
-import OverviewInfoComponent from "./OverviewInfoComponent"
+import OverviewComponent from "./OverviewComponent"
 import ProductivityGraphComponent from './ProductivityGraphComponent'
 import ClockIcon from '../icons/ClockIcon'
+import BackBtnIcon from "../icons/BackBtnIcon"
 const ClassroomHeader = () => {
+    const navigate = useNavigate();
+
     return (
         <div className={styles.classroomHeaderWrapper} >
-            <div className={styles.overviewSectionWrapper} >
-                <div className={styles.mainHeadingWrapper} >
-                    <p className={styles.mainHeadingText} >My Classroom</p>
-                </div>
-                <div className={styles.overViewHeadingWrapper} >
-                    <div className={styles.headingIndicator}  ></div>
-                    <p className={styles.overHeadingText} >overview</p>
-                </div>
-                <div className={styles.overviewContentWrapper} >
-                    <OverviewInfoComponent />
-                </div>
-            </div>
-            <div className={styles.productivitySectionWrapper} >
-
-
-                <div className={styles.productivityHeadingWrapper}>
-                    <div className={styles.headingIndicator}  ></div>
-                    <p className={styles.prodHeadingText} >Productivity</p>
-                </div>
-
-
-                <div className={styles.timeSpentWrapper}>
-                    <div className={styles.timeSpentIconWrapper} >
-                        <ClockIcon />
-                    </div>
-                    <div className={styles.timeSpentTextWrapper} >
-                        <p className={styles.timeSpentText} >
-                            28h
-                        </p>
+            <div className={styles.headingWrapper}>
+                <div className={styles.backBtnIconContainer}>
+                    <div className={styles.backBtnIconDiv} onClick={() => navigate(-1)}>
+                        <BackBtnIcon />
                     </div>
                 </div>
-
-
-                <div className={styles.graphWrapper}>
-                    <ProductivityGraphComponent />
+                <div className={styles.headingContainer}>
+                    <p>My Classroom</p>
                 </div>
-
-
-
             </div>
+            <div className={styles.overviewWrapper}>
+                <OverviewComponent />
+            </div>
+            <div className={styles.productivityGraphWrapper}>
+                <ProductivityGraphComponent />
+            </div>
+
+
+
         </div>
     )
 }

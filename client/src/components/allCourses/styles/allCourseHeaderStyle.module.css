@@ -1,0 +1,111 @@
+.pageHeaderWrapper {
+    grid-area: pageHeaderWrapper;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sub-page-header-bg);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.headerInnerWrapper {
+    width: 90%;
+    height: 90%;
+    /* border: 1px solid red; */
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 30% 70%;
+    grid-template-areas:
+        "headerHeadingWrapper"
+        "descWrapper"
+    ;
+    margin-left: 1%;
+
+}
+
+.headerHeadingWrapper {
+    grid-area: headerHeadingWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid salmon; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.backBtnContainer {
+    aspect-ratio: 1/1;
+    height: 100%;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backBtnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+}
+
+.headingContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid greenyellow; */
+    padding-left: 1%;
+}
+
+.headingContainer p {
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 400;
+}
+
+/* ------------------------------------------------ */
+
+.descWrapper {
+    grid-area: descWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid salmon; */
+    padding-left: 4%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.descWrapper p {
+    width: 50%;
+
+    font-size: 1rem;
+    color: #7E8DA4;
+    font-weight: 300;
+}
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    .descWrapper {
+        grid-area: descWrapper;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid salmon; */
+        padding-left: 12%;
+
+    }
+
+    .descWrapper p {
+        width: 100%;
+        font-size: 1rem;
+        color: #7E8DA4;
+        font-weight: 300;
+    }
+}

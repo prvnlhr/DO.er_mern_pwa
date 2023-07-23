@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from "./styles/coursePageStyles.module.css"
 import CoursePageHeader from './CoursePageHeader'
-import CoursePageContentWrapper from './CoursePageContentWrapper'
+import CoursePageBody from './CoursePageBody'
 const CoursePage = () => {
   return (
     <div className={styles.coursePageWrapper} >
       <CoursePageHeader />
-      <CoursePageContentWrapper />
+      <CoursePageBody />
     </div>
   )
 }

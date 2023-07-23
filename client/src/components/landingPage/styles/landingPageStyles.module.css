@@ -1,0 +1,28 @@
+.landingPageOuterWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.innerWrapper {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.innerWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {}

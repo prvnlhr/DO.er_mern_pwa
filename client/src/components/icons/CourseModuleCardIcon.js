@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./styles/courseModuleIconStyles.module.css"
-const CourseModuleIcon = () => {
+const CourseModuleCardIcon = () => {
     return (
         <svg
             className={styles.courseModuleIcon}
@@ -16,4 +16,4 @@ const CourseModuleIcon = () => {
     )
 }
 
-export default CourseModuleIcon
+export default CourseModuleCardIcon

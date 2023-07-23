@@ -1,0 +1,181 @@
+@import "../../variable.module.css";
+
+
+.cardOuterWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 200px; */
+    /* min-width: 10%; */
+    height: 55%;
+    aspect-ratio: 3/3.7;
+    /* border: 1px solid black; */
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: var(--list-wrapper-box-shadow);
+    box-sizing: border-box;
+}
+
+.cardWrapper {
+    width: 85%;
+    min-width: 85%;
+    height: 90%;
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    /* grid-template-rows: 16.2% 16.2% 16.2% 16.2% 16.2% 16.2%; */
+
+    grid-template-areas:
+        "courseLogoWrapper courseLogoWrapper courseClickArrowWrapper courseClickArrowWrapper"
+        "courseLogoWrapper courseLogoWrapper courseClickArrowWrapper courseClickArrowWrapper"
+        "courseNameWrapper courseNameWrapper courseNameWrapper courseNameWrapper"
+        "courseDescriptionWrapper courseDescriptionWrapper courseDescriptionWrapper courseDescriptionWrapper"
+        "numModulesWrapper numModulesWrapper numModulesWrapper numModulesWrapper"
+    ;
+}
+
+.courseLogoWrapper {
+    grid-area: courseLogoWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.courseClickArrowWrapper {
+    grid-area: courseClickArrowWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    /* padding-top: 2%; */
+}
+
+.arrowLinkDiv {
+    width: 50%;
+    /* height: 50%; */
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: #CBE7FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.courseNameWrapper {
+    grid-area: courseNameWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding-left: 5%; */
+}
+
+.courseNameText {
+    font-size: 1rem;
+    color: black;
+    font-weight: 500;
+}
+
+.courseDescriptionWrapper {
+    grid-area: courseDescriptionWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding-left: 5%; */
+}
+
+.courseDesText {
+    font-size: 0.6rem;
+    color: #7E8DA4;
+}
+
+.numModulesWrapper {
+    grid-area: numModulesWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding-left: 5%; */
+}
+
+.numModuleIconContainer {
+    width: 20%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numModuleIconDiv {
+    width: 80%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numModuleTextContainer {
+    width: 80%;
+    height: 100%;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2%;
+}
+
+.numModuleTextContainer p {
+    font-size: 10px;
+    font-weight: 600;
+    color: black;
+}
+
+.moduleSpanText {
+    color: #7E8DA4 ! important;
+}
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .cardOuterWrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 19px;
+        background-color: white;
+        box-shadow: var(--list-wrapper-box-shadow);
+        box-sizing: border-box;
+        width: 90%;
+        height: 200px;
+        /* height: unset; */
+        /* aspect-ratio: 1/1.1; */
+        margin: unset;
+        overflow: hidden;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+}

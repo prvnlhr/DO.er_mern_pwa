@@ -6,7 +6,7 @@ import MainHeading from "./formattingComponents/MainHeading"
 import SubHeading from "./formattingComponents/SubHeading"
 import NoteBlock from "./formattingComponents/NoteBlock"
 import SubTextBlock from './formattingComponents/SubTextBlock'
-const ContentComponent = ({ showSideBar }) => {
+const ContentComponent = ({ toggleSidebar }) => {
 
     let inputString = `function factorial(n) {
         if (n === 0 || n === 1) {
@@ -25,11 +25,25 @@ const ContentComponent = ({ showSideBar }) => {
 
     return (
         <div className={`${styles.wrapper} `}>
+            <div className={styles.showSidebarIconWrapper} >
+                <div className={styles.iconDiv} onClick={toggleSidebar} >
+                    <svg
+                        //  width="24" height="27" 
+                        className={styles.sideBarShowIcon}
+                        viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L4 6" stroke="#202D40" stroke-width="1.5" stroke-linecap="round" />
+                        <path opacity="0.3" d="M20 12L4 12" stroke="#202D40" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M20 18H4" stroke="#202D40" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </div>
+
+            </div>
             <div className={styles.innerWrapper} >
-                <MainHeading mainHeading={'Introduction to JavaScript'} />
+                <MainHeading mainHeading={'Origins of JavaScript'} />
                 <TextBlock textContent={textContent} />
                 <SubHeading subHeading={'Data types in Javascript'} />
                 <SubTextBlock subTextContent={subTextContent} />
+                <br />
                 <MainHeading mainHeading={'Closure in JavaScript'} />
                 <TextBlock textContent={textContent} />
                 <SubHeading subHeading={'Uses of Closure'} />

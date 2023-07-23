@@ -1,12 +1,18 @@
 import React from 'react'
-import styles from "./styles/courseModuleStyles.module.css"
+import { useNavigate, Link } from 'react-router-dom'
+
+import styles from "./styles/courseModuleCardStyles.module.css"
 import JavaScriptLogo from '../icons/JavaScriptLogo'
 import TiltedArrowIcon from '../icons/TiltedArrowIcon'
-import CourseModuleIcon from "../icons/CourseModuleIcon"
+import CourseModuleCardIcon from "../icons/CourseModuleCardIcon"
 import BookmarkIconFilled from "../icons/BookmarkIconFilled"
 
-const CourseModule = () => {
+const CourseModuleCard = () => {
+  const navigate = useNavigate();
 
+  const moduleArrowLinkClicked = () => {
+    navigate("/user/topic")
+  }
 
   let moduleTopicListData = [
     { topicName: "What is Closure ?" },
@@ -21,7 +27,7 @@ const CourseModule = () => {
     <div className={styles.moduleOuterWrapper} >
       <div className={styles.moduleWrapper}>
         <div className={styles.moduleLogoWrapper} >
-          <CourseModuleIcon />
+          <CourseModuleCardIcon />
         </div>
         <div className={styles.moduleTextWrapper} >
           <p className={styles.moduleText} >MODULE 1</p>
@@ -58,7 +64,7 @@ const CourseModule = () => {
           </div>
         </div>
         <div className={styles.moduleArrowLinkWrapper} >
-          <div className={styles.tiltedIconDiv}>
+          <div className={styles.tiltedIconDiv} onClick={moduleArrowLinkClicked}>
             <TiltedArrowIcon />
           </div>
         </div>
@@ -68,4 +74,4 @@ const CourseModule = () => {
   )
 }
 
-export default CourseModule
+export default CourseModuleCard

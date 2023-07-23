@@ -1,5 +1,13 @@
 .clockStyle {
-    width: 60%;
-    height: 60%;
+    width: 100%;
+    height: 100%;
     /* border: 1px solid red; */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .clockStyle {
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid red; */
+    }
 }

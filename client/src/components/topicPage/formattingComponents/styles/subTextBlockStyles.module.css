@@ -2,22 +2,22 @@
     width: 100%;
     height: auto;
     /* border: 1px solid black; */
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 0%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
     padding-left: 6%;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
 .subTextStyles {
-
-    font-size: 13px;
+    font-size: 0.9rem;
     color: #51637D;
     line-height: 2;
     text-align: justify;
+    font-weight: 300;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -33,11 +33,6 @@
     }
 
     .subTextStyles {
-
         font-size: 0.9rem;
-        color: #51637D;
-        line-height: 2;
-        text-align: justify;
-        font-weight: 400;
     }
 }

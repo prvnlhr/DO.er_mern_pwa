@@ -9,7 +9,7 @@
     height: 100%;
     /* border: 1px solid black; */
     display: grid;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 8% 92%;
     grid-template-columns: 100%;
     grid-template-areas:
         "sidebarHeadingWrapper"
@@ -17,13 +17,13 @@
     ;
     /* background-color: #EEF7FF; */
     z-index: 2;
-
     -webkit-transition: right 0.3s ease-out;
     -moz-transition: right 0.3s ease-out;
     -o-transition: right 0.3s ease-out;
     transition: right 0.3s ease-out;
     border-right: 1px solid #7e8da470;
     /* background-color: yellowgreen; */
+    background-color: #EAF7FF;
 
 }
 
@@ -33,15 +33,39 @@
     height: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: flex-start;
     /* border: 1px solid red; */
-    padding-left: 8%;
 }
 
-.sidebarHeadingWrapper p {
-    font-size: 16px;
-    font-weight: 600;
+.sidebarHeadingDiv {
+    width: 80%;
+    height: 100%;
+    /* border: 1px solid black; */
+    padding-left: 8%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.sidebarHeadingDiv p {
+    font-size: 1.2rem;
+    font-weight: 500;
     color: black;
+
+}
+
+.sidebarCloseIconDiv {
+    width: 20%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: none;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.closeIcon {
+    width: 40%;
+    height: 40%;
 }
 
 .sidebarContentWrapper {
@@ -97,10 +121,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    border-bottom: 1px solid #7e8da478;
 }
 
 .moduleNameDiv p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: black;
     font-weight: 500;
 }
@@ -109,7 +134,7 @@
     /* width: 20%; */
     aspect-ratio: 1/1;
     height: 100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     /* border: 1px solid red; */
@@ -171,8 +196,8 @@
 
 .subTopicElementWrapper {
     width: 95%;
-    height: 35px;
-    min-height: 35px;
+    height: 40px;
+    min-height: 40px;
     /* border: 1px solid red; */
     display: flex;
     justify-content: flex-start;
@@ -193,11 +218,11 @@
 
 
 .indicatorDiv {
-    width: 25%;
-    height: 40%;
+    width: 20%;
+    height: 65%;
     background-color: var(--app-ui-scheme-color);
-    border-radius: 1px;
-    margin-right: 2%;
+    border-radius: 2px;
+    /* margin-right: 2%; */
 }
 
 .subTopicElementIndicatorContainer::before {
@@ -205,7 +230,7 @@
     position: absolute;
     width: 0.09rem;
     background-color: #7e8da47f;
-    height: 100%;
+    height: 80%;
     top: -100%;
     left: 0;
     right: 0;
@@ -226,9 +251,9 @@
 }
 
 .subTopicNameText {
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: #7E8DA4;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #51637D;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis
@@ -243,31 +268,28 @@
         min-width: 100%;
         height: 100%;
         min-height: 100%;
-
         /* position: absolute; */
         /* width: 80%; */
         /* min-width: 80%; */
         /* height: 80%; */
         /* min-height: 80%; */
-
-        right: 100%;
-
-
         /* border: 1px solid blue; */
         display: grid;
         grid-template-rows: 10% 90%;
         grid-template-columns: 100%;
         grid-template-areas:
             "sidebarHeadingWrapper"
-            "sidebarContentWrapper"
-        ;
+            "sidebarContentWrapper";
         /* background-color: #EEF7FF; */
         -webkit-transition: right 0.3s ease-out;
         -moz-transition: right 0.3s ease-out;
         -o-transition: right 0.3s ease-out;
         transition: right 0.3s ease-out;
+        right: 100%;
 
-
+        /* min-width: 80%; */
+        /* width: 80%; */
+        background-color: white;
     }
 
 
@@ -276,31 +298,72 @@
         -moz-transition: right 0.3s ease-out;
         -o-transition: right 0.3s ease-out;
         transition: right 0.3s ease-out;
-        right: 0%;
         border-right: 1px solid #7e8da470;
+        right: 0%;
+
+        /* right: 10%; */
+
     }
 
 
-    .sidebarHeadingWrapper p {
+    .sidebarHeadingWrapper {
+        grid-area: sidebarHeadingWrapper;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        /* border: 1px solid red; */
+    }
+
+
+    .sidebarHeadingDiv {
+        width: 80%;
+        height: 100%;
+        /* border: 1px solid black; */
+        padding-left: 8%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .sidebarHeadingDiv p {
         font-size: 1.5rem;
         font-weight: 500;
         color: black;
+        padding: 0;
+        margin: 0;
     }
+
+    .sidebarCloseIconDiv {
+        width: 20%;
+        height: 100%;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .closeIcon {
+        width: 35%;
+        height: 35%;
+    }
+
+
 
 
     .moduleNameDiv p {
-        font-size: 1.1rem;
-        color: #2B3F6C;
-        font-weight: 400;
+        font-size: 1.2rem;
+        font-weight: 300;
     }
 
     .subTopicNameText {
-        font-size: 0.95rem;
-        font-weight: unset;
-        color: #7E8DA4;
+        font-size: 1rem;
+        font-weight: 300;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis
+        text-overflow: ellipsis;
     }
 
 

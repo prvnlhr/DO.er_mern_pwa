@@ -19,7 +19,7 @@
     width: 100%;
     height: 100%;
     /* border: 1px solid red; */
-    padding-left: 5%;
+    /* padding-left: 5%; */
 }
 
 
@@ -32,9 +32,38 @@
     /* border: 1px solid white; */
 }
 
+.backBtnContainer {
+    width: unset;
+    aspect-ratio: 1/1;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backBtIconDiv {
+    width: unset;
+    height: 60%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.courseNameDiv {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid white; */
+}
+
 .courseNameText {
-    font-size: 30px;
-    font-weight: 500;
+    font-size: 1.8rem;
+    font-weight: 300;
     color: white;
 }
 
@@ -45,14 +74,16 @@
     justify-content: flex-start;
     align-items: flex-start;
     /* border: 1px solid white; */
+    padding-left: 8%;
 }
 
 .courseDescText {
     width: 70%;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 300;
     color: #8B98A5;
     margin-top: 2%;
+    line-height: 1.5;
 }
 
 /*_______________________________  */
@@ -100,6 +131,12 @@
     /* border: 1px solid white; */
 }
 
+.infoIconDiv {
+    width: 60%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid white; */
+}
+
 .infoAttributeWrapper {
     grid-area: infoAttributeWrapper;
     display: flex;
@@ -113,7 +150,8 @@
 
 .infoAtrrText {
     color: white;
-    font-size: 13px;
+    font-size: 1rem;
+    font-weight: 300;
     margin-bottom: 2%;
 }
 
@@ -129,9 +167,201 @@
 
 .infoValueText {
     color: white;
-    font-size: 13px;
-    margin-top: 2%;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 2%;
 
 }
 
-/* ______________________- */
+/* ____________________________________________ */
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .headerWrapper {
+        grid-area: headerWrapper;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid greenyellow; */
+        background-color: var(--sub-page-header-bg);
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 60% 40%;
+        grid-template-areas:
+            "courseNameDescWrapper "
+            "courseInfoGraphicWrapper"
+        ;
+    }
+
+    .courseNameDescWrapper {
+        grid-area: courseNameDescWrapper;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid red; */
+        /* padding-left: 5%; */
+    }
+
+
+    .courseNameWrapper {
+        width: 100%;
+        height: 30%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid white; */
+    }
+
+    .backBtnContainer {
+        width: unset;
+        aspect-ratio: 1/1;
+        height: 100%;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .backBtIconDiv {
+        width: 60%;
+        aspect-ratio: 1/1;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .courseNameDiv {
+        width: 80%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid white; */
+        padding-left: 2%;
+    }
+
+    .courseNameText {
+        font-size: 30px;
+        font-weight: 500;
+        color: white;
+    }
+
+    .courseDescriptionWrapper {
+        width: 100%;
+        height: 70%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        /* border: 1px solid white; */
+        padding-left: 15%;
+    }
+
+    .courseDescText {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #8B98A5;
+        margin-top: 2%;
+        /* border: 1px solid red; */
+        width: 90%;
+        line-height: 1.8;
+
+        display: box;
+        display: -webkit-box;
+        display: -moz-box;
+        -webkit-line-clamp: 3;
+        box-orient: vertical;
+        -moz-box-orient: vertical;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden !important;
+
+    }
+
+    /*_______________________________  */
+    .courseInfoGraphicWrapper {
+        grid-area: courseInfoGraphicWrapper;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .infoElementOuterWrapper {
+        width: 90%;
+        height: 100%;
+        /* border: 1px solid white; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+
+    .infoElementWrapper {
+        width: 48%;
+        height: 90%;
+        display: grid;
+        grid-template-columns: 30% 70%;
+        grid-template-rows: 50% 50%;
+        grid-template-areas:
+            "infoIconWrapper infoAttributeWrapper"
+            "infoIconWrapper infoValueWrapper";
+        /* border: 1px solid red; */
+    }
+
+    .infoIconWrapper {
+        grid-area: infoIconWrapper;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid white; */
+    }
+
+    .infoIconDiv {
+        width: 80%;
+        aspect-ratio: 1/1;
+        /* border: 1px solid white; */
+    }
+
+    .infoAttributeWrapper {
+        grid-area: infoAttributeWrapper;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid white; */
+        overflow-x: hidden;
+
+    }
+
+    .infoAtrrText {
+        font-size: 0.9rem;
+        margin-bottom: 2%;
+        white-space: nowrap;
+        font-weight: 300;
+    }
+
+    .infoValueWrapper {
+        grid-area: infoValueWrapper;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid white; */
+    }
+
+    .infoValueText {
+        font-size: 0.9rem;
+        margin-top: 2%;
+        font-weight: 300;
+    }
+
+
+
+}

@@ -1,0 +1,153 @@
+.listComponentWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    width: 50%;
+    height: 100%;
+}
+
+.listComponentInnerWrapper {
+    width: 90%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:
+        "listHeadingWrapper"
+        "listWrapper";
+    /* border: 1px solid red; */
+}
+
+.listHeadingWrapper {
+    grid: listHeadingWrapper;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid black; */
+}
+
+.listHeadingIndicatorDiv {
+    width: 5%;
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.indicator {
+    width: 40%;
+    height: 50%;
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 0.2rem;
+}
+
+.listHeadingDiv {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid blue; */
+}
+
+.listHeadingDiv p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 2%;
+}
+
+.listWrapper {
+    grid: listWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.listInnerWrapper {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid red; */
+    overflow-x: scroll;
+}
+
+.listInnerWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .listComponentWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid red; */
+        width: 100%;
+        height: 100%;
+    }
+
+    .listComponentInnerWrapper {
+        width: 90%;
+        height: 90%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 90%;
+        grid-template-areas:
+            "listHeadingWrapper"
+            "listWrapper";
+        /* border: 1px solid red; */
+    }
+
+    .listHeadingIndicatorDiv {
+        width: 10%;
+        height: 100%;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    .indicator {
+        width: 40%;
+        height: 70%;
+        background-color: var(--app-ui-scheme-color);
+        border-radius: 0.2rem;
+    }
+
+    .listHeadingDiv {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid blue; */
+    }
+
+    .listHeadingDiv p {
+        font-size: 20px;
+        font-weight: 500;
+        margin-left: 2%;
+    }
+
+    .listInnerWrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid red; */
+        overflow-x: scroll;
+    }
+}
