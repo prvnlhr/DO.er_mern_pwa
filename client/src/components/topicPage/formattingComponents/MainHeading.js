@@ -4,7 +4,10 @@ const MainHeading = ({ mainHeading }) => {
   return (
     <div className={styles.mainHeadingWrapper}>
       <div className={styles.mainHeadingIndicator} ></div>
-      <p className={styles.mainHeadingText} >{mainHeading}</p>
+      <p
+        className={styles.mainHeadingText}
+      >{mainHeading}
+      </p>
     </div>
   )
 }

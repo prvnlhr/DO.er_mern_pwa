@@ -6,11 +6,21 @@ import JavaScriptLogo from '../icons/JavaScriptLogo'
 import TiltedArrowIcon from '../icons/TiltedArrowIcon'
 import CourseModuleCardIcon from "../icons/CourseModuleCardIcon"
 import BookmarkIconFilled from "../icons/BookmarkIconFilled"
+import { useCourseContext } from "../../appState/appContext"
+import { coursesList } from "../../courseData/courseData"
 
-const CourseModuleCard = () => {
+const CourseModuleCard = ({ moduleData, moduleIndex }) => {
+
   const navigate = useNavigate();
+  const { currentCourseData, setCurrentCourseData, updateCurrentCourseData } = useCourseContext();
+
+  const setClickedModuleIndex = () => {
+    updateCurrentCourseData('currentCourseModuleIndex', moduleIndex);
+  }
+
 
   const moduleArrowLinkClicked = () => {
+    setClickedModuleIndex();
     navigate("/user/topic")
   }
 
@@ -30,16 +40,18 @@ const CourseModuleCard = () => {
           <CourseModuleCardIcon />
         </div>
         <div className={styles.moduleTextWrapper} >
-          <p className={styles.moduleText} >MODULE 1</p>
+          <p className={styles.moduleText} >
+            MODULE {moduleIndex + 1}
+          </p>
         </div>
         <div className={styles.moduleTimeWrapper} >
-          <p className={styles.moduleTimeText}  >20 min</p>
+          <p className={styles.moduleTimeText}  >{moduleData.time_required}</p>
         </div>
         <div className={styles.moduleBookmarkWrapper} >
           <BookmarkIconFilled />
         </div>
         <div className={styles.moduleTopicNameWrapper} >
-          <p className={styles.moduleTopicNameText}  >Closure in JS</p>
+          <p className={styles.moduleTopicNameText}  >{moduleData.module_title}</p>
         </div>
         <div className={styles.moduleTopicListWrapper} >
           <div className={styles.topicListContainer} >

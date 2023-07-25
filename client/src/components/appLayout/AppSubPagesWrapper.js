@@ -6,36 +6,41 @@ import CoursePage from "../course/CoursePage"
 import TopicsPage from "../topicPage/TopicsPage"
 import LandingPage from '../landingPage/LandingPage';
 import AllCoursePage from "../allCourses/AllCoursesPage"
-
-
+import { useCourseContext } from '../../appState/appContext';
+import { CourseProvider } from '../../appState/appContext';
 
 
 const AppSubPagesWrapper = () => {
+
+
+
     return (
-        <div className={styles.appSubPageWrapperStyles}>
-            <Routes>
-                <Route path='/' element={
-                    <LandingPage />
-                } />
 
-                <Route path="/user/classroom" element={
-                    <MyClassroomPage />
-                } />
+            <div className={styles.appSubPageWrapperStyles}>
+                <Routes>
+                    <Route path='/' element={
+                        <LandingPage />
+                    } />
 
-                <Route path='/user/course' element={
-                    <CoursePage />
-                } />
+                    <Route path="/user/classroom" element={
+                        <MyClassroomPage />
+                    } />
 
-                <Route path='/user/topic' element={
-                    <TopicsPage />
-                } />
-                <Route path='/user/allcourses' element={
-                    <AllCoursePage />
-                } />
+                    <Route path='/user/course' element={
+                        <CoursePage />
+                    } />
+
+                    <Route path='/user/topic' element={
+                        <TopicsPage />
+                    } />
+                    <Route path='/user/allcourses' element={
+                        <AllCoursePage />
+                    } />
 
 
-            </Routes>
-        </div>
+                </Routes>
+            </div>
+
     )
 }
 

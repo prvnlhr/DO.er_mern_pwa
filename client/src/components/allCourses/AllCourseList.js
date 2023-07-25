@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from "./styles/allCourseListStyle.module.css"
 import AllCourseCard from "./AllCourseCard"
+import { coursesList } from "../../courseData/courseData.js"
+import { useCourseContext } from "../../appState/appContext"
 
 const AllCourseList = () => {
+    console.log(coursesList);
+
+
     return (
         <div className={styles.listComponentWrapper} >
 
@@ -20,17 +25,9 @@ const AllCourseList = () => {
 
                 <div className={styles.listWrapper} >
                     <div className={styles.listInnerWrapper} >
-
-                        <AllCourseCard />
-                        <AllCourseCard />
-                        <AllCourseCard />
-                        <AllCourseCard />
-                        <AllCourseCard />
-                        <AllCourseCard />
-                        <AllCourseCard />
-                        <AllCourseCard />
-                        <AllCourseCard />
-                        <AllCourseCard />
+                        {coursesList.map((course, index) => (
+                            <AllCourseCard courseData={course} courseIndx={index} />
+                        ))}
                     </div>
                 </div>
             </div>

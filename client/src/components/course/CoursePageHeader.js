@@ -1,12 +1,28 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useCourseContext } from '../../appState/appContext';
 
 import styles from "./styles/coursePageHeaderStyles.module.css"
 import ClockIcon from "../icons/ClockIcon"
 import CourseChapterIcon from "../icons/CourseChapterIcon"
 import BackBtnIcon from "../icons/BackBtnIcon"
+
+import { coursesList } from "../../courseData/courseData.js"
+
 const CoursePageHeader = () => {
+
   const navigate = useNavigate();
+
+  const {
+    currentCourseData,
+    setCurrentCourseData
+  } = useCourseContext();
+
+  // console.log(currentCourseData, coursesList[currentCourseData.currentCourseIndex])
+
+
+
+
 
   return (
     <div className={styles.headerWrapper}>
@@ -20,12 +36,14 @@ const CoursePageHeader = () => {
             </div>
           </div>
           <div className={styles.courseNameDiv} >
-            <p className={styles.courseNameText} >JavaScript</p>
+            <p className={styles.courseNameText} >{coursesList[currentCourseData.currentCourseIndex].title}</p>
           </div>
         </div>
 
         <div className={styles.courseDescriptionWrapper} >
-          <p className={styles.courseDescText}> JavaScript (JS) is the most popular lightweight, interpreted compiled programming language. It can be used for both Client-side as well as Server-side developments.</p>
+          <p className={styles.courseDescText}>
+            {coursesList[currentCourseData.currentCourseIndex].courseDescription}
+          </p>
         </div>
 
       </div>
@@ -42,7 +60,9 @@ const CoursePageHeader = () => {
               <p className={styles.infoAtrrText} >Total Chapters</p>
             </div>
             <div className={styles.infoValueWrapper} >
-              <p className={styles.infoValueText} >24</p>
+              <p className={styles.infoValueText} >
+                {coursesList[currentCourseData.currentCourseIndex].modules}
+              </p>
 
             </div>
           </div>
@@ -59,7 +79,9 @@ const CoursePageHeader = () => {
 
             </div>
             <div className={styles.infoValueWrapper} >
-              <p className={styles.infoValueText} >7h 25min</p>
+              <p className={styles.infoValueText} >
+                {coursesList[currentCourseData.currentCourseIndex].time_required}
+              </p>
 
             </div>
           </div>

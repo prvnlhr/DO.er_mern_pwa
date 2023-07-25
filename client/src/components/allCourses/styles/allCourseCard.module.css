@@ -97,13 +97,18 @@
     /* border: 1px solid red; */
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-    /* padding-left: 5%; */
+    align-items: flex-start;
+    padding-left: 1%;
 }
 
 .courseDesText {
     font-size: 0.6rem;
     color: #7E8DA4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .numModulesWrapper {
@@ -113,7 +118,7 @@
     /* border: 1px solid red; */
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
     /* padding-left: 5%; */
 }
 
@@ -175,6 +180,28 @@
         margin-bottom: 10%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+
+    .cardWrapper {
+        width: 85%;
+        min-width: 85%;
+        height: 90%;
+        /* border: 1px solid black; */
+        box-sizing: border-box;
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 0.7fr);
+        /* grid-template-rows: 16.2% 16.2% 16.2% 16.2% 16.2% 16.2%; */
+
+        grid-template-areas:
+            "courseLogoWrapper courseLogoWrapper courseClickArrowWrapper courseClickArrowWrapper"
+            "courseLogoWrapper courseLogoWrapper courseClickArrowWrapper courseClickArrowWrapper"
+            "courseNameWrapper courseNameWrapper courseNameWrapper courseNameWrapper"
+            "courseDescriptionWrapper courseDescriptionWrapper courseDescriptionWrapper courseDescriptionWrapper"
+            "numModulesWrapper numModulesWrapper numModulesWrapper numModulesWrapper"
+        ;
     }
 
 

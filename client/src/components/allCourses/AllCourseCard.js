@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import styles from "./styles/allCourseCard.module.css"
 import JavaScriptLogo from "../icons/JavaScriptLogo"
 import TiltedArrowIcon from "../icons/TiltedArrowIcon"
 import CourseChapterIcon from "../icons/CourseChapterIcon"
-const AllCourseCard = () => {
+import { useCourseContext } from "../../appState/appContext"
+
+const AllCourseCard = ({ courseData, courseIndx }) => {
     const navigate = useNavigate();
 
-    const courseArrowLinkClicked = () => {
+    const {
+        currentCourseData,
+        setCurrentCourseData,
+        updateCurrentCourseData
+    } = useCourseContext();
+
+    const setClickedCourseIndex = () => {
+        updateCurrentCourseData('currentCourseIndex', courseIndx)
+    }
+    const courseArrowlinkedHandleClick = () => {
+        setClickedCourseIndex();
         navigate("/user/course")
     }
     return (
@@ -19,16 +31,16 @@ const AllCourseCard = () => {
                 </div>
                 <div className={styles.courseClickArrowWrapper} >
 
-                    <div className={styles.arrowLinkDiv} onClick={courseArrowLinkClicked}>
+                    <div className={styles.arrowLinkDiv} onClick={courseArrowlinkedHandleClick}>
                         <TiltedArrowIcon />
                     </div>
                 </div>
                 <div className={styles.courseNameWrapper} >
-                    <p className={styles.courseNameText} >JavaScript</p>
+                    <p className={styles.courseNameText} >{courseData.title}</p>
                 </div>
                 <div className={styles.courseDescriptionWrapper} >
                     <p className={styles.courseDesText} >
-                        Learn everything  about JS from basics to advance
+                        {courseData.courseDescription}
                     </p>
                 </div>
                 <div className={styles.numModulesWrapper} >

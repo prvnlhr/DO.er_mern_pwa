@@ -1,0 +1,110 @@
+.pointWrapper {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 3%;
+    padding-right: 3%;
+    /* margin-top: 1%; */
+    /* margin-bottom: 1%; */
+
+}
+
+li {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: 0.9rem;
+    color: #51637D;
+    line-height: 2;
+    text-align: justify;
+    font-weight: 300;
+    padding-left: 2%;
+}
+
+
+.pointNumDiv {
+    position: relative;
+    height: auto;
+    /* width: 20%; */
+    aspect-ratio: 1/1;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+
+.pointNumDiv::after {
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    width: 3px;
+    aspect-ratio: 1/1;
+    background-color: black;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
+    right: -8px;
+
+}
+
+.pointNumDiv p {
+    font-size: 0.9rem;
+    color: #51637D !important;
+    line-height: 2;
+    text-align: justify;
+    font-weight: 300;
+}
+
+.pointTextDiv {
+    /* height: 20px; */
+    width: auto;
+    /* min-height: 30px; */
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 3%;
+}
+
+.pointTextDiv p {
+    font-size: 0.9rem;
+    color: #51637D;
+    line-height: 2;
+    text-align: justify;
+    font-weight: 300;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    .pointWrapper {
+        width: 100%;
+        height: auto;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-left: 3%;
+        padding-right: 3%;
+
+        margin-top: 1%;
+        margin-bottom: 1%;
+
+    }
+
+    .pointTextDiv {
+        /* height: 20px; */
+        width: auto;
+        /* min-height: 30px; */
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-left: 8%;
+    }
+
+}

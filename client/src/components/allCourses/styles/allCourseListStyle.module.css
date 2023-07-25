@@ -150,7 +150,7 @@
         height: 90%;
         display: flex;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         /* border: 1px solid red; */
         overflow-y: scroll;
         display: grid;
