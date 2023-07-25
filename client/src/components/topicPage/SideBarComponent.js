@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "./styles/sidebarComponentStyles.module.css"
 import { Icon } from '@iconify/react';
 import { useCourseContext } from "../../appState/appContext"
@@ -8,71 +8,14 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
 
     const { currentCourseData, setCurrentCourseData, updateCurrentCourseData } = useCourseContext();
 
-    let moduleData = [
-        {
-            moduleTopicName: "Intro To JavaScript",
-            subTopicData: [
-                {
-                    subTopicName: "What is JavaScript"
-                },
-                {
-                    subTopicName: "Basic Syntax in JS"
-                },
-                {
-                    subTopicName: "JS Varibles"
-                },
-                {
-                    subTopicName: "Types of Data type in JS"
-                },
-            ]
-        },
-        {
-            moduleTopicName: "Closure in JS",
-            subTopicData: [
-                {
-                    subTopicName: "Defination of Closure"
-                },
-                {
-                    subTopicName: "How to define Closure"
-                },
-                {
-                    subTopicName: "Example of Closure"
-                },
-                {
-                    subTopicName: "Uses of Closure in JS"
-                },
-                {
-                    subTopicName: "Currying in JS"
-                },
-            ]
-        },
-        {
-            moduleTopicName: "Control Flow in JS",
-            subTopicData: [
-                {
-                    subTopicName: "JavaScript Comparison Operators"
-                },
-                {
-                    subTopicName: "JavaScript if...else Statement"
-                },
-                {
-                    subTopicName: "JavaScript for loop"
-                },
-                {
-                    subTopicName: "JavaScript break Statement"
-                },
-                {
-                    subTopicName: "JavaScript continue Statement"
-                },
-                {
-                    subTopicName: "JavaScript switch Statement"
-                },
-            ]
-        },
-    ]
     const [showListIndex, setShowListIndex] = useState(new Set());
 
-    // let showListIndex = new Set();
+    useEffect(() => {
+        toggleList(currentCourseData.currentCourseModuleIndex);
+    }, [])
+
+
+
 
     const addToSet = (val) => {
         setShowListIndex(previousState => new Set([...previousState, val]))
@@ -80,8 +23,11 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
     const removeFromSet = (val) => {
         setShowListIndex(prev => new Set([...prev].filter(x => x !== val)))
     }
+
     const toggleList = (val) => {
+
         console.log(val);
+        updateCurrentCourseData('currentCourseModuleIndex', val);
 
         if (showListIndex.has(val)) {
             removeFromSet(val);
@@ -93,7 +39,7 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
                 `${listHeight}px`
             );
             addToSet(val);
-            
+
         }
 
         // if (val === currShowList) {

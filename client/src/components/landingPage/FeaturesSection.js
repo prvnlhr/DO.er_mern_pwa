@@ -8,7 +8,7 @@ const FeaturesSection = () => {
         <div className={styles.featuresSectionOuterWrapper} >
             <div className={styles.featuresSectionInnerWrapper} >
                 <div className={styles.headingWrapper} >
-                    <p> <span>Features</span> you</p>
+                    <p> <span className={styles.spanText}>Features</span> you</p>
                     <p>will love.</p>
                 </div>
                 <div className={styles.contentOuterWrapper} >

@@ -1,10 +1,15 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useCourseContext } from "../../appState/appContext"
+import { coursesList } from "../../courseData/courseData"
 
 import styles from "./styles/topicHeaderComponentStyles.module.css"
 import BackBtnIcon from '../icons/BackBtnIcon';
 const TopicHeaderComponent = ({ toggleSidebar }) => {
+
   const navigate = useNavigate();
+
+  const { currentCourseData, setCurrentCourseData, updateCurrentCourseData } = useCourseContext();
 
   return (
     <div className={styles.headerWrapper}  >
@@ -14,7 +19,7 @@ const TopicHeaderComponent = ({ toggleSidebar }) => {
         </div>
       </div>
       <div className={styles.headingWrapper} onClick={toggleSidebar} >
-        <p className={styles.headingText} >Intro to JavaScript</p>
+        <p className={styles.headingText} >{coursesList[currentCourseData.currentCourseIndex].modulesData[currentCourseData.currentCourseModuleIndex].module_title}</p>
       </div>
     </div>
   )

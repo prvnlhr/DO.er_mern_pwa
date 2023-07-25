@@ -56,15 +56,16 @@ const CourseModuleCard = ({ moduleData, moduleIndex }) => {
         <div className={styles.moduleTopicListWrapper} >
           <div className={styles.topicListContainer} >
 
-
-            {moduleTopicListData.map((data, index) => (
+            {moduleData.module_topics_list.map((data, index) => (
               <div className={styles.topicElementContainer} >
 
-                <div className={styles.topicElementIndicatorDiv}></div>
+                <div className={styles.topicElementIndicatorContainer}>
+                  <div className={styles.topicElementIndicatorDiv}></div>
+                </div>
 
                 <div className={styles.topicElementTextDiv}>
                   <p className={styles.topicElementNameText}>
-                    {data.topicName}
+                    {data.topic_name}
                   </p>
                 </div>
 

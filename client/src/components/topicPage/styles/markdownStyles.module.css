@@ -1,0 +1,25 @@
+.markDownSpanText {
+    color: red !important;
+    font-weight: 500;
+}
+
+.paragraphText {
+    font-size: 0.9rem;
+    color: #51637D;
+    line-height: 2;
+    text-align: justify;
+    font-weight: 300;
+}
+
+.heading1Text {
+    position: relative;
+    font-size: 1.5rem;
+    color: black;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .paragraphText {
+        font-size: 0.9rem;
+    }
+
+}

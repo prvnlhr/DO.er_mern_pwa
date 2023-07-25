@@ -41,7 +41,7 @@
 }
 
 .innerWrapper {
-    width: 90%;
+    width: 95%;
     height: 90%;
     /* border: 1px solid black; */
     display: flex;
@@ -66,6 +66,8 @@
         justify-content: flex-start;
         align-items: center;
         /* background-color: orangered; */
+        /* border: 1px solid orangered; */
+
     }
 
     .showSidebarIconWrapper {
@@ -95,7 +97,7 @@
 
 
     .innerWrapper {
-        width: 90%;
+        width: 97%;
         height: 90%;
         /* border: 1px solid black; */
         display: flex;

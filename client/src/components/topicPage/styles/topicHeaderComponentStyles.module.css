@@ -42,12 +42,16 @@
     justify-content: flex-start;
     align-items: center;
     padding-left: 0%;
+    overflow-x: hidden;
 }
 
 .headingText {
     font-size: 1.9rem;
     font-weight: 300;
     color: white;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -79,6 +83,15 @@
         justify-content: center;
         align-items: center;
         /* border: 1px solid red; */
+    }
+
+    .headingText {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: white;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
     }
 
 }

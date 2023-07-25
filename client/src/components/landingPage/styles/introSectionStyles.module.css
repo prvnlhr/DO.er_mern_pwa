@@ -52,7 +52,7 @@
 
 }
 
-span {
+.introSpanText {
     position: relative;
     color: var(--app-ui-scheme-color);
     font-weight: 400;
@@ -195,7 +195,7 @@ span {
 
     }
 
-    span {
+    .introSpanText {
         position: relative;
         color: var(--app-ui-scheme-color);
         font-weight: 400;

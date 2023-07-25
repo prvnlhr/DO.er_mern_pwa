@@ -37,7 +37,7 @@
     font-weight: 600;
 }
 
-span {
+.spanText {
     color: var(--app-ui-scheme-color) !important;
 }
 
