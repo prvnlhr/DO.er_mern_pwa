@@ -31,7 +31,7 @@
 }
 
 /* 
-.mainHeadingText::before {
+.primaryTitleText::before {
     content: "";
     position: absolute;
     width: 6px;

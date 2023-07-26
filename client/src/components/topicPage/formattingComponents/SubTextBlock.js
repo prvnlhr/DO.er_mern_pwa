@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from "./styles/subTextBlockStyles.module.css"
-const SubTextBlock = ({ subTextContent }) => {
+import styles from "./styles/subParagraphBlockStyles.module.css"
+const SubParagraphBlock = ({ subTextContent }) => {
     return (
         <div className={styles.subTextWrapper}>
             <p className={styles.subTextStyles}>
@@ -10,4 +10,4 @@ const SubTextBlock = ({ subTextContent }) => {
     )
 }
 
-export default SubTextBlock
+export default SubParagraphBlock

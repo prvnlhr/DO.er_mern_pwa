@@ -1,4 +1,4 @@
-.textWrapper {
+.paraWrapper {
     width: 100%;
     height: auto;
     /* border: 1px solid black; */
@@ -10,31 +10,34 @@
     margin-bottom: 2%;
     margin-top: 2%;
     padding-left: 4%;
-
-    padding-left: 5%;
+    padding-left: 0%;
+    padding-right: 4%;
 }
 
 
 .textStyles {
     font-size: 0.9rem;
-    color: #51637D;
+    color: black;
     line-height: 2;
     text-align: justify;
-    font-weight: 300;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .textWrapper {
+    .paraWrapper {
         width: 100%;
         height: auto;
         /* border: 1px solid black; */
-        padding-top: 0px;
-        padding-bottom: 0px;
-        padding-right: 3%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        padding-top: 5%;
+        padding-bottom: 5%;
         padding-left: 10%;
+        padding-left: 5%;
+        padding-right: 3%;
+        padding-right: 5%;
+        padding: 5%;
+        margin: 0;
     }
 
     .textStyles {

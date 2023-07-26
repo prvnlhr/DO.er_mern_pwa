@@ -1,0 +1,226 @@
+@import "../../../variable.module.css";
+
+:root {
+    --mrkdwn-primary-title-color: black;
+    --mrkdwn-para-color: black;
+    --mrkdwn-listItem-color: gray;
+    --mrkdwn-span-color: #D92E51;
+    --mrkdwn-strong-color: #EF8036;
+}
+
+/* ---primaryHeading----------------------------------------------------- */
+
+.primaryTitleWrapper {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    height: auto;
+    padding-left: 0%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.primaryTitleWrapper::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    background-color: var(--app-ui-scheme-color);
+    height: 0.2rem;
+    width: 5%;
+    border-radius: 10px;
+}
+
+
+.indicatorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    height: 100%;
+    width: 5%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: none;
+}
+
+.indicatorDiv {
+    /* width: 25%; */
+    height: 70%;
+    aspect-ratio: 1/2.5;
+    border-radius: 0.2rem;
+    background-color: var(--app-ui-scheme-color);
+}
+
+.headingTextDiv {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid blue; */
+}
+
+.primaryTitleText {
+    position: relative;
+    /* font-size: 1.5rem; */
+    font-weight: 500;
+    color: var(--mrkdwn-primary-title-color);
+}
+
+.secondaryTitleText {
+    position: relative;
+    /* font-size: 1.8rem; */
+    font-weight: 500;
+    color: var(--mrkdwn-primary-title-color);
+}
+
+/* ---paragraph-------------------------------------------------------------- */
+.paraWrapper {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    padding-left: 4%;
+    padding-left: 0%;
+    padding-right: 4%;
+}
+
+.textStyles {
+    font-size: 0.9rem;
+    color: black;
+    line-height: 2;
+    text-align: justify;
+}
+
+
+/* ---list item--------------------------------------------- */
+.listItemWrapper {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.listItemText {
+    font-size: 0.9rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #51637D;
+}
+
+/* ---span text---------------------------------------------- */
+
+.spanTextHighlight {
+    color: #D42D61;
+}
+
+/* ---strong text------------------------------------------- */
+
+.strongTextStyle {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: orange;
+}
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    /* ---primaryHeading------------------------------------------------- */
+    .primaryTitleWrapper {
+        position: relative;
+        padding-left: 0%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 0%;
+        /* margin-bottom: 5%; */
+        /* border: 1px solid red; */
+        padding-left: 5%;
+    }
+
+    .primaryTitleWrapper::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        background-color: var(--app-ui-scheme-color);
+        height: 0.2rem;
+        width: 8%;
+        border-radius: 10px;
+    }
+
+    .indicatorContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 1/1;
+        height: 100%;
+        /* border: 1px solid red; */
+        width: 10%;
+        height: 100%;
+
+        display: none;
+    }
+
+
+    .indicatorDiv {
+        /* width: 30%; */
+    }
+
+    .primaryTitleText {
+        /* font-size: 1.5rem; */
+        /* font-weight: 500; */
+    }
+
+    .secondaryTitleText {}
+
+    /* ---paragraph------------------------------------------------------------ */
+    .paraWrapper {
+        width: 100%;
+        height: auto;
+        /* border: 1px solid black; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        padding-left: 10%;
+        padding-left: 5%;
+        padding-right: 3%;
+        padding-right: 5%;
+        padding: 5%;
+        margin: 0;
+    }
+
+    .textStyles {
+        font-size: 0.9rem;
+    }
+
+
+    /* ---list item------------------------------------------------------------ */
+    .listItemText {
+        font-size: 0.9rem;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* ---span text------------------------------------------------------------ */
+
+
+
+
+    /* ---strong text--------------------------------------------------------- */
+    .strongTextStyle {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: orange;
+    }
+}

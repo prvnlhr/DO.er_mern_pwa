@@ -1,4 +1,4 @@
-import TextBlock from "../../components/topicPage/formattingComponents/TextBlock"
+import ParagraphBlock from "../../components/topicPage/formattingComponents/ParagraphBlock"
 import Point from "../../components/topicPage/formattingComponents/Point"
 
 export const javascriptModulesArray = [
@@ -11,7 +11,7 @@ export const javascriptModulesArray = [
                 topic_name: 'What is JavaScript',
                 topic_content_array: [
                     {
-                        type: 'heading1',
+                        type: 'primaryTitle',
                         text: 'What is JavaScript',
                     },
                     {
@@ -46,7 +46,7 @@ export const javascriptModulesArray = [
                                 However, modern JavaScript engines are typically implemented as just-in-time compilers that compile JavaScript code to bytecode for improved performance.`,
                     },
                     {
-                        type: 'heading1',
+                        type: 'primaryTitle',
                         text: 'Client-side vs. Server-side JavaScript'
                     },
                     {
@@ -55,7 +55,7 @@ export const javascriptModulesArray = [
                                 JavaScript can run on both web browsers and servers. A popular JavaScript server-side environment is Node.js. Unlike client-side JavaScript, server-side JavaScript executes on the server that allows you to access databases, file systems, etc.`
                     },
                     {
-                        type: 'heading1',
+                        type: 'primaryTitle',
                         text: 'JavaScript History'
                     },
                     {

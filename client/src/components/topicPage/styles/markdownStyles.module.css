@@ -11,11 +11,18 @@
     font-weight: 300;
 }
 
-.heading1Text {
+.primaryTitleText {
     position: relative;
     font-size: 1.5rem;
     color: black;
 }
+
+.spanTextHighlight {
+    color: #D42D61;
+}
+
+
+
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .paragraphText {

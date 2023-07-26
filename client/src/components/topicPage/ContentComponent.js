@@ -1,18 +1,16 @@
 
 import React, { useState, useEffect } from 'react'
 import styles from "./styles/contentComponentStyles.module.css"
-import CodeBlock from './formattingComponents/CodeBlock'
-import TextBlock from "./formattingComponents/TextBlock"
-import MainHeading from "./formattingComponents/MainHeading"
-import SubHeading from "./formattingComponents/SubHeading"
-import NoteBlock from "./formattingComponents/NoteBlock"
-import SubTextBlock from './formattingComponents/SubTextBlock'
-import Point from "./formattingComponents/Point"
-import InlineCode from "./formattingComponents/InlineCode"
-import markDownStyles from "./styles/markdownStyles.module.css"
 import Markdown from 'markdown-to-jsx';
 
-import ReactMarkdown from "react-markdown";
+
+import ParagraphBlock from "./customMarkDownComponents/ParagraphBlock"
+import PrimaryTitle from "./customMarkDownComponents/PrimaryTitle"
+import ListItem from './customMarkDownComponents/ListItem'
+import HighlightText from "./customMarkDownComponents/HighlightText"
+import StrongText from './customMarkDownComponents/StrongText'
+import SecondaryTitle from './customMarkDownComponents/SecondaryTitle';
+
 
 
 const ContentComponent = ({ toggleSidebar }) => {
@@ -27,10 +25,6 @@ const ContentComponent = ({ toggleSidebar }) => {
                     .catch(err => console.log(err))
             )
     }, [])
-
-    const MyParagraph = ({ children, ...props }) => (
-        <div className={markDownStyles.markDownSpanText} >{children}</div>
-    );
 
 
     return (
@@ -48,32 +42,29 @@ const ContentComponent = ({ toggleSidebar }) => {
 
             </div>
             <div className={styles.innerWrapper} >
-                <MainHeading mainHeading={'Origins of JavaScript'} />
-                <TextBlock textContent={'JavaScript is a programming language initially designed to interact with elements of web pages. In web browsers, JavaScript consists of three main parts.'} />
-                {/* <Point pointNum={'1'} pointContent={'Always define points clearly Make sure that css styles are applied correctly Make sure that css styles are applied correctly Make sure that css styles are applied correctly Make sure that css styles are applied correctly Make sure that css styles are applied correctly'} /> */}
-                {/* <SubHeading subHeading={'Data types in Javascript'} /> */}
-                {/* <SubTextBlock subTextContent={'subTextContent'} /> */}
-                {/* <br /> */}
-                {/* <MainHeading mainHeading={'Closure in JavaScript'} /> */}
-                {/* <TextBlock textContent={'textContent'} /> */}
-                {/* <SubHeading subHeading={'Uses of Closure'} /> */}
-                {/* <SubTextBlock subTextContent={'subTextContent'} /> */}
-
-                {/* <Markdown
+                <Markdown
                     options={
                         {
                             overrides: {
-                                p: ({ children }) => <TextBlock textContent={children} />,
-                                h2: ({ children }) => <MainHeading mainHeading={children} />
+                                p: ({ children }) => <ParagraphBlock textContent={children} />,
+                                h1: ({ children }) => <PrimaryTitle primaryTitle={children} />,
+                                h2: ({ children }) => <SecondaryTitle secondaryTitle={children} />,
+                                span: ({ children }) => <HighlightText textContent={children} />,
+                                li: ({ children, ordered }) => <ListItem textContent={children} />,
+                                strong: ({ children }) => <StrongText textContent={children} />,
+                                inlineCode: ({ children }) => (
+                                    <code style={{ fontFamily: 'Poppins', backgroundColor: 'red', color: 'white', padding: '2px' }}>{children}</code>
+                                ),
                             }
                         }
                     }
                 >
                     {markdownContent}
-                </Markdown> */}
+
+                </Markdown>
 
             </div>
-        </div>
+        </div >
     )
 }
 

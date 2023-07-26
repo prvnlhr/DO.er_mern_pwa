@@ -1,0 +1,15 @@
+.listItemWrapper {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.listItemText {
+    font-size: 0.9rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #51637D;
+}

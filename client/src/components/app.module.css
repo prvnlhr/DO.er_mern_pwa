@@ -2,24 +2,18 @@
 
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  /* font-family: "Poppins", sans-serif; */
-
 }
 
-/* body {
-  margin: 0;
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 
 body::-webkit-scrollbar {
   display: none;
-} */
+}
 
 .app {
 
@@ -60,3 +54,8 @@ body::-webkit-scrollbar {
 .appInnerwrapper::-webkit-scrollbar {
   display: none;
 }
+
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Poppins', sans-serif;
+*/

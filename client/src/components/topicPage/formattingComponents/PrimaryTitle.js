@@ -1,13 +1,13 @@
 import React from 'react'
-import styles from "./styles/mainHeadingStyles.module.css"
-const MainHeading = ({ mainHeading }) => {
+import styles from "./styles/primaryTitleStyles.module.css"
+const PrimaryTitle = ({ mainHeading }) => {
   return (
-    <div className={styles.mainHeadingWrapper}>
+    <div className={styles.primaryTitleWrapper}>
       <div className={styles.indicatorContainer}>
         <div className={styles.indicatorDiv} ></div>
       </div>
       <div className={styles.headingTextDiv} >
-        <p className={styles.mainHeadingText}>
+        <p className={styles.primaryTitleText}>
           {mainHeading}
         </p>
       </div>
@@ -15,4 +15,4 @@ const MainHeading = ({ mainHeading }) => {
   )
 }
 
-export default MainHeading
+export default PrimaryTitle
