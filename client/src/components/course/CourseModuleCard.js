@@ -12,15 +12,19 @@ import { coursesList } from "../../courseData/courseData"
 const CourseModuleCard = ({ moduleData, moduleIndex }) => {
 
   const navigate = useNavigate();
-  const { currentCourseData, setCurrentCourseData, updateCurrentCourseData } = useCourseContext();
+
+  const { currentCourseData, updateCurrentCourseData } = useCourseContext();
 
   const setClickedModuleIndex = () => {
+    // set currentCourseModuleIndex : moduleIndex
     updateCurrentCourseData('currentCourseModuleIndex', moduleIndex);
   }
 
-
   const moduleArrowLinkClicked = () => {
+    // 1. set clicked module card index
     setClickedModuleIndex();
+
+    // 2. then -> navigate to topics page
     navigate("/user/topic")
   }
 
@@ -56,7 +60,7 @@ const CourseModuleCard = ({ moduleData, moduleIndex }) => {
         <div className={styles.moduleTopicListWrapper} >
           <div className={styles.topicListContainer} >
 
-            {moduleData.module_topics_list.map((data, index) => (
+            {moduleData.topicsList.map((data, index) => (
               <div className={styles.topicElementContainer} >
 
                 <div className={styles.topicElementIndicatorContainer}>

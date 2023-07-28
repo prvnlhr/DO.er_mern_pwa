@@ -11,15 +11,24 @@ const AllCourseCard = ({ courseData, courseIndx }) => {
 
     const {
         currentCourseData,
-        setCurrentCourseData,
         updateCurrentCourseData
     } = useCourseContext();
 
+    const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex } = currentCourseData;
+
+
     const setClickedCourseIndex = () => {
+        //setting currentCourseIndex : courseIndx
         updateCurrentCourseData('currentCourseIndex', courseIndx)
     }
+
+
     const courseArrowlinkedHandleClick = () => {
+
+        // first -> 1. set clicked course index
         setClickedCourseIndex();
+
+        // then --> 2. navigate to course page
         navigate("/user/course")
     }
     return (

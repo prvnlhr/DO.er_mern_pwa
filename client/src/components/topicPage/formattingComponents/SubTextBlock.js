@@ -1,11 +1,11 @@
 import React from 'react'
-import styles from "./styles/subParagraphBlockStyles.module.css"
+// import styles from "./styles/subParagraphBlockStyles.module.css"
 const SubParagraphBlock = ({ subTextContent }) => {
     return (
-        <div className={styles.subTextWrapper}>
-            <p className={styles.subTextStyles}>
+        <div >
+            {/* <p className={styles.subTextStyles}>
                 {subTextContent}
-            </p>
+            </p> */}
         </div>
     )
 }

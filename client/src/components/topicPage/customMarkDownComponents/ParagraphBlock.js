@@ -4,7 +4,7 @@ import styles from "./styles/markdownCustomStyles.module.css"
 const ParagraphBlock = ({ textContent }) => {
     return (
         <div className={styles.paraWrapper}>
-            <p className={styles.textStyles}>
+            <p className={styles.paraText}>
                 {textContent}
             </p>
         </div>

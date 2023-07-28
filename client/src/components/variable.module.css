@@ -1,6 +1,7 @@
 :root {
 
-    --app-ui-scheme-color: #9F7EE9;
+    --app-ui-scheme-color: #9E77ED;
+    /* --app-ui-scheme-color: #7F56D9; */
     --test-font-styles: orange;
 
     --app-header-bg: #132136;

@@ -19,7 +19,7 @@ const TopicHeaderComponent = ({ toggleSidebar }) => {
         </div>
       </div>
       <div className={styles.headingWrapper} onClick={toggleSidebar} >
-        <p className={styles.headingText} >{coursesList[currentCourseData.currentCourseIndex].modulesData[currentCourseData.currentCourseModuleIndex].module_title}</p>
+        <p className={styles.headingText} >{coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].module_title}</p>
       </div>
     </div>
   )

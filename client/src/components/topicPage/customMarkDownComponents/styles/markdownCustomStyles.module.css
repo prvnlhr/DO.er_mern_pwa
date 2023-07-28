@@ -1,11 +1,14 @@
 @import "../../../variable.module.css";
 
 :root {
-    --mrkdwn-primary-title-color: black;
-    --mrkdwn-para-color: black;
+    --mrkdwn-primary-title-color: #0D163E;
+    /* --mrkdwn-para-color: #4D5265; */
+    --mrkdwn-para-color: #475467;
     --mrkdwn-listItem-color: gray;
     --mrkdwn-span-color: #D92E51;
     --mrkdwn-strong-color: #EF8036;
+    --code-snippet-font: 0.8rem;
+    --code-block-width: 360px;
 }
 
 /* ---primaryHeading----------------------------------------------------- */
@@ -19,16 +22,9 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-}
-
-.primaryTitleWrapper::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    background-color: var(--app-ui-scheme-color);
-    height: 0.2rem;
-    width: 5%;
-    border-radius: 10px;
+    /* border: 1px solid red; */
+    margin-top: 2%;
+    margin-bottom: 5%;
 }
 
 
@@ -59,18 +55,31 @@
     justify-content: flex-start;
     align-items: center;
     /* border: 1px solid blue; */
+
 }
+
+.headingTextDiv::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    background-color: var(--app-ui-scheme-color);
+    height: 0.2rem;
+    width: 4%;
+    border-radius: 10px;
+}
+
 
 .primaryTitleText {
     position: relative;
     /* font-size: 1.5rem; */
     font-weight: 500;
     color: var(--mrkdwn-primary-title-color);
+    color: #101828;
 }
 
 .secondaryTitleText {
     position: relative;
-    /* font-size: 1.8rem; */
+    /* font-size: 1rem; */
     font-weight: 500;
     color: var(--mrkdwn-primary-title-color);
 }
@@ -83,39 +92,93 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
     padding-top: 0%;
     padding-bottom: 0%;
-    margin-bottom: 2%;
-    margin-top: 2%;
-    padding-left: 4%;
+
     padding-left: 0%;
     padding-right: 4%;
+
+    margin-top: 2%;
+    margin-bottom: 5%;
 }
 
-.textStyles {
-    font-size: 0.9rem;
-    color: black;
+
+.paraText {
+    font-size: 0.8rem;
+    color: var(--mrkdwn-para-color);
+    color: #101828;
+    color: #546079;
+    /* color: #667085; */
+    font-weight: 400;
     line-height: 2;
     text-align: justify;
 }
 
 
 /* ---list item--------------------------------------------- */
-.listItemWrapper {
+
+/* ol {
+    border: 1px solid blue;
+    margin-top: 2%;
+    margin-bottom: 2%;
     width: 100%;
-    height: auto;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
 }
 
-.listItemText {
-    font-size: 0.9rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #51637D;
+ol li {
+    border: 1px solid salmon;
 }
+
+.listItemWrapper {
+    width: 100%;
+    border: 1px solid purple;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+
+.listItemWrapper ul {
+    width: 95%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 1px solid red;
+}
+
+ul .liTag {
+    font-size: 0.8rem;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #51637D;
+    border: 1px solid green;
+} */
+
+
+.listItemWrapper {
+    /* border: 1px solid purple; */
+    /* margin-top: 5%; */
+    /* margin-bottom: 5%; */
+}
+
+
+
+ol {
+    /* border: 1px solid purple; */
+}
+
+ul {
+    /* border: 1px solid salmon; */
+}
+
+.liTag {
+    font-size: 0.8rem;
+    /* color: var(--mrkdwn-para-color); */
+    margin-top: 2%;
+    margin-bottom: 2%;
+    /* border: 1px solid blue; */
+    color: #546079;
+
+}
+
 
 /* ---span text---------------------------------------------- */
 
@@ -127,9 +190,102 @@
 
 .strongTextStyle {
     font-size: 0.9rem;
-    font-weight: bold;
-    color: orange;
+    font-weight: 600;
+    /* color: #2353E8; */
+    color: #175CD3;
+    /* color: #53389E; */
 }
+
+/* ---code block --------------------------------------------------- */
+.codeBlockWrapper {
+    width: 95%;
+    /* border: 1px solid green; */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.codeBlockWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+pre {
+    border-radius: 0.8rem;
+    width: 100%;
+}
+
+/* pre::-webkit-scrollbar {
+    display: none;
+} */
+
+code {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.8rem;
+    line-height: 2;
+    font-weight: 600;
+    padding: 0%;
+    margin: 0%;
+}
+
+/* ---inline code -------------------------------------- */
+
+.inlineCodeStyle {
+
+    /* color: #F63D68; */
+    color: #E31B54;
+    /* background-color: #FECDCA; */
+    background-color: #FFE4E8;
+    padding: 4px 8px 4px 8px;
+    font-family: 'Source Code Pro', monospace !important;
+    border-radius: 0.3rem;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+/* -----noteblock ---------------------------------------- */
+
+.noteWrapper {
+    background-color: #EEF2F6;
+    border-left: 0.3rem solid var(--app-ui-scheme-color);
+    padding: 10px;
+    margin: 20px 0px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.6;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* .blockquoteTag {
+    border-left: 5px solid var(--app-ui-scheme-color);
+    margin: 0;
+    padding: auto;
+    padding-left: 2%;
+    padding-top: 2%;
+    background-color: #F6F7FB;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.noteStrongText {
+    font-size: 0.95rem;
+    color: var(--mrkdwn-primary-title-color);
+} */
+
 
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -185,6 +341,7 @@
     /* ---paragraph------------------------------------------------------------ */
     .paraWrapper {
         width: 100%;
+        max-width: 100%;
         height: auto;
         /* border: 1px solid black; */
         display: flex;
@@ -198,19 +355,22 @@
         padding-right: 5%;
         padding: 5%;
         margin: 0;
+
     }
 
-    .textStyles {
-        font-size: 0.9rem;
+    .paraText {
+        /* font-size: 0.9rem; */
     }
 
 
     /* ---list item------------------------------------------------------------ */
-    .listItemText {
-        font-size: 0.9rem;
-        margin-top: 10px;
-        margin-bottom: 10px;
+    .liTag {
+        /* font-size: 0.9rem !important; */
+        margin-top: 2%;
+        margin-bottom: 5%;
+        font-family: 'Poppins', sans-serif;
     }
+
 
     /* ---span text------------------------------------------------------------ */
 
@@ -221,6 +381,22 @@
     .strongTextStyle {
         font-size: 0.9rem;
         font-weight: bold;
-        color: orange;
     }
+
+
+    /* --- noteblock -------------------- */
+
+
+    .noteWrapper {
+        margin: 20px 0;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+
+
+
+
 }

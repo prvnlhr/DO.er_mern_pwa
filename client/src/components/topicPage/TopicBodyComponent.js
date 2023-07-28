@@ -8,8 +8,8 @@ const TopicBodyComponent = () => {
 
   const [showSideBar, setShowSideBar] = useState(false);
 
-  const toggleSidebar = () => {
-    setShowSideBar(!showSideBar);
+  const toggleSidebar = (val) => {
+    setShowSideBar(val);
   }
 
   return (

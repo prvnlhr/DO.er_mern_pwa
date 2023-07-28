@@ -1,0 +1,1 @@
+## Functions declaration and types

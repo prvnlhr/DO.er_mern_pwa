@@ -9,9 +9,9 @@ const CourseModulesList = () => {
         setCurrentCourseData,
     } = useCourseContext();
 
-    console.log(currentCourseData)
-    console.log(coursesList[currentCourseData.currentCourseIndex].modulesData)
-    const { modulesData } = coursesList[currentCourseData.currentCourseIndex];
+    // console.log(currentCourseData)
+    // console.log(coursesList[currentCourseData.currentCourseIndex].modulesList)
+    const { modulesList } = coursesList[currentCourseData.currentCourseIndex];
     return (
         <div className={styles.listComponentWrapper} >
 
@@ -31,7 +31,7 @@ const CourseModulesList = () => {
                     <div className={styles.listInnerWrapper} >
                         {
 
-                            modulesData.map((moduleData, indx) => (
+                            modulesList.map((moduleData, indx) => (
                                 <CourseModuleCard moduleData={moduleData} moduleIndex={indx} />
                             ))
                         }

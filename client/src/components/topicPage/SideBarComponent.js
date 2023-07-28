@@ -3,20 +3,25 @@ import styles from "./styles/sidebarComponentStyles.module.css"
 import { Icon } from '@iconify/react';
 import { useCourseContext } from "../../appState/appContext"
 import { coursesList } from "../../courseData/courseData"
+import { getMarkDownFile } from "../utilityFunctions/utility"
+
 const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
-
-
-    const { currentCourseData, setCurrentCourseData, updateCurrentCourseData } = useCourseContext();
 
     const [showListIndex, setShowListIndex] = useState(new Set());
 
+    const [currentShowListIndex, setCurrentShowListIndex] = useState(0);
+
+
+    const { currentCourseData, updateCurrentCourseData } = useCourseContext();
+    const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex, markDownContents } = currentCourseData;
+
+
+
     useEffect(() => {
-        toggleList(currentCourseData.currentCourseModuleIndex);
+        toggleModuleList(currentCourseData.currentCourseModuleIndex);
     }, [])
 
-
-
-
+    // ------ logic for toggling module topics list inside sidebar ---------------
     const addToSet = (val) => {
         setShowListIndex(previousState => new Set([...previousState, val]))
     }
@@ -24,43 +29,67 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
         setShowListIndex(prev => new Set([...prev].filter(x => x !== val)))
     }
 
-    const toggleList = (val) => {
+    const toggleModuleList = (val) => {
 
-        console.log(val);
         updateCurrentCourseData('currentCourseModuleIndex', val);
 
-        if (showListIndex.has(val)) {
-            removeFromSet(val);
+        // if (showListIndex.has(val)) {
+        //     removeFromSet(val);
+        // } else {
+        //     let listHeight = coursesList[currentCourseData.currentCourseIndex].modulesList[val].topicsList.length * 41;
+        //     document.documentElement.style.setProperty(
+        //         "--listWrapperHeight",
+        //         `${listHeight}px`
+        //     );
+        //     addToSet(val);
+        // }
+
+
+        if (val === currentShowListIndex) {
+            setCurrentShowListIndex(null);
         } else {
-            console.log(coursesList[currentCourseData.currentCourseIndex].modulesData[val].module_topics_list)
-            let listHeight = coursesList[currentCourseData.currentCourseIndex].modulesData[val].module_topics_list.length * 41;
+            let listHeight = coursesList[currentCourseData.currentCourseIndex].modulesList[val].topicsList.length * 41;
             document.documentElement.style.setProperty(
                 "--listWrapperHeight",
                 `${listHeight}px`
             );
-            addToSet(val);
-
+            setCurrentShowListIndex(val);
         }
 
-        // if (val === currShowList) {
-        //   setCurrShowList(null);
-        // } else {
-        //   let listHeight = moduleData[val].subTopicData.length * 36;
-        //   document.documentElement.style.setProperty(
-        //     "--listWrapperHeight",
-        //     `${listHeight}px`
-        //   );
-        //   setCurrShowList(val);
-        //   showListIndex.add(val);
-        // }
     }
+
+
+
+    const handleModuleTopicClicked = (indexValue) => {
+        const courseFolder = coursesList[currentCourseData.currentCourseIndex].courseFolderName;
+        const moduleFolder = coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].moduleFolderName;
+        const topicFileName = coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].topicsList[indexValue].topicFileName;
+        getMarkDownFile(courseFolder, moduleFolder, topicFileName)
+            .then((res) => {
+                updateCurrentCourseData('markDownContents', res);
+            })
+            .catch((error) => {
+                console.log("Error:", error);
+            });
+    }
+
+    const setClickedTopicIndex = (indxVal) => {
+        updateCurrentCourseData('currentCourseTopicIndex', indxVal);
+
+        // passing indxVal because useState takes time to update to we cant rely on it, so maually passing indx value
+        handleModuleTopicClicked(indxVal);
+        toggleSidebar(false);
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+
     return (
         <div className={`${styles.sidebarComponentWrapper}  ${showSideBar && styles.sideBarSlide}`} >
             <div className={styles.sidebarHeadingWrapper}>
                 <div className={styles.sidebarHeadingDiv} >
                     <p>Table of Contents</p>
                 </div>
-                <div className={styles.sidebarCloseIconDiv} onClick={toggleSidebar}  >
+                <div className={styles.sidebarCloseIconDiv} onClick={() => toggleSidebar(false)}  >
                     <svg
                         className={styles.closeIcon}
                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,9 +99,9 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
             </div>
 
             <div className={styles.sidebarContentWrapper}>
-                {coursesList[currentCourseData.currentCourseIndex].modulesData.map((data, index) => (
+                {coursesList[currentCourseData.currentCourseIndex].modulesList.map((data, index) => (
                     <div className={styles.moduleTopicListOuterWrapper}>
-                        <div className={styles.moduleNameWrapper} onClick={() => toggleList(index)} >
+                        <div className={styles.moduleNameWrapper} onClick={() => toggleModuleList(index)} >
                             <div className={styles.moduleNameDiv}>
                                 <p>
                                     {data.module_title}
@@ -87,20 +116,22 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
                         </div>
 
                         <div className={
-                            // currShowList === index ? styles.moduleSubTopicListWrapperShow : styles.moduleSubTopicListWrapperHide
-                            showListIndex.has(index) ? styles.moduleSubTopicListWrapperShow : styles.moduleSubTopicListWrapperHide} >
+                            currentShowListIndex === index ? styles.moduleSubTopicListWrapperShow : styles.moduleSubTopicListWrapperHide
+                            // showListIndex.has(index) ? styles.moduleSubTopicListWrapperShow : styles.moduleSubTopicListWrapperHide
+                        } >
 
-                            {data.module_topics_list.map((subData, indx) => (
+                            {data.topicsList.map((subData, indx) => (
                                 <div div className={styles.subTopicElementWrapper} >
                                     <div className={styles.subTopicElementIndicatorContainer} >
                                         <div className={styles.indicatorDiv} >
                                         </div>
                                     </div>
-                                    <div className={styles.subTopicNameDiv} >
+                                    <div className={styles.subTopicNameDiv} onClick={() => setClickedTopicIndex(indx)}>
                                         <p className={styles.subTopicNameText}>
                                             {subData.topic_name}
                                         </p>
                                     </div>
+
                                 </div>
                             ))}
 

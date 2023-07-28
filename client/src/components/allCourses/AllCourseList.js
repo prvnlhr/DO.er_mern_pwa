@@ -5,9 +5,7 @@ import { coursesList } from "../../courseData/courseData.js"
 import { useCourseContext } from "../../appState/appContext"
 
 const AllCourseList = () => {
-    console.log(coursesList);
-
-
+    // console.log(coursesList);
     return (
         <div className={styles.listComponentWrapper} >
 

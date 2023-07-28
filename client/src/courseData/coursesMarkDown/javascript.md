@@ -1,4 +1,4 @@
-### What is JavaScript ?
+# Basics of JavaScript 
 
 
 JavaScript is a programming language initially designed to interact with elements of web pages. In web browsers, JavaScript consists of three main parts:
@@ -10,7 +10,7 @@ JavaScript allows you to add interactivity to a web page by enhancing its functi
 
 JavaScript engines, initially implemented as interpreters, are now commonly implemented as just-in-time compilers for improved performance.JavaScript can be used both on the client-side (in web browsers) and the server-side. Node.js is a popular server-side environment for JavaScript, enabling access to databases, file systems, etc.
 
-#### JavaScript History:
+## JavaScript History
 
 - Created in 1995 by Brendan Eich, initially named Mocha and later LiveScript.
 - Renamed to JavaScript to leverage Java's popularity.
@@ -41,5 +41,3 @@ Here are some of the major versions of ECMAScript and their notable features:
     - Enhanced object syntax with shorthand property names and computed property names.
     - Introduced modules for better code organization and encapsulation.
 
-# Using Custom Components
-## Using Custom Components

@@ -13,12 +13,8 @@ const CoursePageHeader = () => {
 
   const navigate = useNavigate();
 
-  const {
-    currentCourseData,
-    setCurrentCourseData
-  } = useCourseContext();
+  const { currentCourseData } = useCourseContext();
 
-  // console.log(currentCourseData, coursesList[currentCourseData.currentCourseIndex])
 
 
 
@@ -61,14 +57,13 @@ const CoursePageHeader = () => {
             </div>
             <div className={styles.infoValueWrapper} >
               <p className={styles.infoValueText} >
-                {coursesList[currentCourseData.currentCourseIndex].modules}
+                {coursesList[currentCourseData.currentCourseIndex].modulesList.length}
               </p>
 
             </div>
           </div>
           <div className={styles.infoElementWrapper} >
             <div className={styles.infoIconWrapper} >
-              {/* <OverviewScoreIcon /> */}
               <div className={styles.infoIconDiv}>
                 <ClockIcon />
               </div>

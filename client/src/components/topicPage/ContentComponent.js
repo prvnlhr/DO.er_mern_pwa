@@ -1,7 +1,15 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styles from "./styles/contentComponentStyles.module.css"
+import SideBarShowIcon from "../icons/SideBarShowIcon"
+
+import { useCourseContext } from "../../appState/appContext"
+import { coursesList } from "../../courseData/courseData"
+
 import Markdown from 'markdown-to-jsx';
+import ReactMarkdown from 'react-markdown'
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 
 import ParagraphBlock from "./customMarkDownComponents/ParagraphBlock"
@@ -10,62 +18,95 @@ import ListItem from './customMarkDownComponents/ListItem'
 import HighlightText from "./customMarkDownComponents/HighlightText"
 import StrongText from './customMarkDownComponents/StrongText'
 import SecondaryTitle from './customMarkDownComponents/SecondaryTitle';
+import CodeBlock from "./customMarkDownComponents/CodeBlock"
+
+import mrkdwnStyles from "./customMarkDownComponents/styles/markdownCustomStyles.module.css"
+
+import { getMarkDownFile } from "../utilityFunctions/utility"
+import NoteBlock from './customMarkDownComponents/NoteBlock'
+
 
 
 
 const ContentComponent = ({ toggleSidebar }) => {
 
-    const [markdownContent, setMarkdownContent] = useState("");
+    const { currentCourseData, updateCurrentCourseData } = useCourseContext();
+    const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex, markDownContents } = currentCourseData;
+
+    // const [markdownContent, setMarkdownContent] = useState("");
+
+
+
+
+
+
     useEffect(() => {
-        import('../../courseData/markdowns/javascript.md')
-            .then(res =>
-                fetch(res.default)
-                    .then(response => response.text())
-                    .then(response => setMarkdownContent(response))
-                    .catch(err => console.log(err))
-            )
+        const courseFolder = coursesList[currentCourseData.currentCourseIndex].courseFolderName;
+        const moduleFolder = coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].moduleFolderName;
+        const topicFileName = coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].topicsList[0].topicFileName;
+
+        getMarkDownFile(courseFolder, moduleFolder, topicFileName)
+            .then((res) => {
+                // console.log(res);
+                updateCurrentCourseData('markDownContents', res);
+            })
+            .catch((error) => {
+                console.log("Error:", error);
+            });
+
     }, [])
+
+
+
+    const components = {
+        p: p => <ParagraphBlock textContent={p.children} />,
+        h1: h1 => <PrimaryTitle primaryTitle={h1.children} />,
+        h2: h2 => <SecondaryTitle secondaryTitle={h2.children} />,
+        li: li => <ListItem textContent={li.children} />,
+        code: CodeBlock,
+        strong: strong => <StrongText textContent={strong.children} />,
+        blockquote: blockquote => <NoteBlock noteContent={blockquote.children} />
+
+        // blockquote: blockquote =>
+        //     <div class="note" style={{ borderLeft: '2px solid red' }}>
+        //         <strong> Note : </strong>{blockquote.children}
+        //     </div>
+
+        // blockquote: blockquote =>
+        //     <div style={{ paddingLeft: '20px', border: '1px solid red' }} >
+        //         <blockquote class="note" style={{ borderLeft: '3px solid #367CF2', paddingLeft: '2%' }}>
+        //             <strong> Note : </strong>
+        //             <p>
+        //                 {blockquote.children}
+        //             </p>
+        //         </blockquote>
+        //     </div>
+    };
+
+
+
 
 
     return (
         <div className={`${styles.wrapper} `}>
             <div className={styles.showSidebarIconWrapper} >
-                <div className={styles.iconDiv} onClick={toggleSidebar} >
-                    <svg
-                        className={styles.sideBarShowIcon}
-                        viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 6L4 6" stroke="#202D40" stroke-width="1.5" stroke-linecap="round" />
-                        <path opacity="0.3" d="M20 12L4 12" stroke="#202D40" stroke-width="1.5" stroke-linecap="round" />
-                        <path d="M20 18H4" stroke="#202D40" stroke-width="1.5" stroke-linecap="round" />
-                    </svg>
+                <div className={styles.iconDiv} onClick={() => toggleSidebar(true)} >
+                    <SideBarShowIcon />
                 </div>
-
             </div>
-            <div className={styles.innerWrapper} >
-                <Markdown
-                    options={
-                        {
-                            overrides: {
-                                p: ({ children }) => <ParagraphBlock textContent={children} />,
-                                h1: ({ children }) => <PrimaryTitle primaryTitle={children} />,
-                                h2: ({ children }) => <SecondaryTitle secondaryTitle={children} />,
-                                span: ({ children }) => <HighlightText textContent={children} />,
-                                li: ({ children, ordered }) => <ListItem textContent={children} />,
-                                strong: ({ children }) => <StrongText textContent={children} />,
-                                inlineCode: ({ children }) => (
-                                    <code style={{ fontFamily: 'Poppins', backgroundColor: 'red', color: 'white', padding: '2px' }}>{children}</code>
-                                ),
-                            }
-                        }
-                    }
-                >
-                    {markdownContent}
 
-                </Markdown>
+
+            <div className={styles.innerWrapper} >
+
+                <ReactMarkdown
+                    children={markDownContents}
+                    components={components}
+                />
+
 
             </div>
         </div >
     )
 }
 
-export default ContentComponent
+export default ContentComponent;
