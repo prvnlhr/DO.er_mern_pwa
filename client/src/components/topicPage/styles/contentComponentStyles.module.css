@@ -3,7 +3,7 @@
     height: 100%;
     /* border: 1px solid green; */
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: white;
@@ -23,6 +23,8 @@
     align-items: flex-start;
     /* border: 1px solid black; */
     padding-left: 1%;
+
+    display: none;
 }
 
 .iconDiv {
@@ -39,7 +41,7 @@
 .innerWrapper {
     width: 90%;
     /* min-width: 95%; */
-    height: 90%;
+    height: 95%;
     /* border: 1px solid orange; */
     display: flex;
     justify-content: flex-start;
@@ -60,7 +62,7 @@
         height: 100%;
         min-height: 100%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         /* background-color: orangered; */
         /* border: 1px solid orangered; */
@@ -92,6 +94,7 @@
     .innerWrapper {
         width: 97%;
         height: 90%;
+        height: 95%;
         /* border: 1px solid black; */
         display: flex;
         align-items: flex-start;

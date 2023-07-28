@@ -4,12 +4,16 @@ import TopicHeaderComponent from "./TopicHeaderComponent"
 import TopicBodyComponent from "./TopicBodyComponent"
 const TopicsPage = () => {
 
+    const [showSideBar, setShowSideBar] = useState(false);
 
+    const toggleSidebar = (val) => {
+        setShowSideBar(!showSideBar);
+    }
 
     return (
         <div className={styles.topicPageWrapper} >
-            <TopicHeaderComponent />
-            <TopicBodyComponent />
+            <TopicHeaderComponent showSideBar={showSideBar} toggleSidebar={toggleSidebar} />
+            <TopicBodyComponent showSideBar={showSideBar} toggleSidebar={toggleSidebar} />
         </div>
     )
 }

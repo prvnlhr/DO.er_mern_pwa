@@ -54,6 +54,17 @@
     text-overflow: ellipsis;
 }
 
+.sideBarToggleIconWrapper {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    display: none;
+}
+
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .headingWrapper {
         width: 100%;
@@ -92,6 +103,24 @@
         white-space: nowrap;
         overflow-x: hidden;
         text-overflow: ellipsis;
+    }
+
+    .sideBarToggleIconWrapper {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    .iconDiv {
+        width: 55%;
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid red; */
     }
 
 }

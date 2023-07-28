@@ -4,13 +4,8 @@ import SideBarContentCompWrapper from './SideBarContentCompWrapper'
 import ExploreComponent from './ExploreComponent'
 import SideBarComponent from './SideBarComponent'
 import MainComponent from './MainComponent'
-const TopicBodyComponent = () => {
 
-  const [showSideBar, setShowSideBar] = useState(false);
-
-  const toggleSidebar = (val) => {
-    setShowSideBar(val);
-  }
+const TopicBodyComponent = ({ showSideBar, toggleSidebar }) => {
 
   return (
     <div className={styles.bodyWrapper} >

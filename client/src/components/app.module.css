@@ -16,8 +16,6 @@ body::-webkit-scrollbar {
 }
 
 .app {
-
-
   position: relative;
   height: 100vh;
   height: 100dvh;
@@ -48,7 +46,6 @@ body::-webkit-scrollbar {
   grid-template-areas:
     "appHeaderStylesWrapper"
     "appSubPageWrapperStyles";
-  /* border: 1px solid red; */
 }
 
 .appInnerwrapper::-webkit-scrollbar {

@@ -8,7 +8,7 @@ export const CourseProvider = ({ children }) => {
         currentCourseIndex: 0,
         currentCourseModuleIndex: 0,
         currentCourseTopicIndex: 0,
-        markDownContents: `## Demo`
+        markDownContents: ``
     });
 
     const updateCurrentCourseData = (key, value) => {

@@ -89,12 +89,11 @@ const ContentComponent = ({ toggleSidebar }) => {
 
     return (
         <div className={`${styles.wrapper} `}>
-            <div className={styles.showSidebarIconWrapper} >
+            {/* <div className={styles.showSidebarIconWrapper} >
                 <div className={styles.iconDiv} onClick={() => toggleSidebar(true)} >
                     <SideBarShowIcon />
                 </div>
-            </div>
-
+            </div> */}
 
             <div className={styles.innerWrapper} >
 
