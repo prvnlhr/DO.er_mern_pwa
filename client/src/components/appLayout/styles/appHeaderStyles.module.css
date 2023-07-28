@@ -6,4 +6,73 @@
     height: 100%;
     background-color: var(--app-header-bg);
     /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerInnerWrapper {
+    display: grid;
+    width: 97%;
+    height: 100%;
+    grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 100%;
+    grid-template-areas:
+        "appLogoWrapper searchBarWrapper userProfileWrapper";
+    /* border: 1px solid white; */
+}
+
+.appLogoWrapper {
+    grid-area: appLogoWrapper;
+    /* width: 100%; */
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid white; */
+}
+
+.logoContainer {
+    width: 80%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --------------------------------------------------------- */
+.searchBarWrapper {
+    grid-area: searchBarWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid white; */
+}
+
+/* ---------------------------------------------------------- */
+.userProfileWrapper {
+    grid-area: userProfileWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid white; */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .headerInnerWrapper {
+        display: grid;
+        width: 95%;
+        height: 100%;
+        grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-rows: 100%;
+        grid-template-areas:
+            "appLogoWrapper searchBarWrapper userProfileWrapper";
+        /* border: 1px solid white; */
+    }
+
 }

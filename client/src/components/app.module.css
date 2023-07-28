@@ -3,6 +3,9 @@
 * {
   margin: 0;
   box-sizing: border-box;
+
+  margin: 0px;
+  border-width: 0px
 }
 
 body {
@@ -32,8 +35,6 @@ body::-webkit-scrollbar {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
-
 }
 
 .appInnerwrapper {
@@ -46,6 +47,7 @@ body::-webkit-scrollbar {
   grid-template-areas:
     "appHeaderStylesWrapper"
     "appSubPageWrapperStyles";
+  box-sizing: border-box;
 }
 
 .appInnerwrapper::-webkit-scrollbar {

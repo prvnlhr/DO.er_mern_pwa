@@ -92,7 +92,7 @@ Formatted version of the list as a nested ordered list:
 The list is now organized as a nested ordered list, with each version of ECMAScript and its features listed as sub-items.
 
 
-To write JavaScript code in Markdown, you can use fenced code blocks. In fenced code blocks, you enclose your JavaScript code within three backticks (```) before and after the code. Additionally, you can specify the language (e.g., "javascript") to get proper syntax highlighting in Markdown rendering environments that support it.
+To write JavaScript code in Markdown, you can use fenced code blocks. In fenced code blocks, you enclose your JavaScript code within three backticks  before and after the code. Additionally, you can specify the language to get proper syntax highlighting in Markdown rendering environments that support it.
 
 Here's an example of a JavaScript merge sort algorithm written in Markdown:
 
@@ -136,6 +136,6 @@ const sortedArray = mergeSort(arr);
 console.log("Sorted array:", sortedArray);
 ```
 
-When you use fenced code blocks with the "javascript" language specifier, it will render the JavaScript code with proper syntax highlighting, making it more readable and easier to understand for readers.
+When you use fenced code blocks with the `javascript` language specifier, it will render the JavaScript code with proper syntax highlighting, making it more readable and easier to understand for readers.
 
 Note that the syntax highlighting and rendering of code blocks may vary depending on the Markdown renderer or platform you are using to view the Markdown content.

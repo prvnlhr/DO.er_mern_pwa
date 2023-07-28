@@ -99,18 +99,18 @@
     padding-left: 0%;
     padding-right: 4%;
 
-    margin-top: 2%;
-    margin-bottom: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
 .paraText {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--mrkdwn-para-color);
     color: #101828;
-    color: #546079;
+    /* color: #546079; */
     /* color: #667085; */
-    font-weight: 400;
+    /* font-weight: 400; */
     line-height: 2;
     text-align: justify;
 }
@@ -170,7 +170,7 @@ ul {
 }
 
 .liTag {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     /* color: var(--mrkdwn-para-color); */
     margin-top: 2%;
     margin-bottom: 2%;

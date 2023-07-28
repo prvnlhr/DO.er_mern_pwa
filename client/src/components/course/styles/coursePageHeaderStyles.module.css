@@ -1,80 +1,107 @@
-@import "../../variable.module.css";
-
-.headerWrapper {
-    grid-area: headerWrapper;
+.courseHeaderWrapper {
+    grid-area: courseHeaderWrapper;
     width: 100%;
     height: 100%;
-    /* border: 1px solid greenyellow; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--sub-page-header-bg);
+    /* border: 1px solid white; */
+    padding: 0%;
+    margin: 0%;
+}
+
+
+.headerInnerWrapper {
+    width: 97%;
+    height: 100%;
+    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 100%;
+    grid-template-areas:
+        "backBtnIconWrapper  headingWrapper";
+    /* border: 1px solid salmon; */
+}
+
+.backBtnIconWrapper {
+    grid-area: backBtnIconWrapper;
+    height: 100%;
+    aspect-ratio: 1/3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid yellow; */
+}
+
+.backBtnIconDiv {
+    width: 70%;
+    aspect-ratio: 1/3;
+    height: unset !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+/* -------------------------------------------------------------- */
+
+.headingWrapper {
+    grid-area: headingWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0%;
+    overflow-x: hidden;
+    /* border: 1px solid red; */
+}
+
+.headingText {
+    font-size: 1.9rem;
+    font-weight: 500;
+    color: white;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ---------------------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+.descriptionInfoWrapper {
+    grid-area: descriptionInfoWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    background-color: var(--sub-page-header-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.descriptionInfoInnerWrapper {
+    width: 95%;
+    height: 95%;
+    /* border: 1px solid salmon; */
     background-color: var(--sub-page-header-bg);
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 100%;
     grid-template-areas:
-        "courseNameDescWrapper courseInfoGraphicWrapper"
+        "courseDescriptionWrapper courseInfoGraphicWrapper"
     ;
 }
 
-.courseNameDescWrapper {
-    grid-area: courseNameDescWrapper;
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid red; */
-    /* padding-left: 5%; */
-}
-
-
-.courseNameWrapper {
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* border: 1px solid white; */
-}
-
-.backBtnContainer {
-    width: unset;
-    aspect-ratio: 1/1;
-    height: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.backBtIconDiv {
-    width: unset;
-    height: 60%;
-    aspect-ratio: 1/1;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.courseNameDiv {
-    width: 80%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* border: 1px solid white; */
-}
-
-.courseNameText {
-    font-size: 1.8rem;
-    font-weight: 300;
-    color: white;
-}
-
 .courseDescriptionWrapper {
+    grid-area: courseDescriptionWrapper;
     width: 100%;
-    height: 80%;
+    height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    /* border: 1px solid white; */
-    padding-left: 8%;
+    /* border: 1px solid cyan; */
 }
 
 .courseDescText {
@@ -86,17 +113,17 @@
     line-height: 1.5;
 }
 
-/*_______________________________  */
+/* ---------------------------------------------------- */
 .courseInfoGraphicWrapper {
     grid-area: courseInfoGraphicWrapper;
     width: 100%;
     height: 100%;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
+    /* border: 1px solid orange; */
 }
+
 
 .infoElementOuterWrapper {
     width: 100%;
@@ -106,7 +133,6 @@
     justify-content: space-around;
     align-items: center;
 }
-
 
 
 .infoElementWrapper {
@@ -173,86 +199,75 @@
 
 }
 
-/* ____________________________________________ */
-
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .headerWrapper {
-        grid-area: headerWrapper;
+
+
+    .headerInnerWrapper {
+        width: 95%;
+        height: 100%;
+    }
+
+    /* ------------------------------------------------------------------- */
+    .backBtnIconWrapper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    .backBtnIconDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    /* ------------------------------------------------------------------- */
+    .headingWrapper {
         width: 100%;
         height: 100%;
-        /* border: 1px solid greenyellow; */
+        /* border: 1px solid white; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 0%;
+    }
+
+    .headingText {
+        font-size: 1.5rem;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* ------------------------------------------------------------------------------ */
+    /* ------------------------------------------------------------------------------ */
+    .descriptionInfoInnerWrapper {
+        width: 95%;
+        height: 95%;
+        /* border: 1px solid salmon; */
         background-color: var(--sub-page-header-bg);
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 60% 40%;
+        grid-template-rows: 50%;
         grid-template-areas:
-            "courseNameDescWrapper "
+            "courseDescriptionWrapper"
             "courseInfoGraphicWrapper"
         ;
     }
 
-    .courseNameDescWrapper {
-        grid-area: courseNameDescWrapper;
-        width: 100%;
-        height: 100%;
-        /* border: 1px solid red; */
-        /* padding-left: 5%; */
-    }
-
-
-    .courseNameWrapper {
-        width: 100%;
-        height: 30%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        /* border: 1px solid white; */
-    }
-
-    .backBtnContainer {
-        width: unset;
-        aspect-ratio: 1/1;
-        height: 100%;
-        /* border: 1px solid red; */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .backBtIconDiv {
-        width: 60%;
-        aspect-ratio: 1/1;
-        /* border: 1px solid red; */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .courseNameDiv {
-        width: 80%;
-        height: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        /* border: 1px solid white; */
-        padding-left: 2%;
-    }
-
-    .courseNameText {
-        font-size: 30px;
-        font-weight: 500;
-        color: white;
-    }
+    /* ------------------------------------ */
 
     .courseDescriptionWrapper {
+        grid-area: courseDescriptionWrapper;
         width: 100%;
-        height: 70%;
+        height: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
         /* border: 1px solid white; */
-        padding-left: 15%;
+        padding-left: 8%;
     }
 
     .courseDescText {
@@ -263,7 +278,6 @@
         /* border: 1px solid red; */
         width: 90%;
         line-height: 1.8;
-
         display: box;
         display: -webkit-box;
         display: -moz-box;
@@ -276,24 +290,25 @@
 
     }
 
-    /*_______________________________  */
+    /* ----------------------------------------------------------- */
+
     .courseInfoGraphicWrapper {
         grid-area: courseInfoGraphicWrapper;
         width: 100%;
         height: 100%;
-        /* border: 1px solid red; */
         display: flex;
         justify-content: center;
         align-items: center;
-
+        /* border: 1px solid orange; */
     }
 
+
     .infoElementOuterWrapper {
-        width: 90%;
+        width: 100%;
         height: 100%;
         /* border: 1px solid white; */
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
     }
 
@@ -361,7 +376,4 @@
         margin-top: 2%;
         font-weight: 300;
     }
-
-
-
 }

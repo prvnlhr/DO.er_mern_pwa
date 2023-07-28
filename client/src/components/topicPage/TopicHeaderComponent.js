@@ -14,21 +14,27 @@ const TopicHeaderComponent = ({ toggleSidebar }) => {
 
   return (
     <div className={styles.headerWrapper}  >
-      <div className={styles.backBtnIconWrapper} >
-        <div className={styles.backBtnIconDiv} onClick={() => navigate(-1)}>
-          <BackBtnIcon />
+      <div className={styles.topicHeaderInnerWrapper} >
+
+        <div className={styles.backBtnIconWrapper} >
+          <div className={styles.backBtnIconDiv} onClick={() => navigate(-1)}>
+            <BackBtnIcon />
+          </div>
         </div>
-      </div>
-      <div className={styles.headingWrapper}
-      >
-        <p className={styles.headingText} >{coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].module_title}</p>
-      </div>
-      <div className={styles.sideBarToggleIconWrapper}>
-        <div className={styles.iconDiv} onClick={() => toggleSidebar(true)} >
-          <SideBarShowIcon />
+
+        <div className={styles.headingWrapper}>
+          <p className={styles.headingText} >{coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].module_title}</p>
         </div>
+
+        <div className={styles.sideBarToggleIconWrapper}>
+          <div className={styles.iconDiv} onClick={() => toggleSidebar(true)} >
+            <SideBarShowIcon />
+          </div>
+        </div>
+
       </div>
     </div>
+
   )
 }
 
