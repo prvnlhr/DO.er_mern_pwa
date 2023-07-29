@@ -6,11 +6,11 @@
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 10% 30% 60%;
+    grid-template-rows: 11% 29% 60%;
     grid-template-areas:
         "courseHeaderWrapper"
         "descriptionInfoWrapper"
-        "bodyWrapper"
-    ;
+        "bodyWrapper";
     /* background-color: var(--sub-page-header-bg); */
-    background-color: cyan;
+    /* background-color: cyan; */
 }

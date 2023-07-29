@@ -1,0 +1,12 @@
+.searchPageWrapper {
+    width: 100%;
+    height: 100%;
+    /* background-color: springgreen; */
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 11% 89%;
+    grid-template-areas:
+        "searchPageHeaderWrapper"
+        "searchPageBodyWrapper";
+    /* border: 1px solid springgreen; */
+}

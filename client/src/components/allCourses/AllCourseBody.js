@@ -5,7 +5,7 @@ import AllCourseList from './AllCourseList'
 
 const AllCourseBody = () => {
     return (
-        <div className={styles.pageBodyWrapper} >
+        <div className={styles.allCourseBodyWrapper} >
             <AllCourseList />
         </div>
     )

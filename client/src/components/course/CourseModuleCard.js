@@ -45,7 +45,7 @@ const CourseModuleCard = ({ moduleData, moduleIndex }) => {
         </div>
         <div className={styles.moduleTextWrapper} >
           <p className={styles.moduleText} >
-            MODULE {moduleIndex + 1}
+            CHAPTER {moduleIndex + 1}
           </p>
         </div>
         <div className={styles.moduleTimeWrapper} >

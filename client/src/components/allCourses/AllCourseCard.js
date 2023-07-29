@@ -59,7 +59,7 @@ const AllCourseCard = ({ courseData, courseIndx }) => {
                         </div>
                     </div>
                     <div className={styles.numModuleTextContainer}  >
-                        <p>12  <span className={styles.moduleSpanText}>Modules</span> </p>
+                        <p>12  <span className={styles.moduleSpanText}>chapters</span> </p>
                     </div>
                 </div>
             </div>

@@ -4,8 +4,6 @@
 
 When defining your color system, it might feel like a waste of time figuring out specific shades of every color you're working with. However, it won't be long until you're in need of more colors as your component library grows and evolves. It's a much better idea to define these properly from the start, so you don't box yourself into a limited color palette.
 
-When choosing the right colors in UI design, accessibility should always be front of mind. Many designers ignore basic accessibility fundamentals and design products that don't meet basic accessibility standards. Google now even penalizes websites with low-contrast text and inaccessible color systems.
-
 
 ```js
 // Merge Sort implementation in JavaScript

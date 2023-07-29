@@ -118,6 +118,10 @@
     /* border: 1px solid red; */
 }
 
+.btnLinkTag {
+    text-decoration: none;
+}
+
 /* ---------------------------- */
 .illustrationSection {
     width: 50%;

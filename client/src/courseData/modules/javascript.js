@@ -62,7 +62,7 @@ const javascriptModulesList = [
         ]
     },
     {
-        module_title: 'JS Operators',
+        module_title: 'Operators in JavaScript',
         is_bookmarked: false,
         time_required: '20 min',
         moduleFolderName: '3_operators_in_js',

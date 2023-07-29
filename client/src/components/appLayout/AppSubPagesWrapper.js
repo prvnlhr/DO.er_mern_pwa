@@ -8,6 +8,7 @@ import LandingPage from '../landingPage/LandingPage';
 import AllCoursePage from "../allCourses/AllCoursesPage"
 import { useCourseContext } from '../../appState/appContext';
 import { CourseProvider } from '../../appState/appContext';
+import SearchPage from '../search/SearchPage';
 
 
 const AppSubPagesWrapper = () => {
@@ -16,30 +17,31 @@ const AppSubPagesWrapper = () => {
 
     return (
 
-            <div className={styles.appSubPageWrapperStyles}>
-                <Routes>
-                    <Route path='/' element={
-                        <LandingPage />
-                    } />
+        <div className={styles.appSubPageWrapperStyles}>
+            <Routes>
+                <Route path='/ss' element={
+                    <LandingPage />
+                } />
 
-                    <Route path="/user/classroom" element={
-                        <MyClassroomPage />
-                    } />
+                <Route path="/user/classroom" element={
+                    <MyClassroomPage />
+                } />
 
-                    <Route path='/user/course' element={
-                        <CoursePage />
-                    } />
+                <Route path='/user/course' element={
+                    <CoursePage />
+                } />
 
-                    <Route path='/user/topic' element={
-                        <TopicsPage />
-                    } />
-                    <Route path='/user/allcourses' element={
-                        <AllCoursePage />
-                    } />
+                <Route path='/user/topic' element={
+                    <TopicsPage />
+                } />
+                <Route path='/user/allcourses' element={
+                    <AllCoursePage />
+                } />
+                <Route path='/' element={<SearchPage />} />
 
 
-                </Routes>
-            </div>
+            </Routes>
+        </div>
 
     )
 }

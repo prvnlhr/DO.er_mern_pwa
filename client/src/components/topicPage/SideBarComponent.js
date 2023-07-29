@@ -9,17 +9,12 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
 
     const [showListIndex, setShowListIndex] = useState(new Set());
 
-    const [currentShowListIndex, setCurrentShowListIndex] = useState(0);
+    const [currentShowListIndex, setCurrentShowListIndex] = useState(null);
 
 
     const { currentCourseData, updateCurrentCourseData } = useCourseContext();
     const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex, markDownContents } = currentCourseData;
 
-
-
-    useEffect(() => {
-        toggleModuleList(currentCourseData.currentCourseModuleIndex);
-    }, [])
 
     // ------ logic for toggling module topics list inside sidebar ---------------
     const addToSet = (val) => {
@@ -33,18 +28,6 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
 
         updateCurrentCourseData('currentCourseModuleIndex', val);
 
-        // if (showListIndex.has(val)) {
-        //     removeFromSet(val);
-        // } else {
-        //     let listHeight = coursesList[currentCourseData.currentCourseIndex].modulesList[val].topicsList.length * 41;
-        //     document.documentElement.style.setProperty(
-        //         "--listWrapperHeight",
-        //         `${listHeight}px`
-        //     );
-        //     addToSet(val);
-        // }
-
-
         if (val === currentShowListIndex) {
             setCurrentShowListIndex(null);
         } else {
@@ -53,11 +36,15 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
                 "--listWrapperHeight",
                 `${listHeight}px`
             );
+
             setCurrentShowListIndex(val);
         }
 
     }
 
+    useEffect(() => {
+        toggleModuleList(currentCourseData.currentCourseModuleIndex);
+    }, [])
 
 
     const handleModuleTopicClicked = (indexValue) => {

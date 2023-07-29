@@ -23,7 +23,7 @@ const CourseModulesList = () => {
                     </div>
 
                     <div className={styles.listHeadingDiv} >
-                        <p className={styles.headingText}>Modules</p>
+                        <p className={styles.headingText}>Chapters</p>
                     </div>
                 </div>
 

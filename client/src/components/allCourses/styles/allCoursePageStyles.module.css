@@ -3,12 +3,12 @@
 .allCoursesPageWrapper {
     width: 100%;
     height: 100%;
+
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 30% 70%;
+    grid-template-rows: 11% 19% 70%;
     grid-template-areas:
-        "pageHeaderWrapper"
-        "pageBodyWrapper"
-    ;
+        "allCourseHeaderWrapper"
+        "allCourseDescriptionWrapper"
+        "allCourseBodyWrapper";
 }
-

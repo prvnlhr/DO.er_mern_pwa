@@ -21,7 +21,7 @@ const IntroSection = () => {
                     <div className={styles.btnWrapper} >
                         <div className={styles.buttonDiv} >
                             <div className={styles.btnTextDiv}  >
-                                <Link to="/user/allcourses"  >
+                                <Link className={styles.btnLinkTag} to="/user/allcourses"  >
                                     <p>Get Started</p>
                                 </Link>
                             </div>

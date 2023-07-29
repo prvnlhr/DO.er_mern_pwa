@@ -24,7 +24,6 @@ const CoursePageHeader = () => {
   return (
     <>
       <div className={styles.courseHeaderWrapper}>
-
         <div className={styles.headerInnerWrapper} >
           <div className={styles.backBtnIconWrapper} >
             <div className={styles.backBtnIconDiv} onClick={() => navigate(-1)}>

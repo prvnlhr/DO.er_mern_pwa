@@ -1,111 +1,143 @@
-.pageHeaderWrapper {
-    grid-area: pageHeaderWrapper;
+.allCourseHeaderWrapper {
+    grid-area: allCourseHeaderWrapper;
     width: 100%;
     height: 100%;
-    background-color: var(--sub-page-header-bg);
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-
+    background-color: var(--sub-page-header-bg);
+    /* border: 1px solid white; */
+    padding: 0%;
+    margin: 0%;
 }
 
 .headerInnerWrapper {
-    width: 90%;
-    height: 90%;
-    /* border: 1px solid red; */
-
+    width: 97%;
+    height: 100%;
+    display: flex;
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 30% 70%;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 100%;
     grid-template-areas:
-        "headerHeadingWrapper"
-        "descWrapper"
-    ;
-    margin-left: 1%;
-
-}
-
-.headerHeadingWrapper {
-    grid-area: headerHeadingWrapper;
-    width: 100%;
-    height: 100%;
+        "backBtnIconWrapper  headingWrapper";
     /* border: 1px solid salmon; */
+}
+
+.backBtnIconWrapper {
+    grid-area: backBtnIconWrapper;
+    height: 100%;
+    aspect-ratio: 1/3;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    /* border: 1px solid yellow; */
 }
 
-.backBtnContainer {
-    aspect-ratio: 1/1;
-    height: 100%;
-    /* border: 1px solid white; */
+.backBtnIconDiv {
+    width: 70%;
+    aspect-ratio: 1/3;
+    height: unset !important;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border: 1px solid red; */
 }
 
-.backBtnDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    height: 80%;
-}
+/* -------------------------------------------------------------- */
 
-.headingContainer {
+.headingWrapper {
+    grid-area: headingWrapper;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    /* border: 1px solid greenyellow; */
-    padding-left: 1%;
+    padding-left: 0%;
+    overflow-x: hidden;
+    /* border: 1px solid red; */
 }
 
-.headingContainer p {
-    font-size: 1.3rem;
+.headingText {
+    font-size: 1.9rem;
+    font-weight: 500;
     color: white;
-    font-weight: 400;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ------------------------------------------------ */
+/* ------------------------------------------------ */
 
-.descWrapper {
-    grid-area: descWrapper;
+.allCourseDescriptionWrapper {
+    grid-area: allCourseDescriptionWrapper;
     width: 100%;
     height: 100%;
-    /* border: 1px solid salmon; */
-    padding-left: 4%;
+    /* border: 1px solid red; */
+    background-color: var(--sub-page-header-bg);
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding-left: 3%;
 }
 
-.descWrapper p {
-    width: 50%;
-
-    font-size: 1rem;
-    color: #7E8DA4;
-    font-weight: 300;
-}
 
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .headerInnerWrapper {
+        width: 90%;
+        height: 100%;
+    }
 
-    .descWrapper {
-        grid-area: descWrapper;
+    /* ------------------------------------------------------------------- */
+    .backBtnIconWrapper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    .backBtnIconDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    /* ------------------------------------------------------------------- */
+    .headingWrapper {
         width: 100%;
         height: 100%;
-        /* border: 1px solid salmon; */
-        padding-left: 12%;
+        /* border: 1px solid white; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 0%;
+    }
+
+    .headingText {
+        font-size: 1.5rem;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .allCourseDescriptionWrapper {
+        grid-area: allCourseDescriptionWrapper;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        /* border: 1px solid white; */
+        padding-left: 8%;
 
     }
 
-    .descWrapper p {
-        width: 100%;
+    .allCourseDescriptionWrapper p {
+        width: 90%;
         font-size: 1rem;
-        color: #7E8DA4;
-        font-weight: 300;
+        /* border: 1px solid red; */
     }
 }
