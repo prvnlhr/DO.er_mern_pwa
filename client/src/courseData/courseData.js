@@ -11,16 +11,18 @@ const courses = [
         modulesList: javascriptModulesList,
         courseFolderName: 'javascript'
     },
-    {
-        id: 't2u0h5zp9v',
-        title: 'C++',
-        courseLogo: '',
-        courseDescription: 'Unlock the World of C++: Dive into the C++ programming language, from basics to advanced concepts, and create powerful applications.',
-        time_required: '12h 7min',
-        modulesList: cplusplusModulesList,
-        courseFolderName: 'cplusplus'
-    },
+    // {
+    //     id: 't2u0h5zp9v',
+    //     title: 'C++',
+    //     courseLogo: '',
+    //     courseDescription: 'Unlock the World of C++: Dive into the C++ programming language, from basics to advanced concepts, and create powerful applications.',
+    //     time_required: '12h 7min',
+    //     modulesList: cplusplusModulesList,
+    //     courseFolderName: 'cplusplus'
+    // },
 ];
 
 
 export { courses as coursesList };
+
+

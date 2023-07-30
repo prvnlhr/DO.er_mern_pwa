@@ -3,13 +3,23 @@ import styles from "./styles/appHeaderStyles.module.css"
 import AppLogo from "../icons/AppLogo"
 import ProfileIcon from "../icons/ProfileIcon"
 import SearchBar from './SearchBar'
+import { useCourseContext } from "../../appState/appContext"
 const AppHeader = () => {
 
     const [inSearchMode, setInSearchMode] = useState(false);
+    const [searchKey, setSearchKey] = useState('');
+    const { currentCourseData, updateCurrentCourseData } = useCourseContext();
+    const { searchResult } = currentCourseData;
 
     const handleSearchIconClicked = () => {
         setInSearchMode(!inSearchMode);
+        setSearchKey('');
+        updateCurrentCourseData('searchResult', [])
+
     }
+
+
+
 
     return (
         <div className={styles.appHeaderStylesWrapper} >
@@ -24,7 +34,12 @@ const AppHeader = () => {
                 <div className={styles.searchProfileOuterWrapper} >
 
                     <div className={inSearchMode ? styles.searchBarWrapperExpand : styles.searchBarWrapper}>
-                        <SearchBar inSearchMode={inSearchMode} handleSearchIconClicked={handleSearchIconClicked} />
+                        <SearchBar
+                            inSearchMode={inSearchMode}
+                            handleSearchIconClicked={handleSearchIconClicked}
+                            searchKey={searchKey}
+                            setSearchKey={setSearchKey}
+                        />
                     </div>
 
                     <div className={inSearchMode ? styles.userProfileWrapperShrink : styles.userProfileWrapper} >

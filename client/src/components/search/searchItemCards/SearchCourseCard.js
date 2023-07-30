@@ -1,66 +1,87 @@
 import React from 'react'
-import styles from "./styles/searchItemCardStyles.module.css"
-import TiltedArrowIcon from "../../icons/TiltedArrowIcon"
-import ChevronIcon from "../../icons/ChevronIcon"
+import styles from "./styles/searchCourseCardStyles.module.css"
 import ClockIconLined from "./ClockIconLined"
 import DocIconLined from "./DocIconLined"
-const SearchCourseCard = () => {
+import BreadCrumIcon from "./BreadCrumIcon"
+import LinkIcon from "./LinkIcon"
+const SearchCourseCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
+
+    const BreadCrumElement = ({ innerText }) => {
+        return (
+            <div className={styles.breadCrumElementWrapper} >
+                <div className={styles.breadCrumTextWrapper} >
+                    <p className={innerText === 'Course' && styles.chapterTextBlack} >{innerText}</p>
+                </div>
+                <div className={styles.breadCrumIconWrapper} >
+                    <div className={styles.breadCrumIconDiv} >
+                        <BreadCrumIcon />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className={styles.searchItemWrapper} >
             <div className={styles.searchItemInnerWrapper}>
-                <div className={styles.breadcrumWrapper} >
-                    <div className={styles.courseNameContainer} >
-                        <p>JavaScript</p>
-                    </div>
-                    <div className={styles.chevronContainer} >
-                        <div className={styles.chevronIconDiv} >
-                            <ChevronIcon />
-                        </div>
-                    </div>
-                    <div className={styles.chapterNameContainer} >
-                        <p>Introduction to JS </p>
-                    </div>
+
+                <div className={styles.breadCrumWrapper} >
+                    <BreadCrumElement innerText={searchItemData.courseTitle} />
                 </div>
-                <div className={styles.searchKeyWordWrapper} >
-                    <div className={styles.searchKeyContainer} >
-                        <p>Topics</p>
-                    </div>
-                    <div className={styles.chevronContainer} >
-                        <div className={styles.chevronIconDiv} >
-                            <ChevronIcon />
-                        </div>
-                    </div>
+
+
+
+                <div className={styles.searchKeyValueWrapper} >
+                    <BreadCrumElement innerText={'Course'} />
                     <div className={styles.searchValueContainer} >
-                        <div className={styles.searchValueInnerContainer} >
-                            <p>What is JavaScript</p>
-                        </div>
+                        <p>{searchItemData.courseTitle}</p>
                     </div>
                 </div>
-                <div className={styles.searchInfoEleWrapper} >
-                    <div className={styles.infoEleContainer} >
-                        <div className={styles.infoIconContainer} >
-                            <div className={styles.infoIconDiv} >
-                                <ClockIconLined />
+
+
+
+                <div className={styles.infoElementWrapper} >
+
+                    {/* <--info element 1---------------------> */}
+                    <div className={styles.infoElementContainer} >
+                        <div className={styles.infoElementInnerContainer} >
+                            <div className={styles.infoIconContainer} >
+                                <div className={styles.infoIconDiv} >
+                                    <ClockIconLined />
+                                </div>
+                            </div>
+                            <div className={styles.infoTextContainer} >
+                                <p>{'12 min.'}</p>
                             </div>
                         </div>
-                        <div className={styles.infoTextContainer} >
-                            <p>12 min.</p>
-                        </div>
                     </div>
-                    <div className={styles.infoEleContainer} >
-                        <div className={styles.infoIconContainer} >
-                            <div className={styles.infoIconDiv} >
-                                <DocIconLined />
+                    {/* <---------------------------------> */}
+
+                    {/* <--info element 2---------------------> */}
+                    <div className={styles.infoElementContainer} >
+                        <div className={styles.infoElementInnerContainer} >
+                            <div className={styles.infoIconContainer} >
+                                <div className={styles.infoIconDiv} >
+                                    <DocIconLined />
+                                </div>
+                            </div>
+                            <div className={styles.infoTextContainer} >
+                                <p>{'9 Chapters'}</p>
                             </div>
                         </div>
-                        <div className={styles.infoTextContainer} >
-                            <p>11 Chapters</p>
-                        </div>
                     </div>
+                    {/* <---------------------------------> */}
+
+
                 </div>
-                <div className={styles.arrowLinkWrapper} >
-                    <div className={styles.arrowLinkIconContainer} >
-                        <TiltedArrowIcon />
+
+
+
+                <div className={styles.linkWrapper} >
+                    <div className={styles.linkIconContainer} >
+                        <div className={styles.linkIconDiv} onClick={() => handleCardArrowLinkClicked(searchItemData)}  >
+                            <LinkIcon />
+                        </div>
                     </div>
                 </div>
             </div>

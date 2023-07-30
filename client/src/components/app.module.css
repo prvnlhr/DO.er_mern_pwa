@@ -42,13 +42,16 @@ body::-webkit-scrollbar {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 73px minmax(0, 1fr);
+  /* grid-template-rows: 73px minmax(0, 1fr); */
+  grid-template-rows: 10% 90%;
   grid-template-columns: 100%;
   grid-template-areas:
     "appHeaderStylesWrapper"
     "appSubPageWrapperStyles";
   box-sizing: border-box;
 }
+
+
 
 .appInnerwrapper::-webkit-scrollbar {
   display: none;

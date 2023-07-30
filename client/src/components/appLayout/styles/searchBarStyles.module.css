@@ -52,7 +52,7 @@
     -ms-transition: all 300ms ease-in-out;
     /* background-color: palegoldenrod; */
     /* background-color: rgba(240, 255, 255, 0.186); */
-    /* border: 0.01rem dashed salmon; */
+    /* border: 0.01rem solid salmon; */
 
 }
 
@@ -63,8 +63,9 @@
     border: none;
     background-color: #40597f48;
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     padding-left: 0px;
+    font-weight: 400;
     /* transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
@@ -73,6 +74,12 @@
     /* background-color: salmon; */
     padding-left: 5%;
     /* background-color: transparent; */
+}
+
+.searchInput::placeholder {
+    font-weight: 400;
+    color: #718199;
+    font-size: 0.9rem;
 }
 
 .searchInputShrink {

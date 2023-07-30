@@ -1,0 +1,258 @@
+:root {
+    --searchItem-font-size: 0.8rem;
+}
+
+.searchItemWrapper {
+    width: 320px;
+    height: 150px;
+    background-color: white;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    margin: 0px 0px 0px 0px;
+}
+
+.searchItemInnerWrapper {
+    display: grid;
+    width: 90%;
+    height: 90%;
+    /* grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); */
+    /* grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); */
+    grid-template-columns: repeat(10, calc(100% / 10));
+    /* grid-template-rows: minmax(0,1fr) minmax(0,1fr) minmax(0,1fr); */
+    /* grid-template-rows: 33% 33% 33%; */
+    /* grid-template-rows: 60px 60px 60px; */
+    grid-template-rows: calc(100% / 3) calc(100% / 3) calc(100% / 3);
+    grid-template-areas:
+        "breadCrumWrapper breadCrumWrapper breadCrumWrapper breadCrumWrapper breadCrumWrapper breadCrumWrapper breadCrumWrapper breadCrumWrapper breadCrumWrapper breadCrumWrapper"
+        "searchKeyValueWrapper searchKeyValueWrapper searchKeyValueWrapper searchKeyValueWrapper searchKeyValueWrapper searchKeyValueWrapper searchKeyValueWrapper searchKeyValueWrapper linkWrapper linkWrapper"
+        "infoElementWrapper infoElementWrapper infoElementWrapper infoElementWrapper infoElementWrapper infoElementWrapper infoElementWrapper infoElementWrapper linkWrapper linkWrapper";
+    /* border: 1px solid salmon; */
+}
+
+/* ------------------------------------------------------------------------- */
+
+.breadCrumWrapper {
+    grid-area: breadCrumWrapper;
+    /* border: 1px solid purple; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+
+/* ---bread crum element styles--------------------------------------------------- */
+.breadCrumElementWrapper {
+    display: flex;
+    width: auto;
+    height: 80%;
+    /* border: 1px solid red; */
+    margin-left: 10px;
+}
+
+
+.breadCrumTextWrapper {
+    display: flex;
+    /* flex-grow: 1, flex-shrink: 1, flex-basis: auto */
+    flex: 1 1 auto;
+    height: 100%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.breadCrumTextWrapper p {
+    color: #7E8DA4;
+    font-weight: 400;
+}
+
+.chapterTextBlack {
+    font-weight: 600 !important;
+    font-size: var(--searchItem-font-size);
+    color: black !important;
+}
+
+
+.breadCrumIconWrapper {
+    height: 100%;
+    /* border: 1px solid springgreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    aspect-ratio: 1/2;
+}
+
+.breadCrumIconDiv {
+    aspect-ratio: 1/1;
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+
+/* ---------------------------------------------------------- */
+.searchKeyValueWrapper {
+    grid-area: searchKeyValueWrapper;
+    /* border: 1px solid darkblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.searchValueContainer {
+    width: auto;
+    height: auto;
+    padding: 5px 10px 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #D9D6FE;
+    overflow: hidden;
+}
+
+.searchValueContainer p {
+    font-size: var(--searchItem-font-size);
+    font-weight: 500;
+    color: #9E77ED;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* -------------------------------------------------------------------- */
+
+.infoElementWrapper {
+    grid-area: infoElementWrapper;
+    /* border: 1px solid salmon; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.infoElementContainer {
+    /* border: 1px solid salmon; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 80%;
+    margin-left: 0px;
+}
+
+.infoElementInnerContainer {
+    /* border: 1px solid darkblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.infoIconContainer {
+    /* border: 1px solid darkblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    height: 100%;
+}
+
+.infoIconDiv {
+    width: 50%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.infoTextContainer {
+    /* border: 1px solid springgreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex: 1;
+    /* margin-left: 5px; */
+}
+
+.infoTextContainer p {
+    font-size: var(--searchItem-font-size);
+    color: #7E8DA4;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------- */
+
+.linkWrapper {
+    grid-area: linkWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    /* border: 1px solid salmon; */
+    padding-bottom: 5%;
+}
+
+.linkIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    width: 80%;
+    border-radius: 50%;
+    background-color: #CBE7FD;
+}
+
+.linkIconDiv {
+    aspect-ratio: 1/1;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* -------------------------------------------------------------------------------------- */
+
+
+
+
+
+/* ------------------------------------------------------------------------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .searchItemWrapper {
+        /* width: 350px; */
+        width: 90%;
+        aspect-ratio: 3/1.5;
+        height: unset;
+        background-color: white;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        margin: 20px auto 20px auto;
+        width: 350px;
+        height: 180px;
+    }
+
+
+}
