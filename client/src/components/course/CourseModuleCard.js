@@ -15,27 +15,16 @@ const CourseModuleCard = ({ moduleData, moduleIndex }) => {
 
   const { currentCourseData, updateCurrentCourseData } = useCourseContext();
 
-  const setClickedModuleIndex = () => {
-    // set currentCourseModuleIndex : moduleIndex
-    updateCurrentCourseData('currentCourseModuleIndex', moduleIndex);
-  }
 
   const moduleArrowLinkClicked = () => {
+  
     // 1. set clicked module card index
-    setClickedModuleIndex();
+    updateCurrentCourseData('currentCourseModuleIndex', moduleIndex);
 
     // 2. then -> navigate to topics page
     navigate("/user/topic")
   }
 
-  let moduleTopicListData = [
-    { topicName: "What is Closure ?" },
-    { topicName: "Defining closure in JS" },
-    { topicName: "Example of Closure" },
-    { topicName: "Real world Usage" },
-    { topicName: "Currying" },
-    { topicName: "Data Abstraction using Closure" },
-  ]
 
   return (
     <div className={styles.moduleOuterWrapper} >

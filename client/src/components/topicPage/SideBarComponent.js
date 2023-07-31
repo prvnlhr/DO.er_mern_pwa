@@ -3,72 +3,81 @@ import styles from "./styles/sidebarComponentStyles.module.css"
 import { Icon } from '@iconify/react';
 import { useCourseContext } from "../../appState/appContext"
 import { coursesList } from "../../courseData/courseData"
-import { getMarkDownFile } from "../utilityFunctions/utility"
+import { setMarkDownFile } from "../utilityFunctions/getMarkdownUtilityFunction"
 
+import { useMarkdownLoader } from "../../customHooks/useMarkdownLoader"
 const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
 
     const [showListIndex, setShowListIndex] = useState(new Set());
 
-    const [currentShowListIndex, setCurrentShowListIndex] = useState(null);
+    const [currentModuleListShowIndx, setCurrModuleListShowIndx] = useState(null);
 
 
     const { currentCourseData, updateCurrentCourseData } = useCourseContext();
-    const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex, markDownContents } = currentCourseData;
+    const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex } = currentCourseData;
 
 
-    // ------ logic for toggling module topics list inside sidebar ---------------
-    const addToSet = (val) => {
-        setShowListIndex(previousState => new Set([...previousState, val]))
+    useEffect(() => {
+        setCurrModuleListShowIndx(currentCourseModuleIndex);
+    }, [])
+
+
+
+    // >> --------------------------------------------------------------------------------------------
+
+    // This function will get the markdown file and update the state with new markdwn file
+    const changeTopicMarkdownFile = (topicIndx) => {
+        setMarkDownFile(currentCourseIndex, currentCourseModuleIndex, topicIndx, updateCurrentCourseData);
     }
-    const removeFromSet = (val) => {
-        setShowListIndex(prev => new Set([...prev].filter(x => x !== val)))
-    }
 
-    const toggleModuleList = (val) => {
+    // >> --------------------------------------------------------------------------------------------
 
-        updateCurrentCourseData('currentCourseModuleIndex', val);
+    const handleSidebarModuleClicked = (currClickedModuleIndx) => {
 
-        if (val === currentShowListIndex) {
-            setCurrentShowListIndex(null);
+        // let listHeight = coursesList[currentCourseIndex].modulesList[currClickedModuleIndx].topicsList.length * 41;
+        // document.documentElement.style.setProperty(
+        //     "--listWrapperHeight",
+        //     `${listHeight}px`
+        // );
+
+        // setCurrModuleListShowIndx(currClickedModuleIndx);
+
+        updateCurrentCourseData('currentCourseModuleIndex', currClickedModuleIndx);
+
+        if (currClickedModuleIndx === currentModuleListShowIndx) {
+            setCurrModuleListShowIndx(null);
         } else {
-            let listHeight = coursesList[currentCourseData.currentCourseIndex].modulesList[val].topicsList.length * 41;
+            let listHeight = coursesList[currentCourseIndex].modulesList[currClickedModuleIndx].topicsList.length * 41;
             document.documentElement.style.setProperty(
                 "--listWrapperHeight",
                 `${listHeight}px`
             );
 
-            setCurrentShowListIndex(val);
+            setCurrModuleListShowIndx(currClickedModuleIndx);
         }
-
     }
 
-    useEffect(() => {
-        toggleModuleList(currentCourseData.currentCourseModuleIndex);
-    }, [])
 
+    // >> --------------------------------------------------------------------------------------------
 
-    const handleModuleTopicClicked = (indexValue) => {
-        const courseFolder = coursesList[currentCourseData.currentCourseIndex].courseFolderName;
-        const moduleFolder = coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].moduleFolderName;
-        const topicFileName = coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].topicsList[indexValue].topicFileName;
-        getMarkDownFile(courseFolder, moduleFolder, topicFileName)
-            .then((res) => {
-                updateCurrentCourseData('markDownContents', res);
-            })
-            .catch((error) => {
-                console.log("Error:", error);
-            });
-    }
+    const handleSidebarTopicClicked = (currClickedTopicIndx) => {
 
-    const setClickedTopicIndex = (indxVal) => {
-        updateCurrentCourseData('currentCourseTopicIndex', indxVal);
+        // 1. Update state data for current topic clicked
+        updateCurrentCourseData('currentCourseTopicIndex', currClickedTopicIndx);
 
-        // passing indxVal because useState takes time to update to we cant rely on it, so maually passing indx value
-        handleModuleTopicClicked(indxVal);
+        // 2. Passing currClickedTopicIndx because useState takes time to update to we cant rely on it, so maually passing currClickedTopicIndx value
+        changeTopicMarkdownFile(currClickedTopicIndx);
+
         toggleSidebar(false);
     }
 
-    // --------------------------------------------------------------------------------------------------------
+    // >> --------------------------------------------------------------------------------------------
+
+    // useEffect(() => {
+    //     handleSidebarModuleClicked(currentCourseModuleIndex);
+    //     console.log('sidebar', currentCourseData)
+    // }, [])
+
 
     return (
         <div className={`${styles.sidebarComponentWrapper}  ${showSideBar && styles.sideBarSlide}`} >
@@ -76,51 +85,52 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
                 <div className={styles.sidebarHeadingDiv} >
                     <p>Table of Contents</p>
                 </div>
-                {/* <div className={styles.sidebarCloseIconDiv} onClick={() => toggleSidebar(false)}  >
-                    <svg
-                        className={styles.closeIcon}
-                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 6L6 18M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </div> */}
             </div>
 
             <div className={styles.sidebarContentWrapper}>
-                {coursesList[currentCourseData.currentCourseIndex].modulesList.map((data, index) => (
-                    <div className={styles.moduleTopicListOuterWrapper}>
-                        <div className={styles.moduleNameWrapper} onClick={() => toggleModuleList(index)} >
+
+                {coursesList[currentCourseIndex].modulesList.map((data, moduleIndx) => (
+                    <div className={styles.moduleTopicListOuterWrapper} key={moduleIndx}>
+                        <div className={styles.moduleNameWrapper} onClick={() => handleSidebarModuleClicked(moduleIndx)} >
                             <div className={styles.moduleNameDiv}>
                                 <p>
                                     {data.module_title}
                                 </p>
                             </div>
 
-                            <div className={`${styles.moduleDropDownIconDiv} ${showListIndex.has(index) && styles.moduleDropDownIconDivRotate}`}>
+                            <div className={`${styles.moduleDropDownIconDiv} ${showListIndex.has(moduleIndx) && styles.moduleDropDownIconDivRotate}`}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6 9L12 15L18 9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
                         </div>
 
-                        <div className={
-                            currentShowListIndex === index ? styles.moduleSubTopicListWrapperShow : styles.moduleSubTopicListWrapperHide
-                            // showListIndex.has(index) ? styles.moduleSubTopicListWrapperShow : styles.moduleSubTopicListWrapperHide
-                        } >
+                        <div className={currentModuleListShowIndx === moduleIndx ? styles.moduleSubTopicListWrapperShow : styles.moduleSubTopicListWrapperHide} >
 
-                            {data.topicsList.map((subData, indx) => (
-                                <div div className={styles.subTopicElementWrapper} >
-                                    <div className={styles.subTopicElementIndicatorContainer} >
-                                        <div className={styles.indicatorDiv} >
+                            {currentCourseModuleIndex === moduleIndx &&
+
+                                // <-- topics list mapping -->
+                                data.topicsList.map((subData, topicIndx) => (
+
+                                    <div div className={styles.subTopicElementWrapper} key={topicIndx} >
+
+                                        {/* <-- indicator --> */}
+                                        <div className={styles.subTopicElementIndicatorContainer} >
+                                            <div className={styles.indicatorDiv} >
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className={styles.subTopicNameDiv} onClick={() => setClickedTopicIndex(indx)}>
-                                        <p className={styles.subTopicNameText}>
-                                            {subData.topic_name}
-                                        </p>
-                                    </div>
 
-                                </div>
-                            ))}
+                                        {/* <-- topic name --> */}
+                                        <div className={styles.subTopicNameDiv} onClick={() => handleSidebarTopicClicked(topicIndx)}>
+                                            <p className={styles.subTopicNameText}>
+                                                {subData.topic_name}
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                ))
+
+                            }
 
                         </div>
                     </div >

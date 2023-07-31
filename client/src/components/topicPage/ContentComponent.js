@@ -22,39 +22,26 @@ import CodeBlock from "./customMarkDownComponents/CodeBlock"
 
 import mrkdwnStyles from "./customMarkDownComponents/styles/markdownCustomStyles.module.css"
 
-import { getMarkDownFile } from "../utilityFunctions/utility"
+import { setMarkDownFile } from "../utilityFunctions/getMarkdownUtilityFunction"
+
 import NoteBlock from './customMarkDownComponents/NoteBlock'
 
 
 
 
-const ContentComponent = ({ toggleSidebar }) => {
+const ContentComponent = () => {
 
     const { currentCourseData, updateCurrentCourseData } = useCourseContext();
     const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex, markDownContents } = currentCourseData;
 
-    // const [markdownContent, setMarkdownContent] = useState("");
-
-
-
-
-
-
-    useEffect(() => {
-        const courseFolder = coursesList[currentCourseData.currentCourseIndex].courseFolderName;
-        const moduleFolder = coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].moduleFolderName;
-        const topicFileName = coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].topicsList[0].topicFileName;
-
-        getMarkDownFile(courseFolder, moduleFolder, topicFileName)
-            .then((res) => {
-                // console.log(res);
-                updateCurrentCourseData('markDownContents', res);
-            })
-            .catch((error) => {
-                console.log("Error:", error);
-            });
-
-    }, [])
+    // useEffect(() => {
+    //     // if (!markDownContents) {
+    //     //     setMarkDownFile(currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex, updateCurrentCourseData)
+    //     // }
+    //     // return () => {
+    //     //     updateCurrentCourseData('markDownContents', '')
+    //     // console.log('contentComponent',currentCourseData);
+    // }, [])
 
 
 
@@ -66,21 +53,6 @@ const ContentComponent = ({ toggleSidebar }) => {
         code: CodeBlock,
         strong: strong => <StrongText textContent={strong.children} />,
         blockquote: blockquote => <NoteBlock noteContent={blockquote.children} />
-
-        // blockquote: blockquote =>
-        //     <div class="note" style={{ borderLeft: '2px solid red' }}>
-        //         <strong> Note : </strong>{blockquote.children}
-        //     </div>
-
-        // blockquote: blockquote =>
-        //     <div style={{ paddingLeft: '20px', border: '1px solid red' }} >
-        //         <blockquote class="note" style={{ borderLeft: '3px solid #367CF2', paddingLeft: '2%' }}>
-        //             <strong> Note : </strong>
-        //             <p>
-        //                 {blockquote.children}
-        //             </p>
-        //         </blockquote>
-        //     </div>
     };
 
 
@@ -89,20 +61,11 @@ const ContentComponent = ({ toggleSidebar }) => {
 
     return (
         <div className={`${styles.wrapper} `}>
-            {/* <div className={styles.showSidebarIconWrapper} >
-                <div className={styles.iconDiv} onClick={() => toggleSidebar(true)} >
-                    <SideBarShowIcon />
-                </div>
-            </div> */}
-
             <div className={styles.innerWrapper} >
-
                 <ReactMarkdown
                     children={markDownContents}
                     components={components}
                 />
-
-
             </div>
         </div >
     )

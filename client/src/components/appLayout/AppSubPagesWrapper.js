@@ -14,33 +14,48 @@ import SearchPage from '../search/SearchPage';
 const AppSubPagesWrapper = () => {
 
 
+    const { currentCourseData, updateCurrentCourseData } = useCourseContext();
+
+    const { searchResult } = currentCourseData;
 
     return (
 
         <div className={styles.appSubPageWrapperStyles}>
-            <Routes>
-                <Route path='/ss' element={
-                    <LandingPage />
-                } />
 
-                <Route path="/user/classroom" element={
-                    <MyClassroomPage />
-                } />
+            {
+                searchResult.length > 0 ?
+                    < SearchPage />
+                    :
+                    <>
+                        <Routes>
+                            <Route path='/' element={
+                                <LandingPage />
+                            } />
 
-                <Route path='/user/course' element={
-                    <CoursePage />
-                } />
+                            <Route path="/user/classroom" element={
+                                <MyClassroomPage />
+                            } />
 
-                <Route path='/user/topic' element={
-                    <TopicsPage />
-                } />
-                <Route path='/user/allcourses' element={
-                    <AllCoursePage />
-                } />
-                <Route path='/' element={<SearchPage />} />
+                            <Route path='/user/course' element={
+                                <CoursePage />
+                            } />
+
+                            <Route path='/user/topic' element={
+                                <TopicsPage />
+                            } />
+                            <Route path='/user/allcourses' element={
+                                <AllCoursePage />
+                            } />
+                        </Routes>
+
+                    </>
+
+            }
 
 
-            </Routes>
+            {/* <Route path='/' element={<SearchPage />} /> */}
+
+
         </div>
 
     )

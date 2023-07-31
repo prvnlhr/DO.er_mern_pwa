@@ -4,18 +4,25 @@ import SearchIcon from "../icons/SearchIcon"
 import { searchKeyword } from "../utilityFunctions/searchFunction"
 import { useCourseContext } from "../../appState/appContext"
 
+import { useNavigate } from 'react-router-dom'
+
 const SearchBar = ({ inSearchMode, handleSearchIconClicked, searchKey, setSearchKey }) => {
 
     const { currentCourseData, updateCurrentCourseData } = useCourseContext();
+
+
+
+    const searchForKeyword = () => {
+        const result = searchKeyword(searchKey);
+    }
 
     const handleInputChange = (event) => {
         const keyword = event.target.value;
         setSearchKey(keyword);
 
-        const result = searchKeyword(keyword);
-        // console.log(result)
-        // setSearchResult(result);
-        updateCurrentCourseData('searchResult', result);
+
+        // const result = searchKeyword(keyword);
+        // updateCurrentCourseData('searchResult', result);
     };
 
 

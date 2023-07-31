@@ -4,13 +4,8 @@ import CourseModuleCard from './CourseModuleCard'
 import { coursesList } from "../../courseData/courseData"
 import { useCourseContext } from "../../appState/appContext"
 const CourseModulesList = () => {
-    const {
-        currentCourseData,
-        setCurrentCourseData,
-    } = useCourseContext();
+    const { currentCourseData, setCurrentCourseData } = useCourseContext();
 
-    // console.log(currentCourseData)
-    // console.log(coursesList[currentCourseData.currentCourseIndex].modulesList)
     const { modulesList } = coursesList[currentCourseData.currentCourseIndex];
     return (
         <div className={styles.listComponentWrapper} >
@@ -32,7 +27,7 @@ const CourseModulesList = () => {
                         {
 
                             modulesList.map((moduleData, indx) => (
-                                <CourseModuleCard moduleData={moduleData} moduleIndex={indx} />
+                                <CourseModuleCard key={indx} moduleData={moduleData} moduleIndex={indx} />
                             ))
                         }
 

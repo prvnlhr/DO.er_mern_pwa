@@ -1,1 +1,1 @@
-## Functioin type
+## Function type

@@ -73,28 +73,28 @@ const javascriptModulesList = [
                 topicFileName: '1_arithmetic_operator'
             },
             {
-                topic_name: 'Unary operators',
+                topic_name: 'Assignment operators',
                 topicFileName: '2_assignment_operators'
             },
             {
-                topic_name: 'Assignment operators',
+                topic_name: 'Unary operators',
                 topicFileName: '3_unary_op'
             },
             {
-                topic_name: 'Logical operators',
+                topic_name: 'Comparison operators',
                 topicFileName: '4_comparision_op'
             },
             {
-                topic_name: 'Logical assignment & Nullish coalescing operator',
+                topic_name: 'Logical operators',
                 topicFileName: '5_logical_op'
             },
             {
-                topic_name: 'Exponential operator',
-                topicFileName: '6_logical_assignment_op'
+                topic_name: 'Logical assignment & Nullish coalescing operator',
+                topicFileName: '6_logical_assignment_and_coal_op'
             },
             {
-                topic_name: 'Nullish Coalescing operator',
-                topicFileName: '7_nullish_coalescing_op'
+                topic_name: 'Exponential operator',
+                topicFileName: '7_exponential_op'
             },
         ]
     },
@@ -186,10 +186,6 @@ const javascriptModulesList = [
             {
                 topic_name: 'Immediately Invoke Function Expression',
                 topicFileName: '4_iife'
-            },
-            {
-                topic_name: 'JavaScript Closures',
-                topicFileName: '5_closure'
             },
             {
                 topic_name: 'JavaScript Closures',

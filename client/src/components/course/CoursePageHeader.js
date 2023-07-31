@@ -15,11 +15,7 @@ const CoursePageHeader = () => {
   const navigate = useNavigate();
 
   const { currentCourseData } = useCourseContext();
-
-
-
-
-
+  const { currentCourseIndex } = currentCourseData;
 
   return (
     <>
@@ -32,7 +28,7 @@ const CoursePageHeader = () => {
           </div>
 
           <div className={styles.headingWrapper}>
-            <p className={styles.headingText} >{coursesList[currentCourseData.currentCourseIndex].modulesList[currentCourseData.currentCourseModuleIndex].module_title}</p>
+            <p className={styles.headingText} >{coursesList[currentCourseIndex].title}</p>
           </div>
         </div>
 
