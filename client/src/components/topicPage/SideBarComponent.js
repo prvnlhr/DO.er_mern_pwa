@@ -12,9 +12,6 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
 
     const { currentCourseData, updateCurrentCourseData } = useCourseContext();
     const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex } = currentCourseData;
-
-
-
     const [currModuleListOpenIndex, setCurrModuleListOpenIndex] = useState(null);
 
 
@@ -37,17 +34,22 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
     const handleSidebarModuleClicked = (currClickedModuleIndx) => {
 
         console.log('handleSidebarModuleClicked', currClickedModuleIndx);
+        console.log(currClickedModuleIndx, currModuleListOpenIndex);
 
         updateCurrentCourseData('currentCourseModuleIndex', currClickedModuleIndx);
 
-        if (currClickedModuleIndx === currentCourseModuleIndex) {
+        if (currClickedModuleIndx === currModuleListOpenIndex) {
+            console.log('not equal')
             setCurrModuleListOpenIndex(null);
-        } else {
+        }
+        else {
+            console.log('not equal')
             let listHeight = coursesList[currentCourseIndex].modulesList[currClickedModuleIndx].topicsList.length * 41;
             document.documentElement.style.setProperty(
                 "--listWrapperHeight",
                 `${listHeight}px`
             );
+
             setCurrModuleListOpenIndex(currClickedModuleIndx);
         }
     }
@@ -56,7 +58,6 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
     // >> --------------------------------------------------------------------------------------------
 
     const handleSidebarTopicClicked = (currClickedTopicIndx) => {
-
         // 1. Update state data for current topic clicked
         updateCurrentCourseData('currentCourseTopicIndex', currClickedTopicIndx);
 
@@ -67,10 +68,10 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
     }
 
     // >> --------------------------------------------------------------------------------------------
+
     useEffect(() => {
-        console.log('useEffect', currentCourseModuleIndex);
-        // handleSidebarModuleClicked(currentCourseModuleIndex);
-        setCurrModuleListOpenIndex(currentCourseModuleIndex)
+        console.log('usEFFECt', currentCourseModuleIndex);
+        handleSidebarModuleClicked(currentCourseModuleIndex);
     }, [])
 
 
@@ -94,12 +95,6 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
                                         {data.module_title}
                                     </p>
                                 </div>
-
-                                {/* <div className={`${styles.moduleDropDownIconDiv} ${showListIndex.has(moduleIndx) && styles.moduleDropDownIconDivRotate}`}>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6 9L12 15L18 9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </div> */}
                             </div>
 
                             <div className={`${styles.innerTopicsListWrapper} ${currModuleListOpenIndex === moduleIndx ? styles.innerTopicsListWrapperOpen : styles.innerTopicsListWrapperHideClose}`} >

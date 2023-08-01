@@ -19,13 +19,9 @@ import HighlightText from "./customMarkDownComponents/HighlightText"
 import StrongText from './customMarkDownComponents/StrongText'
 import SecondaryTitle from './customMarkDownComponents/SecondaryTitle';
 import CodeBlock from "./customMarkDownComponents/CodeBlock"
-
 import mrkdwnStyles from "./customMarkDownComponents/styles/markdownCustomStyles.module.css"
-
 import { setMarkDownFile } from "../utilityFunctions/getMarkdownUtilityFunction"
-
 import NoteBlock from './customMarkDownComponents/NoteBlock'
-
 
 
 
@@ -33,18 +29,6 @@ const ContentComponent = () => {
 
     const { currentCourseData, updateCurrentCourseData } = useCourseContext();
     const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex, markDownContents } = currentCourseData;
-
-    // useEffect(() => {
-    //     // if (!markDownContents) {
-    //     //     setMarkDownFile(currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex, updateCurrentCourseData)
-    //     // }
-    //     // return () => {
-    //     //     updateCurrentCourseData('markDownContents', '')
-    //     // console.log('contentComponent',currentCourseData);
-    // }, [])
-    // console.log(currentCourseData);
-
-
 
     const components = {
         p: p => <ParagraphBlock textContent={p.children} />,
@@ -56,9 +40,13 @@ const ContentComponent = () => {
         blockquote: blockquote => <NoteBlock noteContent={blockquote.children} />
     };
 
+    console.log(currentCourseData);
 
-
-
+    useEffect(() => {
+        if (currentCourseData.markDownContents === "") {
+            setMarkDownFile(currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex, updateCurrentCourseData);
+        }
+    }, [])
 
     return (
         <div className={`${styles.wrapper} `}>

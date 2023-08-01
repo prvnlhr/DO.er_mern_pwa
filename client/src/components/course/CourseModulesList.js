@@ -25,7 +25,6 @@ const CourseModulesList = () => {
                 <div className={styles.listWrapper} >
                     <div className={styles.listInnerWrapper} >
                         {
-
                             modulesList.map((moduleData, indx) => (
                                 <CourseModuleCard key={indx} moduleData={moduleData} moduleIndex={indx} />
                             ))
