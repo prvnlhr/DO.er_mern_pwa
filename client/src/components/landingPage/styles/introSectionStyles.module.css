@@ -149,6 +149,7 @@
     .introSectionOuterWrapper {
         width: 100%;
         height: 100%;
+        /* height: auto; */
         min-height: 100%;
         /* border: 1px solid red; */
     }
@@ -181,7 +182,7 @@
     .upperTextWrapper {
         width: 100%;
         height: 40%;
-        /* border: 1px solid red; */
+        /* border: 1px solid white; */
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -189,14 +190,17 @@
 
     .upperText {
         width: 100%;
-        font-size: 1.2rem;
         color: white;
         font-weight: 400;
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: unset;
+        font-size: 0.9rem;
+        font-size: 1.5rem;
 
+        /* font-size: clamp(0.9rem, -0.5000000000000001rem + 7.000000000000001vw, 1.6rem) !important; */
+        font-size: clamp(0.9rem, -0.29999999999999993rem + 6.0vw, 1.5rem) !important;
     }
 
     .introSpanText {
@@ -221,15 +225,19 @@
         font-size: 0.95rem;
         color: #7E8DA4;
         font-weight: 300;
+        /* font-size: 0.65rem; */
+        font-size: 1.1rem;
+        /* font-size:clamp(0.65rem , -0.04999999999999993rem + 3.4999999999999996vw, 1.0rem) !important; */
+        font-size: clamp(0.65rem, -0.2500000000000001rem + 4.500000000000001vw, 1.1rem) !important;
     }
 
     .btnWrapper {
         width: 100%;
         height: 20%;
-        /* border: 1px solid blue; */
+        /* border: 1px solid white; */
         display: flex;
         justify-content: flex-start;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .buttonDiv {
@@ -251,6 +259,11 @@
 
     .btnTextDiv p {
         font-size: 12px;
+        font-size: 0.65rem;
+        font-size: 0.8rem;
+        font-size: clamp(0.65rem, 0.35rem + 1.5000000000000002vw, 0.8rem) !important;
+        font-size:clamp(0.7rem , 0.4999999999999998rem + 1.0000000000000009vw, 0.8rem) !important;
+
         color: white;
         font-weight: 300;
     }

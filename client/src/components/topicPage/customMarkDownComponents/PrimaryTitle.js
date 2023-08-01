@@ -4,7 +4,7 @@ const PrimaryTitle = ({ primaryTitle }) => {
   return (
     <div className={styles.primaryTitleWrapper}>
       <div className={styles.indicatorContainer}>
-        <div className={styles.indicatorDiv} ></div>
+        <div className={styles.primaryTitleIndicatorDiv} ></div>
       </div>
       <div className={styles.headingTextDiv} >
         <h1 className={styles.primaryTitleText}>

@@ -160,7 +160,10 @@
     }
 
     .listHeadingDiv p {
-        font-size: 20px;
+        font-size: 1.2rem;
+        font-size: 1.7rem;
+        /* font-size: clamp(1.2rem, -0.19999999999999996rem + 6.999999999999999vw, 1.9rem) !important; */
+        font-size:clamp(1.2rem , 0.19999999999999996rem + 5.0vw, 1.7rem) !important;
         font-weight: 500;
         margin-left: 2%;
     }

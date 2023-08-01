@@ -34,7 +34,9 @@ const AppHeader = () => {
             <div className={styles.headerInnerWrapper} >
 
                 <div className={styles.appLogoWrapper} >
-                    <div className={styles.logoContainer} onClick={searchForKeyword} >
+                    <div className={styles.logoContainer} 
+                    // onClick={searchForKeyword} 
+                    >
                         <AppLogo />
                     </div>
                 </div>

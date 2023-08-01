@@ -33,17 +33,13 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
 
     const handleSidebarModuleClicked = (currClickedModuleIndx) => {
 
-        console.log('handleSidebarModuleClicked', currClickedModuleIndx);
-        console.log(currClickedModuleIndx, currModuleListOpenIndex);
 
         updateCurrentCourseData('currentCourseModuleIndex', currClickedModuleIndx);
 
         if (currClickedModuleIndx === currModuleListOpenIndex) {
-            console.log('not equal')
             setCurrModuleListOpenIndex(null);
         }
         else {
-            console.log('not equal')
             let listHeight = coursesList[currentCourseIndex].modulesList[currClickedModuleIndx].topicsList.length * 41;
             document.documentElement.style.setProperty(
                 "--listWrapperHeight",
@@ -70,11 +66,20 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
     // >> --------------------------------------------------------------------------------------------
 
     useEffect(() => {
-        console.log('usEFFECt', currentCourseModuleIndex);
         handleSidebarModuleClicked(currentCourseModuleIndex);
     }, [])
 
-
+    const container = {
+        hidden: {
+            opacity: 0,
+        },
+        show: {
+            opacity: 1,
+            transition: {
+                // staggerChildren: 10
+            }
+        }
+    };
     return (
         <AnimatePresence>
 
@@ -97,24 +102,67 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
                                 </div>
                             </div>
 
-                            <div className={`${styles.innerTopicsListWrapper} ${currModuleListOpenIndex === moduleIndx ? styles.innerTopicsListWrapperOpen : styles.innerTopicsListWrapperHideClose}`} >
+                            <motion.div className={`${styles.innerTopicsListWrapper} ${currModuleListOpenIndex === moduleIndx ? styles.innerTopicsListWrapperOpen : styles.innerTopicsListWrapperHideClose}`}
+                                // variants={{
+                                //     visible: {
+                                //         transition: {
+                                //             delayChildren: 1,
+                                //             staggerChildren: 0.1,
+                                //             ease: [0.12, 0, 0.39, 0],
+                                //         },
+                                //         opacity: 1
+                                //     },
+                                //     hidden: { opacity: 0 },
+                                // }}
+                                // animate="visible"
+                                // initial="hidden"
+                                variants={{
+                                    visible: {
+                                        opacity: 1,
+                                        transition: {
+                                            staggerChildren: 0.1,
+                                        },
+                                    },
+                                    hidden: { opacity: 1 },
+                                }}
+                                initial="hidden"
+                                animate={currModuleListOpenIndex === moduleIndx ? "visible" : "hidden"}
+
+
+                            >
                                 {currModuleListOpenIndex === moduleIndx &&
                                     data.topicsList.map((subData, topicIndx) => (
-                                        <motion.div div className={styles.subTopicElementWrapper} key={topicIndx}>
+                                        <motion.div div className={styles.subTopicElementWrapper} key={topicIndx}
+
+                                            variants={{
+                                                hidden: { opacity: 0, translateY: -30 },
+                                                visible: { opacity: 1, translateY: 0 },
+                                            }}
+
+                                            initial="hidden"
+                                            animate="visible"
+                                            exit="hidden"
+                                            transition={{
+                                                duration: 0.3,
+                                                delay: topicIndx * 0.1,
+                                                ease: [0.12, 0, 0.39, 0],
+                                            }}
+
+                                        >
                                             <div className={styles.subTopicElementIndicatorContainer} >
                                                 <div className={styles.indicatorDiv} >
                                                 </div>
                                             </div>
                                             <div className={styles.subTopicNameDiv} onClick={() => handleSidebarTopicClicked(topicIndx)}>
-                                                <motion.p className={styles.subTopicNameText}>
+                                                <p className={styles.subTopicNameText}>
                                                     {subData.topic_name}
-                                                </motion.p>
+                                                </p>
                                             </div>
                                         </motion.div>
                                     ))
                                 }
 
-                            </div>
+                            </motion.div>
                         </div >
                     ))}
                 </div >

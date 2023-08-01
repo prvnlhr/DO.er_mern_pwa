@@ -40,7 +40,6 @@ const ContentComponent = () => {
         blockquote: blockquote => <NoteBlock noteContent={blockquote.children} />
     };
 
-    console.log(currentCourseData);
 
     useEffect(() => {
         if (currentCourseData.markDownContents === "") {

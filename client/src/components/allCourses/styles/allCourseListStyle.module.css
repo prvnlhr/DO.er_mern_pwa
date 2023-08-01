@@ -68,7 +68,7 @@
     height: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     /* border: 1px solid red; */
     padding-left: 3%;
 }
@@ -78,7 +78,7 @@
     height: 90%;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     /* border: 1px solid red; */
     overflow-y: scroll;
     flex-wrap: wrap;
@@ -102,8 +102,8 @@
     }
 
     .listComponentInnerWrapper {
-        width: 90%;
-        height: 90%;
+        width: 100%;
+        height: 95%;
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: 10% 90%;
@@ -140,14 +140,17 @@
     }
 
     .listHeadingDiv p {
-        font-size: 20px;
+        font-size: 1.2rem;
+        font-size: 1.8rem;
+        font-size: clamp(1.2rem, -2.220446049250313e-16rem + 6.000000000000001vw, 1.8rem) !important;
+        font-size: clamp(1.2rem, 0.19999999999999996rem + 5.0vw, 1.7rem) !important;
         font-weight: 500;
         margin-left: 2%;
     }
 
     .listInnerWrapper {
-        width: 100%;
-        height: 90%;
+        width: 95%;
+        height: 98%;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
@@ -158,8 +161,6 @@
         gap: 0px;
         margin: 0;
         list-style-type: none;
-        padding-top: 5%;
-        padding-bottom: 20%;
         padding: unset;
         /* padding-left: 5%; */
         /* padding-right: 5%; */
@@ -167,5 +168,10 @@
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         transform: perspective(1px) translateZ(0);
         backface-visibility: hidden;
+        padding-bottom: 0%;
+        margin-top: 2%;
+        margin-left: auto;
+        margin-right: auto;
+
     }
 }

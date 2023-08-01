@@ -15,6 +15,7 @@
 .allCourseDescriptionWrapper p {
     width: 50%;
     font-size: 1rem;
+    line-height: 1.6;
     color: #7E8DA4;
     font-weight: 300;
 }
@@ -28,15 +29,20 @@
         justify-content: flex-start;
         align-items: flex-start;
         /* border: 1px solid white; */
-        padding-left: 8%;
-        padding-top: 3%;
+        padding-left: 12%;
+        padding-top: 2%;
 
     }
 
     .allCourseDescriptionWrapper p {
-        width: 90%;
-        font-size: 1rem;
+        width: 85%;
+        font-size: 0.8rem;
+        font-size: 1.1rem;
+        font-size: clamp(0.8rem, 0.19999999999999996rem + 3.0000000000000004vw, 1.1rem) !important;
+        font-size: clamp(0.7rem, -0.10000000000000031rem + 4.000000000000002vw, 1.1rem) !important;
+        /* font-size: clamp(0.7rem, 0.09999999999999987rem + 3.0000000000000004vw, 1.0rem) !important; */
         /* border: 1px solid red; */
+        font-weight: 300;
     }
 
 }

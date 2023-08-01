@@ -3,7 +3,7 @@ import styles from "./styles/searchBarStyles.module.css"
 import SearchIcon from "../icons/SearchIcon"
 import { searchKeyword } from "../utilityFunctions/searchFunction"
 import { useCourseContext } from "../../appState/appContext"
-
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'
 
 const SearchBar = ({ inSearchMode, handleSearchIconClicked, searchKey, setSearchKey }) => {
@@ -14,15 +14,12 @@ const SearchBar = ({ inSearchMode, handleSearchIconClicked, searchKey, setSearch
 
     const searchForKeyword = () => {
         const result = searchKeyword(searchKey);
+        updateCurrentCourseData('searchResult', result);
     }
 
     const handleInputChange = (event) => {
         const keyword = event.target.value;
         setSearchKey(keyword);
-
-
-        // const result = searchKeyword(keyword);
-        // updateCurrentCourseData('searchResult', result);
     };
 
 
@@ -40,6 +37,24 @@ const SearchBar = ({ inSearchMode, handleSearchIconClicked, searchKey, setSearch
                     onChange={handleInputChange}
                     placeholder="Search by topic_name"
                 />
+                <div className={inSearchMode ? styles.hitSearchArrowIconContainer : styles.hitSearchArrowIconContainerShrink} >
+                    {searchKey.length > 0 &&
+                        <motion.div className={styles.hitSearchIconDiv}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -10 }}
+                            transition={{ duration: 0.5, delay: 0 }}
+                            onClick={searchForKeyword}
+                        >
+                            <svg
+                                style={{ width: '100%' }}
+                                viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.499 14.5L17.5 10.5M17.5 10.5L13.499 6.5M17.5 10.5H4.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </motion.div>
+                    }
+
+                </div>
             </div>
 
 

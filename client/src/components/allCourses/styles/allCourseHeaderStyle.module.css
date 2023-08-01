@@ -117,7 +117,7 @@
     }
 
     .headingText {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, -0.8000000000000005rem + 10.000000000000002vw, 2.2rem) !important;
         white-space: nowrap;
         overflow-x: hidden;
         text-overflow: ellipsis;
@@ -130,14 +130,9 @@
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        /* border: 1px solid white; */
+        /* border: 1px solid red; */
         padding-left: 8%;
 
     }
 
-    .allCourseDescriptionWrapper p {
-        width: 90%;
-        font-size: 1rem;
-        /* border: 1px solid red; */
-    }
 }

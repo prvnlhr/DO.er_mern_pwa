@@ -20,6 +20,7 @@
     height: 40px;
     /* aspect-ratio: 1/1; */
     width: 40px;
+    /* width: 100px; */
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -56,6 +57,36 @@
 
 }
 
+.hitSearchArrowIconContainer {
+    height: 100%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #40597f48;
+}
+
+.hitSearchArrowIconContainerShrink {
+    height: 100%;
+    width: 0%;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hitSearchIconDiv {
+    width: 60%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid white; */
+    cursor: pointer;
+}
+
 .searchInput {
     outline: none;
     height: 100%;
@@ -79,7 +110,9 @@
 .searchInput::placeholder {
     font-weight: 400;
     color: #718199;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
+    font-size: 0.95rem;
+    font-size: clamp(0.7rem, 0.19999999999999996rem + 2.5vw, 0.95rem) !important;
 }
 
 .searchInputShrink {

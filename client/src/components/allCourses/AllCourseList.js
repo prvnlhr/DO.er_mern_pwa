@@ -24,7 +24,9 @@ const AllCourseList = () => {
                 <div className={styles.listWrapper} >
                     <div className={styles.listInnerWrapper} >
                         {coursesList.map((course, index) => (
-                            <AllCourseCard courseData={course} courseIndx={index} />
+                            <>
+                                <AllCourseCard courseData={course} courseIndx={index} />
+                            </>
                         ))}
                     </div>
                 </div>
