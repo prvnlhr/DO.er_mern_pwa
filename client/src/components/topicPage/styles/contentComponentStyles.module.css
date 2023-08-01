@@ -1,7 +1,7 @@
 .wrapper {
     width: 80%;
     height: 100%;
-    /* border: 1px solid green; */
+    border: 1px solid green;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +42,7 @@
     width: 90%;
     /* min-width: 95%; */
     height: 95%;
-    /* border: 1px solid orange; */
+    border: 1px solid orange;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
