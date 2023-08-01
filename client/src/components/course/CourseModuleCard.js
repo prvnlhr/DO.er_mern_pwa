@@ -8,21 +8,28 @@ import CourseModuleCardIcon from "../icons/CourseModuleCardIcon"
 import BookmarkIconFilled from "../icons/BookmarkIconFilled"
 import { useCourseContext } from "../../appState/appContext"
 import { coursesList } from "../../courseData/courseData"
+import { setMarkDownFile } from "../utilityFunctions/getMarkdownUtilityFunction"
+
 
 const CourseModuleCard = ({ moduleData, moduleIndex }) => {
 
   const navigate = useNavigate();
-
   const { currentCourseData, updateCurrentCourseData } = useCourseContext();
+  const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex } = currentCourseData;
 
 
   const moduleArrowLinkClicked = () => {
-  
+
     // 1. set clicked module card index
     updateCurrentCourseData('currentCourseModuleIndex', moduleIndex);
 
+
     // 2. then -> navigate to topics page
+    setMarkDownFile(currentCourseIndex, moduleIndex, 0, updateCurrentCourseData);
+
+    // 3. then -> navigate
     navigate("/user/topic")
+
   }
 
 

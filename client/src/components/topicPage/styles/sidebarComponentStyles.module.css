@@ -82,7 +82,7 @@
     display: none;
 }
 
-.moduleTopicListOuterWrapper {
+.outerModulesListWrapper {
     width: 80%;
     height: auto;
     display: flex;
@@ -91,6 +91,37 @@
     align-items: center;
     padding-top: 5%;
 
+}
+
+
+
+/* ------------------------------- */
+
+.innerTopicsListWrapper {
+    width: 90%;
+    /* height: var(--listWrapperHeight); */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+    -webkit-transition: height 0.5s ease-in-out;
+    -moz-transition: height 0.5s ease-in-out;
+    -o-transition: height 0.5s ease-in-out;
+    -ms-transition: height 0.5s ease-in-out;
+}
+
+.innerTopicsListWrapperOpen {
+    height: var(--listWrapperHeight);
+}
+
+
+.innerTopicsListWrapperHideClose {
+    height: 0px;
+    display: flex;
+    /* height: 400px; */
 }
 
 /* ------------------------------- */
@@ -142,53 +173,6 @@
 
 }
 
-/* .moduleDropDownIconDivRotate {
-    transform: rotate(180deg);
-    -webkit-transition: all 0.5s ease-out;
-    -moz-transition: all 0.5s ease-out;
-    -o-transition: all 0.5s ease-out;
-    transition: all 0.5s ease-out;
-} */
-
-/* ------------------------------- */
-
-.moduleSubTopicListWrapperShow {
-    width: 90%;
-    height: var(--listWrapperHeight);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    box-sizing: border-box;
-    overflow: hidden;
-    /* border: 1px solid black; */
-
-    transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-}
-
-.moduleSubTopicListWrapperHide {
-    width: 90%;
-    height: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    box-sizing: border-box;
-    overflow: hidden;
-    /* border: 1px solid black; */
-
-    transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-
-
-}
 
 /* _________________________ */
 

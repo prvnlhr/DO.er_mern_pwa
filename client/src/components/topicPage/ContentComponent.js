@@ -42,6 +42,7 @@ const ContentComponent = () => {
     //     //     updateCurrentCourseData('markDownContents', '')
     //     // console.log('contentComponent',currentCourseData);
     // }, [])
+    // console.log(currentCourseData);
 
 
 

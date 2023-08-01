@@ -9,6 +9,7 @@ const SearchIcon = ({ inSearchMode }) => {
 
                 <svg
                     // width="24" height="24" 
+                    style={{ width: '90%' }}
                     className={styles.searchIconStyle}
                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.0931 4.90698L4.90723 19.0929M4.90723 4.90698L19.0931 19.0929" stroke="white" stroke-width="1.80942" stroke-linecap="round" stroke-linejoin="round" />

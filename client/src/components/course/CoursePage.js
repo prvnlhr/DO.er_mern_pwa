@@ -7,12 +7,12 @@ const CoursePage = () => {
 
   const { currentCourseData, updateCurrentCourseData } = useCourseContext();
 
-  useEffect(() => {
-    console.log(currentCourseData);
-    return () => {
-      updateCurrentCourseData('markDownContents', '')
-    }
-  }, [])
+  // useEffect(() => {
+  //   // console.log(currentCourseData);
+  //   return () => {
+  //     updateCurrentCourseData('markDownContents', '')
+  //   }
+  // }, [])
 
   return (
     <div className={styles.coursePageWrapper} >
