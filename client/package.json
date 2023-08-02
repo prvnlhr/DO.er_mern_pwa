@@ -21,6 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  
+
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "pwa-asset-generator": "^6.3.1"
   }
 }

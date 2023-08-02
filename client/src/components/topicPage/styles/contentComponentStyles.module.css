@@ -1,3 +1,5 @@
+@import "../../variable.module.css";
+
 .wrapper {
     width: 80%;
     height: 100%;
@@ -7,7 +9,6 @@
     align-items: center;
     flex-direction: column;
     background-color: white;
-    /* background-color: rgba(130, 238, 224, 0.578); */
     z-index: 1;
     -webkit-transition: left 0.3s ease-out;
     -moz-transition: left 0.3s ease-out;

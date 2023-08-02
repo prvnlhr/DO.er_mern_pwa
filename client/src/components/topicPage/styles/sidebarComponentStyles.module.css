@@ -15,7 +15,7 @@
         "sidebarHeadingWrapper"
         "sidebarContentWrapper";
     z-index: 2;
-    background-color: #F6F7FC;
+    background-color: var(--app-main-bg);
     /* background-color: white !important; */
 
 

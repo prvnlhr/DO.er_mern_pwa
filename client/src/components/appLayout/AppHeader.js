@@ -5,6 +5,7 @@ import ProfileIcon from "../icons/ProfileIcon"
 import SearchBar from './SearchBar'
 import { useCourseContext } from "../../appState/appContext"
 import { searchKeyword } from "../utilityFunctions/searchFunction"
+import AppLogox from '../icons/AppLogox'
 
 const AppHeader = () => {
 
@@ -34,7 +35,7 @@ const AppHeader = () => {
             <div className={styles.headerInnerWrapper} >
 
                 <div className={styles.appLogoWrapper} >
-                    <div className={styles.logoContainer} 
+                    <div className={styles.logoContainer}
                     // onClick={searchForKeyword} 
                     >
                         <AppLogo />

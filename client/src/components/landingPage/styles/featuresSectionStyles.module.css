@@ -5,7 +5,7 @@
     height: 50%;
     min-height: 50%;
     /* border: 1px solid red; */
-    background-color: #FDF9F7;
+    background-color: var(--app-main-bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -258,7 +258,7 @@
         /* font-size: clamp(0.5rem, 0.0rem + 2.5vw, 0.75rem) !important; */
         font-size: 0.58rem;
         font-size: 0.87rem;
-        font-size:clamp(0.58rem , -1.1102230246251565e-16rem + 2.9000000000000004vw, 0.87rem) !important;
+        font-size: clamp(0.58rem, -1.1102230246251565e-16rem + 2.9000000000000004vw, 0.87rem) !important;
 
         /* font-size: clamp(0.55rem, 0.010000000000000231rem + 2.699999999999999vw, 0.82rem) !important; */
     }

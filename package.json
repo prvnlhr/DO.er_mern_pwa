@@ -12,7 +12,8 @@
     "client-install": "cd client && npm install",
     "install-all": "concurrently \"npm run server-install\" \"npm run client-install\"",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "render-postbuild": "cd client && npm install && npm run build start"
+    "render-postbuild": "cd client && npm install && npm run build start",
+    "generate-pwa-assets": "pwa-asset-generator ./client/public/assets/doer_icon.svg ./client/public/assets -i ./client/public/index.html -m ./client/public/manifest.json"
   },
   "author": "Praveen_Lohar",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "markdown-to-jsx": "^7.2.1",
     "mongoose": "^7.4.1",
     "nodemon": "^3.0.1",
+    "pwa-asset-generator": "^6.3.1",
     "react-code-blocks": "^0.1.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-markdown": "^8.0.7",
