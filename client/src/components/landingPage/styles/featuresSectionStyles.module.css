@@ -128,8 +128,8 @@
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .featuresSectionOuterWrapper {
         width: 100%;
-        height: 70%;
-        min-height: 70%;
+        height: 90%;
+        min-height: 90%;
         /* border: 1px solid red; */
     }
 
@@ -146,6 +146,7 @@
     .headingWrapper {
         width: 100%;
         height: 20%;
+        min-height: 20%;
         /* border: 1px solid black; */
         display: flex;
         justify-content: flex-start;
@@ -154,6 +155,11 @@
         padding-left: 5%;
     }
 
+    .headingWrapper p {
+        font-size: 1.3rem;
+        font-size: 2.1rem;
+        font-size: clamp(1.3rem, -0.30000000000000004rem + 8.0vw, 2.1rem) !important;
+    }
 
     .contentOuterWrapper {
         width: 100%;
@@ -163,17 +169,22 @@
         justify-content: space-evenly;
         align-items: center;
         flex-wrap: wrap;
+        /* overflow: hidden; */
     }
 
 
     .featureCardOuterWrapper {
-        aspect-ratio: 1/1.1;
-        height: 48%;
+        /* aspect-ratio: 1/1.5; */
+        height: 50%;
         /* border: 1px solid red; */
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 50%;
     }
+
+
+
 
     .featureCardInnerWrapper {
         width: 90%;
@@ -181,12 +192,11 @@
         /* border: 1px solid red; */
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 30% 20% 50%;
+        grid-template-rows: 30% 10% 60%;
         grid-template-areas:
             "cardIconWrapper"
             "cardTitleWrapper"
-            "cardDescWrapper"
-        ;
+            "cardDescWrapper";
     }
 
     .cardIconWrapper {
@@ -211,8 +221,9 @@
     .cardTitleWrapper {
         grid-area: cardTitleWrapper;
         width: 100%;
-        height: 100%;
-        /* border: 1px solid red; */
+        /* height: 100%; */
+        height: auto;
+        /* border: 1px solid springgreen; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -220,23 +231,35 @@
 
     .cardTitleWrapper p {
         color: black;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        font-size: clamp(0.9rem, 0.09999999999999998rem + 4.0vw, 1.3rem) !important;
     }
 
     .cardDescWrapper {
         grid-area: cardDescWrapper;
         width: 100%;
         height: 100%;
-        /* border: 1px solid red; */
+        /* border: 1px solid darkblue; */
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+        flex: 1;
+        padding-top: 8%;
     }
 
     .cardDescWrapper p {
         color: #718199;
-        font-size: 0.68rem;
         text-align: center;
+        line-height: 1.6;
+        /* font-size: 0.75rem; */
+        /* font-size: clamp(0.5rem, 0.0rem + 2.5vw, 0.75rem) !important; */
+        font-size: 0.58rem;
+        font-size: 0.87rem;
+        font-size:clamp(0.58rem , -1.1102230246251565e-16rem + 2.9000000000000004vw, 0.87rem) !important;
+
+        /* font-size: clamp(0.55rem, 0.010000000000000231rem + 2.699999999999999vw, 0.82rem) !important; */
     }
 }

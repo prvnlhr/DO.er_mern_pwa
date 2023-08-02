@@ -133,7 +133,6 @@
     .headingText {
         font-size: 1.5rem;
         font-size: clamp(1.2rem, -0.8000000000000005rem + 10.000000000000002vw, 2.2rem) !important;
-
         white-space: nowrap;
         overflow-x: hidden;
         text-overflow: ellipsis;

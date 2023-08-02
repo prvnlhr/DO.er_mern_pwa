@@ -10,7 +10,7 @@ const SearchTopicCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
     return (
       <div className={styles.breadCrumElementWrapper} >
         <div className={styles.breadCrumTextWrapper} >
-          <p className={innerText === 'Topic' && styles.chapterTextBlack} >{innerText}</p>
+        <p className={styles.breadCrumText} >{innerText}</p>
         </div>
         <div className={styles.breadCrumIconWrapper} >
           <div className={styles.breadCrumIconDiv} >
@@ -20,6 +20,23 @@ const SearchTopicCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
       </div>
     )
   }
+
+  const SearchKeyElement = ({ innerText }) => {
+
+    return (
+      <div className={styles.breadCrumSearchKeyElementWrapper} >
+        <div className={styles.breadCrumTextWrapper} >
+        <p className={styles.searchKeyTextBlack} >{innerText}</p>
+        </div>
+        <div className={styles.breadCrumIconWrapper} >
+          <div className={styles.breadCrumIconDiv} >
+            <BreadCrumIcon />
+          </div>
+        </div>
+      </div>
+    )
+  }
+  
   return (
     <div className={styles.searchItemWrapper} >
       <div className={styles.searchItemInnerWrapper}>
@@ -31,7 +48,7 @@ const SearchTopicCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
 
 
         <div className={styles.searchKeyValueWrapper} >
-          <BreadCrumElement innerText={'Topic'} />
+          <SearchKeyElement innerText={'Topic'} />
           <div className={styles.searchValueContainer} >
             <p>{searchItemData.topicName}</p>
           </div>

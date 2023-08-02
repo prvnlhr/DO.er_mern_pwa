@@ -72,18 +72,31 @@
     text-overflow: ellipsis;
 }
 
-
-/* ---------------------------------------------------------- */
-.sideBarToggleIconWrapper {
-    grid-area: headingWrapper;
-    width: 20%;
+.listCountContainer {
     height: 100%;
+    aspect-ratio: 1/1.5;
+    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid red; */
-    display: none;
 }
+
+.listCountDiv {
+    width: 40%;
+    aspect-ratio: 1/1;
+    background-color: var(--app-ui-scheme-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+}
+
+.listCountDiv p {
+    font-size: 0.6rem;
+    color: white;
+}
+
+/* ---------------------------------------------------------- */
 
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -96,11 +109,6 @@
         justify-content: center;
         align-items: center;
         /* border: 1px solid salmon; */
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr) auto;
-        grid-template-rows: 100%;
-        grid-template-areas:
-            "backBtnIconWrapper  headingWrapper sideBarToggleIconWrapper";
     }
 
 
@@ -133,31 +141,27 @@
     }
 
     .headingText {
-        font-size: 1.5rem;
         white-space: nowrap;
         overflow-x: hidden;
         text-overflow: ellipsis;
+        font-size: clamp(1.2rem, -0.8000000000000005rem + 10.000000000000002vw, 2.2rem) !important;
     }
 
     /* --------------------------------------------------------------------- */
-    .sideBarToggleIconWrapper {
-        grid-area: sideBarToggleIconWrapper;
-        height: 100%;
-        aspect-ratio: 1/2;
-        width: unset;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        /* border: 1px solid red; */
-    }
 
-    .iconDiv {
-        width: 70%;
+    .listCountDiv {
+        width: 35%;
         aspect-ratio: 1/1;
+        background-color: var(--app-ui-scheme-color);
         display: flex;
         justify-content: center;
         align-items: center;
-        /* border: 1px solid red; */
+        /* border-radius: 0.4rem; */
+        /* border-radius: 0.25rem; */
+        border-radius: clamp(0.25rem, -0.050000000000000044rem + 1.5000000000000002vw, 0.4rem) !important;
     }
 
+    .listCountDiv p {
+        font-size: clamp(0.5rem, -0.19999999999999996rem + 3.4999999999999996vw, 0.85rem) !important;
+    }
 }

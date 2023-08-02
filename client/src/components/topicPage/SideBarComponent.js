@@ -23,10 +23,12 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
 
 
     // >> --------------------------------------------------------------------------------------------
+ 
 
     // This function will get the markdown file and update the state with new markdwn file
     const changeTopicMarkdownFile = (topicIndx) => {
         setMarkDownFile(currentCourseIndex, currentCourseModuleIndex, topicIndx, updateCurrentCourseData);
+        // loadMarkdown(currentCourseIndex, currentCourseModuleIndex, topicIndx, updateCurrentCourseData);
     }
 
     // >> --------------------------------------------------------------------------------------------

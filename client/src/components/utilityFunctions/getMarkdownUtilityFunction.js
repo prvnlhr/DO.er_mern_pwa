@@ -1,24 +1,6 @@
 import { coursesList } from "../../courseData/courseData"
 
-// const setMarkDownFile = (currentCourseIndex = 0, currentCourseModuleIndex = 0, currentCourseTopicIndex = 0, updateCurrentCourseData) => {
 
-
-//     const courseFolder = coursesList[currentCourseIndex].courseFolderName;
-//     const moduleFolder = coursesList[currentCourseIndex].modulesList[currentCourseModuleIndex].moduleFolderName;
-//     const topicFileName = coursesList[currentCourseIndex].modulesList[currentCourseModuleIndex].topicsList[currentCourseTopicIndex].topicFileName;
-
-
-//     return import(`../../courseData/coursesMarkDown/${courseFolder}/${moduleFolder}/${topicFileName}.md`)
-//         .then(res =>
-//             fetch(res.default)
-//                 .then(response => response.text())
-//                 .then(response => updateCurrentCourseData('markDownContents', response))
-//                 .catch(err => console.log(err))
-//         );
-// };
-
-
-// export { setMarkDownFile };
 
 
 
@@ -36,11 +18,14 @@ const setMarkDownFile = async (currentCourseIndex = 0, currentCourseModuleIndex 
         console.log('already there')
         const cachedContents = markdownCache.get(cacheKey);
         updateCurrentCourseData('markDownContents', cachedContents);
+        updateCurrentCourseData('markDownIsLoading', false)
         return;
     }
 
     try {
         // Fetch the markdown file
+        updateCurrentCourseData('markDownIsLoading', true)
+
         const markdownModule = await import(`../../courseData/coursesMarkDown/${courseFolder}/${moduleFolder}/${topicFileName}.md`);
         const markdownContents = await fetch(markdownModule.default).then(response => response.text());
         // console.log(markdownContents)
@@ -50,8 +35,12 @@ const setMarkDownFile = async (currentCourseIndex = 0, currentCourseModuleIndex 
 
         // Update the state with the markdown content
         updateCurrentCourseData('markDownContents', markdownContents);
+        updateCurrentCourseData('markDownIsLoading', false)
+
     } catch (error) {
         console.error(error);
+        updateCurrentCourseData('markDownIsLoading', false)
+
     }
 };
 

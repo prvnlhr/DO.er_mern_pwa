@@ -22,6 +22,7 @@ import CodeBlock from "./customMarkDownComponents/CodeBlock"
 import mrkdwnStyles from "./customMarkDownComponents/styles/markdownCustomStyles.module.css"
 import { setMarkDownFile } from "../utilityFunctions/getMarkdownUtilityFunction"
 import NoteBlock from './customMarkDownComponents/NoteBlock'
+import SkeletonComponent from './SkeletonComponent'
 
 
 
@@ -50,10 +51,13 @@ const ContentComponent = () => {
     return (
         <div className={`${styles.wrapper} `}>
             <div className={styles.innerWrapper} >
-                <ReactMarkdown
-                    children={markDownContents}
-                    components={components}
-                />
+                {currentCourseData.markDownIsLoading ?
+                    <SkeletonComponent /> :
+                    <ReactMarkdown
+                        children={markDownContents}
+                        components={components}
+                    />
+                }
             </div>
         </div >
     )

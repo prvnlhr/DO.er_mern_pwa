@@ -26,6 +26,7 @@ const CourseModuleCard = ({ moduleData, moduleIndex }) => {
 
     // 2. then -> navigate to topics page
     setMarkDownFile(currentCourseIndex, moduleIndex, 0, updateCurrentCourseData);
+    // loadMarkdown(currentCourseIndex, moduleIndex, 0, updateCurrentCourseData);
 
     // 3. then -> navigate
     navigate("/user/topic")

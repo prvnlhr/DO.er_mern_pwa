@@ -10,6 +10,7 @@ export const CourseProvider = ({ children }) => {
         currentCourseTopicIndex: 0,
         markDownContents: ``,
         searchResult: [],
+        markDownIsLoading: false,
     });
 
     const updateCurrentCourseData = (key, value) => {

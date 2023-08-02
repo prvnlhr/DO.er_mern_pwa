@@ -26,6 +26,8 @@
 
     /* --fontWeight: 400; */
     /* font-weight: var(--fontWeight); */
+    --shimmer-color: linear-gradient(90deg, #bdcbe15d 44.18%, #E7EFFC 129.07%);
+    --shimmer-color: #EFF1F1;
 }
 
 [data-theme="dark"] {

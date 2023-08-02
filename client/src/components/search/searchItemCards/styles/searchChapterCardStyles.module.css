@@ -12,6 +12,7 @@
     align-items: center;
     border-radius: 25px;
     margin: 10px 10px 10px 10px;
+    overflow: hidden;
 }
 
 .searchItemInnerWrapper {
@@ -67,16 +68,15 @@
     align-items: center;
 }
 
-.breadCrumTextWrapper p {
+.breadCrumText {
+    font-size: var(--searchItem-font-size);
     color: #7E8DA4;
     font-weight: 400;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
-.chapterTextBlack {
-    font-weight: 600 !important;
-    font-size: var(--searchItem-font-size);
-    color: black !important;
-}
 
 
 .breadCrumIconWrapper {
@@ -98,6 +98,24 @@
     /* border: 1px solid red; */
 }
 
+/* --------------------------------------------------------- */
+.breadCrumSearchKeyElementWrapper {
+    display: flex;
+    width: auto;
+    height: 80%;
+    /* border: 1px solid red; */
+    margin-left: 10px;
+    /* overflow: hidden; */
+}
+
+.searchKeyTextBlack {
+    color: black;
+    font-weight: 500;
+    font-size: var(--searchItem-font-size);
+}
+
+
+/* --------------------------------------------------------- */
 
 /* ---------------------------------------------------------- */
 .searchKeyValueWrapper {
@@ -238,6 +256,11 @@
 /* ------------------------------------------------------------------------- */
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    :root {
+        --searchItem-font-size: clamp(0.7rem, 0.09999999999999987rem + 3.0000000000000004vw, 1.0rem) !important;
+    }
+
     .searchItemWrapper {
         /* width: 350px; */
         width: 90%;
@@ -248,10 +271,32 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 30px;
+        /* border-radius: 30px; */
         margin: 20px auto 20px auto;
-        width: 350px;
-        height: 180px;
+        /* width: 350px; */
+        /* height: 150px; */
+        width: 90%;
+        height: clamp(9.0rem, 3.0rem + 30.0vw, 12.0rem) !important;
+        border-radius: clamp(1.5rem, 0.09999999999999964rem + 7.000000000000002vw, 2.2rem) !important;
+
+    }
+
+    .breadCrumTextWrapper p {
+        font-size: var(--searchItem-font-size);
+    }
+
+    .searchKeyTextBlack {
+        font-size: var(--searchItem-font-size);
+    }
+
+
+
+    .searchValueContainer p {
+        font-size: var(--searchItem-font-size);
+    }
+
+    .infoTextContainer p {
+        font-size: var(--searchItem-font-size);
     }
 
 

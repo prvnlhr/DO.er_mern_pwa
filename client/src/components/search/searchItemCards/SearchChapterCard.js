@@ -11,7 +11,7 @@ const SearchChapterCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
     return (
       <div className={styles.breadCrumElementWrapper} >
         <div className={styles.breadCrumTextWrapper} >
-          <p className={innerText === 'Chapter' && styles.chapterTextBlack} >{innerText}</p>
+        <p className={styles.breadCrumText} >{innerText}</p>
         </div>
         <div className={styles.breadCrumIconWrapper} >
           <div className={styles.breadCrumIconDiv}  >
@@ -22,7 +22,21 @@ const SearchChapterCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
     )
   }
 
+  const SearchKeyElement = ({ innerText }) => {
 
+    return (
+      <div className={styles.breadCrumSearchKeyElementWrapper} >
+        <div className={styles.breadCrumTextWrapper} >
+          <p className={styles.searchKeyTextBlack} >{innerText}</p>
+        </div>
+        <div className={styles.breadCrumIconWrapper} >
+          <div className={styles.breadCrumIconDiv} >
+            <BreadCrumIcon />
+          </div>
+        </div>
+      </div>
+    )
+  }
 
 
 
@@ -41,7 +55,7 @@ const SearchChapterCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
 
 
         <div className={styles.searchKeyValueWrapper} >
-          <BreadCrumElement innerText={'Chapter'} />
+          <SearchKeyElement innerText={'Chapter'} />
           <div className={styles.searchValueContainer} >
             <p>{searchItemData.moduleTitle}</p>
           </div>

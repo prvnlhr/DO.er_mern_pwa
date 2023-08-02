@@ -148,6 +148,7 @@
         aspect-ratio: 1/2;
         background-color: var(--app-ui-scheme-color);
         border-radius: 0.2rem;
+        border-radius: clamp(0.15rem, -0.05000000000000002rem + 1.0vw, 0.25rem) !important;
     }
 
     .listHeadingDiv {

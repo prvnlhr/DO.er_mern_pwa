@@ -6,7 +6,8 @@ import BackBtnIcon from "../icons/BackBtnIcon"
 import { coursesList } from "../../courseData/courseData.js"
 const SearchPageHeader = () => {
     const navigate = useNavigate();
-    const { currentCourseData } = useCourseContext();
+    const { currentCourseData, setCurrentCourseData, updateCurrentCourseData } = useCourseContext();
+    const { searchResult } = currentCourseData;
     return (
 
         <div className={styles.searchPageHeaderWrapper} >
@@ -19,7 +20,14 @@ const SearchPageHeader = () => {
 
                 <div className={styles.headingWrapper}>
                     <p className={styles.headingText} >Search results</p>
+                    <div className={styles.listCountContainer} >
+                        <div className={styles.listCountDiv} >
+                            <p>{searchResult?.length}</p>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         </div>
 
