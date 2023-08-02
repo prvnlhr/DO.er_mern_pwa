@@ -1,3 +1,5 @@
+@import "../../variable.module.css";
+
 .searchListWrapper {
     width: 100%;
     height: 100%;
@@ -5,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--app-main-bg);
 }
 
 .searchListInnerWrapper {

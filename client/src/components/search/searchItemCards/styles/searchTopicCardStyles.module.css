@@ -9,6 +9,7 @@
     border-radius: 25px;
     margin: 10px 10px 10px 10px;
     overflow: hidden;
+    box-shadow: var(--list-wrapper-box-shadow);
 
 }
 

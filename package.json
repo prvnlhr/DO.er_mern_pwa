@@ -13,7 +13,7 @@
     "install-all": "concurrently \"npm run server-install\" \"npm run client-install\"",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "render-postbuild": "cd client && npm install && npm run build start",
-    "generate-pwa-assets": "pwa-asset-generator ./client/public/assets/doer_icon.svg ./client/public/assets -i ./client/public/index.html -m ./client/public/manifest.json"
+    "generate-pwa-assets": "pwa-asset-generator ./client/public/assets/doer.svg ./client/public/assets --index ./client/public/index.html --manifest ./client/public/manifest.json --background #132136 --maskable true --mstile --favicon"
   },
   "author": "Praveen_Lohar",
   "license": "ISC",
