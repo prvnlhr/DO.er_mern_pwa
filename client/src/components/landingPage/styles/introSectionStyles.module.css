@@ -162,7 +162,6 @@
     background-color: white;
     border-radius: 50%;
     cursor: pointer;
-
 }
 
 /* --------------------------------------------------------- */
@@ -275,6 +274,27 @@
         /* font-size: 1.5rem; */
         font-size: clamp(1.0rem, 0.0rem + 5.0vw, 1.5rem) !important;
         /* font-size: clamp(1.0rem, -1.0rem + 10.0vw, 2.0rem) !important; */
+    }
+
+
+    .arrowIconWrapper {
+        /* border: 1px solid red; */
+        aspect-ratio: 1/1;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .arrowIconDiv {
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 65%;
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
     }
 
     .illustrationSection {
