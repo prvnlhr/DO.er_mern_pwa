@@ -2,8 +2,8 @@
 
 .introSectionOuterWrapper {
     width: 100%;
-    height: 50%;
-    min-height: 50%;
+    height: 60%;
+    min-height: 60%;
     /* border: 1px solid red; */
     background-color: var(--sub-page-header-bg);
     display: flex;
@@ -24,20 +24,24 @@
     width: 50%;
     height: 100%;
     /* border: 1px solid red; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    /* background-color: salmon; */
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 45% 30% 25%;
+    grid-template-areas:
+        "upperTextWrapper"
+        "lowerTextWrapper"
+        "btnWrapper"
+    ;
 }
 
 .upperTextWrapper {
+    grid-area: upperTextWrapper;
     width: 100%;
-    height: 50%;
+    height: 100%;
     /* border: 1px solid red; */
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .upperText {
@@ -61,8 +65,9 @@
 
 
 .lowerTextWrapper {
+    grid-area: lowerTextWrapper;
     width: 100%;
-    height: 30%;
+    height: 100%;
     /* border: 1px solid greenyellow; */
     display: flex;
     justify-content: flex-start;
@@ -76,51 +81,93 @@
     font-weight: 300;
 }
 
+/* --------------------------------------------------------- */
 .btnWrapper {
+    grid-area: btnWrapper;
     width: 100%;
-    height: 20%;
+    height: 100%;
     /* border: 1px solid blue; */
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.buttonDiv {
-    width: 100px;
-    height: 30px;
-    border-radius: 0.4rem;
-    background-color: var(--app-ui-scheme-color);
-    display: flex;
-}
-
-.btnTextDiv {
-    width: 100%;
+.btnInnerWrapper {
+    /* border: 1px solid red; */
+    width: auto;
     height: 100%;
-    /* border: 1px solid white; */
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
 }
 
-.btnTextDiv p {
-    font-size: 12px;
-    color: white;
-    font-weight: 300;
+.btnTextWrapper {
+    display: flex;
+    width: auto;
+    height: 100%;
+    /* border: 1px solid white; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 20px;
 }
 
-.btnIconDiv {
-    /* width: 20%; */
+.exploreText {
+    color: white;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.coursesText {
+    position: relative;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 400;
+    /* border: 1px solid red; */
+}
+
+/* .courseTextSpan {
+    height: auto;
+    font-size: 1rem;
+    color: var(--app-ui-scheme-color);
+    border: 1px solid red;
+} */
+
+.coursesText::after {
+    content: "";
+    position: absolute;
+    background-color: var(--app-ui-scheme-color);
+    aspect-ratio: 1/1;
+    width: 4.5px;
+    bottom: 20%;
+    right: -9px;
+    border-radius: 50%;
+}
+
+.arrowIconWrapper {
+    /* border: 1px solid red; */
     aspect-ratio: 1/1;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid red; */
 }
 
-.btnLinkTag {
-    text-decoration: none;
+.arrowIconDiv {
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+
 }
+
+/* --------------------------------------------------------- */
+
+/* ------------------------------------------------------------------- */
 
 /* ---------------------------- */
 .illustrationSection {
@@ -164,29 +211,13 @@
         flex-direction: column;
     }
 
-
     .descriptionSection {
         width: 100%;
-        height: 50%;
+        height: 100%;
         /* border: 1px solid red; */
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-direction: column;
-        /* background-color: salmon; */
+
     }
 
-
-
-
-    .upperTextWrapper {
-        width: 100%;
-        height: 40%;
-        /* border: 1px solid white; */
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
 
     .upperText {
         width: 100%;
@@ -198,7 +229,6 @@
         overflow: unset;
         font-size: 0.9rem;
         font-size: 1.5rem;
-
         /* font-size: clamp(0.9rem, -0.5000000000000001rem + 7.000000000000001vw, 1.6rem) !important; */
         font-size: clamp(0.9rem, -0.29999999999999993rem + 6.0vw, 1.5rem) !important;
     }
@@ -211,14 +241,7 @@
 
 
 
-    .lowerTextWrapper {
-        width: 100%;
-        height: 40%;
-        /* border: 1px solid greenyellow; */
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
+
 
     .lowerText {
         width: 100%;
@@ -231,51 +254,27 @@
         font-size: clamp(0.65rem, -0.2500000000000001rem + 4.500000000000001vw, 1.1rem) !important;
     }
 
-    .btnWrapper {
-        width: 100%;
-        height: 20%;
-        /* border: 1px solid white; */
+    .btnInnerWrapper {
+        /* border: 1px solid red; */
+        width: auto;
+        height: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
     }
 
-    .buttonDiv {
-        width: 100px;
-        height: 30px;
-        border-radius: 0.4rem;
-        background-color: var(--app-ui-scheme-color);
-        display: flex;
+    .exploreText {
+        font-size: 2rem;
+        font-size: 3rem;
+        font-size: clamp(2.0rem, 0.0rem + 10.0vw, 3.0rem) !important;
+
     }
 
-    .btnTextDiv {
-        width: 100%;
-        height: 100%;
-        /* border: 1px solid white; */
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .btnTextDiv p {
-        font-size: 12px;
-        font-size: 0.65rem;
-        font-size: 0.8rem;
-        font-size: clamp(0.65rem, 0.35rem + 1.5000000000000002vw, 0.8rem) !important;
-        font-size:clamp(0.7rem , 0.4999999999999998rem + 1.0000000000000009vw, 0.8rem) !important;
-
-        color: white;
-        font-weight: 300;
-    }
-
-    .btnIconDiv {
-        /* width: 20%; */
-        aspect-ratio: 1/1;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* border: 1px solid red; */
+    .coursesText {
+        /* font-size: 2rem; */
+        /* font-size: 1.5rem; */
+        font-size: clamp(1.0rem, 0.0rem + 5.0vw, 1.5rem) !important;
+        /* font-size: clamp(1.0rem, -1.0rem + 10.0vw, 2.0rem) !important; */
     }
 
     .illustrationSection {
