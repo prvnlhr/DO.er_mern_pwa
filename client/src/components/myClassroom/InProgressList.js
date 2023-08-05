@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./styles/inProgressListStyles.module.css"
-import CourseCard from '../course/CourseCard'
+import InProgressCourseCard from './InProgressCourseCard'
 
 const InProgressList = () => {
     return (
@@ -20,15 +20,15 @@ const InProgressList = () => {
 
                 <div className={styles.listWrapper} >
                     <div className={styles.listInnerWrapper} >
-                        <CourseCard />
-                        <CourseCard />
-                        <CourseCard />
-                        <CourseCard />
-                        <CourseCard />
-                        <CourseCard />
-                        <CourseCard />
-                        <CourseCard />
-                        <CourseCard />
+                        <InProgressCourseCard />
+                        <InProgressCourseCard />
+                        <InProgressCourseCard />
+                        <InProgressCourseCard />
+                        <InProgressCourseCard />
+                        <InProgressCourseCard />
+                        <InProgressCourseCard />
+                        <InProgressCourseCard />
+                        <InProgressCourseCard />
                     </div>
                 </div>
             </div>

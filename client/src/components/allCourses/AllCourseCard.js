@@ -6,23 +6,26 @@ import TiltedArrowIcon from "../icons/TiltedArrowIcon"
 import CourseChapterIcon from "../icons/CourseChapterIcon"
 import { useCourseContext } from "../../appState/appContext"
 
+import { updateCourseState } from "../../redux/features/course/courseSlice"
+import { updateReduxState } from "../helperFunctions/reduxDispatchHelper"
+
+import { useSelector, useDispatch } from 'react-redux';
+
 const AllCourseCard = ({ courseData, courseIndx }) => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const {
-        currentCourseData,
-        updateCurrentCourseData
-    } = useCourseContext();
-
-    const { currentCourseIndex, currentCourseModuleIndex, currentCourseTopicIndex } = currentCourseData;
-
-
 
 
     const courseArrowlinkedHandleClick = () => {
 
         // first -> 1. set clicked course index
-        updateCurrentCourseData('currentCourseIndex', courseIndx)
+        updateReduxState(dispatch,
+            {
+                data: {
+                    'currentCourseIndex': courseIndx
+                }
+            }
+        )
 
         // then --> 2. navigate to course page
         navigate("/user/course")
@@ -41,7 +44,7 @@ const AllCourseCard = ({ courseData, courseIndx }) => {
                     </div>
                 </div>
                 <div className={styles.courseNameWrapper} >
-                    <p className={styles.courseNameText} >{courseData.title}</p>
+                    <p className={styles.courseNameText} >{courseData.courseName}</p>
                 </div>
                 <div className={styles.courseDescriptionWrapper} >
                     <p className={styles.courseDesText} >

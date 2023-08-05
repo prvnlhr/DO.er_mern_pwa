@@ -1,0 +1,146 @@
+@import "../../variable.module.css";
+
+.graphComponentWrapper {
+    grid-area: graphComponentWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid salmon; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background-color: var(--sub-page-header-bg);
+}
+
+.graphInnerWrapper {
+    width: 70%;
+    height: 90%;
+    /* border: 1px solid salmon; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-rows: 20% 75%;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "timeSpendingWrapper"
+        "graphWrapper"
+    ;
+    align-content: space-between;
+}
+
+.timeSpendingWrapper {
+    grid-area: timeSpendingWrapper;
+    height: 100%;
+    height: 100%;
+    /* border: 1px solid skyblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.timeSpendingElementWrapper {
+    height: 100%;
+    width: auto;
+    /* border: 1px solid skyblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.timeSpendingAttrWrapper {
+    width: auto;
+    height: 50%;
+    /* border: 1px solid springgreen; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.timeSpendingAttrWrapper p {
+    font-size: 0.8rem;
+    color: white;
+}
+
+.timeSpendingValueWrapper {
+    width: auto;
+    height: 50%;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.timeSpendingValueWrapper p {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.timeSpendingValueWrapper span {
+    font-size: 0.7rem;
+    color: #51637D;
+}
+
+/* ---------------------------------------------------------- */
+.graphWrapper {
+    grid-area: graphWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+
+    .graphComponentWrapper {
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid salmon; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .graphInnerWrapper {
+        width: 90%;
+        height: 90%;
+        /* border: 1px solid salmon; */
+        margin-bottom: 0px;
+        display: grid;
+        grid-template-rows: 20% 75%;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "timeSpendingWrapper"
+            "graphWrapper";
+        align-content: space-between;
+        margin-left: 5%;
+    }
+
+    .graphWrapper {
+        grid-area: graphWrapper;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid white; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .timeSpendingAttrWrapper p {
+        font-size: 0.9rem;
+    }
+
+
+    .timeSpendingValueWrapper p {
+        font-size: 1.5rem;
+    }
+
+    .timeSpendingValueWrapper span {
+        font-size: 0.8rem;
+    }
+
+}

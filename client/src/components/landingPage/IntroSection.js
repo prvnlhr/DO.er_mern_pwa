@@ -22,7 +22,7 @@ const IntroSection = () => {
                 <div className={styles.descriptionSection} >
                     <div className={styles.upperTextWrapper} >
                         <p className={styles.upperText}>Build your skills to advance your career path. Join the Way of <span>Digital</span> Literacy.
-                            Choose   <span className={styles.introSpanText}>Doer</span> for those who wanna  <span>do</span>. </p>
+                            Choose<span className={styles.introSpanText}> Doer</span> for those who wanna  <span className={styles.introSpanText}>do</span>. </p>
                     </div>
                     <div className={styles.lowerTextWrapper} >
                         <p className={styles.lowerText}>Choose from wide range of free tutorials ranging from web development, CSS core, Programming etc. and nourish your skills to stand out amongst the crowd.</p>

@@ -41,8 +41,8 @@ const SearchTopicCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
     <div className={styles.searchItemWrapper} >
       <div className={styles.searchItemInnerWrapper}>
         <div className={styles.breadCrumWrapper} >
-          <BreadCrumElement innerText={searchItemData.courseTitle} />
-          <BreadCrumElement innerText={searchItemData.moduleTitle} />
+          <BreadCrumElement innerText={searchItemData.courseName} />
+          <BreadCrumElement innerText={searchItemData.chapterName} />
         </div>
 
 

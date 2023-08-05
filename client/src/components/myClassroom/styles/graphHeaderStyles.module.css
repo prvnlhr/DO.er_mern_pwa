@@ -1,0 +1,109 @@
+@import "../../variable.module.css";
+
+.graphHeaderWrapper {
+    /* border: 1px solid white; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graphHeaderInnerWrapper {
+    /* border: 1px solid red; */
+    height: 90%;
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.indicatorWrapper {
+    /* border: 1px solid skyblue; */
+    height: 90%;
+    aspect-ratio: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indicatorDiv {
+    width: 40%;
+    aspect-ratio: 1/2;
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 3px;
+}
+
+.headingWrapper {
+    /* border: 1px solid springgreen; */
+    height: 90%;
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.headingWrapper p {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.productivityDurationWrapper {
+    /* border: 1px solid skyblue; */
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+}
+
+.clockIconWrapper {
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.clockIconDiv {
+    aspect-ratio: 1/1;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hoursWrapper {
+    width: auto;
+    height: 100%;
+    /* border: 1px solid springgreen; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.hoursWrapper p {
+    font-size: 1rem;
+    color: white;
+}
+
+.minutesWrapper {
+    width: auto;
+    height: 100%;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.minutesWrapper p {
+    font-size: 1rem;
+    color: white;
+}

@@ -15,7 +15,7 @@
 //         const setMarkDownFile = async () => {
 //             try {
 //                 const courseFolder = coursesList[currentCourseIndex].courseFolderName;
-//                 const moduleFolder = coursesList[currentCourseIndex].modulesList[currentCourseModuleIndex].moduleFolderName;
+//                 const moduleFolder = coursesList[currentCourseIndex].modulesList[currentCourseModuleIndex].chapterFolderName;
 //                 const topicFileName = coursesList[currentCourseIndex].modulesList[currentCourseModuleIndex].topicsList[currentTopicIndex].topicFileName;
 
 //                 const res = await import(`../../courseData/coursesMarkDown/${courseFolder}/${moduleFolder}/${topicFileName}.md`);

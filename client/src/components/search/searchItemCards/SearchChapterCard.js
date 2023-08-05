@@ -49,7 +49,7 @@ const SearchChapterCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
 
 
         <div className={styles.breadCrumWrapper} >
-          <BreadCrumElement innerText={searchItemData.courseTitle} />
+          <BreadCrumElement innerText={searchItemData.courseName} />
         </div>
 
 
@@ -57,7 +57,7 @@ const SearchChapterCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
         <div className={styles.searchKeyValueWrapper} >
           <SearchKeyElement innerText={'Chapter'} />
           <div className={styles.searchValueContainer} >
-            <p>{searchItemData.moduleTitle}</p>
+            <p>{searchItemData.chapterName}</p>
           </div>
         </div>
 

@@ -1,38 +1,68 @@
 @import "../../variable.module.css";
 
 .classroomPageStylesWrapper {
+    position: relative;
     width: 100%;
     height: 100%;
-    /* border: 1px solid black; */
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    background-color: var(--app-main-bg);
     display: grid;
-    grid-template-rows: 40% 60%;
     grid-template-columns: 100%;
+    grid-template-rows: 11% 89%;
     grid-template-areas:
-        "classroomHeaderWrapper"
-        "classroomBodyWrapper";
+        "classroomPageHeaderWrapper"
+        "classroomPageBodyWrapper"
+    ;
+}
 
+.classroomPageBodyWrapper {
+    grid-area: classroomPageBodyWrapper;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.classroomPageBodyWrapper::-webkit-scrollbar {
+    display: none;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 
     .classroomPageStylesWrapper {
+        position: relative;
         width: 100%;
         height: 100%;
-        /* border: 1px solid black; */
+        max-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid red; */
+        background-color: var(--app-main-bg);
         display: grid;
-        grid-template-rows: 100% 100%;
         grid-template-columns: 100%;
+        grid-template-rows: 11% 89%;
         grid-template-areas:
-            "classroomHeaderWrapper"
-            "classroomBodyWrapper";
+            "classroomPageHeaderWrapper"
+            "classroomPageBodyWrapper"
+        ;
+    }
+
+    .classroomPageBodyWrapper {
+        grid-area: classroomPageBodyWrapper;
+        width: 100%;
+        height: 100%;
         overflow-y: scroll;
-        overflow-x: hidden;
-
-
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
-
-    .classroomPageStylesWrapper::-webkit-scrollbar {
-        display: none;
-    }
-
 }

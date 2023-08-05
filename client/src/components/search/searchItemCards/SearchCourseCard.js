@@ -42,7 +42,7 @@ const SearchCourseCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
             <div className={styles.searchItemInnerWrapper}>
 
                 <div className={styles.breadCrumWrapper} >
-                    <BreadCrumElement innerText={searchItemData.courseTitle} />
+                    <BreadCrumElement innerText={searchItemData.courseName} />
                 </div>
 
 
@@ -50,7 +50,7 @@ const SearchCourseCard = ({ searchItemData, handleCardArrowLinkClicked }) => {
                 <div className={styles.searchKeyValueWrapper} >
                     <SearchKeyElement innerText={'Course'} />
                     <div className={styles.searchValueContainer} >
-                        <p>{searchItemData.courseTitle}</p>
+                        <p>{searchItemData.courseName}</p>
                     </div>
                 </div>
 

@@ -7,7 +7,7 @@ const MainComponent = ({ showSideBar, toggleSidebar }) => {
     return (
         <div className={`${styles.mainWrapper} ${showSideBar && styles.mainWrapperSlide}`} >
             <ContentComponent toggleSidebar={toggleSidebar} />
-            <ExploreComponent />
+            {/* <ExploreComponent /> */}
         </div>
     )
 }

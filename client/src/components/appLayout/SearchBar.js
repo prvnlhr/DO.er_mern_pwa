@@ -1,20 +1,29 @@
 import React, { useState } from 'react'
 import styles from "./styles/searchBarStyles.module.css"
 import SearchIcon from "../icons/SearchIcon"
-import { searchKeyword } from "../utilityFunctions/searchFunction"
+import { searchKeyword } from "../helperFunctions/searchHelperFunction"
 import { useCourseContext } from "../../appState/appContext"
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'
+import { updateReduxState } from "../helperFunctions/reduxDispatchHelper"
+import { useDispatch } from 'react-redux'
 
 const SearchBar = ({ inSearchMode, handleSearchIconClicked, searchKey, setSearchKey }) => {
 
-    const { currentCourseData, updateCurrentCourseData } = useCourseContext();
-
+    const dispatch = useDispatch();
 
 
     const searchForKeyword = () => {
         const result = searchKeyword(searchKey);
-        updateCurrentCourseData('searchResult', result);
+        // updateReduxState(dispatch, 'searchResultList', result);
+        updateReduxState(dispatch,
+            {
+                data: {
+                    'searchResultList': result
+                }
+            }
+
+        );
     }
 
     const handleInputChange = (event) => {
@@ -35,7 +44,7 @@ const SearchBar = ({ inSearchMode, handleSearchIconClicked, searchKey, setSearch
                     type="text"
                     value={searchKey}
                     onChange={handleInputChange}
-                    placeholder="Search by topic_name"
+                    placeholder="Search course, chapter, topic "
                 />
                 <div className={inSearchMode ? styles.hitSearchArrowIconContainer : styles.hitSearchArrowIconContainerShrink} >
                     {searchKey.length > 0 &&

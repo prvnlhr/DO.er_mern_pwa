@@ -1,0 +1,346 @@
+@import "../../variable.module.css";
+
+.statsComponentWrapper {
+    grid-area: statsComponentWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--sub-page-header-bg);
+}
+
+.statsInnerWrapper {
+    width: 95%;
+    height: 90%;
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 100%;
+    grid-template-areas:
+        "userInfoWrapper infoElementWrapper";
+}
+
+/* ------------------------------------------------------------------------------------------ */
+.userInfoWrapper {
+    grid-area: userInfoWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+
+.userInfoInnerWrapper {
+    width: 90%;
+    height: 35%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "userAvatarWrapper userNameWrapper"
+        "userAvatarWrapper userLocationWrapper";
+    /* border: 1px solid gray; */
+}
+
+.userAvatarWrapper {
+    grid-area: userAvatarWrapper;
+    aspect-ratio: 1/1;
+    height: 100%;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatarDiv {
+    position: relative;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    width: 80%;
+    /* border: 1px solid white; */
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.avatarDiv img {
+    width: 100%;
+    height: 100%;
+
+}
+
+.userNameWrapper {
+    grid-area: userNameWrapper;
+    flex: 1;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.userNameWrapper p {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.userLocationWrapper {
+    grid-area: userLocationWrapper;
+    flex: 1;
+    height: 100%;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.userLocationWrapper p {
+    color: #718199;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+.infoElementWrapper {
+    grid-area: infoElementWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* border: 1px solid red; */
+
+}
+
+.infoElementInnerWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    /* border: 1px solid orange; */
+}
+
+.infoElementContainer {
+    width: 45%;
+    height: 35%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "infoIconWrapper infoValueWrapper"
+        "infoIconWrapper infoAttrWrapper";
+    /* margin-right: 10px; */
+    /* border: 1px solid skyblue; */
+}
+
+
+.infoIconWrapper {
+    grid-area: infoIconWrapper;
+    height: 100%;
+    aspect-ratio: 1/1.3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid springgreen; */
+}
+
+.infoIconDiv {
+    aspect-ratio: 1/1;
+    width: 85%;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.infoValueWrapper {
+    grid-area: infoValueWrapper;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    /* border: 1px solid springgreen; */
+}
+
+.infoValueWrapper p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+}
+
+.infoAttrWrapper {
+    grid-area: infoAttrWrapper;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid orange; */
+}
+
+.infoAttrWrapper p {
+    font-size: 0.8rem;
+    color: #718199;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .statsComponentWrapper {
+        grid-area: statsComponentWrapper;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--sub-page-header-bg);
+    }
+
+    .statsInnerWrapper {
+        width: 90%;
+        height: 90%;
+        /* border: 1px solid white; */
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 40% 60%;
+        grid-template-areas:
+            "userInfoWrapper"
+            "infoElementWrapper";
+    }
+
+
+    /* -------------------------------------------------------------- */
+    .userInfoWrapper {
+        grid-area: userInfoWrapper;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid springgreen; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+    }
+
+    .userInfoInnerWrapper {
+        width: 90%;
+        height: 90%;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-rows: 50% 50%;
+        grid-template-areas:
+            "userAvatarWrapper userNameWrapper"
+            "userAvatarWrapper userLocationWrapper";
+        /* border: 1px solid gray; */
+    }
+
+    .userNameWrapper {
+        grid-area: userNameWrapper;
+        flex: 1;
+        height: 100%;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        padding-left: 5%;
+    }
+
+    .avatarDiv {
+        width: 70%;
+        /* border: 1px solid white; */
+    }
+
+
+    .userLocationWrapper {
+        grid-area: userLocationWrapper;
+        flex: 1;
+        height: 100%;
+        /* border: 1px solid orange; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 5%;
+    }
+
+    .userNameWrapper p {
+        color: white;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .userLocationWrapper p {
+        color: #718199;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    /* -------------------------------------------------------------- */
+
+    .infoElementWrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid yellow; */
+    }
+
+    .infoElementInnerWrapper {
+        width: 90%;
+        height: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-between;
+        flex-wrap: wrap;
+        /* border: 1px solid orange; */
+    }
+
+    .infoElementContainer {
+        width: 45%;
+        height: 45%;
+        /* border: 1px solid red; */
+        margin: 0;
+    }
+
+    .infoIconDiv {
+        width: 80%;
+    }
+
+    .infoValueWrapper {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        /* border: 1px solid red; */
+    }
+
+    .infoAttrWrapper {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    .infoValueWrapper p {
+        font-size: 1rem;
+        font-weight: 500;
+        color: white;
+    }
+
+    .infoAttrWrapper p {
+        font-size: 0.7rem;
+        color: #718199;
+    }
+}

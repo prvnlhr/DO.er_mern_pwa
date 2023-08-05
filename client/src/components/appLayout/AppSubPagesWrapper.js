@@ -6,24 +6,24 @@ import CoursePage from "../course/CoursePage"
 import TopicsPage from "../topicPage/TopicsPage"
 import LandingPage from '../landingPage/LandingPage';
 import AllCoursePage from "../allCourses/AllCoursesPage"
-import { useCourseContext } from '../../appState/appContext';
-import { CourseProvider } from '../../appState/appContext';
-import SearchPage from '../search/SearchPage';
 
+import SearchPage from '../search/SearchPage';
+import { useSelector } from 'react-redux'
 
 const AppSubPagesWrapper = () => {
 
 
-    const { currentCourseData, updateCurrentCourseData } = useCourseContext();
 
-    const { searchResult } = currentCourseData;
+
+    const currentCourseState = useSelector((state) => state.course.currentCourseState);
+    const { searchResultList } = currentCourseState;
 
     return (
 
         <div className={styles.appSubPageWrapperStyles}>
 
             {
-                searchResult.length > 0 ?
+                searchResultList.length > 0 ?
                     < SearchPage />
                     :
                     <>

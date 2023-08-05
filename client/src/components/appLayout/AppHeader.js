@@ -4,10 +4,15 @@ import AppLogo from "../icons/AppLogo"
 import ProfileIcon from "../icons/ProfileIcon"
 import SearchBar from './SearchBar'
 import { useCourseContext } from "../../appState/appContext"
-import { searchKeyword } from "../utilityFunctions/searchFunction"
+import { searchKeyword } from "../helperFunctions/searchHelperFunction"
 import AppLogox from '../icons/AppLogox'
 
+import { updateReduxState } from "../helperFunctions/reduxDispatchHelper"
+import { useDispatch } from 'react-redux'
+import { addNewUser } from "../../redux/features/auth/authSlice"
 const AppHeader = () => {
+
+    const dispatch = useDispatch();
 
     const [inSearchMode, setInSearchMode] = useState(false);
     const [searchKey, setSearchKey] = useState('');
@@ -17,27 +22,26 @@ const AppHeader = () => {
     const handleSearchIconClicked = () => {
         setInSearchMode(!inSearchMode);
         setSearchKey('');
-        updateCurrentCourseData('searchResult', [])
+        updateReduxState(dispatch, 'searchResultList', []);
 
     }
 
-    const searchForKeyword = () => {
-        const result = searchKeyword(searchKey);
-        updateCurrentCourseData('searchResult', result);
+
+    const addUserTODB = () => {
+        console.log('addNewUser')
+        dispatch(addNewUser({
+            name: 'Praveen Lohar',
+            phoneNumber: 8619993453
+        }));
     }
-
-
 
 
     return (
         <div className={styles.appHeaderStylesWrapper} >
 
             <div className={styles.headerInnerWrapper} >
-
                 <div className={styles.appLogoWrapper} >
-                    <div className={styles.logoContainer}
-                    // onClick={searchForKeyword} 
-                    >
+                    <div className={styles.logoContainer} onClick={addUserTODB} >
                         <AppLogo />
                     </div>
                 </div>

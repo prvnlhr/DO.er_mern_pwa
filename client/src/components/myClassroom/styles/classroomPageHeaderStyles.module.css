@@ -1,0 +1,106 @@
+@import "../../variable.module.css";
+
+.classroomPageHeaderWrapper {
+    grid-area: classroomPageHeaderWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid darkblue; */
+    background-color: var(--sub-page-header-bg);
+}
+
+.headerInnerWrapper {
+    width: 97%;
+    height: 100%;
+    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 100%;
+    grid-template-areas:
+        "backBtnIconWrapper  headingWrapper";
+}
+
+.backBtnIconWrapper {
+    grid-area: backBtnIconWrapper;
+    height: 100%;
+    aspect-ratio: 1/3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.backBtnIconDiv {
+    width: 70%;
+    aspect-ratio: 1/3;
+    height: unset !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.headingWrapper {
+    grid-area: headingWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0%;
+    overflow-x: hidden;
+}
+
+.headingText {
+    font-size: 1.9rem;
+    font-weight: 500;
+    color: white;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+
+    .headerInnerWrapper {
+        width: 90%;
+        height: 100%;
+        position: sticky;
+    }
+
+    .backBtnIconWrapper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .backBtnIconDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .headingWrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 0%;
+    }
+
+    .headingText {
+        font-size: 1.2rem;
+        font-size: 2.2rem;
+        font-size: clamp(1.2rem, -0.8000000000000005rem + 10.000000000000002vw, 2.2rem) !important;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+}

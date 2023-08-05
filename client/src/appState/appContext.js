@@ -14,6 +14,7 @@ export const CourseProvider = ({ children }) => {
     });
 
     const updateCurrentCourseData = (key, value) => {
+        // console.log('update State', key)
         setCurrentCourseData((prevState) => ({
             ...prevState,
             [key]: value

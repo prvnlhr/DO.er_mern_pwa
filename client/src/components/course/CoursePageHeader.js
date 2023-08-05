@@ -28,7 +28,7 @@ const CoursePageHeader = () => {
           </div>
 
           <div className={styles.headingWrapper}>
-            <p className={styles.headingText} >{coursesList[currentCourseIndex].title}</p>
+            <p className={styles.headingText} >{coursesList[currentCourseIndex].courseName}</p>
           </div>
         </div>
 
@@ -46,7 +46,7 @@ const CoursePageHeader = () => {
               <div className={styles.infoElementOuterWrapper} >
                 <div className={styles.infoElementWrapper} >
                   <div className={styles.infoIconWrapper} >
-                    {/* <OverviewStreakIcon /> */}
+                    {/* <StreakStatIcon /> */}
                     <div className={styles.infoIconDiv}>
                       <CourseChapterIcon />
                     </div>
@@ -56,7 +56,7 @@ const CoursePageHeader = () => {
                   </div>
                   <div className={styles.infoValueWrapper} >
                     <p className={styles.infoValueText} >
-                      {coursesList[currentCourseData.currentCourseIndex].modulesList.length}
+                      {coursesList[currentCourseData.currentCourseIndex].chaptersList.length}
                     </p>
 
                   </div>

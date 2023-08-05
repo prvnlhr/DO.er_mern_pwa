@@ -1,0 +1,324 @@
+@import "../../variable.module.css";
+
+
+.chapterOuterWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1.2;
+    height: 80%;
+    /* margin-left: 2%; */
+    /* margin-right: 2%; */
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: var(--list-wrapper-box-shadow);
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chapterWrapper {
+    width: 80%;
+    min-width: 80%;
+    height: 85%;
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+    border-radius: 20px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    /* grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); */
+    grid-template-rows: minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+        "moduleLogoWrapper chapterTextWrapper chapterTextWrapper chapterTextWrapper chapterTextWrapper chapterTimeWrapper chapterTimeWrapper chapterBookmarkWrapper"
+        "chapterTopicNameWrapper chapterTopicNameWrapper chapterTopicNameWrapper chapterTopicNameWrapper chapterTopicNameWrapper chapterTopicNameWrapper chapterTopicNameWrapper chapterTopicNameWrapper"
+        "chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chapterArrowLinkWrapper chapterArrowLinkWrapper"
+        "chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chapterArrowLinkWrapper chapterArrowLinkWrapper"
+        "chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chaptersTopicListWrapper chapterArrowLinkWrapper chapterArrowLinkWrapper"
+    ;
+
+
+    box-sizing: border-box;
+}
+
+
+.moduleLogoWrapper {
+    grid-area: moduleLogoWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.chapterTextWrapper {
+    position: relative;
+    grid-area: chapterTextWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid greenyellow; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chapterTextWrapper::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    aspect-ratio: 1/1;
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 50%;
+    right: 5%;
+}
+
+.chapterText {
+    font-size: 10px;
+    color: #7E8DA4;
+    font-weight: 500;
+}
+
+.chapterTimeWrapper {
+    grid-area: chapterTimeWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid blueviolet; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.chapterTimeText {
+    font-size: 8px;
+    color: #7E8DA4;
+    font-weight: 500;
+}
+
+.chapterBookmarkWrapper {
+    grid-area: chapterBookmarkWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chapterTopicNameWrapper {
+    grid-area: chapterTopicNameWrapper;
+    width: 95%;
+    height: 100%;
+    /* border: 1px solid peru; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2%;
+}
+
+.chapterTopicNameText {
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #7e8da493;
+}
+
+
+/* ---------------------------------- */
+
+.chaptersTopicListWrapper {
+    grid-area: chaptersTopicListWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid pink; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+
+}
+
+.topicListContainer {
+    width: 95%;
+    height: 90%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding-bottom: 5%;
+}
+
+.topicListContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.topicElementContainer {
+    width: 100%;
+    height: auto;
+    /* min-height: 15%; */
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 8%;
+    margin-bottom: 8%;
+
+    /* margin-top: 10%; */
+    /* margin-bottom: 10%; */
+}
+
+.topicElementIndicatorContainer {
+    position: relative;
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+.topicElementIndicatorDiv {
+    width: 40%;
+    aspect-ratio: 1/2;
+    /* height: 65%; */
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 0.05rem;
+    /* margin-right: 2%; */
+
+}
+
+.topicElementIndicatorContainer::before {
+    content: "";
+    position: absolute;
+    width: 0.1rem;
+    background-color: #7e8da47f;
+    /* background-color: red; */
+    height: 90%;
+    top: -100%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+
+.topicElementTextDiv {
+    width: 90%;
+    height: 100%;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: hidden;
+    padding-left: 5%;
+}
+
+.topicElementNameText {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: #7E8DA4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+/* ---------------------------------- */
+
+.chapterArrowLinkWrapper {
+    grid-area: chapterArrowLinkWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid cyan; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.tiltedIconDiv {
+    width: 100%;
+    /* height: 50%; */
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: #CBE7FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0%;
+    cursor: pointer;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+
+    .chapterOuterWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: unset;
+        min-width: unset;
+        margin-left: 5%;
+        margin-right: 5%;
+        border-radius: 25px;
+        background-color: white;
+        box-shadow: var(--list-wrapper-box-shadow);
+        box-sizing: border-box;
+        border-radius: clamp(1.5rem, 0.2999999999999998rem + 6.000000000000001vw, 2.1rem) !important;
+
+    }
+
+    .chapterTextWrapper {
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid greenyellow; */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 5%;
+    }
+
+    .chapterText {
+        font-size: 0.55rem;
+        font-size: 0.75rem;
+        /* font-size: clamp(0.5rem, 0.10000000000000009rem + 1.9999999999999998vw, 0.7rem) !important; */
+        font-size: clamp(0.55rem, 0.15000000000000013rem + 1.9999999999999998vw, 0.75rem) !important;
+        font-weight: 500;
+    }
+
+    .chapterTimeText {
+        font-size: 0.55rem;
+        font-size: 0.75rem;
+        /* font-size: clamp(0.5rem, 0.10000000000000009rem + 1.9999999999999998vw, 0.7rem) !important; */
+        font-size: clamp(0.55rem, 0.15000000000000013rem + 1.9999999999999998vw, 0.75rem) !important;
+        font-weight: 500;
+    }
+
+    .chapterTopicNameText {
+        font-size: 0.8rem;
+        font-size: 1.4rem;
+        font-size: clamp(0.7rem, -0.5000000000000002rem + 6.000000000000001vw, 1.3rem) !important;
+        font-size: clamp(0.8rem, -0.3999999999999997rem + 5.999999999999998vw, 1.4rem) !important;
+
+        font-weight: 500;
+        margin-left: 1%;
+    }
+
+    .topicElementNameText {
+        font-size: 0.7rem;
+        font-size: 0.9rem;
+        /* font-size: clamp(0.6rem, 0.19999999999999984rem + 2.000000000000001vw, 0.8rem) !important; */
+        font-size: clamp(0.7rem, 0.2999999999999998rem + 2.000000000000001vw, 0.9rem) !important;
+
+
+        font-weight: 300;
+    }
+}
