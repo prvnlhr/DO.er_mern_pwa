@@ -6,9 +6,12 @@ import JavaScriptLogo from '../icons/JavaScriptLogo'
 import TiltedArrowIcon from '../icons/TiltedArrowIcon'
 import CourseModuleCardIcon from "../icons/CourseModuleCardIcon"
 import BookmarkIconFilled from "../icons/BookmarkIconFilled"
+import BookmarkIcon from "../icons/BookmarkIcon"
 import { useCourseContext } from "../../appState/appContext"
 import { coursesList } from "../../courseData/courseData"
 import { setMarkDownFile } from "../helperFunctions/setMarkDownHelperFunction"
+
+import { addCourseBookmark } from "../../redux/features/course/courseSlice"
 
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,7 +25,12 @@ const CourseChapterCard = ({ chapterData, chapterIndex }) => {
 
 
   const currCourseState = useSelector((state) => state.course.currentCourseState);
-  const { currentCourseIndex, currentChapterIndex, currentTopicIndex } = currCourseState || {};
+  const authState = useSelector((state) => state.auth);
+  const { userId } = authState;
+
+  const { currentCourseIndex, bookmarkedChapters, currentChapterIndex, currentTopicIndex } = currCourseState || {};
+
+
 
   const moduleArrowLinkClicked = () => {
 
@@ -38,11 +46,22 @@ const CourseChapterCard = ({ chapterData, chapterIndex }) => {
   }
 
 
+  const handleBookmarkIconClicked = () => {
+    dispatch(addCourseBookmark({
+      user_id: userId,
+      courseIndx: currentCourseIndex,
+      chapterIndx: chapterIndex
+    }));
+  }
+
+
   return (
     <div className={styles.chapterOuterWrapper} >
       <div className={styles.chapterWrapper}>
         <div className={styles.moduleLogoWrapper} >
-          <CourseModuleCardIcon />
+          <div className={styles.moduleLogoIconDiv} >
+            <CourseModuleCardIcon />
+          </div>
         </div>
         <div className={styles.chapterTextWrapper} >
           <p className={styles.chapterText} >
@@ -53,7 +72,13 @@ const CourseChapterCard = ({ chapterData, chapterIndex }) => {
           <p className={styles.chapterTimeText}  >{chapterData.time_required}</p>
         </div>
         <div className={styles.chapterBookmarkWrapper} >
-          <BookmarkIconFilled />
+
+          <div className={styles.bookmarkIconDiv} onClick={handleBookmarkIconClicked}  >
+            {bookmarkedChapters && bookmarkedChapters[currentCourseIndex] && bookmarkedChapters[currentCourseIndex].includes(chapterIndex) ?
+              <BookmarkIconFilled /> :
+              <BookmarkIcon />
+            }
+          </div>
         </div>
         <div className={styles.chapterTopicNameWrapper} >
           <p className={styles.chapterTopicNameText}  >{chapterData.chapterName}</p>

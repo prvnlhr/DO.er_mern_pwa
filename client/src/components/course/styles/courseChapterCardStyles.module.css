@@ -27,7 +27,6 @@
 
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-    /* grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); */
     grid-template-rows: minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
     grid-template-areas:
         "moduleLogoWrapper chapterTextWrapper chapterTextWrapper chapterTextWrapper chapterTextWrapper chapterTimeWrapper chapterTimeWrapper chapterBookmarkWrapper"
@@ -49,6 +48,14 @@
     /* border: 1px solid red; */
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+}
+
+.moduleLogoIconDiv {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -93,9 +100,9 @@
 
 
 .chapterTimeText {
-    font-size: 8px;
+    font-size: 0.55rem;
     color: #7E8DA4;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .chapterBookmarkWrapper {
@@ -106,6 +113,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.bookmarkIconDiv {
+    width: 70%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .chapterTopicNameWrapper {

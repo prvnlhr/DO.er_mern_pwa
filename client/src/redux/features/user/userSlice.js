@@ -8,16 +8,14 @@ const initialState = {
     phoneNumer: '',
 }
 
-export const getUser = createAsyncThunk("user/getUser", async ({ }, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
-
+export const getUserData = createAsyncThunk("user/getUser", async (userId, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        const res = await api.getUserData();
+        const res = await api.getUserData(userId);
         return fulfillWithValue(res.data);
     } catch (error) {
         const errorMessage = error?.response.data.msg
         return rejectWithValue({ errorMessage });
     }
-
 });
 
 
@@ -25,7 +23,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: initialState,
     extraReducers: (builder) => {
-        builder.addCase(getUser.fulfilled, (state, action) => {
+        builder.addCase(getUserData.fulfilled, (state, action) => {
             return {
                 ...state,
 

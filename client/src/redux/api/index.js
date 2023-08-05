@@ -24,10 +24,15 @@ export const addNewUser = (name, phoneNumber) =>
     API.post("/api/user/addUser", { name, phoneNumber }
     );
 
-export const getUserData = () =>
-    API.get("/api/user/getUser");
+export const getUserData = (userId) =>
+    API.get(`/api/user/getUser"/${userId}`);
 
 export const updateTimeSpent = (data) =>
     API.post("/api/course/updateTimeSpent", data);
+
+
+
+export const updateCourseBookmarks = (data) =>
+    API.post("/api/course/addBookmark", data);
 
 

@@ -13,7 +13,7 @@ const initialState = {
         completedCourses: {},
         completedChapters: {},
         completedTopics: {},
-
+        bookmarkedChapters: {},
     }
 }
 
@@ -43,17 +43,36 @@ export const markTopicProgress = createAsyncThunk('course/progress', async ({ us
     }
 })
 
+export const addCourseBookmark = createAsyncThunk('course/bookmarChapter', async ({ user_id, courseIndx, chapterIndx }, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
+    try {
+        console.log(user_id, courseIndx, chapterIndx);
+        const reqData = {
+            user_id,
+            courseIndx,
+            chapterIndx
+        }
+        const res = await api.updateCourseBookmarks(reqData);
+        console.log(res.data);
+        return fulfillWithValue(res.data);
+    } catch (error) {
+        const errorMessage = error?.response.data.msg
+        return rejectWithValue({ errorMessage });
+    }
+})
+
+
 
 export const getCourseData = createAsyncThunk('course/getData', async (user_id, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        // console.log(user_id);
+
         const res = await api.getCourseData(user_id);
-        // console.log(res.data);
         const courseProgressData = {
             completedCourses: res.data.completedCourses,
             completedChapters: res.data.completedChapters,
             completedTopics: res.data.completedTopics,
+            bookmarkedChapters: res.data.bookmarkedChapters,
         }
+        console.log(courseProgressData);
         return fulfillWithValue(courseProgressData);
     } catch (error) {
         const errorMessage = error?.response.data.msg
@@ -109,6 +128,18 @@ const courseSlice = createSlice({
                         ...state.currentCourseState,
                         ...action.payload
                     },
+                }
+
+            })
+            .addCase(addCourseBookmark.fulfilled, (state, action) => {
+                console.log(action.payload);
+                return {
+                    ...state,
+                    currentCourseState: {
+                        ...state.currentCourseState,
+                        bookmarkedChapters: action.payload
+                    },
+
                 }
 
             })

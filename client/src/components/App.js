@@ -5,6 +5,7 @@ import AppSubPagesWrapper from "./appLayout/AppSubPagesWrapper"
 import { CourseProvider } from "../appState/appContext"
 import { verifyAuthentication } from "../redux/features/auth/authSlice"
 import { getCourseData } from "../redux/features/course/courseSlice"
+import { getUserData } from "../redux/features/user/userSlice"
 import { useDispatch, useSelector } from 'react-redux'
 import { updateTimeSpent } from "../redux/features/course/timeSpentSlice"
 const App = () => {

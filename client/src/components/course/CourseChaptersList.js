@@ -3,10 +3,15 @@ import styles from "./styles/courseChaptersListStyles.module.css"
 import CourseChapterCard from './CourseChapterCard'
 import { coursesList } from "../../courseData/courseData"
 import { useCourseContext } from "../../appState/appContext"
+import { useSelector } from 'react-redux'
 const CourseChaptersList = () => {
-    const { currentCourseData, setCurrentCourseData } = useCourseContext();
 
-    const { chaptersList } = coursesList[currentCourseData.currentCourseIndex];
+
+    const courseDataState = useSelector((state) => state.course.currentCourseState);
+
+    const { currentCourseIndex, bookmarkedChapters } = courseDataState;
+    const { chaptersList } = coursesList[currentCourseIndex];
+
     return (
         <div className={styles.listComponentWrapper} >
 

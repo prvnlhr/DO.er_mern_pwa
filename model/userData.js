@@ -17,7 +17,11 @@ const currentCourseProgressStateSchema = new mongoose.Schema({
     completedTopics: {
         type: Object,
         default: {}
-    }
+    },
+    bookmarkedChapters: {
+        type: Object, // Object to store bookmarked chapters data
+        default: {}, // Default value is an empty object
+    },
 });
 
 
