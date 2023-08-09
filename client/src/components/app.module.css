@@ -49,9 +49,18 @@ body::-webkit-scrollbar {
     "appHeaderStylesWrapper"
     "appSubPageWrapperStyles";
   box-sizing: border-box;
+  z-index: 1;
 }
 
-
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: rgba(10, 10, 10, 0.45);
+  backdrop-filter: blur(16.5px);
+  -webkit-backdrop-filter: blur(16.5px);
+}
 
 .appInnerwrapper::-webkit-scrollbar {
   display: none;

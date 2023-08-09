@@ -24,7 +24,7 @@ const OtpInputComponent = () => {
                 setTimer((prevTimer) => prevTimer - 1);
             }, 1000);
         } else if (timer === 0) {
-            updateLocalAuthState('showResendOtpBtn', true);
+            // updateLocalAuthState('showResendOtpBtn', true);
         }
 
         return () => {

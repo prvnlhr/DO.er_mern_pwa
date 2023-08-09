@@ -1,70 +1,45 @@
 .authComponentWrapper {
     position: absolute;
-    width: 280px;
-    height: 350px;
+    width: 300px;
+    aspect-ratio: 1/1.3;
     background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    margin-left: auto;
-    margin-right: auto;
+    z-index: 3;
     left: 0;
     right: 0;
-    top: 0;
-    bottom: 0;
-    margin-top: 40%;
-    margin-bottom: auto;
-    /* border-radius: 30px; */
-    flex-direction: column;
-}
-
-.closeBtnWrapper {
-    width: 97%;
-    height: 10%;
-    border: 1px solid orange;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 10px;
-}
-
-.closeBtnWrapper div {
-    width: auto;
-    height: 30px;
-    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #40597f48;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    border-radius: 3rem;
 }
 
-.authComponentInnerWrapper {
-    width: 97%;
+.authComponentFormWrapper {
+    width: 80%;
     height: 90%;
+    /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-radius: 30px; */
-    overflow: hidden;
-    border: 1px solid red;
-    flex-direction: column;
 }
 
-.closeBtnDiv {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    padding-right: 10px;
-}
 
-.closeBtnDiv p {
-    font-family: 'Poppins';
-    font-weight: 600;
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .authComponentWrapper {
+        position: absolute;
+        width: 85%;
+        aspect-ratio: 1/1.3;
+        background-color: white;
+        z-index: 3;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3rem;
+    }
 }

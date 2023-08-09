@@ -1,51 +1,365 @@
-.otpComponentWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid red;
-    background-color: white;
-    flex-direction: column;
+.otpFormGrid {
+    display: grid;
+    width: 100%;
+    height: 90%;
+    /* border: 1px solid red; */
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 5% 5% 25% 35% 5% 20%;
+    grid-template-rows: 14% 14% 14% 14% 14% 14%;
+    grid-template-rows: 14% auto auto auto auto 14%;
+    grid-template-rows: 10% 15% 15% auto 15% 15%;
+    grid-template-areas:
+        "headingCell headingCell "
+        "emailAddressCell emailAddressCell"
+        "messageCell messageCell"
+        "inputCell inputCell"
+        "timerCell resendCell"
+        "submitBtnCell submitBtnCell"
+    ;
+    align-content: flex-start;
+    row-gap: 2%;
+}
+
+.headingCell {
+    grid-area: headingCell;
     width: 100%;
     height: 100%;
-}
-
-.otpInputWrapper {
-    width: 100%;
-    height: 50%;
-    border: 1px solid springgreen;
+    /* border: 1px solid skyblue; */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    flex-direction: column;
 }
 
-.otpResendWrapper {
-    width: 100%;
-    height: 50%;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.OtpResendBtnComponentDiv {
-    width: auto;
-    height: 30px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #40597f48;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.OtpResendBtnComponentDiv p {
-    text-decoration: none;
-    color: #002A9A;
-    font-size: 0.8rem;
+.headingCell p {
+    font-size: 1.6rem;
     font-weight: 500;
+    white-space: normal;
+    color: black;
+}
+
+
+
+/* ____________________________________________________________________ */
+
+.emailAddressCell {
+    grid-area: emailAddressCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid darkblue; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.emailMessageText {
+    font-size: 0.7rem;
+    white-space: normal;
+    color: #7E8DA4;
+    font-weight: 500;
+}
+
+.emailText {
+    font-size: 0.7rem;
+    white-space: normal;
+    color: black;
+    font-weight: 500;
+}
+
+/* _____________________________________________________________ */
+.messageCell {
+    grid-area: messageCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid seagreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageWrapper {
+    height: 55%;
+    width: auto;
+    display: flex;
+    overflow: hidden;
+    max-width: 90%;
+    padding-left: 2%;
+    padding-right: 3%;
+    /* border: 1px solid red; */
+    border-radius: 0.4rem;
+}
+
+.messageIconContainer {
+    height: 100%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageIconDiv {
+    width: 60%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+.messageTextContainer {
+    width: auto;
+    height: 100%;
+    /* border: 1px solid darkblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.messageTextContainer p {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    /* border: 1px solid blue; */
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.errorBackGround {
+    background-color: #FECDCA;
+}
+
+.successBackGround {
+    background-color: #A6F4C5;
+}
+
+.successText {
+    color: #039855;
+}
+
+.errorText {
+    color: #D92D20;
+}
+
+/* _____________________________________________________________- */
+.inputCell {
+    grid-area: inputCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid salmon; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.optInputContainer {
+    aspect-ratio: 1/1;
+    width: 20%;
+    background-color: #E0EAFF;
+    border-radius: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.otpInput {
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.otpActiveInput {
+    border: 0.15rem solid #9E77ED;
+    border-radius: 0.8rem;
+}
+
+.otpInput::selection {
+    background-color: transparent;
+}
+
+
+/* ---------------------------------------------------------------------- */
+.timerCell {
+    grid-area: timerCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid darkcyan; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+}
+
+.timeDiv {
+    height: 50%;
+    aspect-ratio: 1/1;
+    background-color: #E0EAFF;
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeText {
+    font-size: 0.7rem;
+    color: #002A9A;
+    font-weight: 600;
+}
+
+.timeColonDiv {
+    height: 50%;
+    aspect-ratio: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeExpireBackGround {
+    background-color: #FECDCA;
+}
+
+.timeExpireText {
+    color: #D92D20;
+}
+
+.timeColonDiv p {
+    font-weight: 600;
+}
+
+
+/* -------------------------------------------------------------------------------------- */
+.resendCell {
+    grid-area: resendCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid darkcyan; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 0%;
+}
+
+.optResendBtn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid red; */
+    width: auto;
+    height: 60%;
+    background-color: transparent;
+}
+
+.optResendBtn:focus {
+    outline: 2px solid #9E77ED;
+    border-radius: 0.3rem;
+}
+
+.otpResendTextContainer {
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.otpResendTextContainer p {
+    font-size: 0.7rem;
+    color: #9E77ED;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.optResendIconContainer {
+    height: 100%;
+    aspect-ratio: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.optResendIconDiv {
+    width: 80%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ------------------------------------------------------------ */
+.submitBtnCell {
+    grid-area: submitBtnCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid darkblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btnWrapper {
+    width: auto;
+    height: 80%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.btnTextContainer {
+    width: auto;
+    height: 100%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.btnTextContainer p {
+    font-size: 1.3rem;
+    color: black;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.btnTextContainer span {
+    color: #7E8DA4;
+    font-weight: 500;
+}
+
+.btnIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid black; */
+}
+
+.submitBtn {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E0EAFF;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+
+.submitBtn:focus {
+    outline: 2px solid #9E77ED;
 }

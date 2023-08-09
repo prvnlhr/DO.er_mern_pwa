@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./styles/signUpComponentStyles.module.css"
-import 'react-phone-number-input/style.css'; // Import the CSS for react-phone-number-input
-import PhoneInput from 'react-phone-number-input';
 
 import { useDispatch, useSelector } from 'react-redux'
 import { userSignUpAsync } from "../../redux/features/auth/authSlice"
 import { useLocalAuthContext } from "../../appState/localAuthContext"
 
-
+import FullNameIcon from "./formIcons/FullNameIcon"
+import EmailIcon from "./formIcons/EmailIcon"
+import CountryIcon from "./formIcons/CountryIcon"
+import ButtonArrowIcon from "./formIcons/ButtonArrowIcon"
+import ErrorIcon from "./formIcons/ErrorIcon"
+import SuccessIcon from "./formIcons/SuccessIcon"
 
 const SignUpComponent = () => {
 
@@ -19,7 +22,7 @@ const SignUpComponent = () => {
     const authState = useSelector((state) => state.auth);
     const { message, isLoading } = authState || {};
 
-
+    const [currFocusField, setCurrFocusField] = useState(undefined);
 
     const [signUpFormData, setSignUpFormData] = useState({
         fullName: 'Praveen Lohar',
@@ -43,43 +46,118 @@ const SignUpComponent = () => {
         updateLocalAuthState('showSignInForm', true);
     }
 
+    const setFocus = (val) => {
+        setCurrFocusField(val)
+    }
+
+    const handleSubmitBtnClicked = () => {
+        console.log('clicked');
+    }
+    const isError = false;
+    // const isError = true;
+
     return (
-        <div className={styles.formWrapper}>
-            <div className={styles.signUpFormWrapper}>
-                <p>{message}</p>
-                <input
-                    placeholder="Full name"
-                    name='fullName'
-                    value={signUpFormData.fullName}
-                    onChange={handleSignUpFormDataChange}
-                />
+        <div className={styles.signUpFormGrid}>
+            <div className={styles.authMessageCell}>
 
-                <input
-                    id=""
-                    type='email'
-                    placeholder="Email address"
-                    name='emailAddress'
-                    value={signUpFormData.emailAddress}
-                    onChange={handleSignUpFormDataChange}
-                />
-
-
-                <input
-                    placeholder="Country"
-                    name='country' value={signUpFormData.country}
-                    onChange={handleSignUpFormDataChange}
-                />
-
-
-                <div className={styles.submitBtnDiv} onClick={handleFormSubmitBtnClicked}>
-                    {isLoading
-                        ?
-                        <p>Loading...</p>
-                        :
-                        <p>Sign Up</p>
-                    }
+                <div className={`${styles.messageWrapper} ${isError ? styles.errorBackGround : styles.successBackGround}`} >
+                    <div className={styles.messageIconContainer} >
+                        <div className={styles.messageIconDiv} >
+                            {/* <ErrorIcon /> */}
+                            <SuccessIcon />
+                        </div>
+                    </div>
+                    <div className={styles.messageTextContainer} >
+                        <p className={`${styles.messageText} ${isError ? styles.errorText : styles.successText}`}>
+                            Account with this email Already exists
+                        </p>
+                    </div>
                 </div>
-                <p className={styles.toggleLinkText} onClick={handleToggleFormLinkClicked}>Already Registered ? Sign In</p>
+            </div>
+
+
+            <div className={styles.fullNameCell}>
+                <div className={`${styles.inputGrid} ${currFocusField === 1 && styles.inputGridActive}`}>
+                    <div className={styles.iconCell} >
+                        <div className={styles.iconDiv} >
+                            <FullNameIcon />
+                        </div>
+                    </div>
+                    <div className={styles.labelCell} >
+                        <p className={styles.labelText} >FULL NAME</p>
+                    </div>
+                    <div className={styles.inputCell} >
+                        <input
+                            className={styles.formInput}
+                            value={'Andrew Garfield'}
+                            onFocus={() => setFocus(1)}
+                        />
+                    </div>
+                </div>
+            </div>
+
+
+            <div className={styles.emailAddressCell}>
+                <div className={`${styles.inputGrid} ${currFocusField === 2 && styles.inputGridActive}`}>
+                    <div className={styles.iconCell} >
+                        <div className={styles.iconDiv} >
+                            <EmailIcon />
+                        </div>
+                    </div>
+                    <div className={styles.labelCell} >
+                        <p className={styles.labelText} >EMAIL ADDRESS</p>
+                    </div>
+                    <div className={styles.inputCell} >
+                        <input
+                            className={styles.formInput}
+                            value={'andrew.garf@gmail.com'}
+                            onFocus={() => setFocus(2)}
+                        />
+                    </div>
+                </div>
+            </div>
+
+
+            <div className={styles.countryCell}>
+                <div className={`${styles.inputGrid} ${currFocusField === 3 && styles.inputGridActive}`}   >
+                    <div className={styles.iconCell} >
+                        <div className={styles.iconDiv} >
+                            <CountryIcon />
+                        </div>
+                    </div>
+                    <div className={styles.labelCell} >
+                        <p className={styles.labelText} >COUNTRY</p>
+                    </div>
+                    <div className={styles.inputCell} >
+                        <input
+                            className={styles.formInput}
+                            value={'United Kingdom'}
+                            onFocus={() => setFocus(3)}
+                        />
+                    </div>
+                </div>
+            </div>
+
+
+            <div className={styles.buttonCell}>
+                <div className={styles.btnWrapper} >
+                    <div className={styles.btnTextContainer} >
+                        <p>Sign<span>Up</span></p>
+                    </div>
+                    <div className={styles.btnIconContainer} >
+                        <button className={styles.submitBtn}
+                            onFocus={() => setFocus(4)}
+                            onClick={handleSubmitBtnClicked}
+                        >
+
+                            <ButtonArrowIcon />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div className={styles.bottomLinkCell}>
+                <p>Already Registered ? <span>SignIn</span></p>
             </div>
         </div>
     )

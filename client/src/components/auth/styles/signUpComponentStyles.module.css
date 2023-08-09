@@ -1,76 +1,310 @@
-.formWrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: skyblue; */
-}
+@import "../../variable.module.css";
 
-.signUpFormWrapper {
+.signUpFormGrid {
     width: 100%;
     height: 100%;
-    border: 1px solid darkred;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    /* border: 1px solid salmon; */
+    display: grid;
+    grid-template-columns: 100%;
+    /* grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); */
+    grid-template-rows: 16% 16% 16% 16% 16% 16%;
+    grid-template-rows: 15% 20% 20% 20% 15% 10%;
+    grid-template-areas:
+        "authMessageCell"
+        "fullNameCell"
+        "emailAddressCell"
+        "countryCell"
+        "buttonCell"
+        "bottomLinkCell"
+    ;
+    box-sizing: border-box;
     align-content: space-between;
 }
 
-.toggleLinkText {
-    font-size: 0.7rem;
-    color: black;
-    text-decoration: underline;
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
-
-input {
-    outline: none;
-    border: none;
-    background-color: #E7EFFC;
-    width: 70%;
-    height: 40px;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-.submitBtnDiv {
-    width: auto;
-    height: 30px;
-    border-radius: 5px;
+/* ________________________________________________________________________________________________________________________________ */
+.authMessageCell {
+    grid: authMessageCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #40597f48;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
-.submitBtnDiv p {
-    text-decoration: none;
-    color: #002A9A;
-    font-size: 0.8rem;
+.messageWrapper {
+    height: 45%;
+    width: auto;
+    display: flex;
+    overflow: hidden;
+    max-width: 90%;
+    padding-left: 0%;
+    padding-right: 3%;
+    /* border: 1px solid red; */
+    border-radius: 0.4rem;
+}
+
+.messageIconContainer {
+    height: 100%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageIconDiv {
+    width: 50%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageTextContainer {
+    width: auto;
+    height: 100%;
+    /* border: 1px solid darkblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.messageTextContainer p {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    /* border: 1px solid blue; */
+    font-weight: 500;
+    font-size: 0.6rem;
+}
+
+
+.errorBackGround {
+    background-color: #FECDCA;
+}
+
+.successBackGround {
+    background-color: #A6F4C5;
+}
+
+.successText {
+    color: #039855;
+}
+
+.errorText {
+    color: #D92D20;
+}
+
+/* ________________________________________________________________________________________________________________________________ */
+
+.fullNameCell {
+    grid: fullNameCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emailAddressCell {
+    grid: emailAddressCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid seagreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.countryCell {
+    grid: countryCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid orangered; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonCell {
+    grid: buttonCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid skyblue; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+.bottomLinkCell {
+    grid: bottomLinkCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid springgreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottomLinkCell p {
+    font-size: 0.6rem;
+    color: black;
+}
+
+.bottomLinkCell span {
+    color: #9E77ED;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* ________________________________________________________________________________ */
+
+.inputGrid {
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "iconCell labelCell"
+        "iconCell inputCell"
+    ;
+    background-color: #E7EFFC;
+    border-radius: 0.8rem;
+}
+
+.inputGridActive {
+    border: 2px solid #9E77ED;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+.iconCell {
+    grid-area: iconCell;
+    height: 100%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconDiv {
+    width: 40%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+.labelCell {
+    grid-area: labelCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid darkblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.labelText {
+    font-size: 0.7rem;
+    color: #7E8DA4;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+.inputCell {
+    grid-area: inputCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid springgreen; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.formInput {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    /* border: 1px solid red; */
+    color: black;
+    font-size: 0.7rem;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.formInput::selection {
+    background-color: transparent;
+}
+
+/* ________________________________________________________________________________________________ */
+
+.btnWrapper {
+    width: auto;
+    height: 80%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.btnTextContainer {
+    width: auto;
+    height: 100%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnTextContainer p {
+    font-size: 1.5rem;
+    color: black;
     font-weight: 500;
 }
 
-.closeFormBtnDiv {
-    width: auto;
-    height: 20px;
-    border-radius: 5px;
+.btnTextContainer span {
+    color: #7E8DA4;
+    font-weight: 500;
+}
+
+.btnIconContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #40597f48;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    height: 100%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid black; */
 }
+
+.submitBtn {
+    width: 70%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E0EAFF;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+
+.submitBtn:focus {
+    outline: 2px solid #9E77ED;
+}
+
+/* ________________________________________________________________________________ */

@@ -27,25 +27,11 @@ const AuthComponent = () => {
 
   return (
     <div className={styles.authComponentWrapper} >
-      <div className={styles.closeBtnWrapper} onClick={handleFormCloseBtnClicked}>
-        <div>x</div>
-      </div>
-      <div className={styles.authComponentInnerWrapper} >
 
-        {
-          localAuthData.showOtpComponent && (otpEmailSent === 'sent' || resentOtpEmailSent === 'sent')
-            ?
-            <OtpComponent />
-            :
-            (
-              localAuthData.showSignInForm
-                ?
-                <SignInComponent />
-                :
-                <SignUpComponent />
-            )
-        }
-
+      <div className={styles.authComponentFormWrapper} >
+        {/* <SignUpComponent /> */}
+        {/* <SignInComponent /> */}
+        <OtpComponent />
       </div>
     </div>
   );
