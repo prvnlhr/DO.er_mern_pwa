@@ -14,7 +14,6 @@ const TopicHeaderComponent = ({ toggleSidebar }) => {
   const currCourseState = useSelector((state) => state.course.currentCourseState);
   const { currentCourseIndex, currentChapterIndex, currentTopicIndex } = currCourseState;
 
-  const { currentCourseData, setCurrentCourseData, updateCurrentCourseData } = useCourseContext();
 
   return (
     <div className={styles.headerWrapper}  >

@@ -8,7 +8,6 @@ import SearchPageHeader from "./SearchPageHeader";
 import SearchPageBody from "./SearchPageBody"
 const SearchPage = () => {
     const navigate = useNavigate();
-    const { currentCourseData } = useCourseContext();
 
     return (
         <div className={styles.searchPageWrapper} >

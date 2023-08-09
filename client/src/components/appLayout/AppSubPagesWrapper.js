@@ -9,15 +9,12 @@ import AllCoursePage from "../allCourses/AllCoursesPage"
 
 import SearchPage from '../search/SearchPage';
 import { useSelector } from 'react-redux'
+import RequireAuth from '../protectedRoutes/RequireAuth';
 
 const AppSubPagesWrapper = () => {
 
-
-
-
     const currentCourseState = useSelector((state) => state.course.currentCourseState);
     const { searchResultList } = currentCourseState;
-
     return (
 
         <div className={styles.appSubPageWrapperStyles}>
@@ -33,7 +30,9 @@ const AppSubPagesWrapper = () => {
                             } />
 
                             <Route path="/user/classroom" element={
-                                <MyClassroomPage />
+                                <RequireAuth>
+                                    <MyClassroomPage />
+                                </RequireAuth>
                             } />
 
                             <Route path='/user/course' element={
@@ -46,6 +45,7 @@ const AppSubPagesWrapper = () => {
                             <Route path='/user/allcourses' element={
                                 <AllCoursePage />
                             } />
+
                         </Routes>
 
                     </>
@@ -53,7 +53,6 @@ const AppSubPagesWrapper = () => {
             }
 
 
-            {/* <Route path='/' element={<SearchPage />} /> */}
 
 
         </div>

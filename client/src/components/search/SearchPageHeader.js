@@ -11,8 +11,6 @@ const SearchPageHeader = () => {
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
-    const { currentCourseData, setCurrentCourseData, updateCurrentCourseData } = useCourseContext();
-    const { searchResult } = currentCourseData;
 
     const currentCourseState = useSelector((state) => state.course.currentCourseState);
     const { searchResultList } = currentCourseState;

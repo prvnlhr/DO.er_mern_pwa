@@ -16,7 +16,7 @@ const userController = {
             res.status(201).json(newUser);
         } catch (error) {
             console.error("Error while adding a new user:", error);
-            res.status(500).json({ error: "Failed to add a new user." });
+            res.status(500).json({ errorMsg: "Failed to add a new user." });
         }
     },
 
@@ -30,7 +30,7 @@ const userController = {
             res.status(201).json(user);
         } catch (error) {
             console.error("Error while adding a new user:", error);
-            res.status(500).json({ error: "Failed to add a new user." });
+            res.status(500).json({ errorMsg: "Failed to add a new user." });
         }
     },
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import styles from "./styles/courseChaptersListStyles.module.css"
 import CourseChapterCard from './CourseChapterCard'
 import { coursesList } from "../../courseData/courseData"
@@ -11,6 +11,7 @@ const CourseChaptersList = () => {
 
     const { currentCourseIndex, bookmarkedChapters } = courseDataState;
     const { chaptersList } = coursesList[currentCourseIndex];
+    const [currChapterShowSpinnerIndex, setCurrChapterShowSpinnerIndex] = useState();
 
     return (
         <div className={styles.listComponentWrapper} >
@@ -31,7 +32,12 @@ const CourseChaptersList = () => {
                     <div className={styles.listInnerWrapper} >
                         {
                             chaptersList.map((chapterData, indx) => (
-                                <CourseChapterCard key={indx} chapterData={chapterData} chapterIndex={indx} />
+                                <CourseChapterCard
+                                    key={indx}
+                                    chapterData={chapterData}
+                                    chapterIndex={indx}
+                                    currChapterShowSpinnerIndex={currChapterShowSpinnerIndex}
+                                    setCurrChapterShowSpinnerIndex={setCurrChapterShowSpinnerIndex} />
                             ))
                         }
 

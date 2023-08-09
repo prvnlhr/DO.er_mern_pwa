@@ -5,16 +5,18 @@ import * as api from "../../api/index"
 const initialState = {
     userId: '',
     username: '',
-    phoneNumer: '',
 }
 
-export const getUserData = createAsyncThunk("user/getUser", async (userId, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
+export const getUserDataAsync = createAsyncThunk("user/getUserData", async (token, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        const res = await api.getUserData(userId);
+        const res = await api.getUserDataRequest(token);
         return fulfillWithValue(res.data);
     } catch (error) {
-        const errorMessage = error?.response.data.msg
-        return rejectWithValue({ errorMessage });
+        console.error('Error:', error?.response?.data);
+        const { errorMsg, actualError } = error?.response?.data;
+        return rejectWithValue({
+            errorMsg: errorMsg || 'unknown msg'
+        });
     }
 });
 
@@ -23,13 +25,26 @@ const userSlice = createSlice({
     name: 'user',
     initialState: initialState,
     extraReducers: (builder) => {
-        builder.addCase(getUserData.fulfilled, (state, action) => {
-            return {
-                ...state,
+        builder
 
-            }
+            .addCase(getUserDataAsync.pending, (state, action) => {
+                return {
+                    ...state,
+                }
 
-        })
+            })
+            .addCase(getUserDataAsync.fulfilled, (state, action) => {
+                return {
+                    ...state,
+                }
+
+            })
+            .addCase(getUserDataAsync.rejected, (state, action) => {
+                return {
+                    ...state,
+                }
+
+            })
 
     }
 

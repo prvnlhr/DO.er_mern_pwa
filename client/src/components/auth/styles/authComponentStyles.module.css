@@ -1,0 +1,70 @@
+.authComponentWrapper {
+    position: absolute;
+    width: 280px;
+    height: 350px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-top: 40%;
+    margin-bottom: auto;
+    /* border-radius: 30px; */
+    flex-direction: column;
+}
+
+.closeBtnWrapper {
+    width: 97%;
+    height: 10%;
+    border: 1px solid orange;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.closeBtnWrapper div {
+    width: auto;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #40597f48;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.authComponentInnerWrapper {
+    width: 97%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 30px; */
+    overflow: hidden;
+    border: 1px solid red;
+    flex-direction: column;
+}
+
+.closeBtnDiv {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    padding-right: 10px;
+}
+
+.closeBtnDiv p {
+    font-family: 'Poppins';
+    font-weight: 600;
+}

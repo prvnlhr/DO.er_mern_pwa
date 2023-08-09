@@ -27,8 +27,7 @@ export const CourseProvider = ({ children }) => {
                 currentCourseData,
                 setCurrentCourseData,
                 updateCurrentCourseData
-            }}
-        >
+            }}>
             {children}
         </CourseContext.Provider>
     );

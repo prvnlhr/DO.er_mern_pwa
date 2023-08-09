@@ -4,6 +4,7 @@ import * as api from "../../api/index"
 
 const initialState = {
     currentCourseState: {
+        isLoading: false,
         currentCourseIndex: 0,
         currentChapterIndex: 0,
         currentTopicIndex: 0,
@@ -14,15 +15,43 @@ const initialState = {
         completedChapters: {},
         completedTopics: {},
         bookmarkedChapters: {},
+        dailyTimeSpent: {
+            0: 0,
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+            6: 0,
+        },
+
     }
 }
 
-export const markTopicProgress = createAsyncThunk('course/progress', async ({ user_id, courseIndx, chapterIndx, topicIndx }, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
-    try {
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+export const updateDailyTimeSpentAsync = createAsyncThunk('course/updateDailyTimeSpentInDB', async ({ dayOfWeek, timeSpent }, { getState, fulfillWithValue, rejectWithValue }) => {
+    try {
+        const response = await api.updateDailyTimeSpentRequest(dayOfWeek, timeSpent);
+        return fulfillWithValue(response.data);
+
+    } catch (error) {
+        const errorMessage = error?.response.data.msg
+        const { errorMsg, actualError } = error?.response?.data;
+        return rejectWithValue({
+            errorMsg: errorMsg || 'unknown msg'
+        });
+    }
+});
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+export const markTopicCompletionAsync = createAsyncThunk('course/progress', async ({ user_id, courseIndx, chapterIndx, topicIndx }, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
+    try {
         const numCourses = coursesList.length;
         const numChapterInCourse = coursesList[courseIndx].chaptersList.length;
         const numTopicsInChapter = coursesList[courseIndx].chaptersList[chapterIndx].topicsList.length;
+
+        console.log(user_id, courseIndx, chapterIndx, topicIndx);
 
         const reqData = {
             user_id: user_id,
@@ -33,52 +62,59 @@ export const markTopicProgress = createAsyncThunk('course/progress', async ({ us
             numChaptersInCourse: numChapterInCourse,
             numTopicsInChapter: numTopicsInChapter
         }
-        const res = await api.updateCourseProgress(reqData);
+        const res = await api.markTopicCompletionRequest(reqData);
         const { completedCourses, completedChapters, completedTopics } = res.data.currentCourseState;
         const newData = { completedCourses, completedChapters, completedTopics }
         return fulfillWithValue(newData);
+        // return fulfillWithValue({});
     } catch (error) {
         const errorMessage = error?.response.data.msg
-        return rejectWithValue({ errorMessage });
+        const { errorMsg, actualError } = error?.response?.data;
+        return rejectWithValue({
+            errorMsg: errorMsg || 'unknown msg'
+        });
     }
 })
 
-export const addCourseBookmark = createAsyncThunk('course/bookmarChapter', async ({ user_id, courseIndx, chapterIndx }, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+export const bookmarkCourseAsync = createAsyncThunk('course/bookmarChapter', async ({ accessToken, courseIndx, chapterIndx }, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        console.log(user_id, courseIndx, chapterIndx);
+        // console.log(user_id, courseIndx, chapterIndx);
         const reqData = {
-            user_id,
-            courseIndx,
-            chapterIndx
+            courseIndx, chapterIndx
         }
-        const res = await api.updateCourseBookmarks(reqData);
-        console.log(res.data);
+        const res = await api.bookmarkCourseRequest(accessToken, reqData);
+        // console.log(res.data);
         return fulfillWithValue(res.data);
     } catch (error) {
         const errorMessage = error?.response.data.msg
-        return rejectWithValue({ errorMessage });
+        const { errorMsg, actualError } = error?.response?.data;
+        return rejectWithValue({
+            errorMsg: errorMsg || 'unknown msg'
+        });
     }
 })
 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-export const getCourseData = createAsyncThunk('course/getData', async (user_id, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
+export const getCourseDataAsync = createAsyncThunk('course/getCourseData', async (token, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
 
-        const res = await api.getCourseData(user_id);
-        const courseProgressData = {
-            completedCourses: res.data.completedCourses,
-            completedChapters: res.data.completedChapters,
-            completedTopics: res.data.completedTopics,
-            bookmarkedChapters: res.data.bookmarkedChapters,
-        }
-        console.log(courseProgressData);
-        return fulfillWithValue(courseProgressData);
+        const res = await api.getUserDataRequest(token);
+        console.log(res.data.courseData.currentCourseState);
+        const { currentCourseState } = res?.data.courseData;
+        return fulfillWithValue(currentCourseState);
     } catch (error) {
         const errorMessage = error?.response.data.msg
-        return rejectWithValue({ errorMessage });
+        const { errorMsg, actualError } = error?.response?.data;
+        return rejectWithValue({
+            errorMsg: errorMsg || 'unknown msg at getCourseDataAsync'
+        });
     }
 })
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 const courseSlice = createSlice({
     name: 'course',
@@ -86,6 +122,7 @@ const courseSlice = createSlice({
     reducers: {
         updateCourseState: (state, action) => {
             const { data } = action.payload;
+            console.log(data);
 
             if (data) {
                 return {
@@ -97,11 +134,28 @@ const courseSlice = createSlice({
                 }
             }
         },
+        updateDailyTimeSpent: (state, action) => {
+            console.log(action.payload);
+            return {
+                ...state,
+                currentCourseState: {
+                    ...state.currentCourseState,
+                    ...action.payload
+                }
+            };
+        },
+        resetTimeSpent: (state) => {
+            return {
+                ...state,
+                dailyTimeSpent: initialState.dailyTimeSpent,
+            };
+        },
+
     },
     extraReducers: (builder) => {
 
         builder
-            .addCase(markTopicProgress.fulfilled, (state, action) => {
+            .addCase(markTopicCompletionAsync.fulfilled, (state, action) => {
                 // console.log(action.payload);
                 return {
                     ...state,
@@ -111,8 +165,7 @@ const courseSlice = createSlice({
                     },
                 }
             })
-            .addCase(markTopicProgress.rejected, (state, action) => {
-                // console.log(action.payload);
+            .addCase(markTopicCompletionAsync.rejected, (state, action) => {
                 return {
                     ...state,
                     currentCourseState: {
@@ -120,7 +173,7 @@ const courseSlice = createSlice({
                     },
                 }
             })
-            .addCase(getCourseData.fulfilled, (state, action) => {
+            .addCase(getCourseDataAsync.fulfilled, (state, action) => {
 
                 return {
                     ...state,
@@ -131,22 +184,65 @@ const courseSlice = createSlice({
                 }
 
             })
-            .addCase(addCourseBookmark.fulfilled, (state, action) => {
-                console.log(action.payload);
+            .addCase(getCourseDataAsync.rejected, (state, action) => {
+
                 return {
                     ...state,
                     currentCourseState: {
                         ...state.currentCourseState,
-                        bookmarkedChapters: action.payload
+                        ...action.payload
+                    },
+                }
+
+            })
+            .addCase(bookmarkCourseAsync.fulfilled, (state, action) => {
+                return {
+                    ...state,
+                    currentCourseState: {
+                        ...state.currentCourseState,
+                        bookmarkedChapters: action.payload,
+                        isLoading: false
                     },
 
                 }
 
             })
+            .addCase(bookmarkCourseAsync.pending, (state, action) => {
+                return {
+                    ...state,
+                    currentCourseState: {
+                        ...state.currentCourseState,
+                        isLoading: true
+                    },
+
+                }
+
+            })
+            .addCase(bookmarkCourseAsync.rejected, (state, action) => {
+                return {
+                    ...state,
+                    currentCourseState: {
+                        ...state.currentCourseState,
+                        isLoading: false
+                    },
+
+                }
+
+            })
+            .addCase(updateDailyTimeSpentAsync.fulfilled, (state, action) => {
+                return {
+                    ...state,
+
+                }
+            })
+            .addCase(updateDailyTimeSpentAsync.rejected, (state, action) => {
+                // Handle the rejected case if needed
+                console.log('Error updating time spent in database:', action.error.message);
+            });
 
     }
 })
 
 
-export const { updateCourseState, markTopicComplete } = courseSlice.actions;
+export const { updateDailyTimeSpent, resetTimeSpent, updateCourseState, markTopicComplete } = courseSlice.actions;
 export default courseSlice.reducer;

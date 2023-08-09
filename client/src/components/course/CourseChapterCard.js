@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
 import styles from "./styles/courseChapterCardStyles.module.css"
@@ -11,24 +11,28 @@ import { useCourseContext } from "../../appState/appContext"
 import { coursesList } from "../../courseData/courseData"
 import { setMarkDownFile } from "../helperFunctions/setMarkDownHelperFunction"
 
-import { addCourseBookmark } from "../../redux/features/course/courseSlice"
+import { bookmarkCourseAsync } from "../../redux/features/course/courseSlice"
 
 
 import { useSelector, useDispatch } from 'react-redux';
 import { updateReduxState } from "../helperFunctions/reduxDispatchHelper"
+import Spinner from '../icons/Spinner'
 
 
-const CourseChapterCard = ({ chapterData, chapterIndex }) => {
+const CourseChapterCard = ({ chapterData, chapterIndex, currChapterShowSpinnerIndex, setCurrChapterShowSpinnerIndex }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
 
+
+
   const currCourseState = useSelector((state) => state.course.currentCourseState);
   const authState = useSelector((state) => state.auth);
-  const { userId } = authState;
 
-  const { currentCourseIndex, bookmarkedChapters, currentChapterIndex, currentTopicIndex } = currCourseState || {};
+  const { userId, accessToken } = authState;
+
+  const { isLoading, currentCourseIndex, bookmarkedChapters, currentChapterIndex, currentTopicIndex } = currCourseState || {};
 
 
 
@@ -47,8 +51,10 @@ const CourseChapterCard = ({ chapterData, chapterIndex }) => {
 
 
   const handleBookmarkIconClicked = () => {
-    dispatch(addCourseBookmark({
-      user_id: userId,
+
+    setCurrChapterShowSpinnerIndex(chapterIndex);
+    dispatch(bookmarkCourseAsync({
+      accessToken: accessToken,
       courseIndx: currentCourseIndex,
       chapterIndx: chapterIndex
     }));
@@ -71,14 +77,29 @@ const CourseChapterCard = ({ chapterData, chapterIndex }) => {
         <div className={styles.chapterTimeWrapper} >
           <p className={styles.chapterTimeText}  >{chapterData.time_required}</p>
         </div>
-        <div className={styles.chapterBookmarkWrapper} >
 
-          <div className={styles.bookmarkIconDiv} onClick={handleBookmarkIconClicked}  >
-            {bookmarkedChapters && bookmarkedChapters[currentCourseIndex] && bookmarkedChapters[currentCourseIndex].includes(chapterIndex) ?
-              <BookmarkIconFilled /> :
-              <BookmarkIcon />
-            }
-          </div>
+        <div className={styles.chapterBookmarkWrapper}>
+          {accessToken &&
+            <>
+              {
+                (isLoading && chapterIndex === currChapterShowSpinnerIndex) ?
+                  <div className={styles.bookmarkSpinnerDiv} >
+                    <Spinner />
+                  </div>
+                  :
+                  <div className={styles.bookmarkIconDiv} onClick={handleBookmarkIconClicked}  >
+                    {
+                      bookmarkedChapters && bookmarkedChapters[currentCourseIndex] && bookmarkedChapters[currentCourseIndex].includes(chapterIndex)
+                        ?
+                        <BookmarkIconFilled />
+                        :
+                        <BookmarkIcon />
+                    }
+                  </div>
+              }
+            </>
+          }
+
         </div>
         <div className={styles.chapterTopicNameWrapper} >
           <p className={styles.chapterTopicNameText}  >{chapterData.chapterName}</p>

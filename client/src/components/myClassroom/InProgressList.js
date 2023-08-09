@@ -14,7 +14,7 @@ const InProgressList = () => {
                     </div>
 
                     <div className={styles.listHeadingDiv} >
-                        <p className={styles.headingText}>In Progress</p>
+                        <p className={styles.headingText}>In Progrxxzxzess</p>
                     </div>
                 </div>
 

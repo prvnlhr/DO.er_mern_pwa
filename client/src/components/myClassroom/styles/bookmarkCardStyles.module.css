@@ -11,7 +11,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     box-shadow: var(--list-wrapper-box-shadow);
-    
+
 }
 
 .bookmarkCardInnerwrapper {
@@ -118,6 +118,9 @@
     font-size: 1rem;
     font-weight: 600;
     color: black;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /* ---------------------------------------------------------------------------------- */

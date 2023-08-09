@@ -1,11 +1,11 @@
-import React from 'react'
-import styles from "./styles/inprogressCardStyles.module.css"
-import JavaScriptLogo from "../icons/courseLogos/JavaScriptLogo"
-import TiltedArrowIcon from '../icons/TiltedArrowIcon'
+import React from 'react';
+import styles from "./styles/inprogressCardStyles.module.css";
+import JavaScriptLogo from "../icons/courseLogos/JavaScriptLogo";
+import TiltedArrowIcon from '../icons/TiltedArrowIcon';
+import { coursesList } from "../../courseData/courseData";
 
 
-
-const InProgressCourseCard = () => {
+const InProgressCourseCard = ({ courseIndex, numChapterCompleted, totalChapters }) => {
     return (
         <div className={styles.cardOuterWrapper}>
 
@@ -34,7 +34,7 @@ const InProgressCourseCard = () => {
                 <div className={styles.chapterContentWrapper}>
                     <div className={styles.chapterPercentTextWrapper} >
                         <p className={styles.chapterPercText} >
-                            80%
+                            {Math.round((numChapterCompleted / totalChapters) * 100)}%
                         </p>
                     </div>
 
@@ -46,7 +46,7 @@ const InProgressCourseCard = () => {
 
                     <div className={styles.chapterCompletedNumWrapper} >
                         <p className={styles.chapterComNumText} >
-                            12/24
+                            {numChapterCompleted}/{totalChapters}
                         </p>
                     </div>
                 </div>

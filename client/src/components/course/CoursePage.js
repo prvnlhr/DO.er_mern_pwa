@@ -5,14 +5,7 @@ import CoursePageBody from './CoursePageBody'
 import { useCourseContext } from "../../appState/appContext"
 const CoursePage = () => {
 
-  const { currentCourseData, updateCurrentCourseData } = useCourseContext();
 
-  // useEffect(() => {
-  //   // console.log(currentCourseData);
-  //   return () => {
-  //     updateCurrentCourseData('markDownContents', '')
-  //   }
-  // }, [])
 
   return (
     <div className={styles.coursePageWrapper} >

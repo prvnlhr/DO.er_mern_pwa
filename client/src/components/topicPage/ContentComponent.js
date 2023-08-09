@@ -15,10 +15,9 @@ import SkeletonComponent from './SkeletonComponent'
 import styles from "./styles/contentComponentStyles.module.css"
 import { setMarkDownFile } from "../helperFunctions/setMarkDownHelperFunction"
 import { useDispatch, useSelector } from 'react-redux'
-import { markTopicProgress } from "../../redux/features/course/courseSlice"
+import { markTopicCompletionAsync } from "../../redux/features/course/courseSlice"
 
-import { updateTimeSpent } from "../../redux/features/course/timeSpentSlice"
-
+import { updateDailyTimeSpent } from "../../redux/features/course/courseSlice"
 
 const ContentComponent = () => {
     const dispatch = useDispatch();
@@ -29,19 +28,25 @@ const ContentComponent = () => {
 
 
     const currCourseStateData = useSelector((state) => state.course.currentCourseState);
+    const { currentCourseIndex, currentChapterIndex, currentTopicIndex, currentMarkdownContent, isMarkDownLoading, completedTopics } = currCourseStateData;
 
-    const { currentCourseIndex, currentChapterIndex, currentTopicIndex, currentMarkdownContent, isMarkDownLoading } = currCourseStateData;
+    const authState = useSelector((state) => state.auth);
+    const { userId, accessToken } = authState;
 
-    // -----------------------------------------------------------------------------------------------------------------------------
+    // _________________________________________________________________________________________________________________________________________
+
+
+    // <-- This useEffect starts recording the time as soon as the user visits the content -->
 
     useEffect(() => {
+
         const startTime = new Date();
         const dayOfWeek = startTime.getDay();
 
         // Check if it's Sunday (day number 0)
         if (dayOfWeek === 0) {
             // Clear the data in local storage
-            localStorage.removeItem('timeSpentData');
+            localStorage.removeItem('dailyTimeSpent');
         }
 
         return () => {
@@ -49,17 +54,18 @@ const ContentComponent = () => {
             const timeSpentMinutes = Math.floor((endTime - startTime) / (1000 * 60));
 
             // Update the timeSpent in localStorage
-            const storedData = JSON.parse(localStorage.getItem('timeSpentData')) || {};
+            const storedData = JSON.parse(localStorage.getItem('dailyTimeSpent')) || {};
             storedData[dayOfWeek] = (storedData[dayOfWeek] || 0) + timeSpentMinutes;
-            localStorage.setItem('timeSpentData', JSON.stringify(storedData));
-            // Dispatch the updateTimeSpent action to update the Redux state
-            dispatch(updateTimeSpent(storedData));
+            localStorage.setItem('dailyTimeSpent', JSON.stringify(storedData));
+            // Dispatch the updateDailyTimeSpent action to update the Redux state
+            dispatch(updateDailyTimeSpent(storedData));
         };
     }, []);
 
 
+    // _________________________________________________________________________________________________________________________________________
 
-
+    // <-- useEffect that works when user close the tab or exits the browser -->
     useEffect(() => {
         const startTime = new Date();
         const dayOfWeek = startTime.getDay();
@@ -69,12 +75,12 @@ const ContentComponent = () => {
             const timeSpentMinutes = Math.floor((endTime - startTime) / (1000 * 60));
 
             // Update the timeSpent in localStorage
-            const storedData = JSON.parse(localStorage.getItem('timeSpentData')) || {};
+            const storedData = JSON.parse(localStorage.getItem('dailyTimeSpent')) || {};
             storedData[dayOfWeek] = (storedData[dayOfWeek] || 0) + timeSpentMinutes;
-            localStorage.setItem('timeSpentData', JSON.stringify(storedData));
+            localStorage.setItem('dailyTimeSpent', JSON.stringify(storedData));
 
-            // Dispatch the updateTimeSpent action to update the Redux state
-            dispatch(updateTimeSpent(storedData));
+            // Dispatch the updateDailyTimeSpent action to update the Redux state
+            dispatch(updateDailyTimeSpent(storedData));
         };
 
         window.addEventListener('beforeunload', handleBeforeUnload);
@@ -85,21 +91,7 @@ const ContentComponent = () => {
 
     }, []);
 
-    // -----------------------------------------------------------------------------------------------------------------------------
-
-    const components = {
-        p: p => <ParagraphBlock textContent={p.children} />,
-        h1: h1 => <PrimaryTitle primaryTitle={h1.children} />,
-        h2: h2 => <SecondaryTitle secondaryTitle={h2.children} />,
-        li: li => <ListItem textContent={li.children} />,
-        code: CodeBlock,
-        strong: strong => <StrongText textContent={strong.children} />,
-        blockquote: blockquote => <NoteBlock noteContent={blockquote.children} />
-    };
-
-
-
-
+    // _________________________________________________________________________________________________________________________________________
 
     useEffect(() => {
         contentRef.current.scrollTop = 0;
@@ -109,8 +101,11 @@ const ContentComponent = () => {
 
     }, [currentCourseIndex, currentChapterIndex, currentTopicIndex, isMarkDownLoading, currentMarkdownContent, dispatch])
 
-    // -------------------------------------------------------------------------------------------------------------------
 
+    // _________________________________________________________________________________________________________________________________________
+
+
+    // <-- handleScroll reached -> mark topic as completed -->
     const handleScroll = () => {
 
         const contentElement = contentRef.current;
@@ -123,13 +118,17 @@ const ContentComponent = () => {
 
                 const scrolledToBottom = scrollTop + clientHeight >= scrollHeight - 10;
                 if (scrolledToBottom) {
-                    console.log('Reached at end', currentCourseIndex, currentChapterIndex, currentTopicIndex);
-                    dispatch(markTopicProgress({
-                        user_id: '64cc3f9805be4f275c695cc7',
-                        courseIndx: currentCourseIndex,
-                        chapterIndx: currentChapterIndex,
-                        topicIndx: currentTopicIndex
-                    }))
+                    if (accessToken && userId) {
+                        if (!completedTopics[currentCourseIndex]?.[currentChapterIndex]?.[currentTopicIndex]) {
+                            console.log('Reached at end', currentCourseIndex, currentChapterIndex, currentTopicIndex);
+                            dispatch(markTopicCompletionAsync({
+                                user_id: userId,
+                                courseIndx: currentCourseIndex,
+                                chapterIndx: currentChapterIndex,
+                                topicIndx: currentTopicIndex
+                            }))
+                        }
+                    }
                 }
             }
         }
@@ -148,7 +147,19 @@ const ContentComponent = () => {
     }, [currCourseStateData]);
 
 
-    // --------------------------------------------------------------------------------------------------------    
+    // _________________________________________________________________________________________________________________________________________
+
+    // <-- Custom markdown component -->
+    const components = {
+        p: p => <ParagraphBlock textContent={p.children} />,
+        h1: h1 => <PrimaryTitle primaryTitle={h1.children} />,
+        h2: h2 => <SecondaryTitle secondaryTitle={h2.children} />,
+        li: li => <ListItem textContent={li.children} />,
+        code: CodeBlock,
+        strong: strong => <StrongText textContent={strong.children} />,
+        blockquote: blockquote => <NoteBlock noteContent={blockquote.children} />
+    };
+    // _________________________________________________________________________________________________________________________________________
 
     return (
         <div className={`${styles.wrapper} `}>

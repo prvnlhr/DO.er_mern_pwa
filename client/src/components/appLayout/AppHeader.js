@@ -1,38 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./styles/appHeaderStyles.module.css"
 import AppLogo from "../icons/AppLogo"
 import ProfileIcon from "../icons/ProfileIcon"
 import SearchBar from './SearchBar'
-import { useCourseContext } from "../../appState/appContext"
+import { useLocalAuthContext } from "../../appState/localAuthContext"
 import { searchKeyword } from "../helperFunctions/searchHelperFunction"
 import AppLogox from '../icons/AppLogox'
 
 import { updateReduxState } from "../helperFunctions/reduxDispatchHelper"
-import { useDispatch } from 'react-redux'
-import { addNewUser } from "../../redux/features/auth/authSlice"
-const AppHeader = () => {
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useLocation } from 'react-router-dom'
+
+const AppHeader = ({ showAuthForm, setShowAuthForm }) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const authState = useSelector((state) => state.auth);
+
+    const { accessToken } = authState;
+
+    const { localAuthData, updateLocalAuthState, setLocalAuthData } = useLocalAuthContext();
 
     const [inSearchMode, setInSearchMode] = useState(false);
     const [searchKey, setSearchKey] = useState('');
-    const { currentCourseData, updateCurrentCourseData } = useCourseContext();
-    const { searchResult } = currentCourseData;
 
     const handleSearchIconClicked = () => {
         setInSearchMode(!inSearchMode);
         setSearchKey('');
         updateReduxState(dispatch, 'searchResultList', []);
-
     }
 
 
-    const addUserTODB = () => {
-        console.log('addNewUser')
-        dispatch(addNewUser({
-            name: 'Praveen Lohar',
-            phoneNumber: 8619993453
-        }));
+    const handleSigInBtnClicked = () => {
+        updateLocalAuthState('showAuthForm', true);
+    }
+
+    const handleClassroomBtnClicked = () => {
+        navigate('/user/classroom');
     }
 
 
@@ -41,11 +47,29 @@ const AppHeader = () => {
 
             <div className={styles.headerInnerWrapper} >
                 <div className={styles.appLogoWrapper} >
-                    <div className={styles.logoContainer} onClick={addUserTODB} >
+                    <div className={styles.logoContainer} >
                         <AppLogo />
                     </div>
                 </div>
                 <div className={styles.searchProfileOuterWrapper} >
+
+                    {(accessToken) ?
+                        (location.pathname !== '/user/classroom' &&
+                            <div className={styles.signInBtnWrapper} >
+                                <div className={styles.searchBtnDiv} onClick={handleClassroomBtnClicked}>
+                                    <p>Classroom</p>
+                                </div>
+                            </div>
+                        )
+                        :
+                        (!showAuthForm &&
+                            <div className={inSearchMode ? styles.signInBtnWrapperHide : styles.signInBtnWrapper} >
+                                <div className={styles.searchBtnDiv} onClick={handleSigInBtnClicked}>
+                                    <p>Sign In</p>
+                                </div>
+                            </div>
+                        )
+                    }
 
                     <div className={inSearchMode ? styles.searchBarWrapperExpand : styles.searchBarWrapper}>
                         <SearchBar

@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from "../../api/index"
 const initialState = {
-  timeSpentData: {
+  dailyTimeSpent: {
     0: 0,
     1: 0,
     2: 0,
@@ -15,10 +15,9 @@ const initialState = {
 
 
 
-export const updateTimeSpentInDatabase = createAsyncThunk('timeSpent/updateTimeSpentInDatabase', async ({ dayOfWeek, timeSpent }, { getState, fulfillWithValue, rejectWithValue }) => {
+export const updateDailyTimeSpentInDatabase = createAsyncThunk('timeSpent/updateDailyTimeSpentInDatabase', async ({ dayOfWeek, timeSpent }, { getState, fulfillWithValue, rejectWithValue }) => {
   try {
-    const response = await api.updateTimeSpent(dayOfWeek, timeSpent);
-    // console.log(response.data);
+    const response = await api.updateDailyTimeSpentRequest(dayOfWeek, timeSpent);
     return fulfillWithValue(response.data);
 
   } catch (error) {
@@ -33,30 +32,28 @@ const timeSpentSlice = createSlice({
   initialState,
   reducers: {
 
-    updateTimeSpent: (state, action) => {
-      console.log(action.payload);
+    updateDailyTimeSpent: (state, action) => {
       return {
-        ...state.timeSpentData,
+        ...state.dailyTimeSpent,
         ...action.payload
       };
     },
     resetTimeSpent: (state) => {
       return {
         ...state,
-        timeSpentData: initialState.timeSpentData,
+        dailyTimeSpent: initialState.dailyTimeSpent,
       };
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(updateTimeSpentInDatabase.fulfilled, (state, action) => {
-        // console.log(action.payload);
+      .addCase(updateDailyTimeSpentInDatabase.fulfilled, (state, action) => {
         return {
           ...state,
 
         }
       })
-      .addCase(updateTimeSpentInDatabase.rejected, (state, action) => {
+      .addCase(updateDailyTimeSpentInDatabase.rejected, (state, action) => {
         // Handle the rejected case if needed
         console.log('Error updating time spent in database:', action.error.message);
       });
@@ -64,5 +61,5 @@ const timeSpentSlice = createSlice({
   }
 });
 
-export const { updateTimeSpent, resetTimeSpent } = timeSpentSlice.actions;
+export const { updateDailyTimeSpent, resetTimeSpent } = timeSpentSlice.actions;
 export default timeSpentSlice.reducer;

@@ -9,14 +9,13 @@ import BackBtnIcon from "../icons/BackBtnIcon"
 
 import { coursesList } from "../../courseData/courseData.js"
 import style from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
+import { useSelector } from 'react-redux'
 
 const CoursePageHeader = () => {
 
   const navigate = useNavigate();
 
-  const { currentCourseData } = useCourseContext();
-  const { currentCourseIndex } = currentCourseData;
-
+  const { currentCourseIndex } = useSelector((state) => state.course.currentCourseState);
   return (
     <>
       <div className={styles.courseHeaderWrapper}>
@@ -39,7 +38,7 @@ const CoursePageHeader = () => {
 
           <div className={styles.courseDescriptionWrapper} >
             <p className={styles.courseDescText}>
-              {coursesList[currentCourseData.currentCourseIndex].courseDescription}
+              {coursesList[currentCourseIndex].courseDescription}
             </p>          </div>
           <div className={styles.courseInfoGraphicWrapper} >
             <div className={styles.courseInfoGraphicWrapper}>
@@ -56,7 +55,7 @@ const CoursePageHeader = () => {
                   </div>
                   <div className={styles.infoValueWrapper} >
                     <p className={styles.infoValueText} >
-                      {coursesList[currentCourseData.currentCourseIndex].chaptersList.length}
+                      {coursesList[currentCourseIndex].chaptersList.length}
                     </p>
 
                   </div>
@@ -74,7 +73,7 @@ const CoursePageHeader = () => {
                   </div>
                   <div className={styles.infoValueWrapper} >
                     <p className={styles.infoValueText} >
-                      {coursesList[currentCourseData.currentCourseIndex].time_required}
+                      {coursesList[currentCourseIndex].time_required}
                     </p>
 
                   </div>

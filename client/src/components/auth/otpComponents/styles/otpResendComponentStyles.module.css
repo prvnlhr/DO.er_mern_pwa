@@ -1,0 +1,51 @@
+.otpComponentWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    background-color: white;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.otpInputWrapper {
+    width: 100%;
+    height: 50%;
+    border: 1px solid springgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.otpResendWrapper {
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.OtpResendBtnComponentDiv {
+    width: auto;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #40597f48;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.OtpResendBtnComponentDiv p {
+    text-decoration: none;
+    color: #002A9A;
+    font-size: 0.8rem;
+    font-weight: 500;
+}

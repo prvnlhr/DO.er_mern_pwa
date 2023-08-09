@@ -30,11 +30,9 @@
     -o-transition: all 300ms ease-in-out;
     -ms-transition: all 300ms ease-in-out;
     /* border: 1px solid rgb(255, 0, 0); */
-
     border-radius: 10px;
     overflow: hidden;
     /* border: 1px solid springgreen; */
-
 
 }
 
@@ -105,6 +103,8 @@
     /* background-color: salmon; */
     padding-left: 5%;
     /* background-color: transparent; */
+    /* border: 1px solid white; */
+    border-radius: 0px;
 }
 
 .searchInput::placeholder {
@@ -131,6 +131,7 @@
     padding-left: 0px;
     padding: 0;
     /* background-color: transparent; */
+    border-radius: 0px;
 
 }
 

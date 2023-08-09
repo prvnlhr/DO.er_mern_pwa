@@ -15,7 +15,6 @@ const SearchBar = ({ inSearchMode, handleSearchIconClicked, searchKey, setSearch
 
     const searchForKeyword = () => {
         const result = searchKeyword(searchKey);
-        // updateReduxState(dispatch, 'searchResultList', result);
         updateReduxState(dispatch,
             {
                 data: {

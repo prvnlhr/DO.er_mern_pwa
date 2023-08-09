@@ -3,9 +3,10 @@ const router = express.Router();
 
 
 const userController = require("../controller/userController");
+const auth = require("../middleware/authMiddleware");
 
 router.post("/addUser", userController.addUser);
-router.get("/getUer", userController.getUser);
+router.get("/getUserData", auth, userController.getUser);
 
 
 
