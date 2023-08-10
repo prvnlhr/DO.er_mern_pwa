@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import styles from "./styles/otpComponentStyles.module.css"
 import OtpInputComponent from "./OtpInputComponent"
 import { useDispatch, useSelector } from 'react-redux'
+import { verifyOtpAsync, resendOtpAsync } from "../../../redux/features/auth/authSlice"
 import { useLocalAuthContext } from "../../../appState/localAuthContext"
 
 import FullNameIcon from "../formIcons/FullNameIcon"
@@ -14,28 +15,32 @@ import ResendIcon from "../formIcons/ResendIcon"
 
 import OtpResendBtnComponent from './OtpResendBtnComponent'
 
+import { motion } from 'framer-motion';
+import AuthLoadingSpinner from '../formIcons/AuthLoadingSpinner'
+
+
 const OtpComponent = () => {
 
     const [timer, setTimer] = useState({
-        time: 10,
+        time: 120,
         timeExpired: false
     });
+    const [otpValues, setOtpValues] = useState(['', '', '', '']);
+    const [activeFieldIndex, setActiveFieldIndex] = useState(0);
 
+    const inputRefs = [useRef(), useRef(), useRef(), useRef()];
 
-    const { localAuthData, updateLocalAuthState, setLocalAuthData } = useLocalAuthContext();
+    const { localAuthData, updateLocalAuthState, setLocalAuthData, resetLocalAuthState } = useLocalAuthContext();
     const { emailAddress } = localAuthData;
 
     const authState = useSelector((state) => state.auth);
-    const { message, isLoading, otpVerified } = authState || {};
+    const { isError, authType, message, isLoading, otpVerified } = authState || {};
 
     const resentOptEmailSent = useSelector(state => state.auth.resentOpt);
 
-    const handleSubmitBtnClicked = () => {
-        console.log('clicked', otpValues);
-    }
+    // -----------------------------------------------------------------------------------------------------
 
-    const isError = false;
-
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let interval;
@@ -63,10 +68,7 @@ const OtpComponent = () => {
 
 
     //-----------------------------------------------------------------------------
-    const [otpValues, setOtpValues] = useState(['', '', '', '']);
-    const [activeFieldIndex, setActiveFieldIndex] = useState(0);
 
-    const inputRefs = [useRef(), useRef(), useRef(), useRef()];
 
     const handleOtpInputChange = (index, value) => {
         console.log(index, value)
@@ -111,7 +113,7 @@ const OtpComponent = () => {
     const resetTimer = () => {
 
         setTimer({
-            time: 10,
+            time: 120,
             timeExpired: false
         });
 
@@ -119,6 +121,46 @@ const OtpComponent = () => {
         setActiveFieldIndex(0);
     };
 
+    // -----------------------------------------------------------------
+    const handleOtpSubmit = async () => {
+        const otp = otpValues.join('');
+        console.log(otp);
+        try {
+            const res = await dispatch(verifyOtpAsync({ otp, emailAddress }));
+            if (res.type === 'auth/verifyOtp/fulfilled' && res.payload.message === 'OTP verified successfully.' && res.payload.accessToken) {
+                console.log('OTP VERIFIED, CLOSING FORM...');
+                resetLocalAuthState();
+            } else if (res.type === 'auth/verifyOtp/rejected') {
+                console.log(res);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    //-------------------------------------------------------------------------------
+
+    const handleOtpResendBtnClicked = async () => {
+        resetTimer();
+        try {
+            const emaill = 'prvnlhr522@gmail.com';
+            const res = await dispatch(resendOtpAsync(emaill));
+            console.log(res);
+            if (res.type === 'auth/resendOtp/fulfilled'
+                && res.payload.message === 'OTP Resent sent to your email.'
+            ) {
+
+                console.log('Resent Opt Success, showing otp input...')
+                updateLocalAuthState('showResendOtpBtn', false);
+
+            } else if (res.type === 'auth/verifyOtp/rejected') {
+                console.log('error a t disptach Otp component');
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
 
     //--------------------------------------------------------------------------------
@@ -134,63 +176,111 @@ const OtpComponent = () => {
                 <p className={styles.emailText} >andr***garf@gmail.com</p>
             </div>
             <div className={styles.messageCell} >
-                <div className={`${styles.messageWrapper} ${isError ? styles.errorBackGround : styles.successBackGround}`} >
+
+                {message && authType === 'OTP' &&
+                    <div className={`${styles.messageWrapper} ${isError ? styles.errorBackGround : styles.successBackGround}`} >
+                        <div className={styles.messageIconContainer} >
+                            <div className={styles.messageIconDiv} >
+                                {isError ?
+                                    <ErrorIcon /> :
+                                    <SuccessIcon />
+                                }
+                            </div>
+                        </div>
+                        <div className={styles.messageTextContainer} >
+                            <p className={`${styles.messageText} ${isError ? styles.errorText : styles.successText}`}>
+                                {message}
+                            </p>
+                        </div>
+                    </div>
+                }
+                {/* <div className={`${styles.messageWrapper} ${isError ? styles.errorBackGround : styles.successBackGround}`} >
                     <div className={styles.messageIconContainer} >
                         <div className={styles.messageIconDiv} >
-                            {/* <ErrorIcon /> */}
                             <SuccessIcon />
                         </div>
                     </div>
                     <div className={styles.messageTextContainer} >
                         <p className={`${styles.messageText} ${isError ? styles.errorText : styles.successText}`}>
-                            Account with this email Already exists
+                            {'This is test OTP message'}
                         </p>
                     </div>
-                </div>
+                </div> */}
             </div>
             <div className={styles.inputCell} >
-                {/* <div className={`${styles.optInputContainer}`}>
-                    <input value={7} className={`${styles.otpInput} ${currFocusField === 1 && styles.otpActiveInput} `} onFocus={() => setCurrFocusField(1)} />
-                </div>
-                <div className={`${styles.optInputContainer}`}>
-                    <input value={5} className={`${styles.otpInput}  ${currFocusField === 2 && styles.otpActiveInput} `} onFocus={() => setCurrFocusField(2)} />
-                </div>
-                <div className={`${styles.optInputContainer}`}>
-                    <input value={3} className={`${styles.otpInput} ${currFocusField === 3 && styles.otpActiveInput} `} onFocus={() => setCurrFocusField(3)} />
-                </div>
-                <div className={`${styles.optInputContainer}`}>
-                    <input value={8} className={`${styles.otpInput} ${currFocusField === 4 && styles.otpActiveInput} `} onFocus={() => setCurrFocusField(4)} />
-                </div> */}
+
                 {otpValues.map((value, index) => (
-                    <div key={index} className={`${styles.optInputContainer}`}>
+                    <div key={index} className={`${styles.optInputContainer} ${activeFieldIndex === index && styles.optInputContainerActive}`}>
                         <input
                             ref={inputRefs[index]}
                             type='number'
                             value={value}
-                            className={`${styles.otpInput} ${activeFieldIndex === index && styles.otpActiveInput}`}
+                            className={`${styles.otpInput}`}
                             onFocus={() => setActiveFieldIndex(index)}
                             onChange={(e) => handleOtpInputChange(index, e.target.value)}
                         />
                     </div>
                 ))}
             </div>
-            <div className={styles.timerCell} >
-                <div className={`${styles.timeDiv} ${timer.timeExpired === true && styles.timeExpireBackGround}`} ><p className={`${styles.timeText} ${timer.timeExpired === true && styles.timeExpireText}`} >{Math.floor(timer.time / 60)}</p></div>
-                <div className={styles.timeColonDiv}><p>:</p></div>
-                <div className={`${styles.timeDiv} ${timer.timeExpired === true && styles.timeExpireBackGround}`}  ><p className={`${styles.timeText} ${timer.timeExpired === true && styles.timeExpireText}`} >{timer.time % 60}</p></div>
-            </div>
-            <div className={styles.resendCell}  >
-                <button className={styles.optResendBtn} onFocus={() => setActiveFieldIndex(5)} onClick={resetTimer}>
-                    <div className={styles.otpResendTextContainer} >
-                        <p>RESEND OTP</p>
+
+            <div className={styles.resendCell}>
+                <motion.button
+                    disabled={timer > 0 ? true : false}
+                    className={`${styles.optResendBtn} ${!timer.time > 0 && styles.optResendBtnWhenActive}`}
+                    // onFocus={() => setActiveFieldIndex(5)}
+                    onFocus={timer.time === 0 ? () => setActiveFieldIndex(5) : undefined}
+                    onClick={timer.time > 0 ? undefined : handleOtpResendBtnClicked}
+                    initial={{ x: 0 }}
+                    animate={{ x: timer.time === 0 ? '90%' : 0 }}
+                    transition={{
+                        ease: [0.39, 0.575, 0.565, 1],
+                        duration: 0.7,
+                    }}
+
+                >
+                    <div className={styles.otpResendTextContainer}>
+                        {timer.time > 0 ? <p>RETRY IN</p> : <p>RESEND OTP</p>}
                     </div>
-                    <div className={styles.optResendIconContainer} >
+                    <div className={styles.optResendIconContainer}>
                         <div className={styles.optResendIconDiv}>
-                            <ResendIcon />
+                            <ResendIcon bgColor={timer.time > 0 ? '#7E8DA4' : '#9E77ED'} />
                         </div>
                     </div>
-                </button>
+                </motion.button>
+
+                <motion.div
+                    className={`${styles.timerContainer}`}
+                    initial={{ x: 0, opacity: 1 }}
+                    animate={{ x: timer.time === 0 ? '100%' : '0%', opacity: timer.time === 0 ? [0.2, 0.1, 0] : 1 }}
+                    transition={{
+                        ease: [0.39, 0.575, 0.565, 1],
+                        duration: 0.7,
+                    }}
+                >
+                    <motion.div
+                        className={`${styles.timeDiv} ${timer.timeExpired === true && styles.timeExpireBackGround}`}
+                        initial={{ opacity: 1 }}
+                        animate={{ opacity: timer.time === 0 ? 0 : 1 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <p className={`${styles.timeText} ${timer.timeExpired === true && styles.timeExpireText}`}>
+                            {Math.floor(timer.time / 60).toString().padStart(2, '0')}
+                        </p>
+                    </motion.div>
+                    <div className={styles.timeColonDiv}><p>:</p></div>
+                    <motion.div
+                        className={`${styles.timeDiv} ${timer.timeExpired === true && styles.timeExpireBackGround}`}
+                        initial={{ opacity: 1 }}
+                        animate={{ opacity: timer.time === 0 ? 0 : 1 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <p className={`${styles.timeText} ${timer.timeExpired === true && styles.timeExpireText}`}>
+                            {((timer.time % 60).toString().padStart(2, '0'))}
+                        </p>
+                    </motion.div>
+                </motion.div>
             </div>
+
             <div className={styles.submitBtnCell} >
                 <div className={styles.btnWrapper} >
                     <div className={styles.btnTextContainer} >
@@ -199,9 +289,11 @@ const OtpComponent = () => {
                     <div className={styles.btnIconContainer} >
                         <button className={styles.submitBtn}
                             onFocus={() => setActiveFieldIndex(6)}
-                            onClick={handleSubmitBtnClicked}
-                        >
-                            <ButtonArrowIcon />
+                            onClick={handleOtpSubmit}>
+                            {isLoading ?
+                                <AuthLoadingSpinner /> :
+                                <ButtonArrowIcon />
+                            }
                         </button>
                     </div>
                 </div>

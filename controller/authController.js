@@ -146,7 +146,6 @@ const authController = {
                 return res.status(400).json({ errorMsg: "OTP is required." });
             }
             console.log('otp verfiy', emailAddress);
-            const userEmail = req.cookies.userEmail;
 
             if (!emailAddress) {
                 return res.status(400).json({ errorMsg: "User email not found." });
@@ -197,7 +196,7 @@ const authController = {
             });
 
 
-
+            console.log('OTP VERIFIED');
             return res.status(200).json({ message: "OTP verified successfully.", accessToken, userId: user._id });
         } catch (error) {
             console.error("Error in verifyOtpController:", error);
@@ -319,15 +318,15 @@ const isValidEmail = (email) => {
 };
 
 function createAccessToken(payload) {
-    return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
-    // return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: "30s" });
+    // return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
+    return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: "30s" });
 }
 
 
 function createRefreshToken(payload) {
-    return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "2d" });
+    // return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "2d" });
     // return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "60s" });
-    // return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "2m" });
+    return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "2m" });
 }
 
 

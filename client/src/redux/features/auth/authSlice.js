@@ -23,15 +23,15 @@ const initialState = {
     message: '',
     emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT,
     otpVerified: OTP_VERIFICATION_STATES.NOT_VERIFIED,
-    resentOpt: RESENT_OTP_EMAIL_SENT_STATE.NOT_SENT
-
+    resentOpt: RESENT_OTP_EMAIL_SENT_STATE.NOT_SENT,
+    isError: false,
+    authType: null,
 }
 
 const isValidEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailPattern.test(email);
 };
-
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -166,7 +166,6 @@ const authSlice = createSlice({
                 }
             })
 
-
             .addCase(checkAuthAsync.pending, (state) => {
                 return {
                     ...state,
@@ -197,6 +196,8 @@ const authSlice = createSlice({
                     ...state,
                     isLoading: true,
                     message: '',
+                    authType: 'OTP'
+
                 };
             })
             .addCase(verifyOtpAsync.fulfilled, (state, action) => {
@@ -208,8 +209,9 @@ const authSlice = createSlice({
                     message: message,
                     accessToken: accessToken,
                     userId: userId,
-                    emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT
-
+                    emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT,
+                    isError: false,
+                    authType: 'OTP'
                 };
             })
             .addCase(verifyOtpAsync.rejected, (state, action) => {
@@ -218,7 +220,9 @@ const authSlice = createSlice({
                     ...state,
                     isLoading: false,
                     message: errorMsg,
-                    otpVerified: OTP_VERIFICATION_STATES.NOT_VERIFIED
+                    otpVerified: OTP_VERIFICATION_STATES.NOT_VERIFIED,
+                    isError: true,
+                    authType: 'OTP'
                 };
             })
 
@@ -228,6 +232,8 @@ const authSlice = createSlice({
                     ...state,
                     isLoading: true,
                     message: '',
+                    authType: 'SIGNIN'
+
                 };
             })
             .addCase(userSignInAsync.fulfilled, (state, action) => {
@@ -236,7 +242,10 @@ const authSlice = createSlice({
                     ...state,
                     isLoading: false,
                     message: action.payload,
-                    emailSent: OTP_EMAIL_SENT_STATE.SENT
+                    emailSent: OTP_EMAIL_SENT_STATE.SENT,
+                    authType: 'SIGNIN',
+                    isError: false
+
                 };
             })
             .addCase(userSignInAsync.rejected, (state, action) => {
@@ -245,7 +254,9 @@ const authSlice = createSlice({
                     ...state,
                     isLoading: false,
                     message: errorMsg,
-                    emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT
+                    emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT,
+                    isError: true,
+                    authType: 'SIGNIN'
                 };
             })
             .addCase(userSignUpAsync.pending, (state) => {
@@ -253,6 +264,8 @@ const authSlice = createSlice({
                     ...state,
                     isLoading: true,
                     message: '',
+                    isError: false,
+                    authType: 'SIGNUP'
                 };
             })
             .addCase(userSignUpAsync.fulfilled, (state, action) => {
@@ -261,7 +274,9 @@ const authSlice = createSlice({
                     ...state,
                     isLoading: false,
                     message: action.payload,
-                    emailSent: OTP_EMAIL_SENT_STATE.SENT
+                    emailSent: OTP_EMAIL_SENT_STATE.SENT,
+                    isError: false,
+                    authType: 'SIGNUP'
                 };
             })
             .addCase(userSignUpAsync.rejected, (state, action) => {
@@ -270,8 +285,9 @@ const authSlice = createSlice({
                     ...state,
                     isLoading: false,
                     message: errorMsg,
-                    emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT
-
+                    emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT,
+                    isError: true,
+                    authType: 'SIGNUP'
                 };
             })
             .addCase(resendOtpAsync.fulfilled, (state, action) => {
@@ -280,7 +296,9 @@ const authSlice = createSlice({
                     ...state,
                     isLoading: false,
                     message: message,
-                    resentOpt: RESENT_OTP_EMAIL_SENT_STATE.SENT
+                    resentOpt: RESENT_OTP_EMAIL_SENT_STATE.SENT,
+                    isError: false,
+                    authType: 'OTP'
                 };
             })
             .addCase(resendOtpAsync.rejected, (state, action) => {
@@ -292,6 +310,9 @@ const authSlice = createSlice({
                     message: errorMsg,
                     resentOpt: RESENT_OTP_EMAIL_SENT_STATE.NOT_SENT,
                     emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT,
+                    isError: true,
+                    authType: 'OTP'
+
                 };
             })
             .addCase(resendOtpAsync.pending, (state, action) => {
@@ -301,6 +322,8 @@ const authSlice = createSlice({
                     isLoading: true,
                     message: '',
                     resentOpt: RESENT_OTP_EMAIL_SENT_STATE.NOT_SENT,
+                    isError: false,
+                    authType: 'OTP'
                 }
 
             })

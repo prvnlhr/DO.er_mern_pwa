@@ -6,7 +6,7 @@ import SearchBar from './SearchBar'
 import { useLocalAuthContext } from "../../appState/localAuthContext"
 import { searchKeyword } from "../helperFunctions/searchHelperFunction"
 import AppLogox from '../icons/AppLogox'
-
+import { motion } from 'framer-motion';
 import { updateReduxState } from "../helperFunctions/reduxDispatchHelper"
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -46,32 +46,39 @@ const AppHeader = ({ showAuthForm, setShowAuthForm }) => {
         <div className={styles.appHeaderStylesWrapper} >
 
             <div className={styles.headerInnerWrapper} >
-                <div className={styles.appLogoWrapper} >
-                    <div className={styles.logoContainer} >
+                <div className={styles.appLogoWrapper}   >
+                    <div className={styles.logoContainer}  >
                         <AppLogo />
                     </div>
                 </div>
-                <div className={styles.searchProfileOuterWrapper} >
+
+                <div className={styles.rightWrapper} >
 
                     {(accessToken) ?
                         (location.pathname !== '/user/classroom' &&
-                            <div className={styles.signInBtnWrapper} >
-                                <div className={styles.searchBtnDiv} onClick={handleClassroomBtnClicked}>
-                                    <p>Classroom</p>
+                            <div className={`${styles.signInBtnWrapper} ${inSearchMode ? styles.signInBtnWrapperShrink : styles.signInBtnWrapperExpand}`}>
+                                <div className={styles.signInBtnDiv} onClick={handleClassroomBtnClicked}>
+                                    <p className={styles.signInBtnText}>Classroom</p>
                                 </div>
                             </div>
                         )
                         :
                         (!showAuthForm &&
-                            <div className={inSearchMode ? styles.signInBtnWrapperHide : styles.signInBtnWrapper} >
-                                <div className={styles.searchBtnDiv} onClick={handleSigInBtnClicked}>
-                                    <p>Sign In</p>
+                            <div className={`${styles.signInBtnWrapper} ${inSearchMode ? styles.signInBtnWrapperShrink : styles.signInBtnWrapperExpand}`}>
+                                <div className={styles.signInBtnDiv} onClick={handleSigInBtnClicked}>
+                                    <p className={styles.signInBtnText}>Sign In</p>
                                 </div>
                             </div>
                         )
                     }
 
-                    <div className={inSearchMode ? styles.searchBarWrapperExpand : styles.searchBarWrapper}>
+                    {/* <div className={`${styles.signInBtnWrapper} ${inSearchMode ? styles.signInBtnWrapperShrink : styles.signInBtnWrapperExpand}`}>
+                        <div className={styles.signInBtnDiv} onClick={handleSigInBtnClicked}>
+                            <p className={styles.signInBtnText} >Sign In</p>
+                        </div>
+                    </div> */}
+
+                    <div className={`${styles.searchBarWrapper} ${inSearchMode ? styles.searchBarWrapperExpand : styles.searchBarWrapperShrink}`}>
                         <SearchBar
                             inSearchMode={inSearchMode}
                             handleSearchIconClicked={handleSearchIconClicked}
@@ -80,11 +87,12 @@ const AppHeader = ({ showAuthForm, setShowAuthForm }) => {
                         />
                     </div>
 
-                    <div className={inSearchMode ? styles.userProfileWrapperShrink : styles.userProfileWrapper} >
+                    <div className={`${styles.userProfileWrapper} ${inSearchMode ? styles.userProfileWrapperShrink : styles.userProfileWrapperExpand}`}>
                         <div className={styles.profileIconDiv} >
                             <ProfileIcon />
                         </div>
                     </div>
+
                 </div>
             </div>
         </div >

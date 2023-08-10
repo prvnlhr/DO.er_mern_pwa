@@ -11,6 +11,7 @@ import CountryIcon from "./formIcons/CountryIcon"
 import ButtonArrowIcon from "./formIcons/ButtonArrowIcon"
 import ErrorIcon from "./formIcons/ErrorIcon"
 import SuccessIcon from "./formIcons/SuccessIcon"
+import AuthLoadingSpinner from './formIcons/AuthLoadingSpinner'
 
 const SignUpComponent = () => {
 
@@ -20,14 +21,14 @@ const SignUpComponent = () => {
 
 
     const authState = useSelector((state) => state.auth);
-    const { message, isLoading } = authState || {};
+    const { message, isLoading, authType, isError } = authState || {};
 
     const [currFocusField, setCurrFocusField] = useState(undefined);
 
     const [signUpFormData, setSignUpFormData] = useState({
-        fullName: 'Praveen Lohar',
-        emailAddress: 'prvnlhr522@gmail.com',
-        country: 'India'
+        fullName: '',
+        emailAddress: '',
+        country: ''
     });
 
     const handleSignUpFormDataChange = (e) => {
@@ -38,8 +39,12 @@ const SignUpComponent = () => {
         });
     }
 
-    const handleFormSubmitBtnClicked = () => {
-        dispatch(userSignUpAsync(signUpFormData));
+    const handleSubmitBtnClicked = async () => {
+        const res = await dispatch(userSignUpAsync(signUpFormData));
+        console.log('dispatch res', res);
+        if (res.type === 'auth/userSignUp/fulfilled' && res.payload === 'OTP sent to your email.') {
+            updateLocalAuthState('showOtpComponent', true);
+        }
     }
 
     const handleToggleFormLinkClicked = () => {
@@ -50,29 +55,31 @@ const SignUpComponent = () => {
         setCurrFocusField(val)
     }
 
-    const handleSubmitBtnClicked = () => {
-        console.log('clicked');
-    }
-    const isError = false;
-    // const isError = true;
-
     return (
         <div className={styles.signUpFormGrid}>
             <div className={styles.authMessageCell}>
 
-                <div className={`${styles.messageWrapper} ${isError ? styles.errorBackGround : styles.successBackGround}`} >
-                    <div className={styles.messageIconContainer} >
-                        <div className={styles.messageIconDiv} >
-                            {/* <ErrorIcon /> */}
-                            <SuccessIcon />
+                {message && authType === 'SIGNUP' &&
+
+                    <div className={`${styles.messageWrapper} ${isError ? styles.errorBackGround : styles.successBackGround}`} >
+                        <div className={styles.messageIconContainer} >
+                            <div className={styles.messageIconDiv} >
+                                {
+                                    isError
+                                        ?
+                                        <ErrorIcon />
+                                        :
+                                        <SuccessIcon />
+                                }
+                            </div>
+                        </div>
+                        <div className={styles.messageTextContainer} >
+                            <p className={`${styles.messageText} ${isError ? styles.errorText : styles.successText}`}>
+                                {message}
+                            </p>
                         </div>
                     </div>
-                    <div className={styles.messageTextContainer} >
-                        <p className={`${styles.messageText} ${isError ? styles.errorText : styles.successText}`}>
-                            Account with this email Already exists
-                        </p>
-                    </div>
-                </div>
+                }
             </div>
 
 
@@ -89,8 +96,10 @@ const SignUpComponent = () => {
                     <div className={styles.inputCell} >
                         <input
                             className={styles.formInput}
-                            value={'Andrew Garfield'}
+                            name='fullName'
+                            value={signUpFormData.fullName}
                             onFocus={() => setFocus(1)}
+                            onChange={handleSignUpFormDataChange}
                         />
                     </div>
                 </div>
@@ -110,8 +119,11 @@ const SignUpComponent = () => {
                     <div className={styles.inputCell} >
                         <input
                             className={styles.formInput}
-                            value={'andrew.garf@gmail.com'}
+                            name='emailAddress'
+                            value={signUpFormData.emailAddress}
                             onFocus={() => setFocus(2)}
+                            onChange={handleSignUpFormDataChange}
+
                         />
                     </div>
                 </div>
@@ -131,8 +143,11 @@ const SignUpComponent = () => {
                     <div className={styles.inputCell} >
                         <input
                             className={styles.formInput}
-                            value={'United Kingdom'}
+                            name='country'
+                            value={signUpFormData.country}
                             onFocus={() => setFocus(3)}
+                            onChange={handleSignUpFormDataChange}
+
                         />
                     </div>
                 </div>
@@ -147,17 +162,18 @@ const SignUpComponent = () => {
                     <div className={styles.btnIconContainer} >
                         <button className={styles.submitBtn}
                             onFocus={() => setFocus(4)}
-                            onClick={handleSubmitBtnClicked}
-                        >
-
-                            <ButtonArrowIcon />
+                            onClick={handleSubmitBtnClicked}>
+                            {isLoading ?
+                                <AuthLoadingSpinner /> :
+                                <ButtonArrowIcon />
+                            }
                         </button>
                     </div>
                 </div>
             </div>
 
             <div className={styles.bottomLinkCell}>
-                <p>Already Registered ? <span>SignIn</span></p>
+                <p>Already Registered ? <span onClick={handleToggleFormLinkClicked} >SignIn</span></p>
             </div>
         </div>
     )

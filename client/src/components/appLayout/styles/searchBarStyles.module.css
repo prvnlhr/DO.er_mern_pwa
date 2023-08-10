@@ -1,39 +1,12 @@
-.container {
+.searchBarContainer {
     height: 40px;
-    /* aspect-ratio: 7/1; */
     width: 250px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    transition: all 300ms ease-in-out;
-    -webkit-transition: all 300ms ease-in-out;
-    -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
-    -ms-transition: all 300ms ease-in-out;
-    /* border: 1px solid rgb(255, 0, 0); */
     border-radius: 10px;
     overflow: hidden;
-    /* border: 1px solid springgreen; */
-}
-
-.containerShrink {
-    height: 40px;
-    /* aspect-ratio: 1/1; */
-    width: 40px;
-    /* width: 100px; */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    transition: all 300ms ease-in-out;
-    -webkit-transition: all 300ms ease-in-out;
-    -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
-    -ms-transition: all 300ms ease-in-out;
-    /* border: 1px solid rgb(255, 0, 0); */
-    border-radius: 10px;
-    overflow: hidden;
-    /* border: 1px solid springgreen; */
-
+    /* border: 1px solid darkblue; */
 }
 
 .inputContainer {
@@ -42,23 +15,17 @@
     align-items: center;
     height: 100%;
     flex: 1;
-    /* This will make it take up the remaining available width */
-    /* border: 1px solid greenyellow; */
     transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
     -ms-transition: all 300ms ease-in-out;
-    /* background-color: palegoldenrod; */
-    /* background-color: rgba(240, 255, 255, 0.186); */
-    /* border: 0.01rem solid salmon; */
-
+    /* border: 1px solid red; */
 }
 
 .hitSearchArrowIconContainer {
     height: 100%;
     aspect-ratio: 1/1;
-    /* border: 1px solid white; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -68,7 +35,6 @@
 .hitSearchArrowIconContainerShrink {
     height: 100%;
     width: 0%;
-    /* border: 1px solid white; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -81,9 +47,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid white; */
     cursor: pointer;
 }
+
 
 .searchInput {
     outline: none;
@@ -95,16 +61,30 @@
     font-size: 0.95rem;
     padding-left: 0px;
     font-weight: 400;
-    /* transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
-    -ms-transition: all 300ms ease-in-out; */
-    /* background-color: salmon; */
+    -ms-transition: all 300ms ease-in-out;
     padding-left: 5%;
-    /* background-color: transparent; */
-    /* border: 1px solid white; */
     border-radius: 0px;
+    /* border: 1px solid red; */
+
+}
+
+.searchInputShrink {
+    height: 100%;
+    width: 0%;
+    padding: 0;
+    border-radius: 0px;
+    /* border: 1px solid red; */
+}
+
+.searchInputExpand {
+    height: 100%;
+    width: 100%;
+    padding-left: 5%;
+    /* border: 1px solid red; */
 }
 
 .searchInput::placeholder {
@@ -115,26 +95,6 @@
     font-size: clamp(0.7rem, 0.19999999999999996rem + 2.5vw, 0.95rem) !important;
 }
 
-.searchInputShrink {
-    outline: none;
-    height: 100%;
-    width: 100%;
-    border: none;
-    background-color: #40597f48;
-    padding: 0px;
-    /* transition: all 300ms ease-in-out;
-    -webkit-transition: all 300ms ease-in-out;
-    -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
-    -ms-transition: all 300ms ease-in-out; */
-    /* background-color: salmon; */
-    padding-left: 0px;
-    padding: 0;
-    /* background-color: transparent; */
-    border-radius: 0px;
-
-}
-
 /* ----------------------------------------------------------------------- */
 .iconContainer {
     display: flex;
@@ -142,16 +102,14 @@
     align-items: center;
     height: 100%;
     aspect-ratio: 1/1;
-    /* border: 0.01rem dotted springgreen; */
     background-color: #40597f48;
-    /* background-color: springgreen; */
     margin-left: 0px;
     transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
     -ms-transition: all 300ms ease-in-out;
-
+    /* border: 1px solid red; */
 }
 
 .searchIconDiv {
@@ -160,7 +118,6 @@
     align-items: center;
     width: 50%;
     cursor: pointer;
-    /* border: 1px solid green; */
     transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
@@ -170,23 +127,16 @@
 
 /* ----------------------------------------------------------------------- */
 
-/* ----------------------------------- */
 
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .container {
-        height: 40px;
-        width: 95%;
-        /* border: 1px solid springgreen; */
+    .searchBarContainer {
+        height: 30px;
+        height: clamp(1.9rem, 0.6999999999999997rem + 6.000000000000001vw, 2.5rem) !important;
+        width: 100%;
     }
 
-    .containerShrink {
-        height: 40px;
-        width: 40px;
-        /* border: 1px solid springgreen; */
-
-
+    .searchInput::placeholder {
+        font-size: clamp(0.7rem, 0.19999999999999996rem + 2.5vw, 0.95rem) !important;
     }
-
-
 }

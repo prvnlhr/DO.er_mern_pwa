@@ -1,8 +1,11 @@
+@import "../../variable.module.css";
+
 .authComponentWrapper {
     position: absolute;
-    width: 300px;
-    aspect-ratio: 1/1.3;
-    background-color: white;
+    width: 300;
+    aspect-ratio: 1/1.5;
+    /* height: auto; */
+    background-color: #F9FAFB;
     z-index: 3;
     left: 0;
     right: 0;
@@ -12,25 +15,64 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 3rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
 }
 
-.authComponentFormWrapper {
-    width: 80%;
-    height: 90%;
-    /* border: 1px solid black; */
+.authComponentCloseBtnWrapper {
+    width: 100%;
+    height: 10%;
+    height: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 1px solid red; */
+    padding-right: 5%;
+
+
+}
+
+.closeBtnDiv {
+    height: 55%;
+    aspect-ratio: 1/1;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid rgb(162, 181, 211);
+    border-radius: 50%;
+    background-color: #B692F6;
+    box-shadow: var(--list-wrapper-box-shadow);
+    cursor: pointer;
+}
+
+.authComponentFormWrapper {
+    width: 100%;
+    height: 90%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* border-radius: 2.8rem; */
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+    -webkit-transition: height 0.5s ease-in-out;
+    -moz-transition: height 0.5s ease-in-out;
+    -o-transition: height 0.5s ease-in-out;
+    -ms-transition: height 0.5s ease-in-out;
+    /* padding-bottom: 5%; */
 }
 
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .authComponentWrapper {
         position: absolute;
-        width: 85%;
-        aspect-ratio: 1/1.3;
-        background-color: white;
+        width: 80%;
+        /* aspect-ratio: 1/1.3; */
         z-index: 3;
         left: 0;
         right: 0;
@@ -40,6 +82,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 3rem;
+        /* border-radius: 3rem; */
     }
 }

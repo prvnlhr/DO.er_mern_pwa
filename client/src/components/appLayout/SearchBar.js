@@ -32,14 +32,17 @@ const SearchBar = ({ inSearchMode, handleSearchIconClicked, searchKey, setSearch
 
 
     return (
-        <div className={inSearchMode ? styles.container : styles.containerShrink} >
+        <motion.div className={styles.searchBarContainer}>
             <div className={styles.iconContainer} >
                 <div className={styles.searchIconDiv} onClick={handleSearchIconClicked}>
                     <SearchIcon inSearchMode={inSearchMode} />
                 </div>
             </div>
+
             <div className={styles.inputContainer} >
-                <input className={inSearchMode ? styles.searchInput : styles.searchInputShrink}
+                <input className={`${styles.searchInput} 
+                ${inSearchMode ? styles.searchInputExpand : styles.searchInputShrink}
+                `}
                     type="text"
                     value={searchKey}
                     onChange={handleInputChange}
@@ -67,7 +70,7 @@ const SearchBar = ({ inSearchMode, handleSearchIconClicked, searchKey, setSearch
 
 
 
-        </div>
+        </motion.div>
 
 
     )

@@ -9,6 +9,7 @@ import CountryIcon from "./formIcons/CountryIcon"
 import ButtonArrowIcon from "./formIcons/ButtonArrowIcon"
 import ErrorIcon from "./formIcons/ErrorIcon"
 import SuccessIcon from "./formIcons/SuccessIcon"
+import AuthLoadingSpinner from './formIcons/AuthLoadingSpinner'
 
 const SignInCOmponent = () => {
 
@@ -20,7 +21,7 @@ const SignInCOmponent = () => {
 
     const authState = useSelector((state) => state.auth);
 
-    const { message, isLoading } = authState || {};
+    const { isError, message, isLoading, authType } = authState || {};
     const emailSent = useSelector(state => state.auth.emailSent);
 
 
@@ -43,7 +44,7 @@ const SignInCOmponent = () => {
 
 
 
-    const handleFormSubmitBtnClicked = async () => {
+    const handleSubmitBtnClicked = async () => {
         const res = await dispatch(userSignInAsync(signInFormData));
         console.log('dispatch res', res);
         if (res.type === 'auth/userSignIn/fulfilled' && res.payload === 'OTP sent to your email.') {
@@ -55,34 +56,40 @@ const SignInCOmponent = () => {
         updateLocalAuthState('showSignInForm', false);
     }
 
-    const handleSubmitBtnClicked = () => {
+    const handleSusbmitBtnClicked = () => {
         console.log('clicked');
     }
     const setFocus = (val) => {
         setCurrFocusField(val)
     }
-    const isError = false;
 
     return (
         <div className={styles.signInFormGrid}>
-          
+
             <div className={styles.authMessageCell}>
-                <div className={`${styles.messageWrapper} ${isError ? styles.errorBackGround : styles.successBackGround}`} >
-                    <div className={styles.messageIconContainer} >
-                        <div className={styles.messageIconDiv} >
-                            <SuccessIcon />
+                {message && authType === 'SIGNIN' &&
+
+                    <div className={`${styles.messageWrapper} ${isError ? styles.errorBackGround : styles.successBackGround}`} >
+                        <div className={styles.messageIconContainer} >
+                            <div className={styles.messageIconDiv} >
+                                {
+                                    isError
+                                        ?
+                                        <ErrorIcon />
+                                        :
+                                        <SuccessIcon />
+                                }
+                            </div>
+                        </div>
+                        <div className={styles.messageTextContainer} >
+                            <p className={`${styles.messageText} ${isError ? styles.errorText : styles.successText}`}>
+                                {message}
+                            </p>
                         </div>
                     </div>
-                    <div className={styles.messageTextContainer} >
-                        <p className={`${styles.messageText} ${isError ? styles.errorText : styles.successText}`}>
-                            Account with this email Already exists
-                        </p>
-                    </div>
-                </div>
+                }
+
             </div>
-
-
-
 
 
             <div className={styles.emailAddressCell}>
@@ -98,8 +105,11 @@ const SignInCOmponent = () => {
                     <div className={styles.inputCell} >
                         <input
                             className={styles.formInput}
-                            value={'andrew.garf@gmail.com'}
                             onFocus={() => setFocus(2)}
+                            type="email" id="email"
+                            name='emailAddress'
+                            value={signInFormData.emailAddress}
+                            onChange={handleSignInFormDataChange}
                         />
                     </div>
                 </div>
@@ -117,17 +127,18 @@ const SignInCOmponent = () => {
                     <div className={styles.btnIconContainer} >
                         <button className={styles.submitBtn}
                             onFocus={() => setFocus(4)}
-                            onClick={handleSubmitBtnClicked}
-                        >
-
-                            <ButtonArrowIcon />
-                        </button>
+                            onClick={handleSubmitBtnClicked}>
+                            {isLoading ?
+                                <AuthLoadingSpinner /> :
+                                <ButtonArrowIcon />
+                            }
+                        </button >
                     </div>
                 </div>
             </div>
 
             <div className={styles.bottomLinkCell}>
-                <p>Not yet Registered ? <span>SignUp</span></p>
+                <p>Not yet Registered ? <span onClick={handleToggleFormLinkClicked} >SignUp</span></p>
             </div>
         </div>
 

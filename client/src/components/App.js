@@ -47,11 +47,11 @@ const App = () => {
         <div className={appStyles.app}>
             <div className={appStyles.appInnerwrapper} >
                 <div className={appStyles.overlay} ></div>
-                {/* 
+
                 {localAuthData.showAuthForm &&
                     <AuthComponent />
-                } */}
-                <AuthComponent />
+                }
+
                 <AppHeader />
                 <AppSubPagesWrapper />
             </div>
