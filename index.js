@@ -55,13 +55,19 @@ mongoose
 
 
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000", "https://doer.onrender.com/"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:3000", "https://doer.onrender.com/"],
+//     credentials: true,
+//   })
+// );
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'https://doer.onrender.com');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 app.use("/", require("./routes/index"));
 
