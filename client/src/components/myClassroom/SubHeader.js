@@ -5,8 +5,7 @@ import GraphComponent from "./GraphComponent"
 const SubHeader = () => {
     return (
         <div className={styles.subHeaderWrapper} >
-            <StatsComponent />
-            <GraphComponent />
+            <StatsComponent /> <GraphComponent />
         </div>
     )
 }
