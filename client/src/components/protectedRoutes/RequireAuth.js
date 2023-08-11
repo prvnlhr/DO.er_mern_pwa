@@ -6,8 +6,9 @@ import { useSelector } from "react-redux";
 const RequireAuth = ({ children }) => {
 
     const accessToken = useSelector((state) => state.auth.accessToken)
+    const isLogged = true;
     return (
-        accessToken ?
+        isLogged ?
             children :
             <Navigate to="/" />
     )

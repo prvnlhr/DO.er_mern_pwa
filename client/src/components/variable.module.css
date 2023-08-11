@@ -1,11 +1,16 @@
 :root {
 
-    --app-ui-scheme-color: #9E77ED;
+    --app-ui-scheme-color: #6167A0;
     /* --app-ui-scheme-color: #7F56D9; */
     --test-font-styles: orange;
 
     --app-header-bg: #132136;
+    --app-header-bg: #0D1321;
+    /* --app-header-bg: #111A2C; */
+
     --sub-page-header-bg: #132136;
+    --sub-page-header-bg: #0D1321;
+    /* --sub-page-header-bg: #111A2C; */
 
     --sub-page-content-wrapper-bg: #EEF7FF;
 
@@ -21,8 +26,7 @@
     /* --app-main-bg: linear-gradient(180deg, #DFEDF4 33.14%, #E8F0EC 51.89%, #F7F9F6 76.37%); */
     --app-main-bg: #D9ECFB;
 
-    --auth-form-input-bg: #E0EAFF;
-    --auth-form-btn-bg: #E0EAFF;
+    --auth-form-input-bg: #E7EFFC;
 
     --fontFamily: 'Montserrat', sans-serif;
     --fontFamily: 'Poppins', sans-serif;
@@ -32,6 +36,9 @@
     /* font-weight: var(--fontWeight); */
     --shimmer-color: linear-gradient(90deg, #bdcbe15d 44.18%, #E7EFFC 129.07%);
     --shimmer-color: #EFF1F1;
+
+    --button-bg: #6167A0;
+    /* #6167A0 */
 }
 
 [data-theme="dark"] {

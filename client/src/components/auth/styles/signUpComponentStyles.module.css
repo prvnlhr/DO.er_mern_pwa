@@ -156,7 +156,7 @@
 }
 
 .bottomLinkCell span {
-    color: #9E77ED;
+    color: #6167A0;
     cursor: pointer;
     font-weight: 600;
 }
@@ -177,7 +177,7 @@
 }
 
 .inputGridActive {
-    border: 2px solid #9E77ED;
+    border: 2px solid #6167A0;
 }
 
 /* ---------------------------------------------------------------------------------------------------- */
@@ -300,7 +300,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--auth-form-btn-bg);
+    background-color: var(--button-bg);
+
     border-radius: 50%;
     cursor: pointer;
     border: none;
@@ -311,7 +312,7 @@
 
 
 .submitBtn:focus {
-    outline: 2px solid #9E77ED;
+    outline: 2px solid #6167A0;
 }
 
 /* ________________________________________________________________________________ */

@@ -243,7 +243,7 @@ const OtpComponent = () => {
                     </div>
                     <div className={styles.optResendIconContainer}>
                         <div className={styles.optResendIconDiv}>
-                            <ResendIcon bgColor={timer.time > 0 ? '#7E8DA4' : '#9E77ED'} />
+                            <ResendIcon bgColor={timer.time > 0 ? '#7E8DA4' : '#6167A0'} />
                         </div>
                     </div>
                 </motion.button>

@@ -129,12 +129,13 @@ const GraphComponent = () => {
                                 },
                                 label(tooltipItem) {
                                     const totalMinutes = tooltipItem.formattedValue * 60;
-                                    if (totalMinutes >= 60) {
-                                        const hours = Math.floor(totalMinutes / 60);
-                                        const minutes = Math.round(totalMinutes % 60); // Round off the minutes
+                                    const roundedTotalMinutes = Math.round(totalMinutes); // Round off the total minutes
+                                    if (roundedTotalMinutes >= 60) {
+                                        const hours = Math.floor(roundedTotalMinutes / 60);
+                                        const minutes = Math.round(roundedTotalMinutes % 60); // Round off the minutes
                                         return `${hours}hr ${minutes}min`;
                                     } else {
-                                        return `${totalMinutes}min`;
+                                        return `${roundedTotalMinutes}min`;
                                     }
                                 },
                             },

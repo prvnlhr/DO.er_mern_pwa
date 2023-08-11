@@ -47,33 +47,37 @@ const ListComponent = () => {
                 </div>
 
                 <div className={styles.progressCardListOuterWrapper} >
-                    <div className={styles.progressCardListInnerWrapper} >
+                    <div className={showInProgressList === 'inProgress' ? styles.progressCardListInnerWrapper : styles.allCardListInnerWrapper} >
                         {
                             showInProgressList === 'inProgress' ?
                                 <>
 
-                                    {
+                                    {/* {
                                         Object.entries(completedCourses).map(([courseIndex, isCompleted]) => (
                                             <InProgressCourseCard courseIndex={courseIndex} numChapterCompleted={courseInfoArray[courseIndex]} totalChapters={coursesList[courseIndex].chaptersList.length} />
-                                            // <p>  {`'${courseIndex}' --> '${isCompleted}'  ${courseInfoArray[courseIndex]} / ${coursesList[courseIndex].chaptersList.length} `}</p>
                                         ))
-                                    }
+                                    } */}
 
 
-                                    {/* <InProgressCourseCard  courseIndex={courseIndex} numChapterCompleted={courseInfoArray[courseIndex]} totalChapters={coursesList[courseIndex].chaptersList.length} />
+                                    {/* <InProgressCourseCard  courseIndex={courseIndex} numChapterCompleted={courseInfoArray[courseIndex]} totalChapters={coursesList[courseIndex].chaptersList.length} /> */}
                                     <InProgressCourseCard />
                                     <InProgressCourseCard />
                                     <InProgressCourseCard />
-                                    <InProgressCourseCard />
-                                    <InProgressCourseCard />
-                                    <InProgressCourseCard />
-                                    <InProgressCourseCard /> */}
+                                    {/* <InProgressCourseCard /> */}
+                                    {/* <InProgressCourseCard /> */}
+                                    {/* <InProgressCourseCard /> */}
+                                    {/* <InProgressCourseCard /> */}
                                 </>
                                 :
                                 <>
                                     {
                                         coursesList.map((course, index) => (
                                             <>
+                                                <AllCourseCardClassroom courseData={course} courseIndx={index} />
+                                                <AllCourseCardClassroom courseData={course} courseIndx={index} />
+                                                <AllCourseCardClassroom courseData={course} courseIndx={index} />
+                                                <AllCourseCardClassroom courseData={course} courseIndx={index} />
+                                                <AllCourseCardClassroom courseData={course} courseIndx={index} />
                                                 <AllCourseCardClassroom courseData={course} courseIndx={index} />
                                                 <AllCourseCardClassroom courseData={course} courseIndx={index} />
                                                 <AllCourseCardClassroom courseData={course} courseIndx={index} />

@@ -1,8 +1,7 @@
 import axios from "axios";
 import { updateAccessToken } from "../features/auth/authSlice"
-// let url = process.env.REACT_APP_BASE_URL;
-let url = 'http://localhost:9000';
-
+let url = process.env.REACT_APP_BASE_URL;
+// let url = 'http://localhost:9000';
 const API = axios.create({
     baseURL: url,
     withCredentials: true,

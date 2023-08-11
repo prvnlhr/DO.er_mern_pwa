@@ -7,14 +7,14 @@
     align-items: center;
     /* width: 200px; */
     /* min-width: 10%; */
-    height: 60%;
+    height: 85%;
     aspect-ratio: 1/1.2;
     /* border: 1px solid black; */
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    border-radius: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* margin-top: 2%; */
+    /* margin-bottom: 2%; */
+    border-radius: 1.5rem;
     background-color: white;
     box-shadow: var(--list-wrapper-box-shadow);
     box-sizing: border-box;
@@ -67,7 +67,7 @@
     /* height: 50%; */
     aspect-ratio: 1/1;
     border-radius: 50%;
-    background-color: #CBE7FD;
+    background-color: var(--button-bg);
     display: flex;
     justify-content: center;
     align-items: center;

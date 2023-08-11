@@ -173,7 +173,7 @@
 }
 
 .optInputContainerActive {
-    border: 0.15rem solid #9E77ED;
+    border: 0.15rem solid #6167A0;
 }
 
 .otpInput {
@@ -188,7 +188,7 @@
 }
 
 .otpActiveInput {
-    /* border: 0.15rem solid #9E77ED; */
+    /* border: 0.15rem solid #6167A0; */
     border-radius: unset;
 }
 
@@ -284,7 +284,7 @@
 
 
 .optResendBtnWhenActive:focus {
-    outline: 2px solid #9E77ED;
+    outline: 2px solid #6167A0;
     border-radius: 0.3rem;
 }
 
@@ -306,7 +306,7 @@
 
 .optResendBtnWhenActive p {
     font-size: 0.7rem;
-    color: #9E77ED;
+    color: #6167A0;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
 }
@@ -389,7 +389,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--auth-form-btn-bg);
+    background-color: var(--button-bg);
     border-radius: 50%;
     cursor: pointer;
     border: none;
@@ -399,7 +399,7 @@
 
 
 .submitBtn:focus {
-    outline: 2px solid #9E77ED;
+    outline: 2px solid #6167A0;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {

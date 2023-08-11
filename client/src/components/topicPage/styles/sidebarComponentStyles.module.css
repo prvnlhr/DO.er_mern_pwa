@@ -16,7 +16,7 @@
         "sidebarContentWrapper";
     z-index: 2;
     background-color: var(--app-main-bg);
-    /* background-color: white !important; */
+    background-color: #FCFAFA !important;
 
 
 }
@@ -201,11 +201,11 @@
 
 
 .indicatorDiv {
-    width: 30%;
+    width: 25%;
     aspect-ratio: 1/2;
     /* height: 65%; */
     background-color: var(--app-ui-scheme-color);
-    border-radius: 0.1rem;
+    border-radius: 0.12rem;
     /* margin-right: 2%; */
 }
 
@@ -213,7 +213,7 @@
     content: "";
     position: absolute;
     width: 0.09rem;
-    background-color: #7e8da47f;
+    background-color: #7e8da43e;
     height: 80%;
     top: -100%;
     left: 0;

@@ -145,7 +145,7 @@
 .searchValueContainer p {
     font-size: var(--searchItem-font-size);
     font-weight: 500;
-    color: #9E77ED;
+    color: #6167A0;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -237,7 +237,8 @@
     aspect-ratio: 1/1;
     width: 55%;
     border-radius: 50%;
-    background-color: #CBE7FD;
+    background-color: var(--button-bg);
+
 }
 
 .linkIconDiv {

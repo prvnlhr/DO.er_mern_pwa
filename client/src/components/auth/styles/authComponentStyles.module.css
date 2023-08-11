@@ -45,8 +45,8 @@
     align-items: center;
     border: 1px solid rgb(162, 181, 211);
     border-radius: 50%;
-    background-color: #B692F6;
     box-shadow: var(--list-wrapper-box-shadow);
+    background-color: var(--button-bg);
     cursor: pointer;
 }
 

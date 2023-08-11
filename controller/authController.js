@@ -318,15 +318,15 @@ const isValidEmail = (email) => {
 };
 
 function createAccessToken(payload) {
-    // return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
-    return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: "30s" });
+    return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
+    // return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: "30s" });
 }
 
 
 function createRefreshToken(payload) {
-    // return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "2d" });
+    return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "2d" });
     // return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "60s" });
-    return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "2m" });
+    // return jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: "2m" });
 }
 
 
