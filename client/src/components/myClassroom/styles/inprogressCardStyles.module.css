@@ -98,11 +98,15 @@
     justify-content: flex-start;
     align-items: center;
     padding-left: 8%;
+    overflow: hidden;
 }
 
 .courseNameCell p {
     color: white;
     font-size: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .numChaptersCell {
@@ -181,7 +185,6 @@
     grid-area: chapterNameCell;
     width: 100%;
     height: 100%;
-    /* border: 1px solid blue; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -194,12 +197,17 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    /* border: 1px solid blue; */
+    overflow: hidden;
 }
 
 .chapterNameDiv p {
     font-size: 0.7rem;
     color: black;
     font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
 }
 
@@ -370,15 +378,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .cardOuterWrapper {
         display: flex;
@@ -393,6 +392,77 @@
         margin-top: 15px;
         margin-bottom: 15px;
         height: clamp(7.0rem, -3.0rem + 50.0vw, 12.0rem) !important;
+        border-radius: clamp(1.1rem, -0.2999999999999998rem + 6.999999999999999vw, 1.8rem) !important;
 
     }
+
+
+    .courseAttributeCell p {
+        font-size: 0.5rem;
+        font-size: 0.8rem;
+        font-size: clamp(0.6rem, 0.19999999999999984rem + 2.000000000000001vw, 0.8rem) !important;
+
+    }
+
+
+    .courseNameCell p {
+        font-size: 1.8rem;
+        font-size: 1rem;
+        width: 95%;
+        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
+
+    }
+
+
+    .numChaptersCell p {
+        font-size: 1.2rem;
+        font-size: 2.5rem;
+        font-size: clamp(1.2rem, -1.4000000000000001rem + 13.0vw, 2.5rem) !important;
+    }
+
+
+    .chapterAttributeCell p {
+        font-size: 0.6rem;
+        font-size: 0.8rem;
+        font-size: clamp(0.6rem, 0.19999999999999984rem + 2.000000000000001vw, 0.8rem) !important;
+
+    }
+
+    .breadCrumTextContainer p {
+        font-size: clamp(0.5rem, 0.10000000000000009rem + 1.9999999999999998vw, 0.7rem) !important;
+
+    }
+
+    .chapterNameDiv p {
+        font-size: clamp(0.7rem, 0.2999999999999998rem + 2.000000000000001vw, 0.9rem) !important;
+        font-weight: 500;
+
+    }
+
+    .progressAttributeContainer p {
+        font-size: clamp(0.5rem, 0.10000000000000009rem + 1.9999999999999998vw, 0.7rem) !important;
+        white-space: nowrap;
+    }
+
+
+    .numDiv p {
+        font-size: clamp(0.55rem, -0.04999999999999982rem + 2.999999999999999vw, 0.85rem) !important;
+        font-weight: 600;
+    }
+
+    .slashText {
+        color: #718199;
+        font-size: clamp(0.55rem, -0.04999999999999982rem + 2.999999999999999vw, 0.85rem) !important;
+    }
+
+
+
+    .chevIconDiv {
+        aspect-ratio: 1/1;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
 }

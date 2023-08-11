@@ -322,17 +322,27 @@
     }
 
     .headingTextActive {
-        color: black;
-        font-size: 1.5rem;
+        font-size: 1rem;
+        font-size: 1.8rem;
+        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
+
         font-weight: 600;
     }
 
     .headingTextNotActive {
-        color: #718199 !important;
-        font-size: 1.2rem;
-        font-weight: 500;
+        font-size: 1rem;
+        font-size: 1.8rem;
+        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
+
+        font-weight: 400;
     }
 
+    .headingTextBookmark {
+        font-size: 1.2rem;
+        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
+
+        font-weight: 500;
+    }
 
     .bookmarkListWrapper {
         grid-area: bookmarkListWrapper;
@@ -345,6 +355,7 @@
         grid-template-areas:
             "bookMarkListHeaderWrapper"
             "bookmarkCardListOuterWrapper";
+        margin-top: 3rem;
     }
 
     .bookmarkCardListInnerWrapper {

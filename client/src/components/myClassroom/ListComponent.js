@@ -103,7 +103,7 @@ const ListComponent = () => {
                     </div>
                     <div className={styles.headingWrapper} >
                         <div className={styles.headingDiv} >
-                            <p className={styles.headingText} >Bookmarks</p>
+                            <p className={styles.headingTextBookmark} >Bookmarks</p>
                         </div>
                     </div>
                 </div>

@@ -175,17 +175,20 @@
         align-items: center;
         box-sizing: border-box;
         border-radius: clamp(1.5rem, 0.2999999999999998rem + 6.000000000000001vw, 2.1rem) !important;
-        aspect-ratio: unset;
-        width: 50%;
-        min-width: 50%;
-        height: 70%;
-        min-height: 70%;
+        /* aspect-ratio: 1/1; */
+        width: 60%;
+        min-width: 60%;
+        /* width: unset; */
+        /* min-width: unset; */
+        height: 65%;
+        min-height: 65%;
         margin: unset;
         overflow: hidden;
         margin-top: 0%;
         margin-bottom: 0%;
         margin-left: 20px;
         margin-right: 20px;
+
     }
 
 

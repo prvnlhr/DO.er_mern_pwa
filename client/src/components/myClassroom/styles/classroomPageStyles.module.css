@@ -72,7 +72,7 @@
         align-items: flex-start; */
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 100% 150%;
+        grid-template-rows: 120% 150%;
         grid-template-areas:
             "subHeaderWrapper"
             "listWrapper";
