@@ -1,10 +1,9 @@
 import axios from "axios";
 import { updateAccessToken } from "../features/auth/authSlice"
 let url = process.env.REACT_APP_BASE_URL;
-// let url = 'http://localhost:9000';
+
 const API = axios.create({
     baseURL: url,
-    withCredentials: true,
 })
 
 let store;
@@ -103,6 +102,7 @@ export const checkUserAuthRequest = () =>
     API.post("/api/auth/checkUserAuth", null, {
         withCredentials: true,
     });
+    
 // ----------------------------------------------------------------------
 
 export const getUserDataRequest = (token) =>

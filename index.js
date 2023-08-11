@@ -17,31 +17,6 @@ const CONNECTION_URL = process.env.MONGODB_URL;
 
 const PORT = process.env.PORT || 9000;
 
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-
-// async function run() {
-//   const client = new MongoClient(CONNECTION_URL, {
-//     serverApi: {
-//       version: ServerApiVersion.v1,
-//       strict: true,
-//       deprecationErrors: true,
-//     }
-//   });
-
-//   try {
-//     await client.connect();
-
-//     await client.db("admin").command({ ping: 1 });
-
-//     console.log("Pinged your deployment. Connected to Database :: MongoDB Cloud");
-//   } catch (err) {
-//     console.error("Error connecting to MongoDB:", err);
-//   } finally {
-//     await client.close();
-//   }
-// }
-
-// run().catch(console.error);
 
 mongoose.set('strictQuery', false);
 
@@ -55,19 +30,15 @@ mongoose
 
 
 
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:3000", "https://doer.onrender.com/"],
-//     credentials: true,
-//   })
-// );
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://doer.onrender.com');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000", "https://doer.onrender.com/"],
+    credentials: true,
+  })
+);
+
+
 
 app.use("/", require("./routes/index"));
 
