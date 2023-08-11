@@ -22,14 +22,17 @@ API.interceptors.response.use(
         if (error.response.status === 401 && originalRequest.url !== '/api/auth/checkUserAuth') {
             // Attempt to refresh the access token using the refresh token
             try {
-                const refreshTokenResponse = await API.post('/api/auth/checkUserAuth', null, { withCredentials: true });
+                const refreshTokenResponse = await API.post(`${url}/api/auth/checkUserAuth`, null, {
+                    withCredentials: true
+                });
                 console.log('refreshTokenResponse', refreshTokenResponse)
                 // If refresh token is successful, update the access token and retry the original request
                 if (refreshTokenResponse.status === 200) {
                     const newAccessToken = refreshTokenResponse.data.accessToken;
                     console.log('new token', newAccessToken);
                     store.dispatch(updateAccessToken(newAccessToken));
-                    originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+                    // originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+                    originalRequest.headers['Authorization'] = "Bearer " + newAccessToken;
                     return API(originalRequest);
                 }
             } catch (refreshError) {
@@ -102,7 +105,7 @@ export const checkUserAuthRequest = () =>
     API.post("/api/auth/checkUserAuth", null, {
         withCredentials: true,
     });
-    
+
 // ----------------------------------------------------------------------
 
 export const getUserDataRequest = (token) =>
