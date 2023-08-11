@@ -19,7 +19,7 @@ API.interceptors.response.use(
         const originalRequest = error.config;
 
         // Check if the error response is due to an expired access token
-        if (error.response.status === 401 && originalRequest.url !== '/api/auth/checkUserAuth') {
+        if (error?.response?.status === 401 && originalRequest.url !== '/api/auth/checkUserAuth') {
             // Attempt to refresh the access token using the refresh token
             try {
                 const refreshTokenResponse = await API.post(`${url}/api/auth/checkUserAuth`, null, {

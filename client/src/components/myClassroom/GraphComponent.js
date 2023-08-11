@@ -19,9 +19,8 @@ const GraphComponent = () => {
     const defaultData = [0, 0, 0, 0, 0, 0, 0];
 
     const dataFromLocalStorage = JSON.parse(localStorage.getItem('dailyTimeSpent')) || defaultData;
-    // console.log(dataFromLocalStorage);
     const chartData = Object.values(dataFromLocalStorage);
-    // console.log(chartData);
+    console.log(chartData);
 
     const currentDayOfWeek = new Date().getDay();
 

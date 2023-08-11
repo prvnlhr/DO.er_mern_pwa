@@ -57,13 +57,7 @@ const authController = {
             user.otpExpiry = Date.now() + 180000; // Set OTP expiry to 3 minutes from now
             await user.save();
 
-            // res.cookie("userEmail", emailAddress, {
-            //     httpOnly: true,
-            //     secure: true,
-            //     maxAge: 1000 * 60 * 10,
-            //     sameSite: 'None',
-            //     path: ['/api/auth/verifyOtp', '/api/auth/resendOtp'],
-            // });
+         
 
             try {
                 await sendMail(emailAddress, otp);
@@ -113,14 +107,7 @@ const authController = {
                 otpExpiry: expiryTime,
             })
 
-            // res.cookie("userEmail", emailAddress, {
-            //     httpOnly: true,
-            //     secure: true,
-            //     maxAge: 1000 * 60 * 10,
-            //     sameSite: 'None',
-            //     // path: ['/api/auth/verifyOtp', '/api/auth/resendOtp'],
-            //     path: '/',
-            // });
+          
 
             try {
                 await sendMail(emailAddress, otp);
@@ -170,11 +157,7 @@ const authController = {
             await user.save();
 
 
-            // res.clearCookie('userEmail', {
-            //     secure: true,
-            //     sameSite: 'None',
-            //     path: ['/api/auth/verifyOtp', '/api/auth/resendOtp'],
-            // });
+            
 
 
             const tokenPayload = {
@@ -187,13 +170,7 @@ const authController = {
             const accessToken = createAccessToken(tokenPayload);
             const refreshToken = createRefreshToken(tokenPayload);
 
-            // res.cookie("refreshToken", refreshToken, {
-            //     httpOnly: true,
-            //     secure: true,
-            //     maxAge: 1000 * 60 * 60 * 24 * 2, // 2 days
-            //     sameSite: "none",
-            //     path: "/",
-            // });
+         
 
             res.cookie("refreshtoken", refreshToken, {
                 httpOnly: true,
@@ -241,13 +218,7 @@ const authController = {
             user.otpExpiry = Date.now() + 180000; // Set OTP expiry to 3 minutes from now
             await user.save();
 
-            // res.cookie("userEmail", emailAddress, {
-            //     httpOnly: true,
-            //     secure: true,
-            //     maxAge: 1000 * 60 * 10,
-            //     sameSite: 'None',
-            //     path: ['/api/auth/verifyOtp', '/api/auth/resendOtp'],
-            // });
+           
 
             try {
                 await sendMail(emailAddress, otp);

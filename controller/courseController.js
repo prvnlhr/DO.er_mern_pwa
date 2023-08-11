@@ -11,7 +11,7 @@ const courseController = {
 
             const user = await User.findById(userId);
 
-
+            // console.log(user);
             // Initialize completedCourses, completedChapters, and completedTopics if they are undefined
             user.currentCourseState.completedCourses = user.currentCourseState.completedCourses || {};
             user.currentCourseState.completedChapters[courseIndex] = user.currentCourseState.completedChapters[courseIndex] || {};

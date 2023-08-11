@@ -134,7 +134,7 @@ export const userSignInAsync = createAsyncThunk("auth/userSignIn", async (formDa
         return fulfillWithValue(message);
 
     } catch (error) {
-        console.error('Error:', error?.response?.data);
+        console.error('Error:', error);
         const { errorMsg, actualError } = error?.response?.data;
         return rejectWithValue({
             errorMsg: errorMsg || 'unknown msg'
@@ -249,7 +249,7 @@ const authSlice = createSlice({
                 };
             })
             .addCase(userSignInAsync.rejected, (state, action) => {
-                const { errorMsg } = action.payload;
+                const { errorMsg } = action.payload || 'Unknown Error at authSlice userSignInAsync';
                 return {
                     ...state,
                     isLoading: false,
