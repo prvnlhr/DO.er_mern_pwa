@@ -62,10 +62,10 @@ const InProgressCourseCard = ({ courseIndex, numChapterCompleted, totalChapters 
                         <p>COURSE</p>
                     </div>
                     <div className={styles.courseNameCell} >
-                        <p>JavaScript</p>
+                        <p>{coursesList[courseIndex]?.courseName}</p>
                     </div>
                     <div className={styles.numChaptersCell} >
-                        <p>9</p>
+                        <p>{totalChapters}</p>
                     </div>
                     <div className={styles.chapterAttributeCell} >
                         <p>Chapters</p>
@@ -91,13 +91,15 @@ const InProgressCourseCard = ({ courseIndex, numChapterCompleted, totalChapters 
                             <div className={styles.progressBarWrapper} >
                                 <div className={styles.barWrapper} >
                                     <div className={styles.barContainer} >
-                                        <div className={styles.barDiv} ></div>
+                                        <div className={styles.barDiv}
+                                            style={{ width: `${(numChapterCompleted / totalChapters) * 100}%` }}
+                                        ></div>
                                     </div>
                                 </div>
                                 <div className={styles.completedNumContainer} >
-                                    <div className={styles.numDiv} ><p>3</p></div>
+                                    <div className={styles.numDiv} ><p>{numChapterCompleted}</p></div>
                                     <div className={styles.numDiv} ><p className={styles.slashText} >/</p></div>
-                                    <div className={styles.numDiv} ><p>7</p></div>
+                                    <div className={styles.numDiv} ><p>{totalChapters}</p></div>
                                 </div>
                             </div>
                         </div>

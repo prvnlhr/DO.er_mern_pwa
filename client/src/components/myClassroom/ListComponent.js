@@ -52,17 +52,17 @@ const ListComponent = () => {
                             showInProgressList === 'inProgress' ?
                                 <>
 
-                                    {/* {
+                                    {
                                         Object.entries(completedCourses).map(([courseIndex, isCompleted]) => (
                                             <InProgressCourseCard courseIndex={courseIndex} numChapterCompleted={courseInfoArray[courseIndex]} totalChapters={coursesList[courseIndex].chaptersList.length} />
                                         ))
-                                    } */}
+                                    }
 
 
                                     {/* <InProgressCourseCard  courseIndex={courseIndex} numChapterCompleted={courseInfoArray[courseIndex]} totalChapters={coursesList[courseIndex].chaptersList.length} /> */}
-                                    <InProgressCourseCard />
-                                    <InProgressCourseCard />
-                                    <InProgressCourseCard />
+                                    {/* <InProgressCourseCard /> */}
+                                    {/* <InProgressCourseCard /> */}
+                                    {/* <InProgressCourseCard /> */}
                                     {/* <InProgressCourseCard /> */}
                                     {/* <InProgressCourseCard /> */}
                                     {/* <InProgressCourseCard /> */}

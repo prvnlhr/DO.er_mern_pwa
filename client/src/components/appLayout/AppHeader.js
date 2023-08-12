@@ -10,8 +10,10 @@ import { motion } from 'framer-motion';
 import { updateReduxState } from "../helperFunctions/reduxDispatchHelper"
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { logoutAsync } from "../../redux/features/auth/authSlice"
+import PopUpMenu from './PopUpMenu'
 
-const AppHeader = ({ showAuthForm, setShowAuthForm }) => {
+const AppHeader = ({ showAuthForm, setShowAuthForm, popUpMenuRef }) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -25,6 +27,9 @@ const AppHeader = ({ showAuthForm, setShowAuthForm }) => {
 
     const [inSearchMode, setInSearchMode] = useState(false);
     const [searchKey, setSearchKey] = useState('');
+
+    const [popUpOpen, setPopUpOpen] = useState(false);
+
 
     const handleSearchIconClicked = () => {
         setInSearchMode(!inSearchMode);
@@ -41,12 +46,31 @@ const AppHeader = ({ showAuthForm, setShowAuthForm }) => {
         navigate('/user/classroom');
     }
 
+    const handleLogoutBtnClicked = () => {
+        dispatch(logoutAsync());
+    }
+
+    useEffect(() => {
+        let handler = (e) => {
+            if (!popUpMenuRef.current.contains(e.target)) {
+                setPopUpOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handler);
+        return () => {
+            document.removeEventListener("mousedown", handler);
+        };
+    }, []);
+
+    const togglePopUpOpen = () => {
+        setPopUpOpen(!popUpOpen);
+    }
 
     return (
         <div className={styles.appHeaderStylesWrapper} >
 
             <div className={styles.headerInnerWrapper} >
-                <div className={styles.appLogoWrapper}   >
+                <div className={styles.appLogoWrapper} onClick={() => navigate('/')}  >
                     <div className={styles.logoContainer}  >
                         <AppLogo />
                     </div>
@@ -54,29 +78,14 @@ const AppHeader = ({ showAuthForm, setShowAuthForm }) => {
 
                 <div className={styles.rightWrapper} >
 
-                    {(accessToken) ?
-                        (location.pathname !== '/user/classroom' &&
-                            <div className={`${styles.signInBtnWrapper} ${inSearchMode ? styles.signInBtnWrapperShrink : styles.signInBtnWrapperExpand}`}>
-                                <div className={styles.signInBtnDiv} onClick={handleClassroomBtnClicked}>
-                                    <p className={styles.signInBtnText}>Classroom</p>
-                                </div>
+                    {(accessToken && location.pathname !== '/user/classroom') &&
+                        <div className={`${styles.signInBtnWrapper} ${inSearchMode ? styles.signInBtnWrapperShrink : styles.signInBtnWrapperExpand}`}>
+                            <div className={styles.signInBtnDiv} onClick={handleClassroomBtnClicked}>
+                                <p className={styles.signInBtnText}>Classroom</p>
                             </div>
-                        )
-                        :
-                        (!showAuthForm &&
-                            <div className={`${styles.signInBtnWrapper} ${inSearchMode ? styles.signInBtnWrapperShrink : styles.signInBtnWrapperExpand}`}>
-                                <div className={styles.signInBtnDiv} onClick={handleSigInBtnClicked}>
-                                    <p className={styles.signInBtnText}>Sign In</p>
-                                </div>
-                            </div>
-                        )
+                        </div>
                     }
 
-                    {/* <div className={`${styles.signInBtnWrapper} ${inSearchMode ? styles.signInBtnWrapperShrink : styles.signInBtnWrapperExpand}`}>
-                        <div className={styles.signInBtnDiv} onClick={handleSigInBtnClicked}>
-                            <p className={styles.signInBtnText} >Sign In</p>
-                        </div>
-                    </div> */}
 
                     <div className={`${styles.searchBarWrapper} ${inSearchMode ? styles.searchBarWrapperExpand : styles.searchBarWrapperShrink}`}>
                         <SearchBar
@@ -87,9 +96,53 @@ const AppHeader = ({ showAuthForm, setShowAuthForm }) => {
                         />
                     </div>
 
-                    <div className={`${styles.userProfileWrapper} ${inSearchMode ? styles.userProfileWrapperShrink : styles.userProfileWrapperExpand}`}>
-                        <div className={styles.profileIconDiv} >
-                            <ProfileIcon />
+                    <div className={`${styles.userProfileWrapper} ${inSearchMode ? styles.userProfileWrapperShrink : styles.userProfileWrapperExpand}`} ref={popUpMenuRef}>
+                        <div className={styles.profileIconDiv}>
+                            <ProfileIcon togglePopUpOpen={togglePopUpOpen} />
+                            {popUpOpen &&
+                                <PopUpMenu popUpMenuRef={popUpMenuRef} setPopUpOpen={setPopUpOpen} />
+                                // <div className={`${styles.popUpWrapper} ${!accessToken && styles.popUpWrapperShrink}`} >
+                                //     <div className={`${styles.popUpInnerWrapper} `} >
+                                //         <div className={styles.topSection}>
+                                //             <div className={styles.breadCrumWrapper} >
+                                //                 <div className={styles.breadCrumTextContainer} >
+                                //                     <p>Signed in as </p>
+                                //                 </div>
+                                //                 <div className={styles.breadCrumIconContainer} >
+                                //                     <div className={styles.chevIconDiv} >
+                                //                         <ChevronIcon />
+                                //                     </div>
+                                //                 </div>
+                                //             </div>
+                                //             <div className={styles.userNameWrapper} >
+                                //                 <p>Steve</p>
+                                //             </div>
+                                //         </div>
+                                //         <div className={styles.bottomSection}>
+
+                                //             {accessToken
+                                //                 ?
+                                //                 <div className={styles.authBtnWrapper} >
+                                //                     <div className={styles.authIconContainer} >
+                                //                         <div className={styles.authIconDiv}><SignOutIcon /></div>
+                                //                     </div>
+                                //                     <div className={styles.authTextContainer} ><p>Signout</p></div>
+                                //                 </div>
+                                //                 :
+                                //                 <div className={styles.authBtnWrapper} >
+                                //                     <div className={styles.authIconContainer} >
+                                //                         <div className={styles.authIconDiv}><SignInIcon /></div>
+                                //                     </div>
+                                //                     <div className={styles.authTextContainer} ><p>Signin</p></div>
+                                //                 </div>
+                                //             }
+
+
+
+                                //         </div>
+                                //     </div>
+                                // </div>
+                            }
                         </div>
                     </div>
 

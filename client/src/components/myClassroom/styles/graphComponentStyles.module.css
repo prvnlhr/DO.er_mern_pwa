@@ -24,8 +24,7 @@
     grid-template-columns: 100%;
     grid-template-areas:
         "timeSpendingWrapper"
-        "graphWrapper"
-    ;
+        "graphWrapper";
     align-content: space-between;
 }
 
@@ -118,7 +117,7 @@
             "timeSpendingWrapper"
             "graphWrapper";
         align-content: space-between;
-        margin-left: 5%;
+        margin-left: 0%;
     }
 
     .graphWrapper {

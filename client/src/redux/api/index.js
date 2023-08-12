@@ -95,7 +95,9 @@ export const userSignUpRequest = (data) =>
 
 
 export const verifyOtpRequest = (data) =>
-    API.post("/api/auth/verifyOtp", data);
+    API.post("/api/auth/verifyOtp", data, {
+        withCredentials: true,
+    });
 
 export const resendOtpRequest = (data) =>
     API.post("/api/auth/resendOtp", data);
@@ -104,6 +106,11 @@ export const resendOtpRequest = (data) =>
 export const checkUserAuthRequest = () =>
     API.post("/api/auth/checkUserAuth", null, {
         withCredentials: true,
+    });
+
+export const userLogoutRequest = () =>
+    API.get("/api/auth/logout", {
+        withCredentials: true
     });
 
 // ----------------------------------------------------------------------

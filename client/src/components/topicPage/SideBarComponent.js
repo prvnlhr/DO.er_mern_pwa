@@ -90,7 +90,7 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
                         <div className={styles.outerModulesListWrapper} key={chapterIndx}>
                             <div className={styles.moduleNameWrapper} onClick={() => handleSidebarChapterClicked(chapterIndx)} >
                                 <div className={styles.moduleNameDiv}>
-                                    <p>
+                                    <p className={`${styles.chapterNameText} ${currModuleListOpenIndex === chapterIndx && styles.activeChapterNameText}`} >
                                         {data.chapterName}
                                     </p>
                                 </div>
@@ -141,7 +141,7 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
                                                 }
                                             </div>
                                             <div className={styles.subTopicNameDiv} onClick={() => handleSidebarTopicClicked(topicIndx)}>
-                                                <p className={styles.subTopicNameText}>
+                                                <p className={`${styles.subTopicNameText} ${topicIndx === currentTopicIndex && styles.activeSubTopicNameText}`}>
                                                     {subData.topicName}
                                                 </p>
                                             </div>

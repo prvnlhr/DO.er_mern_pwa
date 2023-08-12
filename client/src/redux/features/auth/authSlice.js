@@ -18,7 +18,9 @@ const OTP_VERIFICATION_STATES = {
 
 const initialState = {
     userId: '',
-    accessToken: '',
+    username: '',
+    country: '',
+    accessToken: undefined,
     isLoading: false,
     message: '',
     emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT,
@@ -46,6 +48,24 @@ export const addNewUser = createAsyncThunk("auth/addNewUser", async ({ name, pho
         return rejectWithValue({ errorMessage });
     }
 });
+
+// -----------------------------------------------------------------------------------------------------------------------------
+
+export const logoutAsync = createAsyncThunk("auth/logout", async (_, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
+    try {
+        console.log('logoutAsync');
+        const res = await api.userLogoutRequest();
+        console.log(res.data)
+        return fulfillWithValue(res.data);
+    } catch (error) {
+        console.error('Error during logout:', error);
+        const { errorMsg, actualError } = error?.response?.data;
+        return rejectWithValue({
+            errorMsg: errorMsg || 'unknown msg'
+        });
+    }
+});
+
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 export const checkAuthAsync = createAsyncThunk("auth/checkUserAuth", async (_, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
@@ -174,13 +194,15 @@ const authSlice = createSlice({
                 };
             })
             .addCase(checkAuthAsync.fulfilled, (state, action) => {
-                const { message, accessToken, userId } = action.payload;
+                const { message, accessToken, userId, username, country } = action.payload;
                 return {
                     ...state,
                     isLoading: false,
                     message: message,
                     accessToken: accessToken,
-                    userId: userId
+                    userId: userId,
+                    username: username,
+                    country: country
                 };
             })
             .addCase(checkAuthAsync.rejected, (state, action) => {
@@ -201,7 +223,7 @@ const authSlice = createSlice({
                 };
             })
             .addCase(verifyOtpAsync.fulfilled, (state, action) => {
-                const { message, accessToken, userId } = action.payload;
+                const { message, accessToken, userId, username, country } = action.payload;
                 return {
                     ...state,
                     isLoading: false,
@@ -209,6 +231,8 @@ const authSlice = createSlice({
                     message: message,
                     accessToken: accessToken,
                     userId: userId,
+                    username: username,
+                    country: country,
                     emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT,
                     isError: false,
                     authType: 'OTP'
@@ -325,7 +349,41 @@ const authSlice = createSlice({
                     isError: false,
                     authType: 'OTP'
                 }
-
+            })
+            .addCase(logoutAsync.pending, (state, action) => {
+                return {
+                    ...state,
+                    isLoading: true,
+                    message: '',
+                    isError: false,
+                    authType: 'LOGOUT'
+                }
+            })
+            .addCase(logoutAsync.rejected, (state, action) => {
+                const { errorMsg } = action.payload || 'unkown error at logoutAsync.rejected';
+                console.log(action.payload)
+                return {
+                    ...state,
+                    isLoading: false,
+                    message: errorMsg,
+                    isError: true,
+                    authType: 'LOGOUT'
+                }
+            })
+            .addCase(logoutAsync.fulfilled, (state, action) => {
+                const { message } = action.payload;
+                return {
+                    ...state,
+                    userId: '',
+                    accessToken: '',
+                    message: message,
+                    isError: false,
+                    emailSent: OTP_EMAIL_SENT_STATE.NOT_SENT,
+                    otpVerified: OTP_VERIFICATION_STATES.NOT_VERIFIED,
+                    resentOpt: RESENT_OTP_EMAIL_SENT_STATE.NOT_SENT,
+                    authType: 'LOGOUT',
+                    isLoading: false,
+                };
             })
 
     }

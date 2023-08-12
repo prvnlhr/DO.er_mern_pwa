@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import appStyles from "./app.module.css";
 import AppHeader from "./appLayout/AppHeader"
 import AppSubPagesWrapper from "./appLayout/AppSubPagesWrapper"
@@ -17,6 +17,8 @@ const App = () => {
 
     const dispatch = useDispatch();
 
+    const popUpMenuRef = useRef();
+
 
     const authState = useSelector((state) => state.auth)
     const { userId, accessToken } = authState || {};
@@ -33,7 +35,6 @@ const App = () => {
     useEffect(() => {
         if (accessToken) {
             dispatch(getCourseDataAsync(accessToken));
-
 
             // get dailyTimeSpent Data from local storage and update in redux(not databse)            
             const storedData = JSON.parse(localStorage.getItem('dailyTimeSpent')) || {};
@@ -52,7 +53,9 @@ const App = () => {
                     <AuthComponent />
                 }
 
-                <AppHeader />
+                <AppHeader
+                    popUpMenuRef={popUpMenuRef}
+                />
                 <AppSubPagesWrapper />
             </div>
         </div>

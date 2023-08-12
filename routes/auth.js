@@ -9,5 +9,6 @@ router.post("/userSignUp", authController.signUpUser);
 router.post("/verifyOtp", authController.verifyOtp);
 router.post("/resendOtp", authController.resendOtp);
 router.post("/checkUserAuth", authController.checkAuth);
+router.get("/logout", authController.logout);
 
 module.exports = router;

@@ -11,6 +11,5 @@
         "courseHeaderWrapper"
         "descriptionInfoWrapper"
         "bodyWrapper";
-    /* background-color: var(--sub-page-header-bg); */
-    /* background-color: cyan; */
+    background-color: var(--app-main-bg);
 }

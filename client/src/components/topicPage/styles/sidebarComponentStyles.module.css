@@ -16,8 +16,6 @@
         "sidebarContentWrapper";
     z-index: 2;
     background-color: var(--app-main-bg);
-    background-color: #FCFAFA !important;
-
 
 }
 
@@ -144,7 +142,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border-bottom: 1px solid #7e8da478;
+    /* border-bottom: 1px solid #7e8da478; */
     overflow-x: scroll;
     white-space: nowrap;
     padding-right: 5%;
@@ -155,12 +153,17 @@
 }
 
 
-.moduleNameDiv p {
+.chapterNameText {
     font-size: 0.9rem;
     color: black;
     /* font-weight: 500; */
     /* text-overflow: ellipsis; */
     /* overflow: scroll; */
+}
+
+.activeChapterNameText {
+    color: var(--app-ui-scheme-color);
+    font-weight: 500;
 }
 
 .moduleDropDownIconDiv {
@@ -243,6 +246,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis
+}
+
+.activeSubTopicNameText {
+    color: var(--app-ui-scheme-color);
+    font-weight: 500;
 }
 
 
@@ -334,7 +342,7 @@
 
 
 
-    .moduleNameDiv p {
+    .chapterNameText {
         font-size: clamp(0.9rem, -0.29999999999999993rem + 6.0vw, 1.5rem) !important;
         white-space: nowrap;
         overflow: hidden;

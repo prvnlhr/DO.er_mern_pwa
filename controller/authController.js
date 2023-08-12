@@ -57,10 +57,11 @@ const authController = {
             user.otpExpiry = Date.now() + 180000; // Set OTP expiry to 3 minutes from now
             await user.save();
 
-         
+
+            const otpDigits = otp.toString().split('').map(Number);
 
             try {
-                await sendMail(emailAddress, otp);
+                await sendMail(emailAddress, otpDigits);
                 res.status(200).json({ message: 'OTP sent to your email.' });
             } catch (error) {
                 console.error('Error in sending OTP email:', error);
@@ -107,10 +108,11 @@ const authController = {
                 otpExpiry: expiryTime,
             })
 
-          
+
+            const otpDigits = otp.toString().split('').map(Number);
 
             try {
-                await sendMail(emailAddress, otp);
+                await sendMail(emailAddress, otpDigits);
                 res.status(200).json({ message: 'OTP sent to your email.' });
             } catch (error) {
                 console.error('Error in sending OTP email:', error);
@@ -156,44 +158,94 @@ const authController = {
             user.otpExpiry = undefined;
             await user.save();
 
-
-            
-
-
             const tokenPayload = {
                 fullName: user.fullName,
                 email: user.emailAddress,
                 userId: user._id.toString(),
+                country: user.country
             };
 
             // Generate access token and refresh token
             const accessToken = createAccessToken(tokenPayload);
-            const refreshToken = createRefreshToken(tokenPayload);
+            const refresh_token = createRefreshToken(tokenPayload);
 
-         
 
-            res.cookie("refreshtoken", refreshToken, {
+            // path: "/api/auth/checkUserAuth",
+
+
+
+            res.cookie("refreshtoken", refresh_token, {
                 httpOnly: true,
                 secure: true,
                 sameSite: 'None',
                 path: "/api/auth/checkUserAuth",
-                maxAge: 1000 * 60 * 60 * 24 * 2, // 7 days
+                maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
             });
 
-
-
             console.log('OTP VERIFIED');
-            return res.status(200).json({ message: "OTP verified successfully.", accessToken, userId: user._id });
+            return res.status(200).json({ message: "OTP verified successfully.", accessToken, userId: user._id, username: user.fullName, country: user.country });
         } catch (error) {
             console.error("Error in verifyOtpController:", error);
             return res.status(500).json({ errorMsg: "Server error." });
+        }
+    },
+
+    // -----------------------------------------------------------------------------------------------------------------------------------
+    checkAuth: async (req, res) => {
+        try {
+
+            const rf_token = req.cookies.refreshtoken;
+
+            console.log('checkAuth :', rf_token)
+
+            if (!rf_token) {
+                return res.status(401).json({ errorMsg: "Refresh token not found." });
+            }
+
+
+            const decodedRefreshToken = jwt.verify(rf_token, REFRESH_TOKEN_SECRET);
+
+            if (!decodedRefreshToken) {
+                return res.status(401).json({ errorMsg: "Invalid or expired refresh token." });
+            }
+
+            const userId = decodedRefreshToken.userId;
+            const fullName = decodedRefreshToken.fullName;
+            const email = decodedRefreshToken.email;
+            const country = decodedRefreshToken.country;
+
+            const tokenPayload = {
+                fullName: fullName,
+                email: email,
+                userId: userId,
+                country: country
+            };
+
+            const newAccessToken = createAccessToken(tokenPayload);
+
+            return res.status(200).json({ message: "Authentication successful.", accessToken: newAccessToken, userId, username: fullName, country });
+        } catch (error) {
+            console.error("Error in checkAuthController:", error);
+            res.status(500).json({ errorMsg: "Server error at checkAuth controller." });
+        }
+    },
+    //-------------------------------------------------------------------------------------------------------------------
+    logout: async (req, res) => {
+        try {
+            // console.log('at logout controller')
+            res.clearCookie("refreshtoken", {
+                path: "/api/auth/checkUserAuth"
+            });
+            return res.status(200).json({ msg: "Successfully Logged out" });
+        } catch (error) {
+            // console.log("error at logout controller", error);
+            return res.status(404).send(error);
         }
     },
     // -------------------------------------------------------------------------------------------------------------------------------
     resendOtp: async (req, res) => {
         try {
 
-            const userEmail = req.cookies.userEmail;
             const { emailAddress } = req.body;
 
             console.log('resend Otp controlller', req.body, emailAddress)
@@ -218,10 +270,12 @@ const authController = {
             user.otpExpiry = Date.now() + 180000; // Set OTP expiry to 3 minutes from now
             await user.save();
 
-           
+            const otpDigits = otp.toString().split('').map(Number);
+
+
 
             try {
-                await sendMail(emailAddress, otp);
+                await sendMail(emailAddress, otpDigits);
                 res.status(200).json({ message: 'OTP Resent sent to your email.' });
             } catch (error) {
                 console.error('Error in sending OTP email:', error);
@@ -232,42 +286,6 @@ const authController = {
             return res.status(500).json({ errorMsg: "Server error." });
         }
     },
-    // -----------------------------------------------------------------------------------------------------------------------------------
-    checkAuth: async (req, res) => {
-        try {
-
-            const refreshToken = req.cookies.refreshToken;
-
-            if (!refreshToken) {
-                return res.status(401).json({ errorMsg: "Refresh token not found." });
-            }
-
-
-            const decodedRefreshToken = jwt.verify(refreshToken, REFRESH_TOKEN_SECRET);
-
-            if (!decodedRefreshToken) {
-                return res.status(401).json({ errorMsg: "Invalid or expired refresh token." });
-            }
-
-            const userId = decodedRefreshToken.userId;
-            const fullName = decodedRefreshToken.fullName;
-            const email = decodedRefreshToken.email;
-
-            const tokenPayload = {
-                fullName: fullName,
-                email: email,
-                userId: userId,
-            };
-
-            const newAccessToken = createAccessToken(tokenPayload);
-
-            return res.status(200).json({ message: "Authentication successful.", accessToken: newAccessToken, userId });
-        } catch (error) {
-            console.error("Error in checkAuthController:", error);
-            res.status(500).json({ errorMsg: "Server error at checkAuth controller." });
-        }
-    }
-
 }
 
 // ----------------------------------------------------------

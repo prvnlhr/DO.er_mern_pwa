@@ -128,7 +128,7 @@ const SignInCOmponent = () => {
                         <button className={styles.submitBtn}
                             onFocus={() => setFocus(4)}
                             onClick={handleSubmitBtnClicked}>
-                            {isLoading ?
+                            {isLoading && authType === 'SIGNIN' ?
                                 <AuthLoadingSpinner /> :
                                 <ButtonArrowIcon />
                             }

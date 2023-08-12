@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './styles/graphComponentStyles.module.css';
 import Chart from 'chart.js/auto';
 import { useSelector } from 'react-redux';
 
 const GraphComponent = () => {
 
+
+    const chartContainerRef = useRef(null);
     // S  M  T   W  T  F  S 
     // 0  1  2   3  4  5  6
     // const chartDat = [125, 372, 66, 340, 423, 203, 276];
@@ -13,7 +15,6 @@ const GraphComponent = () => {
         hoursSpent: 0,
         minutesSpent: 0
     });
-
 
 
     const defaultData = [0, 0, 0, 0, 0, 0, 0];
@@ -61,7 +62,7 @@ const GraphComponent = () => {
                                 index === currentDayOfWeek ? '#9B8AFB' : '#51637D'
                             ),
                             borderWidth: 1,
-                            barThickness: 4,
+                            barThickness: 5,
                             hoverBackgroundColor: '#9B8AFB',
 
                         },
@@ -81,6 +82,7 @@ const GraphComponent = () => {
                     scales: {
                         y: {
                             beginAtZero: true,
+                            display: false,
 
                             ticks: {
                                 color: 'white',
@@ -93,7 +95,6 @@ const GraphComponent = () => {
                             },
                             grid: {
                                 display: false,
-
                             },
 
 
@@ -144,6 +145,7 @@ const GraphComponent = () => {
 
                 },
             });
+
         }
     }, [currentDayOfWeek]);
 
