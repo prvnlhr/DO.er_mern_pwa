@@ -18,10 +18,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { markTopicCompletionAsync } from "../../redux/features/course/courseSlice"
 
 import { updateDailyTimeSpent } from "../../redux/features/course/courseSlice"
+import { Navigate, useNavigate } from 'react-router-dom';
 
-const ContentComponent = () => {
+
+
+const ContentComponent = ({ toggleSidebar }) => {
     const dispatch = useDispatch();
     const contentRef = useRef(null);
+    const navigate = useNavigate();
 
     const [prevScrollTop, setPrevScrollTop] = useState({});
 
@@ -161,9 +165,70 @@ const ContentComponent = () => {
     };
     // _________________________________________________________________________________________________________________________________________
 
+    const ChevIcon = () => {
+        return (
+            <svg
+                style={{ width: '100%' }}
+                viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.89334 15.7148L14.5488 10.0594L8.89334 4.40388" stroke="black" stroke-width="1.61585" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        )
+    }
+    const SideBarToggleBtnIcon = () => {
+        return (
+            <svg
+                style={{ width: '100%' }}
+                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_616_444)">
+                    <path d="M23.0293 3.729L0.972982 3.729" stroke="black" stroke-width="2.06778" stroke-linecap="round" />
+                    <path opacity="0.3" d="M23.0293 12L0.972982 12" stroke="black" stroke-width="2.06778" stroke-linecap="round" />
+                    <path d="M23.0293 20.2712H0.972982" stroke="black" stroke-width="2.06778" stroke-linecap="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_616_444">
+                        <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+
+        )
+    }
+
+
+
+    const BreadCrumElement = ({ innerText, redirectToPath, textType }) => {
+        return (
+            <div className={`${textType === 'chapter' ? styles.breadCrumElementChapterWrapper : styles.breadCrumElementCourseWrapper}`} >
+                <div className={`${textType === 'chapter' ? styles.breadCrumChapterTextWrapper : styles.breadCrumCourseTextWrapper}`} onClick={() => navigate(redirectToPath)}  >
+                    <p className={`${styles.breadCrumText} ${textType === 'chapter' ? styles.breadCrumChapterText : styles.breadCrumCourseText}`}>{innerText}</p>
+                </div>
+                <div className={styles.breadCrumIconWrapper} >
+                    <div className={styles.breadCrumIconDiv} >
+                        <ChevIcon />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
-        <div className={`${styles.wrapper} `}>
-            <div className={styles.innerWrapper} ref={contentRef}>
+        <div className={`${styles.contentComponentWrapper} `}>
+
+            <div className={styles.navigationBarWrapper}>
+
+                <div className={styles.sideBarToggleBtnContainer} >
+                    <div className={styles.sideBarToggleBtnIconDiv} onClick={() => toggleSidebar(true)} >
+                        <SideBarToggleBtnIcon />
+                    </div>
+                </div>
+                <div className={styles.navigationBarContainer} >
+                    <BreadCrumElement innerText={'JavaScript'} redirectToPath={'/user/allcourses'} textType={'course'} />
+                    <BreadCrumElement innerText={'Closures & Callbacks in JS Callbacks'} redirectToPath={'/user/course'} textType={'chapter'} />
+                </div>
+            </div>
+
+            {/* <-- redering markdown --> */}
+            <div className={styles.markDownWrapper} ref={contentRef}>
                 {isMarkDownLoading ?
                     <SkeletonComponent /> :
                     <ReactMarkdown

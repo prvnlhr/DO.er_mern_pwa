@@ -1,50 +1,151 @@
 @import "../../variable.module.css";
 
-.wrapper {
+.contentComponentWrapper {
     width: 80%;
     height: 100%;
+    min-height: 100%;
+    max-height: 100%;
     /* border: 1px solid green; */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    background-color: white;
     z-index: 1;
     -webkit-transition: left 0.3s ease-out;
     -moz-transition: left 0.3s ease-out;
     -o-transition: left 0.3s ease-out;
     transition: left 0.3s ease-out;
     background-color: var(--app-main-bg);
-
+    background-color: white;
 }
 
-.showSidebarIconWrapper {
+.navigationBarWrapper {
     width: 100%;
     height: 8%;
+    box-shadow: var(--list-wrapper-box-shadow);
+    border-bottom: 0.5px solid rgba(112, 128, 144, 0.287);
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     /* border: 1px solid black; */
-    padding-left: 1%;
-
-    display: none;
+    padding-left: 2%;
 }
 
-.iconDiv {
-    height: 100%;
+/* --------------------------------------- */
+
+.sideBarToggleBtnContainer {
     aspect-ratio: 1/1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     display: none;
+}
+
+.sideBarToggleBtnIconDiv {
+    aspect-ratio: 1/1;
+    width: 35%;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --------------------------------------- */
+.navigationBarContainer {
+    width: auto;
+    height: 100%;
+    display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: center;
+    overflow: hidden;
+    /* border: 1px solid orange; */
+    /* overflow-x: scroll; */
+}
+
+.navigationBarContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* ---bread crum element styles--------------------------------------------------- */
+.breadCrumElementCourseWrapper {
+    display: flex;
+    width: auto;
+    height: 2rem;
+    /* border: 1px solid darkblue; */
+}
+
+.breadCrumElementChapterWrapper {
+    display: flex;
+    width: auto;
+    height: 2rem;
+    /* border: 1px solid darkblue; */
+    overflow: hidden;
+}
+
+.breadCrumCourseTextWrapper {
+    width: auto;
+    height: 100%;
     /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.breadCrumChapterTextWrapper {
+    width: auto;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.breadCrumText {
+    font-size: 0.9rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.breadCrumCourseText {
+    color: black;
+}
+
+
+.breadCrumChapterText {
+    color: #9E92DC;
+    font-weight: 500;
 }
 
 
 
-.innerWrapper {
+.breadCrumIconWrapper {
+    aspect-ratio: 1/1.5;
+    height: 100%;
+    /* border: 1px soslid springgreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.breadCrumIconDiv {
+    aspect-ratio: 1/1;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid springgreen; */
+}
+
+/* ---------------------------------------- */
+
+.markDownWrapper {
     width: 90%;
-    /* min-width: 95%; */
-    height: 95%;
+    height: 92%;
     /* border: 1px solid orange; */
     display: flex;
     justify-content: flex-start;
@@ -53,23 +154,32 @@
     overflow-y: scroll;
 }
 
-.innerWrapper::-webkit-scrollbar {
+.markDownWrapper::-webkit-scrollbar {
     display: none;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .wrapper {
+    .contentComponentWrapper {
         position: relative;
         width: 100%;
         min-width: 100%;
         height: 100%;
         min-height: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         /* background-color: orangered; */
         /* border: 1px solid orangered; */
 
+    }
+
+
+    .navigationBarWrapper {
+        width: 100%;
+        height: 8%;
+        /* border: 1px solid black; */
+        padding-right: 5%;
+        padding-left: 0%;
     }
 
     .showSidebarIconWrapper {
@@ -78,33 +188,47 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        /* border: 1px solid black; */
         padding-left: 3%;
+
     }
 
-    .iconDiv {
+
+    .breadCrumText {
+        font-size: 0.75rem;
+        font-size: 1.05rem;
+        font-size: clamp(0.75rem, 0.1499999999999999rem + 3.0000000000000004vw, 1.05rem) !important;
+    }
+
+    /* ---------------------------------------------------------- */
+
+    .sideBarToggleBtnContainer {
+        aspect-ratio: 1/1.5;
         height: 100%;
-        aspect-ratio: 1/1;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        /* border: 1px solid red; */
+        /* border: 1px solid black; */
+        /* padding-left: 5%; */
     }
 
+    .sideBarToggleBtnIconDiv {
+        aspect-ratio: 1/1;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-
-
-    .innerWrapper {
-        width: 97%;
+    /* ---------------------------------------------------------- */
+    .markDownWrapper {
+        width: 90%;
         height: 90%;
-        height: 95%;
         /* border: 1px solid black; */
         display: flex;
         align-items: flex-start;
         flex-direction: column;
         overflow-y: scroll;
         padding-bottom: 20%;
-        width: 90%;
-
+        padding-top: 20px;
     }
 }

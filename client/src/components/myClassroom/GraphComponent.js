@@ -149,7 +149,9 @@ const GraphComponent = () => {
                     <CommonHeader headingText={'Time Spendings'} />
                 </div>
                 <div className={styles.graphTimeSpendingValueCell} >
-                    <p>12 <span>h</span> 30<span> m</span></p>
+                    <div className={styles.graphTimeSpendingValueInnerCell} >
+                        <p>12 <span>h</span> 30<span> m</span></p>
+                    </div>
                 </div>
                 <div className={styles.graphChartCell} >
                     <div className={styles.graphChartInnerCell} >

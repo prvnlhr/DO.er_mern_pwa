@@ -12,4 +12,4 @@ const MainComponent = ({ showSideBar, toggleSidebar }) => {
     )
 }
 
-export default MainComponent
+export default MainComponent;

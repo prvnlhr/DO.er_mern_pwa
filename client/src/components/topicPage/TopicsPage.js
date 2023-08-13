@@ -12,7 +12,6 @@ const TopicsPage = () => {
 
     return (
         <div className={styles.topicPageWrapper} >
-            <TopicHeaderComponent showSideBar={showSideBar} toggleSidebar={toggleSidebar} />
             <TopicBodyComponent showSideBar={showSideBar} toggleSidebar={toggleSidebar} />
         </div>
     )

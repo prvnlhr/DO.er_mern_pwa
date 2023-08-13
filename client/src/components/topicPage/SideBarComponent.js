@@ -73,11 +73,40 @@ const SideBarComponent = ({ showSideBar, toggleSidebar }) => {
         handleSidebarChapterClicked(currentChapterIndex);
     }, [])
 
+    const SideBarToggleBtnIcon = () => {
+        return (
+            <svg
+                style={{ width: '100%' }}
+                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_616_444)">
+                    <path d="M23.0293 3.729L0.972982 3.729" stroke="black" stroke-width="2.06778" stroke-linecap="round" />
+                    <path opacity="0.3" d="M23.0293 12L0.972982 12" stroke="black" stroke-width="2.06778" stroke-linecap="round" />
+                    <path d="M23.0293 20.2712H0.972982" stroke="black" stroke-width="2.06778" stroke-linecap="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_616_444">
+                        <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+
+        )
+    }
 
     return (
         <AnimatePresence>
 
             <div className={`${styles.sidebarComponentWrapper}  ${showSideBar && styles.sideBarSlide}`} >
+
+                <div className={styles.sideBarToggleBtnWrapper} >
+                    <div className={styles.sideBarToggleBtnIconContainer} >
+                        <div className={styles.sideBarToggleBtnIconDiv} onClick={() => toggleSidebar()}  >
+                            <SideBarToggleBtnIcon />
+                        </div>
+
+                    </div>
+                </div>
+
                 <div className={styles.sidebarHeadingWrapper}>
                     <div className={styles.sidebarHeadingDiv} >
                         <p>Table of Contents</p>

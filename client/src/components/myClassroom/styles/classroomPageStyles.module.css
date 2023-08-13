@@ -24,12 +24,13 @@
     height: 100%;
     display: grid;
     grid-template-columns: 100%;
+
+    /* > Increase rows size to increase height of rows */
     grid-template-rows: 50% 50%;
     grid-template-areas:
         "statsComponentWrapper"
         "listComponentWrapper";
     overflow-y: scroll;
-    background-color: #0D1321;
 
 }
 

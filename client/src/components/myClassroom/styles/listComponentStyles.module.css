@@ -1,3 +1,392 @@
+@import "../../variable.module.css";
+
 .listComponentWrapper {
-    /* border: 1px solid salmon; */
+    grid-area: listComponentWrapper;
+    border: 1px solid salmon;
+}
+
+
+.listWrapper {
+    grid-area: listWrapper;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid darkblue; */
+    /* background-color: burlywood; */
+}
+
+.listInnerWrapper {
+    width: 97%;
+    height: 95%;
+    /* border: 1px solid darkblue; */
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 100%;
+    grid-template-areas:
+        "inProgressListWrapper bookmarkListWrapper";
+    align-items: center;
+}
+
+
+.inProgressListWrapper {
+    grid-area: inProgressListWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "progressListHeaderWrapper"
+        "progressCardListOuterWrapper";
+}
+
+.progressListHeaderWrapper {
+    grid-area: progressListHeaderWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.progressCardListOuterWrapper {
+    grid-area: progressCardListOuterWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progressCardListInnerWrapper {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow-y: scroll;
+    /* border: 1px solid green; */
+    padding-top: 0%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    list-style-type: none;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    /* padding-left: auto; */
+    /* padding-right: auto; */
+    row-gap: 20px;
+
+}
+
+.allCardListInnerWrapper {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* flex-direction: column; */
+    overflow-x: scroll;
+    /* border: 1px solid darkblue; */
+    padding-top: 0%;
+    /* display: grid; */
+    /* grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); */
+    /* list-style-type: none; */
+    /* padding-top: 2%; */
+    /* padding-bottom: 2%; */
+    /* padding-left: auto; */
+    /* padding-right: auto; */
+    /* row-gap: 20px; */
+
+}
+
+.allCardListInnerWrapper::-webkit-scrollbar {
+    width: 0.15rem;
+    height: 0.15rem;
+
+}
+
+.allCardListInnerWrapper::-webkit-scrollbar-track {
+    background-color: rgba(226, 226, 226, 0.352);
+    height: 4px;
+    width: 5px;
+}
+
+.allCardListInnerWrapper::-webkit-scrollbar-thumb {
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 5px;
+}
+
+.progressCardListInnerWrapper::-webkit-scrollbar {
+    width: 0.15rem;
+    height: 0.15rem;
+
+}
+
+.progressCardListInnerWrapper::-webkit-scrollbar-track {
+    background-color: rgba(226, 226, 226, 0.352);
+    height: 4px;
+    width: 5px;
+}
+
+.progressCardListInnerWrapper::-webkit-scrollbar-thumb {
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 5px;
+}
+
+/* ----------------------------------------------------------------------- */
+
+.bookmarkListWrapper {
+    grid-area: bookmarkListWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid springgreen; */
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "bookMarkListHeaderWrapper"
+        "bookmarkCardListOuterWrapper";
+}
+
+.bookMarkListHeaderWrapper {
+    grid-area: bookMarkListHeaderWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.bookmarkCardListOuterWrapper {
+    grid-area: bookmarkCardListOuterWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookmarkCardListInnerWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: scroll;
+    /* border: 1px solid green; */
+    flex-direction: column;
+    padding-left: 8%;
+}
+
+.bookmarkCardListInnerWrapper::-webkit-scrollbar {
+    width: 0.15rem;
+    height: 0.15rem;
+}
+
+.bookmarkCardListInnerWrapper::-webkit-scrollbar-track {
+    background-color: rgba(226, 226, 226, 0.352);
+    height: 4px;
+    width: 5px;
+}
+
+.bookmarkCardListInnerWrapper::-webkit-scrollbar-thumb {
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 5px;
+}
+
+/* ----------------------------------------------------------------- */
+
+.indicatorWrapper {
+    height: 100%;
+    aspect-ratio: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indicatorDiv {
+    width: 50%;
+    aspect-ratio: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--app-ui-scheme-color);
+    border-radius: 3px;
+}
+
+.headingWrapper {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.headingDiv {
+    width: auto;
+    height: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    cursor: pointer;
+}
+
+.headingTextActive {
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.headingTextNotActive {
+    color: #718199 !important;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    .listWrapper {
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+        min-height: 100%;
+        /* border: 1px solid red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 400px; */
+    }
+
+    .listInnerWrapper {
+        width: 92%;
+        height: 95%;
+        min-height: 95%;
+        /* border: 1px solid darkblue; */
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+        /* grid-template-rows: 70% 50%; */
+        grid-template-areas:
+            "inProgressListWrapper "
+            "bookmarkListWrapper";
+        align-items: center;
+    }
+
+    .inProgressListWrapper {
+        grid-area: inProgressListWrapper;
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+        /* border: 1px solid black; */
+        display: grid;
+        grid-template-rows: 15% 85%;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "progressListHeaderWrapper"
+            "progressCardListOuterWrapper";
+    }
+
+
+    .progressCardListInnerWrapper {
+        width: 95%;
+        height: 100%;
+        min-height: 100%;
+        /* border: 1px solid green; */
+        grid-template-columns: minmax(0, 1fr);
+        /* grid-template-rows: 1fr; */
+        padding-top: 2%;
+    }
+
+    .indicatorWrapper {
+        height: 100%;
+        aspect-ratio: 1/2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid green; */
+    }
+
+    .indicatorDiv {
+        width: 35%;
+        aspect-ratio: 1/2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--app-ui-scheme-color);
+        border-radius: 3px;
+    }
+
+    .headingTextActive {
+        font-size: 1rem;
+        font-size: 1.8rem;
+        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
+
+        font-weight: 600;
+    }
+
+    .headingTextNotActive {
+        font-size: 1rem;
+        font-size: 1.8rem;
+        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
+
+        font-weight: 400;
+    }
+
+    .headingTextBookmark {
+        font-size: 1.2rem;
+        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
+
+        font-weight: 500;
+    }
+
+    .bookmarkListWrapper {
+        grid-area: bookmarkListWrapper;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid springgreen; */
+        display: grid;
+        grid-template-rows: 15% 85%;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "bookMarkListHeaderWrapper"
+            "bookmarkCardListOuterWrapper";
+        margin-top: 3rem;
+    }
+
+    .bookmarkCardListInnerWrapper {
+        width: 100%;
+        height: 95%;
+        min-height: 95%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-y: scroll;
+        /* border: 1px solid green; */
+        flex-direction: column;
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+
+
+
+    .progressCardListInnerWrapper::-webkit-scrollbar {
+        display: none;
+
+    }
+
+    .bookmarkCardListInnerWrapper::-webkit-scrollbar {
+        display: none;
+    }
+
 }
