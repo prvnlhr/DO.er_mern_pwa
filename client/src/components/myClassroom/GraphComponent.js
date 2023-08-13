@@ -17,7 +17,8 @@ const GraphComponent = () => {
     });
 
 
-    const defaultData = [0, 0, 0, 0, 0, 0, 0];
+    const defaultDatax = [0, 0, 0, 0, 0, 0, 0];
+    const defaultData = [123, 456, 231, 175, 320, 100, 400];
 
     const dataFromLocalStorage = JSON.parse(localStorage.getItem('dailyTimeSpent')) || defaultData;
     const chartData = Object.values(dataFromLocalStorage);
@@ -30,15 +31,14 @@ const GraphComponent = () => {
     const chartRef = React.useRef(null);
 
     const getTotalHoursTillToday = () => {
-        const currentDayOfWeek = new Date().getDay();
-        const totalMinutes = chartData.slice(0, currentDayOfWeek).reduce((a, b) => a + b);
-        const hours = Math.floor(totalMinutes / 60);
-        const minutes = Math.round(totalMinutes % 60);
-        // console.log(hours, minutes);
-        setTimeSpendingData({
-            hoursSpent: hours,
-            minutesSpent: minutes
-        })
+        // const currentDayOfWeek = new Date().getDay();
+        // const totalMinutes = chartData.slice(0, currentDayOfWeek).reduce((a, b) => a + b);
+        // const hours = Math.floor(totalMinutes / 60);
+        // const minutes = Math.round(totalMinutes % 60);
+        // setTimeSpendingData({
+        // hoursSpent: hours,
+        // minutesSpent: minutes
+        // })
     };
 
 
@@ -57,7 +57,7 @@ const GraphComponent = () => {
                     datasets: [
                         {
                             label: 'Time Spent (Hours)',
-                            data: chartData.map((value) => value / 60),
+                            data: defaultData.map((value) => value / 60),
                             backgroundColor: chartData.map((value, index) =>
                                 index === currentDayOfWeek ? '#9B8AFB' : '#51637D'
                             ),

@@ -18,9 +18,8 @@ const StatsComponent = () => {
     });
 
     const defaultData = [0, 0, 0, 0, 0, 0, 0];
-    const dataFromLocalStorage = JSON.parse(localStorage.getItem('dailyTimeSpent')) || defaultData;
-    const chartData = Object.values(dataFromLocalStorage);
-    // console.log(chartData);
+
+
 
     const currentDayOfWeek = new Date().getDay();
 
@@ -29,15 +28,18 @@ const StatsComponent = () => {
     const chartRef = React.useRef(null);
 
     const getTotalHoursTillToday = () => {
-        const currentDayOfWeek = new Date().getDay();
-        const totalMinutes = chartData.slice(0, currentDayOfWeek).reduce((a, b) => a + b);
-        const hours = Math.floor(totalMinutes / 60);
-        const minutes = Math.round(totalMinutes % 60);
-        // console.log(hours, minutes);
-        setTimeSpendingData({
-            hoursSpent: hours,
-            minutesSpent: minutes
-        })
+
+        const dataFromLocalStorage = JSON.parse(localStorage.getItem('dailyTimeSpent')) || defaultData;
+        const chartData = Object.values(dataFromLocalStorage);
+        console.log(chartData);
+        // const currentDayOfWeek = new Date().getDay();
+        // const totalMinutes = chartData?.slice(0, currentDayOfWeek).reduce((a, b) => a + b);
+        // const hours = Math.floor(totalMinutes / 60);
+        // const minutes = Math.round(totalMinutes % 60);
+        // setTimeSpendingData({
+        //     hoursSpent: hours,
+        //     minutesSpent: minutes
+        // })
     };
 
     useEffect(() => {
