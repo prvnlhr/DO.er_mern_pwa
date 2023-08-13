@@ -1,5 +1,6 @@
 :root {
 
+    --app-ui-scheme-color: #635DB0;
     --app-ui-scheme-color: #6167A0;
     /* --app-ui-scheme-color: #7F56D9; */
     --test-font-styles: orange;
@@ -37,7 +38,7 @@
     /* font-weight: var(--fontWeight); */
     --shimmer-color: linear-gradient(90deg, #bdcbe15d 44.18%, #E7EFFC 129.07%);
     --shimmer-color: #EFF1F1;
-
+    --button-bg: #635DB0;
     --button-bg: #6167A0;
     /* #6167A0 */
 }

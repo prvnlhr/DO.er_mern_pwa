@@ -37,6 +37,7 @@
     aspect-ratio: 1/2;
     border-radius: 0.2rem;
     background-color: var(--app-ui-scheme-color);
+    background-color: #635DB0;
 }
 
 
@@ -49,7 +50,7 @@
     position: relative;
     font-size: 2rem;
     font-weight: 500;
-    color: #273348;
+    color: #0D1321;
     line-height: 1.6;
 }
 
@@ -88,7 +89,7 @@
 .paraText {
     font-size: 0.9rem;
     color: var(--mrkdwn-para-color);
-    color: #3F4A5B;
+    color: #000000;
     line-height: 2;
     text-align: justify;
     /* font-weight: 400; */
@@ -154,10 +155,10 @@ ul {
     margin-top: 2%;
     margin-bottom: 2%;
     /* border: 1px solid blue; */
-    color: #3F4A5B;
+    /* color: #3F4A5B; */
+    color: #000000;
     /* text-align: justify; */
     padding-right: 2%;
-
 
 }
 
@@ -298,7 +299,6 @@ code {
         width: 45%;
         aspect-ratio: 1/2;
         border-radius: 0.2rem;
-        background-color: var(--app-ui-scheme-color);
     }
 
     .headingTextDiv {
@@ -310,7 +310,6 @@ code {
         width: 35%;
         aspect-ratio: 1/2;
         border-radius: 0.15rem;
-        background-color: var(--app-ui-scheme-color);
     }
 
     .primaryTitleText {

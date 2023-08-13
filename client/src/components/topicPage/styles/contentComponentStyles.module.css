@@ -112,12 +112,13 @@
 
 
 .breadCrumCourseText {
-    color: black;
+    color: #0D1321;
+    font-weight: 400;
 }
 
 
 .breadCrumChapterText {
-    color: #9E92DC;
+    color: #635DB0;
     font-weight: 500;
 }
 

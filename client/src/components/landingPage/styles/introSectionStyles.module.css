@@ -160,7 +160,6 @@
     align-items: center;
     width: 55%;
     background-color: var(--button-bg);
-
     border-radius: 50%;
     cursor: pointer;
 }

@@ -191,6 +191,7 @@
 
 .activeChapterNameText {
     color: var(--app-ui-scheme-color);
+    color: #635DB0;
     font-weight: 500;
 }
 
@@ -279,6 +280,7 @@
 .activeSubTopicNameText {
     color: var(--app-ui-scheme-color);
     font-weight: 500;
+    color: #635DB0;
 }
 
 
