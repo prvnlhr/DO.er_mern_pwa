@@ -1,23 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
-import styles from './styles/graphComponentStyles.module.css';
+import React, { useEffect, useState } from 'react'
+import styles from "./styles/graphComponentStyles.module.css";
+import CommonHeader from "./CommonHeader";
 import Chart from 'chart.js/auto';
-import { useSelector } from 'react-redux';
 
 const GraphComponent = () => {
-
-
-    const chartContainerRef = useRef(null);
-    // S  M  T   W  T  F  S 
-    // 0  1  2   3  4  5  6
-    // const chartDat = [125, 372, 66, 340, 423, 203, 276];
 
     const [timeSpendingData, setTimeSpendingData] = useState({
         hoursSpent: 0,
         minutesSpent: 0
     });
-
-
-    const defaultDatax = [0, 0, 0, 0, 0, 0, 0];
     const defaultData = [123, 456, 231, 175, 320, 100, 400];
 
     const dataFromLocalStorage = JSON.parse(localStorage.getItem('dailyTimeSpent')) || defaultData;
@@ -62,7 +53,7 @@ const GraphComponent = () => {
                                 index === currentDayOfWeek ? '#9B8AFB' : '#51637D'
                             ),
                             borderWidth: 1,
-                            barThickness: 5,
+                            barThickness: 4.5,
                             hoverBackgroundColor: '#9B8AFB',
 
                         },
@@ -149,32 +140,25 @@ const GraphComponent = () => {
         }
     }, [currentDayOfWeek]);
 
-    const TimeSpendingsElement = () => {
-        return (
-            <div className={styles.timeSpendingElementWrapper} >
-                <div className={styles.timeSpendingAttrWrapper} >
-                    <p>Time Spendings</p>
-                </div>
-                <div className={styles.timeSpendingValueWrapper} >
-                    <p>{timeSpendingData.hoursSpent}<span> h&nbsp;&nbsp;&nbsp;&nbsp;</span>{timeSpendingData.minutesSpent}<span> m</span></p>
-                </div>
-            </div>
-        )
-    }
 
 
     return (
-        <div className={styles.graphComponentWrapper}>
-            <div className={styles.graphInnerWrapper}>
-                <div className={styles.timeSpendingWrapper} >
-                    <TimeSpendingsElement />
+        <div className={styles.graphComponentWrapper} >
+            <div className={styles.graphComponentInnerWrapper} >
+                <div className={styles.graphTimeSpendingHeadingCell} >
+                    <CommonHeader headingText={'Time Spendings'} />
                 </div>
-                <div className={styles.graphWrapper} >
-                    <canvas className={styles.canvas} ref={chartRef} />
+                <div className={styles.graphTimeSpendingValueCell} >
+                    <p>12 <span>h</span> 30<span> m</span></p>
+                </div>
+                <div className={styles.graphChartCell} >
+                    <div className={styles.graphChartInnerCell} >
+                        <canvas className={styles.canvas} ref={chartRef} />
+                    </div>
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default GraphComponent;
+export default GraphComponent

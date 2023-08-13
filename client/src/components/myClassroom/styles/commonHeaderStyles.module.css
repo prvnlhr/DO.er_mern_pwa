@@ -1,0 +1,69 @@
+.commonHeaderWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+}
+
+.commonHeaderInnerWrapper {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid skyblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.indicatorContainer {
+    height: 100%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indicatorDiv {
+    height: 45%;
+    aspect-ratio: 1/2;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6167A0;
+    border-radius: 0.15rem;
+}
+
+.headingTextContainer {
+    width: auto;
+    height: 100%;
+    /* border: 1px solid darkcyan; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.headingTextContainer p {
+    font-size: 1.3rem;
+    color: white;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .indicatorDiv {
+        height: 40%;
+        border-radius: 0.15rem;
+        border-radius: 0.3rem;
+        border-radius: clamp(0.15rem, -0.15rem + 1.5vw, 0.3rem) !important;
+
+    }
+
+    .headingTextContainer p {
+        font-size: 0.9rem;
+        font-size: 1.5rem;
+        font-size: clamp(0.9rem, -0.29999999999999993rem + 6.0vw, 1.5rem) !important;
+
+    }
+
+}

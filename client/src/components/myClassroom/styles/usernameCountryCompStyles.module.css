@@ -1,0 +1,126 @@
+.userNameCountryComponentWrapper {
+    grid-area: userNameCountryComponentWrapper;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userNameCountryComponentInnerWrapper {
+    width: 90%;
+    height: 80%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.usernameCountryElementWrapper {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid white; */
+    display: grid;
+    grid-template-rows: 60% 40%;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+        "userAvatarCell usernameCell"
+        "userAvatarCell userCountryCell"
+    ;
+}
+
+.userAvatarCell {
+    grid-area: userAvatarCell;
+    height: 100%;
+    /* border: 1px solid springgreen; */
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatarDiv {
+    position: relative;
+    aspect-ratio: 1/1;
+    height: 70%;
+    border-radius: 50%;
+    /* border: 1px solid red; */
+    overflow: hidden;
+}
+
+.avatarDiv img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+
+.usernameCell {
+    grid-area: usernameCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid salmon; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding-bottom: 10%; */
+}
+
+.usernameCell p {
+    font-size: 1.2rem;
+    color: white;
+    line-height: 100%;
+    white-space: nowrap;
+}
+
+.usernameCell span {
+    position: relative;
+    color: #7E8DA4;
+}
+
+.usernameCell span::after {
+    position: absolute;
+    content: "";
+    background-color: #9E92DC;
+    right: -8px;
+    bottom: 8px;
+    aspect-ratio: 1/1;
+    width: 0.28rem;
+    border-radius: 50%;
+
+}
+
+.userCountryCell {
+    grid-area: userCountryCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid steelblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.userCountryCell p {
+    font-size: 0.9rem;
+    color: #7E8DA4;
+    line-height: 100%;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    .usernameCell p {
+        font-size: 1rem;
+        font-size: 1.7rem;
+        font-size: clamp(1.0rem, -0.3999999999999999rem + 6.999999999999999vw, 1.7rem) !important;
+
+    }
+
+
+
+    .userCountryCell p {
+        font-size: 0.8rem;
+        font-size: 1.2rem;
+        font-size: clamp(0.8rem, 2.220446049250313e-16rem + 3.9999999999999996vw, 1.2rem) !important;
+    }
+}

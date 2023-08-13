@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom';
 import styles from "./styles/appSubPageWrapperStyles.module.css"
-import MyClassroomPage from '../myClassroom/MyClassroomPage';
+import ClassroomPage from '../myClassroom/ClassroomPage';
 import CoursePage from "../course/CoursePage"
 import TopicsPage from "../topicPage/TopicsPage"
 import LandingPage from '../landingPage/LandingPage';
@@ -31,7 +31,7 @@ const AppSubPagesWrapper = () => {
 
                             <Route path="/user/classroom" element={
                                 <RequireAuth>
-                                    <MyClassroomPage />
+                                    <ClassroomPage />
                                 </RequireAuth>
                             } />
 
