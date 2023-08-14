@@ -70,9 +70,9 @@ export const logoutAsync = createAsyncThunk("auth/logout", async (_, { getState,
 
 export const checkAuthAsync = createAsyncThunk("auth/checkUserAuth", async (_, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        console.log('at checkAuthAsync')
+        // console.log('at checkAuthAsync')
         const res = await api.checkUserAuthRequest();
-        console.log(res.data);
+        // console.log(res.data);
         return fulfillWithValue(res.data);
     } catch (error) {
         const errorMessage = error?.response.data.msg;

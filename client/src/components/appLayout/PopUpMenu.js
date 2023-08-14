@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import styles from "./styles/popUpMenuStyles.module.css"
 import AppLogo from "../icons/AppLogo"
-import ProfileIcon from "../icons/ProfileIcon"
+import PopUpBtnIcon from "../icons/PopUpBtnIcon"
 import SearchBar from './SearchBar'
 import { useLocalAuthContext } from "../../appState/localAuthContext"
 import { searchKeyword } from "../helperFunctions/searchHelperFunction"

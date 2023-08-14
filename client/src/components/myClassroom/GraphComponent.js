@@ -13,9 +13,11 @@ const GraphComponent = () => {
 
     const dataFromLocalStorage = JSON.parse(localStorage.getItem('dailyTimeSpent')) || defaultData;
     const chartData = Object.values(dataFromLocalStorage);
-    console.log(chartData);
+    // console.log(chartData);
 
     const currentDayOfWeek = new Date().getDay();
+
+    // console.log(currentDayOfWeek);
 
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -49,13 +51,12 @@ const GraphComponent = () => {
                         {
                             label: 'Time Spent (Hours)',
                             data: defaultData.map((value) => value / 60),
-                            backgroundColor: chartData.map((value, index) =>
-                                index === currentDayOfWeek ? '#9B8AFB' : '#51637D'
-                            ),
+                            backgroundColor: (context) => {
+                                return context.dataIndex === currentDayOfWeek ? '#9E92DC' : '#51637D';
+                            },
                             borderWidth: 1,
                             barThickness: 4.5,
                             hoverBackgroundColor: '#9B8AFB',
-
                         },
                     ],
                 },
@@ -112,6 +113,7 @@ const GraphComponent = () => {
                         },
                         tooltip: {
                             enabled: true,
+                            position: 'average',
                             callbacks: {
                                 title(tooltipItem) {
                                     const clickedElementIndex = tooltipItem[0].dataIndex;
@@ -131,6 +133,16 @@ const GraphComponent = () => {
                                 },
                             },
                             backgroundColor: '#9B8AFB'
+                        }
+                    },
+                    onClick: (event, elements) => {
+                        if (myChart.tooltip) {
+                            const activeElements = myChart.getElementsAtEventForMode(event, 'nearest', { intersect: false });
+                            if (activeElements && activeElements.length > 0) {
+                                myChart.tooltip.setActiveElements(activeElements);
+                                myChart.tooltip.update(true);
+                                myChart.draw();
+                            }
                         }
                     },
 

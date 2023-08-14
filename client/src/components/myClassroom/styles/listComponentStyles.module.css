@@ -1,392 +1,278 @@
-@import "../../variable.module.css";
-
 .listComponentWrapper {
-    grid-area: listComponentWrapper;
-    border: 1px solid salmon;
-}
-
-
-.listWrapper {
-    grid-area: listWrapper;
     width: 100%;
     height: 100%;
+    grid-area: listComponentWrapper;
+    /* border: 1px solid salmon; */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid darkblue; */
-    /* background-color: burlywood; */
+
 }
 
-.listInnerWrapper {
+.listComponentInnerWrapper {
     width: 97%;
-    height: 95%;
-    /* border: 1px solid darkblue; */
+    height: 97%;
+    /* border: 1px solid black; */
     display: grid;
     grid-template-columns: 60% 40%;
     grid-template-rows: 100%;
     grid-template-areas:
-        "inProgressListWrapper bookmarkListWrapper";
-    align-items: center;
+        "lastOpenListCell bookmarksListCell";
 }
 
-
-.inProgressListWrapper {
-    grid-area: inProgressListWrapper;
+/* ---------------------------------------------------- */
+.lastOpenListCell {
+    grid-area: lastOpenListCell;
     width: 100%;
     height: 100%;
     /* border: 1px solid black; */
     display: grid;
-    grid-template-rows: 20% 80%;
     grid-template-columns: 100%;
+    grid-template-rows: 20% 80%;
     grid-template-areas:
-        "progressListHeaderWrapper"
-        "progressCardListOuterWrapper";
+        "lastOpenListHeadingCell"
+        "lastOpenMainListCell";
 }
 
-.progressListHeaderWrapper {
-    grid-area: progressListHeaderWrapper;
+.lastOpenListHeadingCell {
     width: 100%;
     height: 100%;
-    /* border: 1px solid red; */
+    grid-area: lastOpenListHeadingCell;
+    /* border: 1px solid orange; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.progressCardListOuterWrapper {
-    grid-area: progressCardListOuterWrapper;
+.lastOpenMainListCell {
+    grid-area: lastOpenMainListCell;
     width: 100%;
     height: 100%;
-    /* border: 1px solid red; */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-}
-
-.progressCardListInnerWrapper {
-    width: 95%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
     overflow-y: scroll;
-    /* border: 1px solid green; */
-    padding-top: 0%;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    list-style-type: none;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    /* padding-left: auto; */
-    /* padding-right: auto; */
-    row-gap: 20px;
-
-}
-
-.allCardListInnerWrapper {
-    width: 95%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* flex-direction: column; */
-    overflow-x: scroll;
-    /* border: 1px solid darkblue; */
-    padding-top: 0%;
-    /* display: grid; */
-    /* grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); */
-    /* list-style-type: none; */
-    /* padding-top: 2%; */
-    /* padding-bottom: 2%; */
-    /* padding-left: auto; */
-    /* padding-right: auto; */
-    /* row-gap: 20px; */
-
-}
-
-.allCardListInnerWrapper::-webkit-scrollbar {
-    width: 0.15rem;
-    height: 0.15rem;
-
-}
-
-.allCardListInnerWrapper::-webkit-scrollbar-track {
-    background-color: rgba(226, 226, 226, 0.352);
-    height: 4px;
-    width: 5px;
-}
-
-.allCardListInnerWrapper::-webkit-scrollbar-thumb {
-    background-color: var(--app-ui-scheme-color);
-    border-radius: 5px;
-}
-
-.progressCardListInnerWrapper::-webkit-scrollbar {
-    width: 0.15rem;
-    height: 0.15rem;
-
-}
-
-.progressCardListInnerWrapper::-webkit-scrollbar-track {
-    background-color: rgba(226, 226, 226, 0.352);
-    height: 4px;
-    width: 5px;
-}
-
-.progressCardListInnerWrapper::-webkit-scrollbar-thumb {
-    background-color: var(--app-ui-scheme-color);
-    border-radius: 5px;
-}
-
-/* ----------------------------------------------------------------------- */
-
-.bookmarkListWrapper {
-    grid-area: bookmarkListWrapper;
-    width: 100%;
-    height: 100%;
+    flex-wrap: wrap;
     /* border: 1px solid springgreen; */
-    display: grid;
-    grid-template-rows: 20% 80%;
-    grid-template-columns: 100%;
-    grid-template-areas:
-        "bookMarkListHeaderWrapper"
-        "bookmarkCardListOuterWrapper";
-}
-
-.bookMarkListHeaderWrapper {
-    grid-area: bookMarkListHeaderWrapper;
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.bookmarkCardListOuterWrapper {
-    grid-area: bookmarkCardListOuterWrapper;
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.bookmarkCardListInnerWrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    overflow-y: scroll;
-    /* border: 1px solid green; */
-    flex-direction: column;
     padding-left: 8%;
 }
 
-.bookmarkCardListInnerWrapper::-webkit-scrollbar {
-    width: 0.15rem;
-    height: 0.15rem;
+.lastOpenMainListCell::-webkit-scrollbar {
+    display: none;
 }
 
-.bookmarkCardListInnerWrapper::-webkit-scrollbar-track {
-    background-color: rgba(226, 226, 226, 0.352);
-    height: 4px;
-    width: 5px;
-}
-
-.bookmarkCardListInnerWrapper::-webkit-scrollbar-thumb {
-    background-color: var(--app-ui-scheme-color);
-    border-radius: 5px;
-}
-
-/* ----------------------------------------------------------------- */
-
-.indicatorWrapper {
+.inProgressMainListCell {
+    grid-area: lastOpenMainListCell;
+    /* Resuing same grid cell */
+    width: 100%;
     height: 100%;
-    aspect-ratio: 1/2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    /* border: 1px solid springgreen; */
+    padding-left: 8%;
+}
+
+.inProgressMainListCell::-webkit-scrollbar {
+    display: none;
+}
+
+/* ------------------------------------------------------ */
+.bookmarksListCell {
+    grid-area: bookmarksListCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:
+        "bookmarksListHeadingCell"
+        "bookmarksMainListCell";
+}
+
+.bookmarksListHeadingCell {
+    width: 100%;
+    height: 100%;
+    grid-area: bookmarksListHeadingCell;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.bookmarksMainListCell {
+    width: 100%;
+    height: 100%;
+    grid-area: bookmarksMainListCell;
+    /* border: 1px solid springgreen; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 8%;
+    overflow-y: scroll;
+}
+
+.bookmarksMainListCell::-webkit-scrollbar {
+    display: none;
+}
+
+/* ---for heading Component ----------- */
+
+.headingComponentWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    height: 100%;
+    /* border: 1px solid red; */
+    /* margin-right: 20px; */
+}
+
+.headingComponentInnerWrapper {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid skyblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.indicatorContainer {
+    height: 100%;
+    aspect-ratio: 1/1;
+    /* border: 1px solid orange; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .indicatorDiv {
-    width: 50%;
+    height: 40%;
     aspect-ratio: 1/2;
+    /* border: 1px solid orange; */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--app-ui-scheme-color);
-    border-radius: 3px;
+    background-color: #6167A0;
+    border-radius: 0.15rem;
 }
 
-.headingWrapper {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.headingDiv {
+.headingTextContainer {
     width: auto;
-    height: 80%;
+    height: 100%;
+    /* border: 1px solid darkcyan; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 2%;
-    padding-right: 2%;
     cursor: pointer;
 }
 
-.headingTextActive {
+.allCourseHeadingTextContainer {
+    position: relative;
+    width: auto;
+    height: 100%;
+    /* border: 1px solid darkcyan; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.headingSeperatorDiv {
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1/2;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.headingSeperatorDiv::after {
+    content: "";
+    background-color: #6167A0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 0.1rem;
+    height: 30%;
+
+}
+
+.headingTextContainer p {
+    font-size: 1.1rem;
     color: black;
-    font-size: 1rem;
-    font-weight: 500;
+    font-weight: 450;
 }
 
-.headingTextNotActive {
-    color: #718199 !important;
-    font-size: 1rem;
-    font-weight: 500;
+.inActiveHeadingText {
+    color: #7E8DA4;
 }
-
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 
-    .listWrapper {
-        width: 100%;
-        height: 100%;
-        min-height: 100%;
-        min-height: 100%;
-        /* border: 1px solid red; */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* height: 400px; */
-    }
 
-    .listInnerWrapper {
-        width: 92%;
-        height: 95%;
-        min-height: 95%;
-        /* border: 1px solid darkblue; */
+    .listComponentInnerWrapper {
+        width: 97%;
+        height: 97%;
+        /* border: 1px solid black; */
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: 50% 50%;
-        /* grid-template-rows: 70% 50%; */
         grid-template-areas:
-            "inProgressListWrapper "
-            "bookmarkListWrapper";
-        align-items: center;
+            "lastOpenListCell"
+            "bookmarksListCell";
     }
 
-    .inProgressListWrapper {
-        grid-area: inProgressListWrapper;
-        width: 100%;
-        height: 100%;
-        min-height: 100%;
-        /* border: 1px solid black; */
-        display: grid;
-        grid-template-rows: 15% 85%;
+    .lastOpenListCell {
         grid-template-columns: 100%;
+        grid-template-rows: 15% 85%;
         grid-template-areas:
-            "progressListHeaderWrapper"
-            "progressCardListOuterWrapper";
+            "lastOpenListHeadingCell"
+            "lastOpenMainListCell";
     }
 
-
-    .progressCardListInnerWrapper {
-        width: 95%;
-        height: 100%;
-        min-height: 100%;
-        /* border: 1px solid green; */
-        grid-template-columns: minmax(0, 1fr);
-        /* grid-template-rows: 1fr; */
-        padding-top: 2%;
-    }
-
-    .indicatorWrapper {
-        height: 100%;
-        aspect-ratio: 1/2;
-        display: flex;
+    .lastOpenMainListCell {
+        align-items: flex-start;
         justify-content: center;
-        align-items: center;
-        /* border: 1px solid green; */
+        padding-left: 0;
     }
 
+    .inProgressMainListCell {
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .bookmarksListCell {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 15% 85%;
+        grid-template-areas:
+            "bookmarksListHeadingCell"
+            "bookmarksMainListCell";
+    }
+
+    /* ----for heading component ---------- */
     .indicatorDiv {
-        width: 35%;
-        aspect-ratio: 1/2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--app-ui-scheme-color);
-        border-radius: 3px;
-    }
-
-    .headingTextActive {
-        font-size: 1rem;
-        font-size: 1.8rem;
-        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
-
-        font-weight: 600;
-    }
-
-    .headingTextNotActive {
-        font-size: 1rem;
-        font-size: 1.8rem;
-        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
-
-        font-weight: 400;
-    }
-
-    .headingTextBookmark {
-        font-size: 1.2rem;
-        font-size: clamp(1.0rem, -0.6000000000000001rem + 8.0vw, 1.8rem) !important;
-
-        font-weight: 500;
-    }
-
-    .bookmarkListWrapper {
-        grid-area: bookmarkListWrapper;
-        width: 100%;
-        height: 100%;
-        /* border: 1px solid springgreen; */
-        display: grid;
-        grid-template-rows: 15% 85%;
-        grid-template-columns: 100%;
-        grid-template-areas:
-            "bookMarkListHeaderWrapper"
-            "bookmarkCardListOuterWrapper";
-        margin-top: 3rem;
-    }
-
-    .bookmarkCardListInnerWrapper {
-        width: 100%;
-        height: 95%;
-        min-height: 95%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        overflow-y: scroll;
-        /* border: 1px solid green; */
-        flex-direction: column;
-        padding-left: 0%;
-        padding-right: 0%;
-    }
-
-
-
-    .progressCardListInnerWrapper::-webkit-scrollbar {
-        display: none;
+        height: 35%;
+        border-radius: 0.15rem;
+        border-radius: 0.3rem;
+        border-radius: clamp(0.15rem, -0.15rem + 1.5vw, 0.3rem) !important;
 
     }
 
-    .bookmarkCardListInnerWrapper::-webkit-scrollbar {
-        display: none;
+    .headingTextContainer p {
+        font-size: clamp(0.9rem, -0.29999999999999993rem + 6.0vw, 1.5rem) !important;
     }
+
+
 
 }

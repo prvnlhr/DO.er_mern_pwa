@@ -1,0 +1,296 @@
+@import "../../variable.module.css";
+
+.cardOuterWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: var(--list-wrapper-box-shadow);
+    background-color: white;
+    box-sizing: border-box;
+    width: 35% !important;
+    aspect-ratio: 2/1 !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* border: 1px solid salmon; */
+    border-radius: 1.5rem;
+    overflow: hidden;
+    margin-right: 30px;
+}
+
+.cardInnerWrapper {
+    width: 80%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 25% 25% 50%;
+    grid-template-areas:
+        "breadCrumCell breadCrumCell"
+        "chapterNameCell chapterNameCell"
+        "chapterProgressCell linkButtonCell";
+}
+
+/* ------------------------------------------------------------ */
+
+
+.breadCrumCell {
+    grid-area: breadCrumCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0%;
+}
+
+
+.chapterNameCell {
+    grid-area: chapterNameCell;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0%;
+    /* border: 1px solid red; */
+}
+
+.chapterNameDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid blue; */
+    overflow: hidden;
+}
+
+.chapterNameDiv p {
+    font-size: 0.7rem;
+    color: black;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+
+.chapterProgressCell {
+    grid-area: chapterProgressCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+.progressAttributeContainer {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid palevioletred; */
+}
+
+.progressAttributeContainer p {
+    font-size: 0.6rem;
+    color: black;
+}
+
+.progressBarWrapper {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+.barWrapper {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+
+.barContainer {
+    height: 0.2rem;
+    width: 95%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #BAC4D5;
+    overflow: hidden;
+}
+
+.barDiv {
+    height: 100%;
+    width: 70%;
+    background-color: #6167A0;
+    border-radius: 0px 10px 10px 0px;
+}
+
+
+.completedNumContainer {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid darkblue; */
+    justify-content: space-evenly;
+}
+
+.numDiv {
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid springgreen; */
+}
+
+.numDiv p {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    /* border: 1px solid springgreen; */
+}
+
+.slashText {
+    color: #718199;
+}
+
+.linkButtonCell {
+    grid-area: linkButtonCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid plum; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 10%;
+    padding-right: 0%;
+}
+
+.linkBtnDiv {
+    aspect-ratio: 1/1;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #6167A0;
+    cursor: pointer;
+}
+
+
+
+/* ----------------------------------------------------- */
+.breadCrumElementWrapper {
+    width: auto;
+    height: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.breadCrumTextContainer {
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border: 1px solid greenyellow; */
+}
+
+.breadCrumTextContainer p {
+    font-size: 0.6rem;
+}
+
+.breadCrumIconContainer {
+    height: 100%;
+    aspect-ratio: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.chevIconDiv {
+    aspect-ratio: 1/1;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    .cardOuterWrapper {
+        width: 80% !important;
+        aspect-ratio: 2/1.2 !important;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-right: 0px;
+        border-radius: clamp(1.5rem, -0.5rem + 10.0vw, 2.5rem) !important;
+    }
+
+    .breadCrumTextContainer p {
+        /* font-size: 0.6rem; */
+        /* font-size: 0.9rem; */
+        font-size: clamp(0.6rem, -1.1102230246251565e-16rem + 3.0000000000000004vw, 0.9rem) !important;
+
+    }
+
+    .chapterNameDiv p {
+        font-weight: 500;
+        /* font-size: 0.9rem; */
+        /* font-size: 1.4rem; */
+        font-size: clamp(0.9rem, -0.09999999999999976rem + 4.999999999999999vw, 1.4rem) !important;
+
+    }
+
+    .progressAttributeContainer p {
+        white-space: nowrap;
+        /* font-size: 0.6rem; */
+        /* font-size: 0.9rem; */
+        font-size: clamp(0.6rem, -1.1102230246251565e-16rem + 3.0000000000000004vw, 0.9rem) !important;
+
+    }
+
+
+    .numDiv p {
+        font-weight: 600;
+        /* font-size: 0.65rem; */
+        /* font-size: 0.95rem; */
+        font-size: clamp(0.65rem, 0.050000000000000155rem + 2.999999999999999vw, 0.95rem) !important;
+    }
+
+    .slashText {
+        color: #718199;
+        font-size: clamp(0.65rem, 0.050000000000000155rem + 2.999999999999999vw, 0.95rem) !important;
+    }
+
+
+
+    .chevIconDiv {
+        aspect-ratio: 1/1;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

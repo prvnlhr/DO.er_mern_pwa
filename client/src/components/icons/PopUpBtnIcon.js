@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./styles/profileIcon.module.css"
-const ProfileIcon = ({ togglePopUpOpen }) => {
+const PopUpBtnIcon = ({ togglePopUpOpen }) => {
     return (
         <svg
             onClick={togglePopUpOpen}
@@ -16,4 +16,4 @@ const ProfileIcon = ({ togglePopUpOpen }) => {
     )
 }
 
-export default ProfileIcon
+export default PopUpBtnIcon

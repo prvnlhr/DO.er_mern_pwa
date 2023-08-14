@@ -2,15 +2,16 @@
 
 .bookmarkCardOuterwrapper {
     width: 60%;
-    height: 95px;
+    height: 6rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
-    border-radius: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
     box-shadow: var(--list-wrapper-box-shadow);
+    border-radius: 1.5rem;
+    /* border: 1px solid red; */
 
 }
 
@@ -19,13 +20,17 @@
     height: 75%;
     display: grid;
     grid-template-columns: 70% 30%;
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto;
+    /* grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); */
+    /* grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) auto; */
     grid-template-rows: 33% 33% 33%;
     grid-template-areas:
         "courseNameBreadCrumWrapper arrowLinkWrapper"
         "chapterNameWrapper arrowLinkWrapper"
         "topicsCountWrapper arrowLinkWrapper"
     ;
+    /* border: 1px solid black; */
+
 }
 
 /* ---------------------------------------------------------------------------------- */
@@ -145,7 +150,8 @@
 
 .arrowLinkWrapper {
     grid-area: arrowLinkWrapper;
-    width: 100%;
+    /* width: 100%; */
+    aspect-ratio: 1/1;
     height: 100%;
     /* border: 1px solid orange; */
     display: flex;
@@ -161,6 +167,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 

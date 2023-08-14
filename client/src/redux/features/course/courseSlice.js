@@ -24,6 +24,7 @@ const initialState = {
             5: 0,
             6: 0,
         },
+        lastOpenedTopics: JSON.parse(localStorage.getItem('lastOpenedTopics')) || [],
 
     }
 }
@@ -51,7 +52,7 @@ export const markTopicCompletionAsync = createAsyncThunk('course/progress', asyn
         const numChapterInCourse = coursesList[courseIndx].chaptersList.length;
         const numTopicsInChapter = coursesList[courseIndx].chaptersList[chapterIndx].topicsList.length;
 
-        console.log(user_id, courseIndx, chapterIndx, topicIndx);
+        // console.log(user_id, courseIndx, chapterIndx, topicIndx);
 
         const reqData = {
             user_id: user_id,
@@ -102,7 +103,7 @@ export const getCourseDataAsync = createAsyncThunk('course/getCourseData', async
     try {
 
         const res = await api.getUserDataRequest(token);
-        console.log(res.data.courseData.currentCourseState);
+        // console.log(res.data.courseData.currentCourseState);
         const { currentCourseState } = res?.data.courseData;
         return fulfillWithValue(currentCourseState);
     } catch (error) {
@@ -120,9 +121,33 @@ const courseSlice = createSlice({
     name: 'course',
     initialState: initialState,
     reducers: {
+        addLastOpenedTopic: (state, action) => {
+            const { courseIndex, chapterIndex, topicIndex } = action.payload;
+            const { currentCourseIndex, currentChapterIndex, currentTopicIndex } = state.currentCourseState;
+
+            // Filter out the topic if it's already present in the list
+            const filteredLastOpenedTopics = state.currentCourseState.lastOpenedTopics.filter(
+                topic => !(topic.courseIndex === currentCourseIndex && topic.chapterIndex === currentChapterIndex && topic.topicIndex === currentTopicIndex)
+            );
+
+            // Add the topic to the beginning of the list
+            const newLastOpenedTopics = [
+                { courseIndex: currentCourseIndex, chapterIndex: currentChapterIndex, topicIndex: currentTopicIndex },
+                ...filteredLastOpenedTopics
+            ].slice(0, 10); // Keep only the latest 10 items
+            localStorage.setItem('lastOpenedTopics', JSON.stringify(newLastOpenedTopics));
+            return {
+                ...state,
+                currentCourseState: {
+                    ...state.currentCourseState,
+                    lastOpenedTopics: newLastOpenedTopics,
+                },
+            };
+        },
+
         updateCourseState: (state, action) => {
             const { data } = action.payload;
-            console.log(data);
+            // console.log(data);
 
             if (data) {
                 return {
@@ -135,7 +160,7 @@ const courseSlice = createSlice({
             }
         },
         updateDailyTimeSpent: (state, action) => {
-            console.log(action.payload);
+            // console.log(action.payload);
             return {
                 ...state,
                 currentCourseState: {
@@ -244,5 +269,5 @@ const courseSlice = createSlice({
 })
 
 
-export const { updateDailyTimeSpent, resetTimeSpent, updateCourseState, markTopicComplete } = courseSlice.actions;
+export const { updateDailyTimeSpent, resetTimeSpent, updateCourseState, markTopicComplete, addLastOpenedTopic } = courseSlice.actions;
 export default courseSlice.reducer;

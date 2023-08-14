@@ -17,7 +17,7 @@ import { setMarkDownFile } from "../helperFunctions/setMarkDownHelperFunction"
 import { useDispatch, useSelector } from 'react-redux'
 import { markTopicCompletionAsync } from "../../redux/features/course/courseSlice"
 
-import { updateDailyTimeSpent } from "../../redux/features/course/courseSlice"
+import { updateDailyTimeSpent, addLastOpenedTopic } from "../../redux/features/course/courseSlice"
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
@@ -103,9 +103,13 @@ const ContentComponent = ({ toggleSidebar }) => {
             setMarkDownFile(dispatch, currentCourseIndex, currentChapterIndex, currentTopicIndex);
         }
 
+        // console.log(currentCourseIndex, currentChapterIndex, currentTopicIndex);
+
     }, [currentCourseIndex, currentChapterIndex, currentTopicIndex, isMarkDownLoading, currentMarkdownContent, dispatch])
 
-
+    useEffect(() => {
+        dispatch(addLastOpenedTopic(currentCourseIndex, currentChapterIndex, currentTopicIndex));
+    }, [currentTopicIndex])
     // _________________________________________________________________________________________________________________________________________
 
 
@@ -222,8 +226,8 @@ const ContentComponent = ({ toggleSidebar }) => {
                     </div>
                 </div>
                 <div className={styles.navigationBarContainer} >
-                    <BreadCrumElement innerText={'JavaScript'} redirectToPath={'/user/allcourses'} textType={'course'} />
-                    <BreadCrumElement innerText={'Closures & Callbacks in JS Callbacks'} redirectToPath={'/user/course'} textType={'chapter'} />
+                    <BreadCrumElement innerText={coursesList[currentCourseIndex].courseName} redirectToPath={'/user/allcourses'} textType={'course'} />
+                    <BreadCrumElement innerText={coursesList[currentCourseIndex].chaptersList[currentChapterIndex].chapterName} redirectToPath={'/user/course'} textType={'chapter'} />
                 </div>
             </div>
 
