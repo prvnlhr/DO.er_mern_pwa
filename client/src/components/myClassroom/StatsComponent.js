@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "./styles//statsComponentStyles.module.css";
+import styles from "./styles/statsComponentStyles.module.css";
 
 import UserNameCountryComponent from "./UserNameCountryComponent"
 import OverviewComponent from "./OverviewComponent";

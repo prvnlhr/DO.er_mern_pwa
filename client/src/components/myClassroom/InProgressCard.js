@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles/inProgressCardStyles.module.css';
+import styles from './styles/inProgressCourseCardStyles.module.css';
 import { coursesList } from '../../courseData/courseData.js';
 
 const InProgressCard = ({ courseIndex, numCompletedChapters, totalChapters }) => {
