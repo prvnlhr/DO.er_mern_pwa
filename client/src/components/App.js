@@ -37,8 +37,8 @@ const App = () => {
             dispatch(getCourseDataAsync(accessToken));
 
             // get dailyTimeSpent Data from local storage and update in redux(not databse)            
-            const storedData = JSON.parse(localStorage.getItem('dailyTimeSpent')) || {};
-            dispatch(updateDailyTimeSpent(storedData));
+            // const storedData = JSON.parse(localStorage.getItem('dailyTimeSpent')) || {};
+            // dispatch(updateDailyTimeSpent(storedData));
         }
 
     }, [accessToken])

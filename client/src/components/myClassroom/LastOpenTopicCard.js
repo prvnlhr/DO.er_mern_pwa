@@ -92,40 +92,16 @@ const LastOpenTopicCard = ({ lastOpenTopicData }) => {
         <div className={styles.cardOuterWrapper}>
 
             <div className={styles.cardInnerWrapper} >
+                <div className={styles.continueTextCell} >
+                    <p>CONTINUE</p>
+                </div>
                 <div className={styles.breadCrumCell} >
                     <BreadCrumElement text={coursesList[lastOpenTopicData.courseIndex].courseName} txtColor={'#51637D'} fontWt={400} />
                     <BreadCrumElement text={coursesList[lastOpenTopicData.courseIndex].chaptersList[lastOpenTopicData.chapterIndex].chapterName} txtColor={'#6167A0'} fontWt={500} />
                 </div>
-                <div className={styles.chapterNameCell} >
-                    <div className={styles.chapterNameDiv} >
+                <div className={styles.topicNameCell} >
+                    <div className={styles.topicNameDiv} >
                         <p>{coursesList[lastOpenTopicData.courseIndex].chaptersList[lastOpenTopicData.chapterIndex].topicsList[lastOpenTopicData.topicIndex].topicName}</p>
-                    </div>
-                </div>
-                <div className={styles.chapterProgressCell} >
-                    <div className={styles.progressAttributeContainer} >
-                        <p>Chapters completed</p>
-                    </div>
-                    <div className={styles.progressBarWrapper} >
-                        <div className={styles.barWrapper} >
-                            <div className={styles.barContainer} >
-                                <div className={styles.barDiv}
-                                    style={{ width: `${progressPercentage}%` }}
-                                ></div>
-                            </div>
-                        </div>
-                        <div className={styles.completedNumContainer} >
-                            <div className={styles.numDiv} >
-                                <p>
-                                    {numTopicCompleted}
-                                </p>
-                            </div>
-                            <div className={styles.numDiv} ><p className={styles.slashText} >/</p></div>
-                            <div className={styles.numDiv} >
-                                <p>
-                                    {totalTopics}
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div className={styles.linkButtonCell} >

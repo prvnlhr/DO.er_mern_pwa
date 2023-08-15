@@ -274,4 +274,58 @@
         margin-right: 0px;
         /* border-radius: clamp(1.5rem, -0.5rem + 10.0vw, 2.5rem) !important; */
     }
+
+    .courseAttrCell p {
+        font-size: 0.65rem;
+        font-size: clamp(0.6rem, -1.1102230246251565e-16rem + 3.0000000000000004vw, 0.9rem) !important;
+
+    }
+
+    .courseNameCell p {
+        font-size: 1rem;
+        font-size: 1.5rem;
+        font-size: clamp(1.0rem, 0.0rem + 5.0vw, 1.5rem) !important;
+    }
+
+    .progressValueCell p {
+        font-size: 1.8rem;
+        font-size: 2.8rem;
+        font-size: clamp(1.8rem, -0.1999999999999995rem + 9.999999999999998vw, 2.8rem) !important;
+
+    }
+
+    .progressValueCell span {
+        font-size: 0.9rem;
+        font-size: 1.4rem;
+        font-size: clamp(0.9rem, -0.09999999999999976rem + 4.999999999999999vw, 1.4rem) !important;
+
+    }
+
+    .progressAtrrCell p {
+        font-size: 0.55rem;
+        font-size: 0.85rem;
+        font-size: clamp(0.55rem, -0.04999999999999982rem + 2.999999999999999vw, 0.85rem) !important;
+
+    }
+
+    .completedValueCell p {
+        font-size: 1.8rem;
+        font-size: clamp(1.8rem, -0.1999999999999995rem + 9.999999999999998vw, 2.8rem) !important;
+
+    }
+
+    .completedValueCell span {
+        font-size: 1rem;
+        font-size: clamp(0.9rem, -0.09999999999999976rem + 4.999999999999999vw, 1.4rem) !important;
+
+    }
+
+
+
+    .chapterAttrCell p {
+        font-size: 0.6rem;
+        font-size: clamp(0.55rem, -0.04999999999999982rem + 2.999999999999999vw, 0.85rem) !important;
+    }
+
+
 }

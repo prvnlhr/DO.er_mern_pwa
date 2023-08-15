@@ -17,7 +17,7 @@ import { setMarkDownFile } from "../helperFunctions/setMarkDownHelperFunction"
 import { useDispatch, useSelector } from 'react-redux'
 import { markTopicCompletionAsync } from "../../redux/features/course/courseSlice"
 
-import { updateDailyTimeSpent, addLastOpenedTopic } from "../../redux/features/course/courseSlice"
+import { updateDailyTimeSpent, addLastOpenedTopic, updateDailyTimeSpentAsync } from "../../redux/features/course/courseSlice"
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
@@ -57,12 +57,12 @@ const ContentComponent = ({ toggleSidebar }) => {
             const endTime = new Date();
             const timeSpentMinutes = Math.floor((endTime - startTime) / (1000 * 60));
 
-            // Update the timeSpent in localStorage
             const storedData = JSON.parse(localStorage.getItem('dailyTimeSpent')) || {};
+
             storedData[dayOfWeek] = (storedData[dayOfWeek] || 0) + timeSpentMinutes;
             localStorage.setItem('dailyTimeSpent', JSON.stringify(storedData));
-            // Dispatch the updateDailyTimeSpent action to update the Redux state
-            dispatch(updateDailyTimeSpent(storedData));
+            dispatch(updateDailyTimeSpentAsync({ userId, dayOfWeek, timeSpent: timeSpentMinutes + 100 }));
+            // dispatch(updateDailyTimeSpent(storedData));
         };
     }, []);
 
@@ -83,8 +83,9 @@ const ContentComponent = ({ toggleSidebar }) => {
             storedData[dayOfWeek] = (storedData[dayOfWeek] || 0) + timeSpentMinutes;
             localStorage.setItem('dailyTimeSpent', JSON.stringify(storedData));
 
+            dispatch(updateDailyTimeSpentAsync({ userId, dayOfWeek, timeSpent: timeSpentMinutes + 100 }));
             // Dispatch the updateDailyTimeSpent action to update the Redux state
-            dispatch(updateDailyTimeSpent(storedData));
+            // dispatch(updateDailyTimeSpent(storedData));
         };
 
         window.addEventListener('beforeunload', handleBeforeUnload);

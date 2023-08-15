@@ -1,56 +1,61 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./styles/graphComponentStyles.module.css";
+import chartStyles from "./styles/graphChartComponentStyles.module.css"
 import CommonHeader from "./CommonHeader";
 import Chart from 'chart.js/auto';
+import { useSelector } from 'react-redux';
+
+
 
 const GraphComponent = () => {
+
+
+    const courseState = useSelector((state) => state.course.currentCourseState);
+
+    const { dailyTimeSpent, isLoading } = courseState;
 
     const [timeSpendingData, setTimeSpendingData] = useState({
         hoursSpent: 0,
         minutesSpent: 0
     });
-    const defaultData = [123, 456, 231, 175, 320, 100, 400];
-
-    const dataFromLocalStorage = JSON.parse(localStorage.getItem('dailyTimeSpent')) || defaultData;
-    const chartData = Object.values(dataFromLocalStorage);
-    // console.log(chartData);
-
-    const currentDayOfWeek = new Date().getDay();
-
-    // console.log(currentDayOfWeek);
-
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     const chartRef = React.useRef(null);
 
-    const getTotalHoursTillToday = () => {
-        // const currentDayOfWeek = new Date().getDay();
-        // const totalMinutes = chartData.slice(0, currentDayOfWeek).reduce((a, b) => a + b);
-        // const hours = Math.floor(totalMinutes / 60);
-        // const minutes = Math.round(totalMinutes % 60);
-        // setTimeSpendingData({
-        // hoursSpent: hours,
-        // minutesSpent: minutes
-        // })
-    };
+    const currentDayOfWeek = new Date().getDay();
 
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    const getTotalHoursTillToday = () => {
+        const totalMinutes = dailyTimeSpent.reduce((total, minutes) => total + minutes, 0);
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        setTimeSpendingData({ hoursSpent: hours, minutesSpent: minutes });
+    };
 
     useEffect(() => {
         getTotalHoursTillToday();
-    }, []);
+
+    }, [dailyTimeSpent]);
+
+
+    const [chartInstance, setChartInstance] = useState(null);
 
     useEffect(() => {
         if (chartRef.current) {
+            if (chartInstance) {
+                chartInstance.destroy(); // Destroy the previous chart instance
+            }
+
             const ctx = chartRef.current.getContext('2d');
 
-            const myChart = new Chart(ctx, {
+            const newChartInstance = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
                     datasets: [
                         {
                             label: 'Time Spent (Hours)',
-                            data: defaultData.map((value) => value / 60),
+                            data: dailyTimeSpent.map((value) => value / 60),
                             backgroundColor: (context) => {
                                 return context.dataIndex === currentDayOfWeek ? '#9E92DC' : '#51637D';
                             },
@@ -136,23 +141,22 @@ const GraphComponent = () => {
                         }
                     },
                     onClick: (event, elements) => {
-                        if (myChart.tooltip) {
-                            const activeElements = myChart.getElementsAtEventForMode(event, 'nearest', { intersect: false });
+                        if (newChartInstance.tooltip) {
+                            const activeElements = newChartInstance.getElementsAtEventForMode(event, 'nearest', { intersect: false });
                             if (activeElements && activeElements.length > 0) {
-                                myChart.tooltip.setActiveElements(activeElements);
-                                myChart.tooltip.update(true);
-                                myChart.draw();
+                                newChartInstance.tooltip.setActiveElements(activeElements);
+                                newChartInstance.tooltip.update(true);
+                                newChartInstance.draw();
                             }
                         }
                     },
 
                 },
             });
+            setChartInstance(newChartInstance);
 
         }
-    }, [currentDayOfWeek]);
-
-
+    }, [currentDayOfWeek, dailyTimeSpent]);
 
     return (
         <div className={styles.graphComponentWrapper} >
@@ -162,7 +166,7 @@ const GraphComponent = () => {
                 </div>
                 <div className={styles.graphTimeSpendingValueCell} >
                     <div className={styles.graphTimeSpendingValueInnerCell} >
-                        <p>12 <span>h</span> 30<span> m</span></p>
+                        <p>{timeSpendingData.hoursSpent} <span>h</span> {timeSpendingData.minutesSpent}<span> m</span></p>
                     </div>
                 </div>
                 <div className={styles.graphChartCell} >

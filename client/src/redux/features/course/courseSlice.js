@@ -15,30 +15,23 @@ const initialState = {
         completedChapters: {},
         completedTopics: {},
         bookmarkedChapters: {},
-        dailyTimeSpent: {
-            0: 0,
-            1: 0,
-            2: 0,
-            3: 0,
-            4: 0,
-            5: 0,
-            6: 0,
-        },
+        dailyTimeSpent: [0, 0, 0, 0, 0, 0, 0],
         lastOpenedTopics: JSON.parse(localStorage.getItem('lastOpenedTopics')) || [],
-
     }
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-export const updateDailyTimeSpentAsync = createAsyncThunk('course/updateDailyTimeSpentInDB', async ({ dayOfWeek, timeSpent }, { getState, fulfillWithValue, rejectWithValue }) => {
+export const updateDailyTimeSpentAsync = createAsyncThunk('course/updateDailyTimeSpentInDB', async ({ userId, dayOfWeek, timeSpent }, { getState, fulfillWithValue, rejectWithValue }) => {
     try {
-        const response = await api.updateDailyTimeSpentRequest(dayOfWeek, timeSpent);
-        return fulfillWithValue(response.data);
+        const res = await api.updateDailyTimeSpentRequest({ userId, dayOfWeek, timeSpent });
+        console.log(res.data);
+        return fulfillWithValue(res.data);
 
     } catch (error) {
         const errorMessage = error?.response.data.msg
         const { errorMsg, actualError } = error?.response?.data;
+        console.log(error)
         return rejectWithValue({
             errorMsg: errorMsg || 'unknown msg'
         });
@@ -91,6 +84,7 @@ export const bookmarkCourseAsync = createAsyncThunk('course/bookmarChapter', asy
     } catch (error) {
         const errorMessage = error?.response.data.msg
         const { errorMsg, actualError } = error?.response?.data;
+        console.log(errorMessage, actualError);
         return rejectWithValue({
             errorMsg: errorMsg || 'unknown msg'
         });
@@ -105,6 +99,7 @@ export const getCourseDataAsync = createAsyncThunk('course/getCourseData', async
         const res = await api.getUserDataRequest(token);
         // console.log(res.data.courseData.currentCourseState);
         const { currentCourseState } = res?.data.courseData;
+        console.log(currentCourseState);
         return fulfillWithValue(currentCourseState);
     } catch (error) {
         const errorMessage = error?.response.data.msg
@@ -198,13 +193,25 @@ const courseSlice = createSlice({
                     },
                 }
             })
+            .addCase(getCourseDataAsync.pending, (state, action) => {
+
+                return {
+                    ...state,
+                    currentCourseState: {
+                        ...state.currentCourseState,
+                        isLoading: true,
+                    },
+                }
+
+            })
             .addCase(getCourseDataAsync.fulfilled, (state, action) => {
 
                 return {
                     ...state,
                     currentCourseState: {
                         ...state.currentCourseState,
-                        ...action.payload
+                        ...action.payload,
+                        isLoading: false,
                     },
                 }
 
@@ -215,7 +222,8 @@ const courseSlice = createSlice({
                     ...state,
                     currentCourseState: {
                         ...state.currentCourseState,
-                        ...action.payload
+                        ...action.payload,
+                        isLoading: false,
                     },
                 }
 
@@ -257,12 +265,18 @@ const courseSlice = createSlice({
             .addCase(updateDailyTimeSpentAsync.fulfilled, (state, action) => {
                 return {
                     ...state,
+                    currentCourseState: {
+                        ...state.currentCourseState,
+                        dailyTimeSpent: action.payload
+                    },
 
                 }
             })
             .addCase(updateDailyTimeSpentAsync.rejected, (state, action) => {
-                // Handle the rejected case if needed
                 console.log('Error updating time spent in database:', action.error.message);
+                return {
+                    ...state,
+                }
             });
 
     }

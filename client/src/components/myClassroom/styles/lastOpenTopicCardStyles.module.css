@@ -22,16 +22,44 @@
     width: 80%;
     height: 90%;
     display: grid;
-    grid-template-columns: 65% 35%;
+    grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 25% 25% 50%;
     grid-template-areas:
-        "breadCrumCell breadCrumCell"
-        "chapterNameCell chapterNameCell"
-        "chapterProgressCell linkButtonCell";
+        "continueTextCell continueTextCell continueTextCell continueTextCell"
+        "breadCrumCell breadCrumCell breadCrumCell breadCrumCell"
+        "topicNameCell topicNameCell topicNameCell linkButtonCell"
 }
 
 /* ------------------------------------------------------------ */
+.continueTextCell {
+    position: relative;
+    grid-area: continueTextCell;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0%;
+}
 
+.continueTextCell::before {
+    position: absolute;
+    content: "";
+    background-color: #6167A0;
+    height: 35%;
+    width: 3px;
+    margin-right: 0%;
+    border-radius: 0.05rem;
+    left: -5%;
+}
+
+.continueTextCell p {
+    /* border: 1px solid red; */
+    font-size: 0.65rem;
+    color: #6167A0;
+    font-weight: 500;
+}
 
 .breadCrumCell {
     grid-area: breadCrumCell;
@@ -45,8 +73,8 @@
 }
 
 
-.chapterNameCell {
-    grid-area: chapterNameCell;
+.topicNameCell {
+    grid-area: topicNameCell;
     width: 100%;
     height: 100%;
     display: flex;
@@ -56,18 +84,18 @@
     /* border: 1px solid red; */
 }
 
-.chapterNameDiv {
+.topicNameDiv {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     /* border: 1px solid blue; */
     overflow: hidden;
 }
 
-.chapterNameDiv p {
-    font-size: 0.7rem;
+.topicNameDiv p {
+    font-size: 0.8rem;
     color: black;
     font-weight: 500;
     white-space: nowrap;
@@ -76,100 +104,7 @@
 
 }
 
-.chapterProgressCell {
-    grid-area: chapterProgressCell;
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid orange; */
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    align-items: center;
-    display: none;
-}
 
-.progressAttributeContainer {
-    height: auto;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* border: 1px solid palevioletred; */
-}
-
-.progressAttributeContainer p {
-    font-size: 0.6rem;
-    color: black;
-}
-
-.progressBarWrapper {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* border: 1px solid black; */
-}
-
-.barWrapper {
-    width: 70%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* border: 1px solid red; */
-}
-
-
-.barContainer {
-    height: 0.2rem;
-    width: 95%;
-    border-radius: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #BAC4D5;
-    overflow: hidden;
-}
-
-.barDiv {
-    height: 100%;
-    width: 70%;
-    background-color: #6167A0;
-    border-radius: 0px 10px 10px 0px;
-}
-
-
-.completedNumContainer {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* border: 1px solid darkblue; */
-    justify-content: space-evenly;
-}
-
-.numDiv {
-    height: 100%;
-    width: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* border: 1px solid springgreen; */
-}
-
-.numDiv p {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0;
-    margin: 0;
-    /* border: 1px solid springgreen; */
-}
-
-.slashText {
-    color: #718199;
-}
 
 .linkButtonCell {
     grid-area: linkButtonCell;
@@ -185,7 +120,7 @@
 
 .linkBtnDiv {
     aspect-ratio: 1/1;
-    width: 50%;
+    height: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -204,6 +139,7 @@
     justify-content: flex-start;
     align-items: center;
     /* border: 1px solid red; */
+    /* overflow: hidden; */
 }
 
 .breadCrumTextContainer {
@@ -213,10 +149,14 @@
     justify-content: flex-start;
     align-items: center;
     /* border: 1px solid greenyellow; */
+    overflow: hidden;
 }
 
 .breadCrumTextContainer p {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .breadCrumIconContainer {
@@ -240,7 +180,7 @@
 
     .cardOuterWrapper {
         width: 80% !important;
-        aspect-ratio: 2/1.2 !important;
+        aspect-ratio: 2/1 !important;
         margin-top: 20px;
         margin-bottom: 20px;
         margin-right: 0px;
@@ -254,7 +194,13 @@
 
     }
 
-    .chapterNameDiv p {
+    .continueTextCell p {
+        /* font-size: 0.6rem; */
+        /* font-size: 0.85rem; */
+        font-size: clamp(0.6rem, -1.1102230246251565e-16rem + 3.0000000000000004vw, 0.9rem) !important;
+    }
+
+    .topicNameDiv p {
         font-weight: 500;
         /* font-size: 0.9rem; */
         /* font-size: 1.4rem; */

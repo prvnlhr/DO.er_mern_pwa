@@ -1,0 +1,74 @@
+:root {
+    --tooltip-left: 0;
+    --tooltip-top: 0;
+    --bar-height: 0;
+}
+
+.chartWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dayBarWrapper {
+    position: relative;
+    height: 100%;
+    width: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    /* border: 1px solid white; */
+}
+
+.barContainer {
+    flex: 1;
+    width: 100%;
+    /* border: 1px solid skyblue; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.barDiv {
+    width: 0.19rem;
+    height: var(--bar-height);
+    background-color: #9E92DC;
+    border-radius: 5px 5px 0px 0px;
+    cursor: pointer;
+
+}
+
+.dayContainer {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* border: 1px solid springgreen; */
+}
+
+.dayContainer p {
+    font-size: 0.7rem;
+    color: white;
+}
+
+/* ----For tool tip ------*/
+.toolTipWrapper {
+    position: absolute;
+    height: 2.5rem;
+    aspect-ratio: 2/1.2;
+    background-color: #9E92DC;
+    border-radius: 0.5rem;
+    transition: left 0.3s ease-in-out;
+    /* display: none; */
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+}

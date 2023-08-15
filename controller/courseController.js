@@ -68,18 +68,33 @@ const courseController = {
 
     updateDailyTimeSpent: async (req, res) => {
         try {
-            const { userId, currentDayOfWeek, currentTimeSpent } = req.body;
-            console.log('update time', userId, currentDayOfWeek, currentTimeSpent)
+            const { userId, dayOfWeek, timeSpent } = req.body;
+            console.log("update time", userId, dayOfWeek, timeSpent);
+
+            // Find the user by userId
             const user = await User.findById(userId);
+
             if (!user) {
-                return res.status(500).json('Didnt find user');
+                return res.status(500).json("User not found");
             }
-            user.dailyTimeSpent[currentDayOfWeek] += currentTimeSpent;
+
+            // Ensure that dailyTimeSpent is an array
+            if (!Array.isArray(user.currentCourseState.dailyTimeSpent)) {
+                user.currentCourseState.dailyTimeSpent = [0, 0, 0, 0, 0, 0, 0];
+            }
+
+            // Update the time spent for the specified dayOfWeek
+            user.currentCourseState.dailyTimeSpent[dayOfWeek] += timeSpent;
+
+            // Save the user
             await user.save();
-            return res.status(201).json(user.dailyTimeSpent);
+
+            // Return the updated dailyTimeSpent array
+            return res.status(201).json(user.currentCourseState.dailyTimeSpent);
         } catch (error) {
+            console.log(error);
             res.status(500).json({
-                errorMsg: 'Error at updatedailyTimeSpent controller',
+                errorMsg: "Error at updateDailyTimeSpent controller",
                 actualError: error.message,
             });
         }
