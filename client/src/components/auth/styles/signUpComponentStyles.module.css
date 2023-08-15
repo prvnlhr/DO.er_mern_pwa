@@ -2,7 +2,8 @@
 
 .signUpFormGrid {
     width: 85%;
-    height: 95%;
+    /* height: 95%; */
+    aspect-ratio: 1/1.5;
     /* border: 1px solid salmon; */
     display: grid;
     grid-template-columns: 100%;

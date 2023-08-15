@@ -161,6 +161,13 @@ const OtpComponent = () => {
             console.error(error);
         }
     };
+    const maskEmail = () => {
+        const parts = emailAddress?.split('@');
+        const username = parts[0];
+        const domain = parts[1];
+        const maskedUsername = username.slice(0, Math.min(3, username.length)) + '***';
+        return (maskedUsername) + '@' + (domain);
+    }
 
 
     //--------------------------------------------------------------------------------
@@ -173,7 +180,7 @@ const OtpComponent = () => {
 
             <div className={styles.emailAddressCell} >
                 <p className={styles.emailMessageText}>Enter the OTP you received on</p>
-                <p className={styles.emailText} >andr***garf@gmail.com</p>
+                <p className={styles.emailText} >{maskEmail()}</p>
             </div>
             <div className={styles.messageCell} >
 
@@ -231,7 +238,7 @@ const OtpComponent = () => {
                     onFocus={timer.time === 0 ? () => setActiveFieldIndex(5) : undefined}
                     onClick={timer.time > 0 ? undefined : handleOtpResendBtnClicked}
                     initial={{ x: 0 }}
-                    animate={{ x: timer.time === 0 ? '90%' : 0 }}
+                    animate={{ x: timer.time === 0 ? '80%' : 0 }}
                     transition={{
                         ease: [0.39, 0.575, 0.565, 1],
                         duration: 0.7,
