@@ -61,7 +61,7 @@ const ContentComponent = ({ toggleSidebar }) => {
 
             storedData[dayOfWeek] = (storedData[dayOfWeek] || 0) + timeSpentMinutes;
             localStorage.setItem('dailyTimeSpent', JSON.stringify(storedData));
-            dispatch(updateDailyTimeSpentAsync({ userId, dayOfWeek, timeSpent: timeSpentMinutes + 100 }));
+            dispatch(updateDailyTimeSpentAsync({ userId, dayOfWeek, timeSpent: timeSpentMinutes }));
             // dispatch(updateDailyTimeSpent(storedData));
         };
     }, []);
@@ -83,7 +83,7 @@ const ContentComponent = ({ toggleSidebar }) => {
             storedData[dayOfWeek] = (storedData[dayOfWeek] || 0) + timeSpentMinutes;
             localStorage.setItem('dailyTimeSpent', JSON.stringify(storedData));
 
-            dispatch(updateDailyTimeSpentAsync({ userId, dayOfWeek, timeSpent: timeSpentMinutes + 100 }));
+            dispatch(updateDailyTimeSpentAsync({ userId, dayOfWeek, timeSpent: timeSpentMinutes }));
             // Dispatch the updateDailyTimeSpent action to update the Redux state
             // dispatch(updateDailyTimeSpent(storedData));
         };
