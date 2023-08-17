@@ -1,203 +1,117 @@
-
-const cplusplusModulesList = [
+const cplusplusOppsChapterList = [
     {
-        module_title: 'JavaScript Introduction',
+        chapterName: 'Introduction to C++ OOPS',
         is_bookmarked: false,
         time_required: '5 min',
-        chapterFolderName: '1_javascript_introduction',
+        chapterFolderName: '1_introduction',
         topicsList: [
             {
-                chapterData: 'What is JavaScript',
-                topicFileName: '1_what_is_js',
+                topicName: 'Understanding OOPS in C++',
+                topicFileName: '1_introduction_to_inheritance',
             },
             {
-                chapterData: 'JavaScript Console & Web Development Tools',
-                topicFileName: '2_console_and_web_dev_tools'
+                topicName: 'Classes and Objects',
+                topicFileName: '2_classes_and_objects'
             },
-            {
-                chapterData: 'JavaScript Hello World',
-                topicFileName: '3_hello_world_program'
-            },
+         
         ]
     },
     {
-        module_title: 'Fundamentals of JS',
+        chapterName: 'Inheritance in C++',
         is_bookmarked: false,
         time_required: '25 min',
-        chapterFolderName: '2_fundamentals_of_js',
+        chapterFolderName: '2_inheritance',
 
         topicsList: [
             {
-                chapterData: 'Basics of JS Syntax',
-                topicFileName: '1_syntax_in_js'
+                topicName: 'Introduction to Inheritance',
+                topicFileName: '1_introduction_to_inheritance'
             },
             {
-                chapterData: 'Variables in JS',
-                topicFileName: '2_variables_in_js'
+                topicName: 'Access Control',
+                topicFileName: '2_access_control_and_inheritance'
             },
             {
-                chapterData: 'Data types in JS',
-                topicFileName: '3_data_types_in_js'
+                topicName: 'Contructors and Destructors',
+                topicFileName: '3_constructors_and_destructors_in_inheritance'
             },
             {
-                chapterData: 'JavaScript Number',
-                topicFileName: '4_number_in_js'
+                topicName: 'Types of Inheritance',
+                topicFileName: '4_types_of_inheritance'
             },
             {
-                chapterData: 'Javascript String ',
-                topicFileName: '5_string_in_js'
+                topicName: 'Function Overriding and Polymorphsim',
+                topicFileName: '5_function_overriding_and_polymorphism'
             },
             {
-                chapterData: 'Objects in JavaScript',
-                topicFileName: '6_objects_in_js'
+                topicName: 'Comman Pitfalls and Avoiding them',
+                topicFileName: '6_avoiding_common_pitfalls'
             },
-            {
-                chapterData: 'Primitive vs Reference values',
-                topicFileName: '7_primitive_vs_reference_values'
-            },
-            {
-                chapterData: 'Arrays in JS',
-                topicFileName: '8_arrays_in_js'
-            },
+           
         ]
     },
     {
-        module_title: 'JS Operators',
+        chapterName: 'Polymorphism',
         is_bookmarked: false,
         time_required: '20 min',
-        chapterFolderName: '3_operators_in_js',
+        chapterFolderName: '3_polymorphism',
 
         topicsList: [
             {
-                chapterData: 'Arithmetic operators',
-                topicFileName: '1_arithmetic_operator'
+                topicName: 'Introduction to Polymorphism',
+                topicFileName: '1_intro_to_polymorphism'
             },
             {
-                chapterData: 'Unary operators',
-                topicFileName: '2_assignment_operators'
+                topicName: 'Function Overriding and Dynamic Polymorphism',
+                topicFileName: '2_function_overriding_and_dynamic_polymorphism'
             },
             {
-                chapterData: 'Assignment operators',
-                topicFileName: '3_unary_op'
+                topicName: 'Abstract Base Classes and Pure Virtual Functions',
+                topicFileName: '3_abstract_base_classes_and_pure_virtual_functions'
             },
             {
-                chapterData: 'Logical operators',
-                topicFileName: '4_comparision_op'
+                topicName: 'Run-Time Polymorphism and Late Binding',
+                topicFileName: '4_run_time_polymorphism_and_late_binding'
             },
             {
-                chapterData: 'Logical assignment & Nullish coalescing operator',
-                topicFileName: '5_logical_op'
+                topicName: 'Operator Overloading and Polymorphism',
+                topicFileName: '5_operator_overloading_and_polymorphism'
             },
             {
-                chapterData: 'Exponential operator',
-                topicFileName: '6_logical_assignment_op'
+                topicName: 'Compile-Time Polymorphism (Static Polymorphism)',
+                topicFileName: '6_compile_time_polymorphism_static_polymorphism'
             },
             {
-                chapterData: 'Nullish Coalescing operator',
-                topicFileName: '7_nullish_coalescing_op'
+                topicName: 'Polymorphism in the Standard Library',
+                topicFileName: '7_polymorphism_in_the_standard_library'
             },
         ]
     },
     {
-        module_title: 'JS Control Flow',
+        chapterName: 'Encapsulation and Abstraction',
         is_bookmarked: false,
         time_required: '20 min',
-        chapterFolderName: '4_control_flow_statements',
+        chapterFolderName: '4_encapsulation_and_abstraction',
 
         topicsList: [
             {
-                chapterData: 'if statement',
-                topicFileName: '3_hello_world_program'
+                topicName: 'Encapsulation and Data Hiding',
+                topicFileName: '1_encapsulation_and_data_hiding'
             },
             {
-                chapterData: 'if...else',
-                topicFileName: '3_hello_world_program'
+                topicName: 'Getters and Setters',
+                topicFileName: '2_getters_and_setters'
             },
             {
-                chapterData: 'if...else...if',
-                topicFileName: '3_hello_world_program'
+                topicName: 'Abstraction and Class Interfaces',
+                topicFileName: '3_abstraction_and_class_interfaces'
             },
             {
-                chapterData: 'Ternary operators',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Switch in JS',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Loops in JavaScript',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Break & continue',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Comma operator in JS',
-                topicFileName: '3_hello_world_program'
-            },
-        ]
-    },
-    {
-        module_title: 'JavaScript Functions',
-        is_bookmarked: false,
-        time_required: '30 min',
-        chapterFolderName: '5_function_in_js',
-
-        topicsList: [
-            {
-                chapterData: 'Introduction to JS functions',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Functions - The first class citizen',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Function types in JS',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Pass-by-value',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Default Para1meters',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Advanced Functions',
-                topicFileName: '3_hello_world_program'
-            },
-        ]
-    },
-    {
-        module_title: 'Objects & Prototypes in JS',
-        is_bookmarked: false,
-        time_required: '25 min',
-        chapterFolderName: '6_advance_functions',
-
-        topicsList: [
-            {
-                chapterData: 'What is Objects in JS',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Ways to Define Objects',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'this keyword in JS',
-                topicFileName: '3_hello_world_program'
-            },
-            {
-                chapterData: 'Prototypal Inheritance',
-                topicFileName: '3_hello_world_program'
+                topicName: 'Using Abstract Classes and Interfaces',
+                topicFileName: '4_using_abstract_classes_and_interfaces'
             },
         ]
     },
 ]
 
-
-export { cplusplusModulesList };
+export { cplusplusOppsChapterList };

@@ -1,6 +1,10 @@
 const { User } = require("../model/userData")
 
 
+function roundToNearestFraction(value, fraction) {
+    return Math.round(value / fraction) * fraction;
+}
+
 const courseController = {
 
     updateCourseProgress: async (req, res) => {
@@ -48,6 +52,55 @@ const courseController = {
         }
     },
 
+    addLastOpenedTopic: async (req, res) => {
+        try {
+
+            const { currentCourseIndex, currentChapterIndex, currentTopicIndex } = req.body;
+
+
+            console.log('at addLastOpenedTopic', currentCourseIndex, currentChapterIndex, currentTopicIndex, req.user.userId)
+
+            const user = await User.findById(req.user.userId);
+
+
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+
+            // Find the existing topic in the last opened topics array, if present
+            const existingTopicIndex = user.currentCourseState.lastOpenedTopics.findIndex(
+                (topic) =>
+                    topic.courseIndex === currentCourseIndex &&
+                    topic.chapterIndex === currentChapterIndex &&
+                    topic.topicIndex === currentTopicIndex
+            );
+
+            // If the topic is already in the array, remove it from its current position
+            if (existingTopicIndex !== -1) {
+                user.currentCourseState.lastOpenedTopics.splice(existingTopicIndex, 1);
+            }
+
+            // Add the topic to the beginning of the array
+            user.currentCourseState.lastOpenedTopics.unshift({
+                courseIndex: currentCourseIndex,
+                chapterIndex: currentChapterIndex,
+                topicIndex: currentTopicIndex,
+            });
+
+            // Keep only the latest N topics (e.g., 10) in the array
+            const maxTopics = 10;
+            user.currentCourseState.lastOpenedTopics = user.currentCourseState.lastOpenedTopics.slice(0, maxTopics);
+
+            await user.save();
+
+            return res.status(200).json(
+                user.currentCourseState.lastOpenedTopics,
+            );
+        } catch (error) {
+            console.error('Error in addLastOpenedTopic:', error);
+            res.status(500).json({ errorMsg: 'Error updating last opened topic', actualError: error.message });
+        }
+    },
     getCourseData: async (req, res) => {
         try {
             console.log('getCourseData controller', req.user.userId);
@@ -69,7 +122,6 @@ const courseController = {
     updateDailyTimeSpent: async (req, res) => {
         try {
             const { userId, dayOfWeek, timeSpent } = req.body;
-            console.log("update time", userId, dayOfWeek, timeSpent);
 
             // Find the user by userId
             const user = await User.findById(userId);
@@ -80,6 +132,19 @@ const courseController = {
 
             // Ensure that dailyTimeSpent is an array
             if (!Array.isArray(user.currentCourseState.dailyTimeSpent)) {
+                user.currentCourseState.dailyTimeSpent = [0, 0, 0, 0, 0, 0, 0];
+            }
+
+            // Reset time spent at the start of the week (Sunday)
+            if (dayOfWeek === 0) {
+                // Calculate total time spent in days and store
+                const totalTimeSpentInMinutes = user.currentCourseState.dailyTimeSpent.reduce((total, time) => total + time, 0);
+                const totalTimeSpentInDays = totalTimeSpentInMinutes / 60 / 24; // Convert minutes to days
+                const roundedTotalTimeSpent = Math.round(totalTimeSpentInDays * 4) / 4; // Round to nearest 0.25
+
+                user.currentCourseState.totalTimeSpentInDays = roundedTotalTimeSpent;
+
+                // Reset dailyTimeSpent array for the new week
                 user.currentCourseState.dailyTimeSpent = [0, 0, 0, 0, 0, 0, 0];
             }
 

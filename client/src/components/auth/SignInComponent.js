@@ -46,10 +46,10 @@ const SignInCOmponent = () => {
 
     const handleSubmitBtnClicked = async () => {
         const res = await dispatch(userSignInAsync(signInFormData));
-        console.log('dispatch res', res);
-        if (res.type === 'auth/userSignIn/fulfilled' && res.payload === 'OTP sent to your email.') {
-            updateLocalAuthState('showOtpComponent', true);
-        }
+        // console.log('dispatch res', res);
+        // if (res.type === 'auth/userSignIn/fulfilled' && res.payload === 'OTP sent to your email.') {
+        //     updateLocalAuthState('showOtpComponent', true);
+        // }
     };
 
     const handleToggleFormLinkClicked = () => {

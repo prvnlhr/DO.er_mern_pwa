@@ -52,15 +52,17 @@ body::-webkit-scrollbar {
   z-index: 1;
 }
 
-/* .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  background: rgba(10, 10, 10, 0.45);
-  backdrop-filter: blur(16.5px);
-  -webkit-backdrop-filter: blur(16.5px);
-} */
+
+.lottieWrapper {
+  border: 1px solid white;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1D1F2B;
+  /* width: clamp(4.0rem, -2.0rem + 30.0vw, 7.0rem) !important; */
+  width: 70%;
+}
 
 .appInnerwrapper::-webkit-scrollbar {
   display: none;

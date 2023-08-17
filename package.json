@@ -42,6 +42,7 @@
     "pwa-asset-generator": "^6.3.1",
     "react-code-blocks": "^0.1.0",
     "react-copy-to-clipboard": "^5.1.0",
+    "react-lottie": "^1.2.3",
     "react-markdown": "^8.0.7",
     "react-phone-number-input": "^3.3.1",
     "react-redux": "^8.1.2",

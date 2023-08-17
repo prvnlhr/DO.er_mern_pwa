@@ -37,6 +37,7 @@ const authController = {
     signInUser: async (req, res) => {
         try {
             const { emailAddress } = req.body;
+            console.log(emailAddress);
 
             if (!emailAddress) {
                 return res.status(400).json({ errorMsg: 'Please provide an emailAddress.' });
@@ -49,7 +50,7 @@ const authController = {
             const user = await User.findOne({ emailAddress });
 
             if (!user) {
-                return res.status(401).json({ errorMsg: 'You are not registered yet.' });
+                return res.status(401).json({ errorMsg: 'Not yet Registered. Sign Up Please !' });
             }
 
             const { otp, hashedOTP, expiryTime } = await generateOTP();
@@ -67,6 +68,9 @@ const authController = {
                 console.error('Error in sending OTP email:', error);
                 res.status(500).json({ errorMsg: 'Error sending OTP email. Please try again later.', actualError: error.message });
             }
+
+            // res.status(200).json({ message: 'OTP sent to your email.' });
+
         } catch (error) {
             console.error('Error in signInUser:', error);
             res.status(500).json({

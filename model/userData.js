@@ -22,6 +22,21 @@ const currentCourseProgressStateSchema = new mongoose.Schema(
             type: Object, // Object to store bookmarked chapters data
             default: {}, // Default value is an empty object
         },
+        totalTimeSpentInDays: {
+            type: Number, // Total time spent in days
+            default: 0, // Default value of 0 days
+        },
+        lastOpenedTopics: {
+            type: [
+                {
+                    courseIndex: Number,
+                    chapterIndex: Number,
+                    topicIndex: Number,
+                },
+            ],
+            default: [],
+        },
+
     },
     { minimize: false } // Set minimize option to false
 );
@@ -58,6 +73,7 @@ const userSchema = new mongoose.Schema(
     },
     { minimize: false } // Set minimize option to false
 );
+
 
 // Create and export the User model
 const User = mongoose.model("User", userSchema);

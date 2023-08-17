@@ -1,0 +1,3 @@
+         -- polymorphic_containers_(e.g.,_std::vector<base*>)
+         -- std::function_and_function_objects
+         -- using_polymorphism_in_algorithms_(e.g.,_std::sort)

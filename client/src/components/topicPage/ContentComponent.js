@@ -17,7 +17,7 @@ import { setMarkDownFile } from "../helperFunctions/setMarkDownHelperFunction"
 import { useDispatch, useSelector } from 'react-redux'
 import { markTopicCompletionAsync } from "../../redux/features/course/courseSlice"
 
-import { updateDailyTimeSpent, addLastOpenedTopic, updateDailyTimeSpentAsync } from "../../redux/features/course/courseSlice"
+import { updateDailyTimeSpent, addLastOpenedTopic, updateDailyTimeSpentAsync, addToLastOpenedTopic } from "../../redux/features/course/courseSlice"
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
@@ -47,11 +47,11 @@ const ContentComponent = ({ toggleSidebar }) => {
         const startTime = new Date();
         const dayOfWeek = startTime.getDay();
 
-        // Check if it's Sunday (day number 0)
-        if (dayOfWeek === 0) {
-            // Clear the data in local storage
-            localStorage.removeItem('dailyTimeSpent');
-        }
+        // // Check if it's Sunday (day number 0)
+        // if (dayOfWeek === 0) {
+        //     // Clear the data in local storage
+        //     localStorage.removeItem('dailyTimeSpent');
+        // }
 
         return () => {
             const endTime = new Date();
@@ -108,8 +108,14 @@ const ContentComponent = ({ toggleSidebar }) => {
 
     }, [currentCourseIndex, currentChapterIndex, currentTopicIndex, isMarkDownLoading, currentMarkdownContent, dispatch])
 
+
+    // ____________________________________________________________________________________________________________________________________
+    // <-- when topic page mounts addToLastOpenedTopic
     useEffect(() => {
-        dispatch(addLastOpenedTopic(currentCourseIndex, currentChapterIndex, currentTopicIndex));
+        // console.log('topic changed', accessToken, currentCourseIndex, currentChapterIndex, currentTopicIndex)
+        // dispatch(addLastOpenedTopic(currentCourseIndex, currentChapterIndex, currentTopicIndex));
+        dispatch(addToLastOpenedTopic({accessToken, currentCourseIndex, currentChapterIndex, currentTopicIndex }));
+
     }, [currentTopicIndex])
     // _________________________________________________________________________________________________________________________________________
 

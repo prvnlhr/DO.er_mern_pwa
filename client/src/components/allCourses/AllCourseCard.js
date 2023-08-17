@@ -5,7 +5,7 @@ import JavaScriptLogo from "../icons/JavaScriptLogo"
 import TiltedArrowIcon from "../icons/TiltedArrowIcon"
 import CourseChapterIcon from "../icons/CourseChapterIcon"
 import { useCourseContext } from "../../appState/appContext"
-
+import { coursesList } from "../../courseData/courseData"
 import { updateCourseState } from "../../redux/features/course/courseSlice"
 import { updateReduxState } from "../helperFunctions/reduxDispatchHelper"
 
@@ -35,7 +35,7 @@ const AllCourseCard = ({ courseData, courseIndx }) => {
 
             <div className={styles.cardWrapper} >
                 <div className={styles.courseLogoWrapper} >
-                    <JavaScriptLogo />
+                    {courseData.courseLogo.logo}
                 </div>
                 <div className={styles.courseClickArrowWrapper} >
 
@@ -58,7 +58,7 @@ const AllCourseCard = ({ courseData, courseIndx }) => {
                         </div>
                     </div>
                     <div className={styles.numModuleTextContainer}  >
-                        <p>12  <span className={styles.moduleSpanText}>chapters</span> </p>
+                        <p>{coursesList[courseIndx].chaptersList.length} <span className={styles.moduleSpanText}>CHAPTERS</span> </p>
                     </div>
                 </div>
             </div>

@@ -12,34 +12,36 @@ export const injectStore = _store => {
 }
 
 //--------------------------------------------------------------------------------------------------
-
 API.interceptors.response.use(
     async (response) => response, // Just pass through successful responses
     async (error) => {
         const originalRequest = error.config;
 
         // Check if the error response is due to an expired access token
-        if (error?.response?.status === 401 && originalRequest.url !== '/api/auth/checkUserAuth') {
-            // Attempt to refresh the access token using the refresh token
-            try {
-                const refreshTokenResponse = await API.post(`${url}/api/auth/checkUserAuth`, null, {
-                    withCredentials: true
-                });
-                console.log('refreshTokenResponse', refreshTokenResponse)
-                // If refresh token is successful, update the access token and retry the original request
-                if (refreshTokenResponse.status === 200) {
-                    const newAccessToken = refreshTokenResponse.data.accessToken;
-                    console.log('new token', newAccessToken);
-                    store.dispatch(updateAccessToken(newAccessToken));
-                    // originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-                    originalRequest.headers['Authorization'] = "Bearer " + newAccessToken;
-                    return API(originalRequest);
-                }
-            } catch (refreshError) {
-                // If refresh token is expired, log a message and handle accordingly
-                console.log('refreshError', refreshError);
-                if (refreshError.response.status === 401) {
-                    console.log('Refresh token expired. Please log in again.');
+        if (error?.response?.status === 401) {
+            const isCourseControllerRequest =
+                originalRequest.url.includes('/api/course/markProgress') ||
+                originalRequest.url.includes('/api/course/updateDailyTimeSpent') ||
+                originalRequest.url.includes('/api/course/addBookmark') ||
+                originalRequest.url.includes('/api/course/getCourseData');
+
+            if (isCourseControllerRequest) {
+                // Attempt to refresh the access token using the refresh token
+                try {
+                    const refreshTokenResponse = await API.post(`${url}/api/auth/checkUserAuth`, null, {
+                        withCredentials: true
+                    });
+
+                    // If refresh token is successful, update the access token and retry the original request
+                    if (refreshTokenResponse.status === 200) {
+                        const newAccessToken = refreshTokenResponse.data.accessToken;
+                        store.dispatch(updateAccessToken(newAccessToken));
+                        originalRequest.headers['Authorization'] = "Bearer " + newAccessToken;
+                        return API(originalRequest);
+                    }
+                } catch (refreshError) {
+                    // Handle refresh token error
+                    console.log('Error refreshing token:', refreshError);
                 }
             }
         }
@@ -80,6 +82,16 @@ export const bookmarkCourseRequest = (accessToken, data) =>
             "Authorization": `Bearer ${accessToken}`
         },
     });
+
+
+export const addToLastOpenTopicsRequest = (topicData, accessToken) =>
+    API.post("/api/course/addLastOpenedTopic", topicData, {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        },
+    });
+
+
 
 // ----------------------------------------------------------------------
 

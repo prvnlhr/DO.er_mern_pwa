@@ -8,17 +8,19 @@ import { getUserData } from "../redux/features/user/userSlice"
 import { updateDailyTimeSpent, getCourseDataAsync } from "../redux/features/course/courseSlice"
 import { checkAuthAsync } from "../redux/features/auth/authSlice"
 import AuthComponent from "./auth/AuthComponent";
-
-
 import { useLocalAuthContext } from "../appState/localAuthContext"
+import doerLottie from "./LogoLottie/doerLottie.json"
 
+import Lottie from 'react-lottie';
 
 const App = () => {
+
 
     const dispatch = useDispatch();
 
     const popUpMenuRef = useRef();
 
+    const [initialLoading, setInitialLoading] = useState(true);
 
     const authState = useSelector((state) => state.auth)
     const { userId, accessToken } = authState || {};
@@ -29,30 +31,23 @@ const App = () => {
 
 
     useEffect(() => {
-        dispatch(checkAuthAsync())
-    }, []);
-
-    useEffect(() => {
         if (accessToken) {
             dispatch(getCourseDataAsync(accessToken));
-
-            // get dailyTimeSpent Data from local storage and update in redux(not databse)            
-            // const storedData = JSON.parse(localStorage.getItem('dailyTimeSpent')) || {};
-            // dispatch(updateDailyTimeSpent(storedData));
         }
-
     }, [accessToken])
+
+
+    useEffect(() => {
+        dispatch(checkAuthAsync());
+    }, [])
 
 
     return (
         <div className={appStyles.app}>
             <div className={appStyles.appInnerwrapper} >
-                <div className={appStyles.overlay} ></div>
-
                 {localAuthData.showAuthForm &&
                     <AuthComponent />
                 }
-
                 <AppHeader
                     popUpMenuRef={popUpMenuRef}
                 />

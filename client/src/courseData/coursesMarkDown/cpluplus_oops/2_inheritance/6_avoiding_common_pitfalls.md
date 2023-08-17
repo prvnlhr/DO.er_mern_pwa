@@ -1,0 +1,4 @@
+- Object Slicing
+- Diamond Problem and Virtual Inheritance
+- Upcasting and Downcasting
+- Using Virtual Base Classes

@@ -70,7 +70,7 @@ export const logoutAsync = createAsyncThunk("auth/logout", async (_, { getState,
 
 export const checkAuthAsync = createAsyncThunk("auth/checkUserAuth", async (_, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        // console.log('at checkAuthAsync')
+        console.log('at checkAuthAsync')
         const res = await api.checkUserAuthRequest();
         // console.log(res.data);
         return fulfillWithValue(res.data);
@@ -131,6 +131,7 @@ export const resendOtpAsync = createAsyncThunk("auth/resendOtp", async (emailAdd
 export const userSignUpAsync = createAsyncThunk("auth/userSignUp", async (formData, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
         const { fullName, emailAddress, country } = formData;
+
         const res = await api.userSignUpRequest(formData);
         const { message } = res.data || 'No succes message'
         return fulfillWithValue(message);
@@ -147,10 +148,13 @@ export const userSignUpAsync = createAsyncThunk("auth/userSignUp", async (formDa
 export const userSignInAsync = createAsyncThunk("auth/userSignIn", async (formData, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
 
+        console.log(formData);
         const res = await api.userSignInRequest(formData);
+        // const res = {};
+
 
         console.log('authSlice backend res', res.data)
-        const { message } = res.data || 'No succes message'
+        const { message } = res?.data || 'No succes message'
         return fulfillWithValue(message);
 
     } catch (error) {
@@ -257,7 +261,6 @@ const authSlice = createSlice({
                     isLoading: true,
                     message: '',
                     authType: 'SIGNIN'
-
                 };
             })
             .addCase(userSignInAsync.fulfilled, (state, action) => {
@@ -269,7 +272,6 @@ const authSlice = createSlice({
                     emailSent: OTP_EMAIL_SENT_STATE.SENT,
                     authType: 'SIGNIN',
                     isError: false
-
                 };
             })
             .addCase(userSignInAsync.rejected, (state, action) => {

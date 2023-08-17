@@ -81,12 +81,16 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
 }
 
 .courseNameText {
     font-size: 1rem;
     color: black;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .courseDescriptionWrapper {

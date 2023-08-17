@@ -16,7 +16,8 @@ const initialState = {
         completedTopics: {},
         bookmarkedChapters: {},
         dailyTimeSpent: [0, 0, 0, 0, 0, 0, 0],
-        lastOpenedTopics: JSON.parse(localStorage.getItem('lastOpenedTopics')) || [],
+        totalTimeSpentInDays: 0,
+        lastOpenedTopics: [],
     }
 }
 
@@ -37,6 +38,30 @@ export const updateDailyTimeSpentAsync = createAsyncThunk('course/updateDailyTim
         });
     }
 });
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+export const addToLastOpenedTopic = createAsyncThunk('course/createLastOpenedTopic', async ({ accessToken, currentCourseIndex, currentChapterIndex, currentTopicIndex }, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
+    try {
+
+        const topicData = {
+            currentCourseIndex,
+            currentChapterIndex,
+            currentTopicIndex,
+        }
+        // console.log('at add last open topics', currentCourseIndex,
+        //     currentChapterIndex,
+        //     currentTopicIndex,)
+        const res = await api.addToLastOpenTopicsRequest(topicData, accessToken);
+        return fulfillWithValue(res.data);
+
+    } catch (error) {
+        const errorMessage = error?.response.data.msg
+        const { errorMsg, actualError } = error?.response?.data;
+        return rejectWithValue({
+            errorMsg: errorMsg || 'unknown msg'
+        });
+    }
+}
+);
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 export const markTopicCompletionAsync = createAsyncThunk('course/progress', async ({ user_id, courseIndx, chapterIndx, topicIndx }, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
@@ -116,6 +141,7 @@ const courseSlice = createSlice({
     name: 'course',
     initialState: initialState,
     reducers: {
+
         addLastOpenedTopic: (state, action) => {
             const { courseIndex, chapterIndex, topicIndex } = action.payload;
             const { currentCourseIndex, currentChapterIndex, currentTopicIndex } = state.currentCourseState;
@@ -130,6 +156,7 @@ const courseSlice = createSlice({
                 { courseIndex: currentCourseIndex, chapterIndex: currentChapterIndex, topicIndex: currentTopicIndex },
                 ...filteredLastOpenedTopics
             ].slice(0, 10); // Keep only the latest 10 items
+
             localStorage.setItem('lastOpenedTopics', JSON.stringify(newLastOpenedTopics));
             return {
                 ...state,
@@ -225,6 +252,29 @@ const courseSlice = createSlice({
                         ...action.payload,
                         isLoading: false,
                     },
+                }
+
+            })
+            .addCase(addToLastOpenedTopic.fulfilled, (state, action) => {
+                return {
+                    ...state,
+                    currentCourseState: {
+                        ...state.currentCourseState,
+                        lastOpenedTopics: action.payload,
+                        isLoading: false
+                    },
+
+                }
+
+            })
+            .addCase(addToLastOpenedTopic.rejected, (state, action) => {
+                return {
+                    ...state,
+                    currentCourseState: {
+                        ...state.currentCourseState,
+                        isLoading: false
+                    },
+
                 }
 
             })
