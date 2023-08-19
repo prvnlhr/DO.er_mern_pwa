@@ -113,20 +113,20 @@ const PopUpMenu = ({ popUpMenuRef, setPopUpOpen }) => {
                     </div>
 
                     :
-
-
-                    <div className={styles.authBtnWrapper} >
-                        <button className={styles.authButton} onClick={handleSigInBtnClicked}>
-                            <div className={styles.btnIconContainer} >
-                                <div className={styles.btnIconDiv} >
-                                    <SignInIcon />
+                    <>
+                        <div className={styles.authBtnWrapper} >
+                            <button className={styles.authButton} onClick={handleSigInBtnClicked}>
+                                <div className={styles.btnIconContainer} >
+                                    <div className={styles.btnIconDiv} >
+                                        <SignInIcon />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={styles.btnTextContainer} >
-                                <p>SignIn</p>
-                            </div>
-                        </button>
-                    </div>
+                                <div className={styles.btnTextContainer} >
+                                    <p>SignIn</p>
+                                </div>
+                            </button>
+                        </div>
+                    </>
                 }
 
 

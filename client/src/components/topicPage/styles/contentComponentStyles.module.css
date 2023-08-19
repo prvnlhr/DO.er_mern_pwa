@@ -156,6 +156,7 @@
     align-items: flex-start;
     flex-direction: column;
     overflow-y: scroll;
+    padding-top: 25px;
 }
 
 .markDownWrapper::-webkit-scrollbar {

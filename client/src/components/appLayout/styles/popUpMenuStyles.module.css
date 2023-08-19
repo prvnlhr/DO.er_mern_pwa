@@ -1,8 +1,10 @@
+@import "../../variable.module.css";
+
 .popUpMenuWrapper {
     position: absolute;
     right: 30%;
-    top: 100% !important;
-    width: 11rem;
+    top: 120% !important;
+    width: 10rem;
     height: auto;
     background-color: white;
     display: flex;
@@ -11,6 +13,9 @@
     z-index: 999;
     /* padding: 0.9rem; */
     border-radius: 0.9rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+    padding: 0.9rem;
 }
 
 .popUpMenuInnerWrapper {
@@ -53,7 +58,8 @@
 
 .breadCrumTextContainer p {
     font-size: 0.7rem;
-    color: black;
+    color: #6167A0;
+    font-weight: 500;
 }
 
 .breadCrumIconContainer {
@@ -102,16 +108,15 @@
 }
 
 .authButton {
-    width: 85%;
+    width: 90%;
     /* height: 60%; */
     aspect-ratio: 2/0.6;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #6167A0;
-    border-radius: 0.7rem;
-    padding: 0;
-    /* display: none; */
+    border-radius: 0.5rem;
+    padding: 0.3rem;
 }
 
 .btnIconContainer {
@@ -125,11 +130,10 @@
 
 .btnIconDiv {
     aspect-ratio: 1/1;
-    height: 70%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid orange; */
 }
 
 .btnTextContainer {
@@ -139,10 +143,11 @@
     justify-content: flex-start;
     align-items: center;
     padding-left: 5%;
+    /* border: 1px solid orange; */
 }
 
 .btnTextContainer p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: white;
     font-family: 'Poppins', sans-serif;
 }
@@ -176,9 +181,19 @@
     .authButton {
         border-radius: 0.7rem;
         border-radius: clamp(0.4rem, -0.19999999999999984rem + 2.999999999999999vw, 0.7rem) !important;
+        padding: 0rem;
+    }
+
+    .btnIconDiv {
+        aspect-ratio: 1/1;
+        height: 65%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .btnTextContainer p {
+        padding-left: 0%;
         font-size: 0.8rem;
         font-size: 1.1rem;
         font-size: clamp(0.8rem, 0.19999999999999996rem + 3.0000000000000004vw, 1.1rem) !important;
