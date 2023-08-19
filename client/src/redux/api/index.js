@@ -72,8 +72,12 @@ export const markTopicCompletionRequest = (data) =>
     API.post("/api/course/markProgress", data);
 
 
-export const updateDailyTimeSpentRequest = (data) =>
-    API.post("/api/course/updateDailyTimeSpent", data);
+export const updateDailyTimeSpentRequest = (accessToken, data) =>
+    API.post("/api/course/updateDailyTimeSpent", data, {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        },
+    });
 
 
 export const bookmarkCourseRequest = (accessToken, data) =>

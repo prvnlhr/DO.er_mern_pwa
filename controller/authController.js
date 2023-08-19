@@ -14,7 +14,7 @@ const {
 const authController = {
 
     verifyAuth: async (req, res) => {
-        console.log('auth controller');
+        // console.log('auth controller');
         try {
             const user_id = '64cc3f9805be4f275c695cc7';
             const isTokenPresent = true;
@@ -37,7 +37,7 @@ const authController = {
     signInUser: async (req, res) => {
         try {
             const { emailAddress } = req.body;
-            console.log(emailAddress);
+            // console.log(emailAddress);
 
             if (!emailAddress) {
                 return res.status(400).json({ errorMsg: 'Please provide an emailAddress.' });
@@ -86,7 +86,7 @@ const authController = {
     signUpUser: async (req, res) => {
         try {
             const { fullName, emailAddress, country } = req.body;
-            console.log(fullName, emailAddress, country);
+            // console.log(fullName, emailAddress, country);
 
             if (!fullName || !emailAddress || !country) {
                 return res.status(400).json({ errorMsg: 'Please provide fullName, emailAddress, and country.' });
@@ -138,7 +138,7 @@ const authController = {
             if (!otp) {
                 return res.status(400).json({ errorMsg: "OTP is required." });
             }
-            console.log('otp verfiy', emailAddress);
+            // console.log('otp verfiy', emailAddress);
 
             if (!emailAddress) {
                 return res.status(400).json({ errorMsg: "User email not found." });
@@ -186,7 +186,7 @@ const authController = {
                 maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
             });
 
-            console.log('OTP VERIFIED');
+            // console.log('OTP VERIFIED');
             return res.status(200).json({ message: "OTP verified successfully.", accessToken, userId: user._id, username: user.fullName, country: user.country });
         } catch (error) {
             console.error("Error in verifyOtpController:", error);
@@ -200,7 +200,7 @@ const authController = {
 
             const rf_token = req.cookies.refreshtoken;
 
-            console.log('checkAuth :', rf_token)
+            // console.log('checkAuth :', rf_token)
 
             if (!rf_token) {
                 return res.status(401).json({ errorMsg: "Refresh token not found." });
@@ -252,7 +252,7 @@ const authController = {
 
             const { emailAddress } = req.body;
 
-            console.log('resend Otp controlller', req.body, emailAddress)
+            // console.log('resend Otp controlller', req.body, emailAddress)
 
             if (!emailAddress) {
                 return res.status(400).json({ errorMsg: "Please Login Again" });

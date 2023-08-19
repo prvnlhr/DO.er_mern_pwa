@@ -1,11 +1,50 @@
 import React from 'react';
 import styles from './styles/inProgressCourseCardStyles.module.css';
 import { coursesList } from '../../courseData/courseData.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateReduxState } from "../helperFunctions/reduxDispatchHelper"
+import { Navigate, useNavigate } from 'react-router-dom';
+import { setMarkDownFile } from "../helperFunctions/setMarkDownHelperFunction"
 
 const InProgressCard = ({ courseIndex, numCompletedChapters, totalChapters }) => {
-    const percentage = (numCompletedChapters / totalChapters) * 100;
-    const beforePoint = Math.floor(percentage);
-    const afterPoint = ((percentage - beforePoint) * 100).toFixed(0).padStart(2, '0');
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const courseData = useSelector((state) => state.course.currentCourseState);
+    const { completedCourses, completedChapters, completedTopics } = courseData;
+
+
+    // Get the total number of topics in the course
+    const totalTopicsInCourse = coursesList[courseIndex].chaptersList.reduce(
+        (total, chapter) => total + chapter.topicsList.length, 0);
+
+
+    // Count the number of completed topics
+    const numCompletedTopics = Object.values(completedTopics).reduce((total, chapter) =>
+        total + Object.values(chapter).filter((completed) => completed).length, 0
+    );
+
+    // Calculate the percentage completion
+    const completionPercentage = (numCompletedTopics / totalTopicsInCourse) * 100;
+    // console.log(completionPercentage);
+    const beforePoint = Math.floor(completionPercentage);
+    const afterPoint = ((completionPercentage - beforePoint) * 100).toFixed(0).padStart(2, '0');
+
+
+    const handleArrowLinkClicked = () => {
+
+        updateReduxState(dispatch, {
+            data:
+            {
+                'currentCourseIndex': courseIndex || 0,
+                'currentChapterIndex': 0,
+                'currentTopicIndex': 0,
+            }
+        });
+        setMarkDownFile(dispatch, courseIndex, 0, 0);
+        navigate("/user/topic")
+    }
 
     const InProgressPercentElement = () => (
         <div className={styles.inProgressElementWrapper}>
@@ -60,7 +99,7 @@ const InProgressCard = ({ courseIndex, numCompletedChapters, totalChapters }) =>
                 </div>
                 <div className={styles.progressBarCell}>
                     <div className={styles.progressBarContainer}>
-                        <div className={styles.progressBarDiv}></div>
+                        <div style={{ width: `${completionPercentage}%` }} className={styles.progressBarDiv}></div>
                     </div>
                 </div>
                 <div className={styles.progressPercCell}>
@@ -70,7 +109,7 @@ const InProgressCard = ({ courseIndex, numCompletedChapters, totalChapters }) =>
                     <CompletedChaptersElement />
                 </div>
                 <div className={styles.arrowLinkBtnCell}>
-                    <div className={styles.linkBtnDiv}>
+                    <div className={styles.linkBtnDiv} onClick={handleArrowLinkClicked} >
                         <LinkArrowIcon />
                     </div>
                 </div>

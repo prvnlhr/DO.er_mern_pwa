@@ -7,12 +7,12 @@ const userController = {
     addUser: async (req, res) => {
         try {
             const { name, phoneNumber } = req.body;
-            console.log('addUser Controller', name, phoneNumber);
+            // console.log('addUser Controller', name, phoneNumber);
             const newUser = await User.create({
                 name: name,
                 phoneNumber: phoneNumber
             })
-            console.log(newUser)
+            // console.log(newUser)
             res.status(201).json(newUser);
         } catch (error) {
             console.error("Error while adding a new user:", error);

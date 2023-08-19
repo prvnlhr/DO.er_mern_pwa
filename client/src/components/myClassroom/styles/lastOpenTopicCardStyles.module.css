@@ -27,7 +27,7 @@
     grid-template-areas:
         "continueTextCell continueTextCell continueTextCell continueTextCell"
         "breadCrumCell breadCrumCell breadCrumCell breadCrumCell"
-        "topicNameCell topicNameCell topicNameCell linkButtonCell"
+        "topicNameCell topicNameCell topicNameCell linkButtonCell";
 }
 
 /* ------------------------------------------------------------ */
@@ -139,7 +139,7 @@
     justify-content: flex-start;
     align-items: center;
     /* border: 1px solid red; */
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .breadCrumTextContainer {

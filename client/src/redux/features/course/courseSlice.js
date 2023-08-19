@@ -16,23 +16,24 @@ const initialState = {
         completedTopics: {},
         bookmarkedChapters: {},
         dailyTimeSpent: [0, 0, 0, 0, 0, 0, 0],
-        totalTimeSpentInDays: 0,
+        totalTimeSpent: 0,
         lastOpenedTopics: [],
+        maxStreak: 0
     }
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-export const updateDailyTimeSpentAsync = createAsyncThunk('course/updateDailyTimeSpentInDB', async ({ userId, dayOfWeek, timeSpent }, { getState, fulfillWithValue, rejectWithValue }) => {
+export const updateDailyTimeSpentAsync = createAsyncThunk('course/updateDailyTimeSpentInDB', async ({ accessToken, dayOfWeek, timeSpent }, { getState, fulfillWithValue, rejectWithValue }) => {
     try {
-        const res = await api.updateDailyTimeSpentRequest({ userId, dayOfWeek, timeSpent });
-        console.log(res.data);
+        const res = await api.updateDailyTimeSpentRequest(accessToken, { dayOfWeek, timeSpent });
+        // console.log(res.data);
         return fulfillWithValue(res.data);
 
     } catch (error) {
         const errorMessage = error?.response.data.msg
         const { errorMsg, actualError } = error?.response?.data;
-        console.log(error)
+        // console.log(error)
         return rejectWithValue({
             errorMsg: errorMsg || 'unknown msg'
         });
@@ -47,9 +48,7 @@ export const addToLastOpenedTopic = createAsyncThunk('course/createLastOpenedTop
             currentChapterIndex,
             currentTopicIndex,
         }
-        // console.log('at add last open topics', currentCourseIndex,
-        //     currentChapterIndex,
-        //     currentTopicIndex,)
+
         const res = await api.addToLastOpenTopicsRequest(topicData, accessToken);
         return fulfillWithValue(res.data);
 
@@ -109,7 +108,7 @@ export const bookmarkCourseAsync = createAsyncThunk('course/bookmarChapter', asy
     } catch (error) {
         const errorMessage = error?.response.data.msg
         const { errorMsg, actualError } = error?.response?.data;
-        console.log(errorMessage, actualError);
+        // console.log(errorMessage, actualError);
         return rejectWithValue({
             errorMsg: errorMsg || 'unknown msg'
         });
@@ -124,7 +123,7 @@ export const getCourseDataAsync = createAsyncThunk('course/getCourseData', async
         const res = await api.getUserDataRequest(token);
         // console.log(res.data.courseData.currentCourseState);
         const { currentCourseState } = res?.data.courseData;
-        console.log(currentCourseState);
+        // console.log(currentCourseState);
         return fulfillWithValue(currentCourseState);
     } catch (error) {
         const errorMessage = error?.response.data.msg
@@ -323,7 +322,7 @@ const courseSlice = createSlice({
                 }
             })
             .addCase(updateDailyTimeSpentAsync.rejected, (state, action) => {
-                console.log('Error updating time spent in database:', action.error.message);
+                // console.log('Error updating time spent in database:', action.error.message);
                 return {
                     ...state,
                 }

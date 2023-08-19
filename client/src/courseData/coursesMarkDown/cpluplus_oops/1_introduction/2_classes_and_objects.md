@@ -5,7 +5,7 @@ In the realm of object-oriented programming (OOP), classes and objects form the 
 
 
 
-# Defining Classes and Objects in C++**
+# Defining Classes and Objects in C++
 
 In object-oriented programming, classes and objects are used to model and structure code based on real-world entities. Let's break down the key concepts:
 

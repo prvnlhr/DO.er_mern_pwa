@@ -61,7 +61,7 @@ const ContentComponent = ({ toggleSidebar }) => {
 
             storedData[dayOfWeek] = (storedData[dayOfWeek] || 0) + timeSpentMinutes;
             localStorage.setItem('dailyTimeSpent', JSON.stringify(storedData));
-            dispatch(updateDailyTimeSpentAsync({ userId, dayOfWeek, timeSpent: timeSpentMinutes }));
+            dispatch(updateDailyTimeSpentAsync({ accessToken, dayOfWeek, timeSpent: timeSpentMinutes }));
             // dispatch(updateDailyTimeSpent(storedData));
         };
     }, []);
@@ -83,7 +83,7 @@ const ContentComponent = ({ toggleSidebar }) => {
             storedData[dayOfWeek] = (storedData[dayOfWeek] || 0) + timeSpentMinutes;
             localStorage.setItem('dailyTimeSpent', JSON.stringify(storedData));
 
-            dispatch(updateDailyTimeSpentAsync({ userId, dayOfWeek, timeSpent: timeSpentMinutes }));
+            dispatch(updateDailyTimeSpentAsync({ accessToken, dayOfWeek, timeSpent: timeSpentMinutes }));
             // Dispatch the updateDailyTimeSpent action to update the Redux state
             // dispatch(updateDailyTimeSpent(storedData));
         };
@@ -114,40 +114,73 @@ const ContentComponent = ({ toggleSidebar }) => {
     useEffect(() => {
         // console.log('topic changed', accessToken, currentCourseIndex, currentChapterIndex, currentTopicIndex)
         // dispatch(addLastOpenedTopic(currentCourseIndex, currentChapterIndex, currentTopicIndex));
-        dispatch(addToLastOpenedTopic({accessToken, currentCourseIndex, currentChapterIndex, currentTopicIndex }));
+        dispatch(addToLastOpenedTopic({ accessToken, currentCourseIndex, currentChapterIndex, currentTopicIndex }));
 
     }, [currentTopicIndex])
     // _________________________________________________________________________________________________________________________________________
 
+    let scrollTimeout;
 
-    // <-- handleScroll reached -> mark topic as completed -->
     const handleScroll = () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const contentElement = contentRef.current;
+            if (!contentElement) return;
 
-        const contentElement = contentRef.current;
-        if (contentElement) {
             const { scrollTop, scrollHeight, clientHeight } = contentElement;
-            const id = currentCourseIndex + '-' + currentChapterIndex + '-' + currentTopicIndex;
-            const prevScroll = prevScrollTop[id] ?? 0;
+            console.log(scrollTop);
+            const id = `${currentCourseIndex}-${currentChapterIndex}-${currentTopicIndex}`;
+            const prevScroll = prevScrollTop[id] || 0;
             if (scrollTop > prevScroll) {
                 setPrevScrollTop((prevState) => ({ ...prevState, [id]: scrollTop }));
 
                 const scrolledToBottom = scrollTop + clientHeight >= scrollHeight - 10;
-                if (scrolledToBottom) {
-                    if (accessToken && userId) {
-                        if (!completedTopics[currentCourseIndex]?.[currentChapterIndex]?.[currentTopicIndex]) {
-                            console.log('Reached at end', currentCourseIndex, currentChapterIndex, currentTopicIndex);
-                            dispatch(markTopicCompletionAsync({
-                                user_id: userId,
-                                courseIndx: currentCourseIndex,
-                                chapterIndx: currentChapterIndex,
-                                topicIndx: currentTopicIndex
-                            }))
-                        }
+                if (scrolledToBottom && accessToken && userId) {
+                    console.log('Reached End')
+                    const topicCompletion = completedTopics[currentCourseIndex]?.[currentChapterIndex]?.[currentTopicIndex];
+                    if (!topicCompletion) {
+                        console.log('Reached End')
+                        dispatch(markTopicCompletionAsync({
+                            user_id: userId,
+                            courseIndx: currentCourseIndex,
+                            chapterIndx: currentChapterIndex,
+                            topicIndx: currentTopicIndex,
+                        }));
                     }
                 }
             }
-        }
+        }, 200);
     };
+
+
+    // <-- handleScroll reached -> mark topic as completed -->
+    // const handleScroll = () => {
+
+    //     const contentElement = contentRef.current;
+    //     if (contentElement) {
+    //         const { scrollTop, scrollHeight, clientHeight } = contentElement;
+    //         const id = currentCourseIndex + '-' + currentChapterIndex + '-' + currentTopicIndex;
+    //         const prevScroll = prevScrollTop[id] ?? 0;
+    //         if (scrollTop > prevScroll) {
+    //             setPrevScrollTop((prevState) => ({ ...prevState, [id]: scrollTop }));
+
+    //             const scrolledToBottom = scrollTop + clientHeight >= scrollHeight - 10;
+    //             if (scrolledToBottom) {
+    //                 console.log('Reached End')
+    //                 if (accessToken && userId) {
+    //                     if (!completedTopics[currentCourseIndex]?.[currentChapterIndex]?.[currentTopicIndex]) {
+    //                         dispatch(markTopicCompletionAsync({
+    //                             user_id: userId,
+    //                             courseIndx: currentCourseIndex,
+    //                             chapterIndx: currentChapterIndex,
+    //                             topicIndx: currentTopicIndex
+    //                         }))
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // };
 
     useEffect(() => {
         const contentElement = contentRef.current;

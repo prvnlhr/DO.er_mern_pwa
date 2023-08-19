@@ -53,7 +53,7 @@ const sendMail = async (to, otpDigits) => {
     };
 
     await sgMail.send(emailData);
-    console.log('OTP email sent successfully.');
+    // console.log('OTP email sent successfully.');
   } catch (error) {
     console.error('Error sending OTP email:', error);
     throw new Error('Error sending OTP email.', error);

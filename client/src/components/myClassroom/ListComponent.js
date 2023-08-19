@@ -22,7 +22,6 @@ const ListComponent = () => {
             const numFalseChapters = Object.values(chapters).filter(value => value === true).length;
             info[courseIndex] = numFalseChapters;
         });
-        console.log(info);
         setCourseInfoArray(info);
     }, [completedChapters]);
 
@@ -35,7 +34,7 @@ const ListComponent = () => {
                         <div className={styles.indicatorDiv} ></div>
                     </div>
                     <div className={`${styles.headingTextContainer} `} onClick={() => setCurrListShow('INPROGRESS')} >
-                        <p>{headingText}</p>
+                        <p className={currListShow === 'INPROGRESS' && headingText !== 'Bookmarks' && styles.activeHeadingText} >{headingText}</p>
                     </div>
                 </div>
             </div>
@@ -49,8 +48,8 @@ const ListComponent = () => {
                     <div className={styles.lastOpenListHeadingCell}>
                         <HeadingComponent headingText={'In Progress'} />
                         <div className={styles.headingSeperatorDiv} ></div>
-                        <div className={`${styles.headingTextContainer} ${styles.allCourseHeadingTextContainer}`} onClick={() => setCurrListShow('LASTOPENED')} >
-                            <p>Last Opened</p>
+                        <div className={`${styles.headingTextContainer} ${styles.lastOpenHeadingTextContainer}`} onClick={() => setCurrListShow('LASTOPENED')} >
+                            <p className={currListShow === 'LASTOPENED' && styles.activeHeadingText} >Last Opened</p>
                         </div>
                     </div>
 

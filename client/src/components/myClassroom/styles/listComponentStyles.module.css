@@ -171,7 +171,7 @@
     cursor: pointer;
 }
 
-.allCourseHeadingTextContainer {
+.lastOpenHeadingTextContainer {
     position: relative;
     width: auto;
     height: 100%;
@@ -214,6 +214,23 @@
 
 .inActiveHeadingText {
     color: #7E8DA4;
+}
+
+.activeHeadingText {
+    position: relative;
+    color: #6167A0 !important;
+    font-weight: 600;
+}
+
+.activeHeadingText::after {
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 0.15rem;
+    border-radius: 10px;
+    bottom: -30%;
+    background-color: #6167A0;
+    left: 0;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {

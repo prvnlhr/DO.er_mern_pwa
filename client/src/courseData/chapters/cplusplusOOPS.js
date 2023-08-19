@@ -7,7 +7,7 @@ const cplusplusOppsChapterList = [
         topicsList: [
             {
                 topicName: 'Understanding OOPS in C++',
-                topicFileName: '1_introduction_to_inheritance',
+                topicFileName: '1_understanding_oops',
             },
             {
                 topicName: 'Classes and Objects',
@@ -29,11 +29,11 @@ const cplusplusOppsChapterList = [
             },
             {
                 topicName: 'Access Control',
-                topicFileName: '2_access_control_and_inheritance'
+                topicFileName: '2_access_control'
             },
             {
                 topicName: 'Contructors and Destructors',
-                topicFileName: '3_constructors_and_destructors_in_inheritance'
+                topicFileName: '3_constructors_and_destructors'
             },
             {
                 topicName: 'Types of Inheritance',

@@ -71,7 +71,7 @@ const OtpComponent = () => {
 
 
     const handleOtpInputChange = (index, value) => {
-        console.log(index, value)
+        // console.log(index, value)
         if (value.length === 1) {
             const newOtpValues = [...otpValues];
             newOtpValues[index] = value;
@@ -80,7 +80,7 @@ const OtpComponent = () => {
             if (index < 3) {
                 inputRefs[index + 1].current.focus();
             } else {
-                console.log(otpValues);
+                // console.log(otpValues);
             }
         }
     };
@@ -124,14 +124,14 @@ const OtpComponent = () => {
     // -----------------------------------------------------------------
     const handleOtpSubmit = async () => {
         const otp = otpValues.join('');
-        console.log(otp);
+        // console.log(otp);
         try {
             const res = await dispatch(verifyOtpAsync({ otp, emailAddress }));
             if (res.type === 'auth/verifyOtp/fulfilled' && res.payload.message === 'OTP verified successfully.' && res.payload.accessToken) {
-                console.log('OTP VERIFIED, CLOSING FORM...');
+                // console.log('OTP VERIFIED, CLOSING FORM...');
                 resetLocalAuthState();
             } else if (res.type === 'auth/verifyOtp/rejected') {
-                console.log(res);
+                // console.log(res);
             }
         } catch (error) {
             console.error(error);
@@ -145,16 +145,16 @@ const OtpComponent = () => {
         try {
             const emaill = 'prvnlhr522@gmail.com';
             const res = await dispatch(resendOtpAsync(emaill));
-            console.log(res);
+            // console.log(res);
             if (res.type === 'auth/resendOtp/fulfilled'
                 && res.payload.message === 'OTP Resent sent to your email.'
             ) {
 
-                console.log('Resent Opt Success, showing otp input...')
+                // console.log('Resent Opt Success, showing otp input...')
                 updateLocalAuthState('showResendOtpBtn', false);
 
             } else if (res.type === 'auth/verifyOtp/rejected') {
-                console.log('error a t disptach Otp component');
+                // console.log('error a t disptach Otp component');
             }
 
         } catch (error) {

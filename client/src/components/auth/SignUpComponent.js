@@ -41,7 +41,7 @@ const SignUpComponent = () => {
 
     const handleSubmitBtnClicked = async () => {
         const res = await dispatch(userSignUpAsync(signUpFormData));
-        console.log('dispatch res', res);
+        // console.log('dispatch res', res);
         if (res.type === 'auth/userSignUp/fulfilled' && res.payload === 'OTP sent to your email.') {
             updateLocalAuthState('showOtpComponent', true);
         }

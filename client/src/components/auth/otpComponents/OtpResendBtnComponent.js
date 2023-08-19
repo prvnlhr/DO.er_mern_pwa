@@ -17,16 +17,16 @@ const OtpResendBtnComponent = () => {
         try {
             const emaill = 'prvnlhr522@gmail.com';
             const res = await dispatch(resendOtpAsync(emaill));
-            console.log(res);
+            // console.log(res);
             if (res.type === 'auth/resendOtp/fulfilled'
                 && res.payload.message === 'OTP Resent sent to your email.'
             ) {
 
-                console.log('Resent Opt Success, showing otp input...')
+                // console.log('Resent Opt Success, showing otp input...')
                 updateLocalAuthState('showResendOtpBtn', false);
 
             } else if (res.type === 'auth/verifyOtp/rejected') {
-                console.log('error a t disptach Otp component');
+                // console.log('error a t disptach Otp component');
             }
 
         } catch (error) {

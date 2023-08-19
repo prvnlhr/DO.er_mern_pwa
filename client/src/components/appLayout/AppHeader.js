@@ -99,9 +99,11 @@ const AppHeader = ({ showAuthForm, setShowAuthForm, popUpMenuRef }) => {
 
                     <div className={`${styles.popUpBtnWrapper} ${inSearchMode ? styles.popUpBtnWrapperShrink : styles.popUpBtnWrapperExpand}`} ref={popUpMenuRef}>
                         <div className={styles.popUpBtnIconDiv}>
-                            <PopUpBtnIcon togglePopUpOpen={togglePopUpOpen} />
+                            {!inSearchMode &&
+                                <PopUpBtnIcon togglePopUpOpen={togglePopUpOpen} />
+                            }
                             {popUpOpen &&
-                                <PopUpMenu popUpMenuRef={popUpMenuRef} setPopUpOpen={setPopUpOpen} />
+                                < PopUpMenu popUpMenuRef={popUpMenuRef} setPopUpOpen={setPopUpOpen} />
                             }
                         </div>
                     </div>

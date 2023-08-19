@@ -279,8 +279,8 @@
         /* height: 150px; */
         width: 90%;
         height: clamp(9.0rem, 3.0rem + 30.0vw, 12.0rem) !important;
+        min-height: clamp(9.0rem, 3.0rem + 30.0vw, 12.0rem) !important;
         border-radius: clamp(1.5rem, 0.09999999999999964rem + 7.000000000000002vw, 2.2rem) !important;
-
     }
 
     .breadCrumText {

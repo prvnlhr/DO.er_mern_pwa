@@ -1,5 +1,5 @@
 import { updatedListWithID as jsChapterList } from "./chapters/javascript"
-import { cplusplusOppsChapterList } from "./chapters/cplusplus"
+import { cplusplusOppsChapterList } from "./chapters/cplusplusOOPS"
 import { addUUIDToCourses } from "./helperFunction/createUniqueObjectId"
 import { logosArray } from "../components/courseLogo/logoList"
 
@@ -18,7 +18,7 @@ const courses = [
         courseDescription: 'Uncover the principles of Object-Oriented Programming in C++ and learn to create efficient, modular applications with classes, inheritance, and encapsulation. Elevate your coding skills and architect robust programs with our C++ OOPS course.',
         time_required: '4h 20m',
         chaptersList: cplusplusOppsChapterList,
-        courseFolderName: 'cplusplus'
+        courseFolderName: 'cpluplus_oops'
     },
 ];
 

@@ -1,10 +1,6 @@
 const { User } = require("../model/userData")
 
 
-function roundToNearestFraction(value, fraction) {
-    return Math.round(value / fraction) * fraction;
-}
-
 const courseController = {
 
     updateCourseProgress: async (req, res) => {
@@ -15,7 +11,7 @@ const courseController = {
 
             const user = await User.findById(userId);
 
-            // console.log(user);
+        
             // Initialize completedCourses, completedChapters, and completedTopics if they are undefined
             user.currentCourseState.completedCourses = user.currentCourseState.completedCourses || {};
             user.currentCourseState.completedChapters[courseIndex] = user.currentCourseState.completedChapters[courseIndex] || {};
@@ -58,7 +54,7 @@ const courseController = {
             const { currentCourseIndex, currentChapterIndex, currentTopicIndex } = req.body;
 
 
-            console.log('at addLastOpenedTopic', currentCourseIndex, currentChapterIndex, currentTopicIndex, req.user.userId)
+            // console.log('at addLastOpenedTopic', currentCourseIndex, currentChapterIndex, currentTopicIndex, req.user.userId)
 
             const user = await User.findById(req.user.userId);
 
@@ -101,15 +97,33 @@ const courseController = {
             res.status(500).json({ errorMsg: 'Error updating last opened topic', actualError: error.message });
         }
     },
+
     getCourseData: async (req, res) => {
         try {
-            console.log('getCourseData controller', req.user.userId);
             const user = await User.findById(req.user.userId);
+
             if (!user) {
                 return res.status(500).json({ errorMsg: 'Didnt find user' });
-            } else {
-                return res.status(201).json({ courseData: user });
             }
+
+            const currentDate = new Date();
+            const lastVisitedDate = user.currentCourseState.lastVisited;
+
+            if (
+                !lastVisitedDate || // User hasn't visited before
+                lastVisitedDate.getDate() !== currentDate.getDate() || // User visited on a different day
+                lastVisitedDate.getMonth() !== currentDate.getMonth() || // User visited in a different month
+                lastVisitedDate.getFullYear() !== currentDate.getFullYear() // User visited in a different year
+            ) {
+                // Update the streak since the user visited on a new day
+                user.currentCourseState.maxStreak++;
+            }
+
+            // Update the last visited date
+            user.currentCourseState.lastVisited = new Date();
+            await user.save();
+
+            return res.status(201).json({ courseData: user });
         } catch (error) {
             console.error("Error in getCourseData controller:", error);
             res.status(500).json({
@@ -119,12 +133,13 @@ const courseController = {
         }
     },
 
+
     updateDailyTimeSpent: async (req, res) => {
         try {
-            const { userId, dayOfWeek, timeSpent } = req.body;
-
+            const { dayOfWeek, timeSpent } = req.body;
+            // console.log(dayOfWeek, timeSpent);
             // Find the user by userId
-            const user = await User.findById(userId);
+            const user = await User.findById(req.user.userId);
 
             if (!user) {
                 return res.status(500).json("User not found");
@@ -137,17 +152,16 @@ const courseController = {
 
             // Reset time spent at the start of the week (Sunday)
             if (dayOfWeek === 0) {
+
                 // Calculate total time spent in days and store
                 const totalTimeSpentInMinutes = user.currentCourseState.dailyTimeSpent.reduce((total, time) => total + time, 0);
-                const totalTimeSpentInDays = totalTimeSpentInMinutes / 60 / 24; // Convert minutes to days
-                const roundedTotalTimeSpent = Math.round(totalTimeSpentInDays * 4) / 4; // Round to nearest 0.25
 
-                user.currentCourseState.totalTimeSpentInDays = roundedTotalTimeSpent;
+                user.currentCourseState.totalTimeSpent = totalTimeSpentInMinutes;
 
                 // Reset dailyTimeSpent array for the new week
                 user.currentCourseState.dailyTimeSpent = [0, 0, 0, 0, 0, 0, 0];
             }
-
+           
             // Update the time spent for the specified dayOfWeek
             user.currentCourseState.dailyTimeSpent[dayOfWeek] += timeSpent;
 
@@ -157,7 +171,7 @@ const courseController = {
             // Return the updated dailyTimeSpent array
             return res.status(201).json(user.currentCourseState.dailyTimeSpent);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             res.status(500).json({
                 errorMsg: "Error at updateDailyTimeSpent controller",
                 actualError: error.message,
@@ -169,7 +183,7 @@ const courseController = {
         try {
             const { courseIndx, chapterIndx } = req.body;
 
-            console.log(req.user.userId);
+            // console.log(req.user.userId);
 
             // Find the user by user_id
             const user = await User.findById(req.user.userId);
@@ -186,7 +200,7 @@ const courseController = {
             }
 
             // Check if the chapter is already bookmarked
-            console.log('before', bookmarkedChapters);
+            // console.log('before', bookmarkedChapters);
             if (bookmarkedChapters[courseIndx].includes(chapterIndx)) {
                 // Chapter is already bookmarked, unbookmark it and send success response
                 bookmarkedChapters[courseIndx] = bookmarkedChapters[courseIndx].filter(idx => idx !== chapterIndx);
@@ -200,7 +214,7 @@ const courseController = {
 
             // Save the updated user document
             await user.save();
-            console.log(user.currentCourseState.bookmarkedChapters);
+            // console.log(user.currentCourseState.bookmarkedChapters);
 
             return res.status(201).json(user.currentCourseState.bookmarkedChapters);
         } catch (error) {

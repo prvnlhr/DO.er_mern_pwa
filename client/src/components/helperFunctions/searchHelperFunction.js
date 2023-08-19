@@ -72,7 +72,7 @@ function searchKeyword(keyword) {
             });
         });
     });
-    console.log('og-searchItem', result)
+    // console.log('og-searchItem', result)
     return result;
 }
 

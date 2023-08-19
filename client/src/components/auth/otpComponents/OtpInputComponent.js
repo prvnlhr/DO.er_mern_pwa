@@ -37,14 +37,14 @@ const OtpInputComponent = () => {
     };
 
     const handleSubmit = async () => {
-        console.log('This is my OTP : ', otp);
+        // console.log('This is my OTP : ', otp);
         try {
             const res = await dispatch(verifyOtpAsync({ otp, emailAddress }));
             if (res.type === 'auth/verifyOtp/fulfilled' && res.payload.message === 'OTP verified successfully.' && res.payload.accessToken) {
                 console.log('OTP SENT TO EMAIL');
                 resetLocalAuthState();
             } else if (res.type === 'auth/verifyOtp/rejected') {
-                console.log(res);
+                // console.log(res);
             }
         } catch (error) {
             console.error(error);

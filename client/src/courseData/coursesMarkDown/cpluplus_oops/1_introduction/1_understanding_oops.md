@@ -1,5 +1,3 @@
-
-
 # Understanding Object-Oriented Programming (OOP)
 
 Object-Oriented Programming (OOP) is a fundamental programming paradigm that revolves around the concept of "objects" and their interactions. It provides a structured way of designing and organizing code by modeling real-world entities and their relationships. OOP is widely used in software development due to its ability to promote code reusability, modularity, and ease of maintenance.

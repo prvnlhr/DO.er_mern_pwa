@@ -1,3 +1,0 @@
-         -- What is Polymorphism?
-         -- Benefits of Polymorphism
-         -- Types of Polymorphism

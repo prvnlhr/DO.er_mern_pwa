@@ -22,9 +22,9 @@ const currentCourseProgressStateSchema = new mongoose.Schema(
             type: Object, // Object to store bookmarked chapters data
             default: {}, // Default value is an empty object
         },
-        totalTimeSpentInDays: {
-            type: Number, // Total time spent in days
-            default: 0, // Default value of 0 days
+        totalTimeSpent: {
+            type: Number, // Total time spent in minutes
+            default: 0, // Default value of 0 mins
         },
         lastOpenedTopics: {
             type: [
@@ -35,6 +35,13 @@ const currentCourseProgressStateSchema = new mongoose.Schema(
                 },
             ],
             default: [],
+        },
+        maxStreak: {
+            type: Number,
+            default: 0, // Default value of 0
+        },
+        lastVisited: {
+            type: Date,
         },
 
     },
@@ -71,7 +78,10 @@ const userSchema = new mongoose.Schema(
             default: {},
         },
     },
-    { minimize: false } // Set minimize option to false
+    { minimize: false },
+    {
+        versionKey: false,
+    }
 );
 
 

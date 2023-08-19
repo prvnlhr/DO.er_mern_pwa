@@ -157,8 +157,8 @@ const javascriptChaptersList = [
                 topicFileName: '2_functions_as_first_class_citizen'
             },
             {
-                topicName: 'Function types in JS',
-                topicFileName: '3_declaration_and_types'
+                topicName: 'Recursive functions in JS',
+                topicFileName: '3_recursive_functions'
             },
             {
                 topicName: 'Default parameters in JS',

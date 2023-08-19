@@ -55,7 +55,7 @@ const timeSpentSlice = createSlice({
       })
       .addCase(updateDailyTimeSpentInDatabase.rejected, (state, action) => {
         // Handle the rejected case if needed
-        console.log('Error updating time spent in database:', action.error.message);
+        // console.log('Error updating time spent in database:', action.error.message);
       });
 
   }

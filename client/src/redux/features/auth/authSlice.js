@@ -53,9 +53,9 @@ export const addNewUser = createAsyncThunk("auth/addNewUser", async ({ name, pho
 
 export const logoutAsync = createAsyncThunk("auth/logout", async (_, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        console.log('logoutAsync');
+        // console.log('logoutAsync');
         const res = await api.userLogoutRequest();
-        console.log(res.data)
+        // console.log(res.data)
         return fulfillWithValue(res.data);
     } catch (error) {
         console.error('Error during logout:', error);
@@ -70,7 +70,7 @@ export const logoutAsync = createAsyncThunk("auth/logout", async (_, { getState,
 
 export const checkAuthAsync = createAsyncThunk("auth/checkUserAuth", async (_, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        console.log('at checkAuthAsync')
+        // console.log('at checkAuthAsync')
         const res = await api.checkUserAuthRequest();
         // console.log(res.data);
         return fulfillWithValue(res.data);
@@ -88,13 +88,13 @@ export const checkAuthAsync = createAsyncThunk("auth/checkUserAuth", async (_, {
 
 export const verifyOtpAsync = createAsyncThunk("auth/verifyOtp", async ({ otp, emailAddress }, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        console.log('verify opt verifyOtpAsync');
+        // console.log('verify opt verifyOtpAsync');
         const reqData = {
             otp, emailAddress
         }
         const res = await api.verifyOtpRequest(reqData);
         const { message, accessToken } = res.data || 'No succes message'
-        console.log(accessToken, res.data);
+        // console.log(accessToken, res.data);
         return fulfillWithValue(res.data);
     } catch (error) {
         console.error('Error:', error?.response?.data);
@@ -107,14 +107,14 @@ export const verifyOtpAsync = createAsyncThunk("auth/verifyOtp", async ({ otp, e
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 export const resendOtpAsync = createAsyncThunk("auth/resendOtp", async (emailAddress, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
-        console.log("authSlice resendOtpAsync")
+        // console.log("authSlice resendOtpAsync")
         console.log(emailAddress);
         const reqData = {
             emailAddress
         }
         const res = await api.resendOtpRequest(reqData);
         const { message, accessToken } = res.data || 'No succes message'
-        console.log(res.data);
+        // console.log(res.data);
         return fulfillWithValue(res.data);
         return fulfillWithValue({});
     } catch (error) {
@@ -148,17 +148,17 @@ export const userSignUpAsync = createAsyncThunk("auth/userSignUp", async (formDa
 export const userSignInAsync = createAsyncThunk("auth/userSignIn", async (formData, { getState, dispatch, rejectWithValue, fulfillWithValue }) => {
     try {
 
-        console.log(formData);
+        // console.log(formData);
         const res = await api.userSignInRequest(formData);
         // const res = {};
 
 
-        console.log('authSlice backend res', res.data)
+        // console.log('authSlice backend res', res.data)
         const { message } = res?.data || 'No succes message'
         return fulfillWithValue(message);
 
     } catch (error) {
-        console.error('Error:', error);
+        // console.error('Error:', error);
         const { errorMsg, actualError } = error?.response?.data;
         return rejectWithValue({
             errorMsg: errorMsg || 'unknown msg'
@@ -175,7 +175,7 @@ const authSlice = createSlice({
             state.emailSent = OTP_EMAIL_SENT_STATE.SENT;
         },
         updateAccessToken: (state, action) => {
-            console.log('at update token', action.payload)
+            // console.log('at update token', action.payload)
             return {
                 ...state,
                 accessToken: action.payload,
@@ -363,7 +363,7 @@ const authSlice = createSlice({
             })
             .addCase(logoutAsync.rejected, (state, action) => {
                 const { errorMsg } = action.payload || 'unkown error at logoutAsync.rejected';
-                console.log(action.payload)
+                // console.log(action.payload)
                 return {
                     ...state,
                     isLoading: false,

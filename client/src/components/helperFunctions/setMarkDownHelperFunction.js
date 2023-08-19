@@ -8,6 +8,8 @@ const setMarkDownFile = async (dispatch, currentCourseIndex = 0, currentChapterI
     const chapterFolder = coursesList[currentCourseIndex].chaptersList[currentChapterIndex].chapterFolderName;
     const topicFileName = coursesList[currentCourseIndex].chaptersList[currentChapterIndex].topicsList[currentTopicIndex].topicFileName;
 
+    // console.log(courseFolder, chapterFolder, topicFileName);
+
     const cacheKey = `${courseFolder}/${chapterFolder}/${topicFileName}`;
 
 
@@ -36,12 +38,11 @@ const setMarkDownFile = async (dispatch, currentCourseIndex = 0, currentChapterI
             }
         )
 
-
         const markdownModule = await import(`../../courseData/coursesMarkDown/${courseFolder}/${chapterFolder}/${topicFileName}.md`);
         const markdownContents = await fetch(markdownModule.default).then(response => response.text());
 
         markdownCache.set(cacheKey, markdownContents);
-       
+
         updateReduxState(dispatch,
             {
                 data: {

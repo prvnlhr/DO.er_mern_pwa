@@ -57,8 +57,9 @@ const GraphComponent = () => {
                             label: 'Time Spent (Hours)',
                             data: dailyTimeSpent.map((value) => value / 60),
                             backgroundColor: (context) => {
-                                return context.dataIndex === currentDayOfWeek ? '#9E92DC' : '#51637D';
+                                return context.index === currentDayOfWeek ? '#9E92DC' : '#51637D';
                             },
+
                             borderWidth: 1,
                             barThickness: 4.5,
                             hoverBackgroundColor: '#9B8AFB',
