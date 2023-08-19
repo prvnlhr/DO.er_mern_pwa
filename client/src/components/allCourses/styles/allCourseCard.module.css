@@ -63,8 +63,7 @@
 }
 
 .arrowLinkDiv {
-    width: 70%;
-    /* height: 50%; */
+    width: 55%;
     aspect-ratio: 1/1;
     border-radius: 50%;
     background-color: var(--button-bg);
@@ -215,7 +214,14 @@
         ;
     }
 
+    .courseClickArrowWrapper {
+        padding-top: 20%;
+    }
 
+    .arrowLinkDiv {
+        width: 65%;
+
+    }
 
     .courseNameText {
         font-size: 0.8rem;
