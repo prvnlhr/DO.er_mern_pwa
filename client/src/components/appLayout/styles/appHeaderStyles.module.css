@@ -76,7 +76,7 @@
 
 .classroomBtnWrapperExpand {
     width: calc(85% - 40px);
-    /* border: 1px solid white; */
+    border: 1px solid white;
     overflow: hidden;
 }
 
@@ -229,13 +229,20 @@
         /* border: 1px solid darkcyan; */
     }
 
+    .popUpBtnWrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        /* border: 1px solid orange; */
+    }
+
     .popUpBtnWrapperExpand {
-        aspect-ratio: 1/2;
+        aspect-ratio: 1/1.8;
         /* border: 1px solid darkcyan; */
     }
 
     .popUpBtnIconDiv {
-        width: 40%;
+        width: 35%;
     }
 
 
