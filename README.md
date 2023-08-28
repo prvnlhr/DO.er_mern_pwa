@@ -1,10 +1,20 @@
-# DO.er - Your MERN-Powered E-Learning Platform
+<p align="center">
+  <img src="logo_url_here" alt="DO.er Logo">
+</p>
 
-## [Do.er App 🔗](https://doer.onrender.com/)
+<h1 align="center">DO.er - Your MERN-Powered E-Learning Platform</h1>
 
-## Discover a Universe of Learning
+<p align="center">
+  <a href="https://doer.onrender.com/" target="_blank">Explore DO.er</a>
+</p>
 
-Introducing DO.er, your premier Course/Tutorial web app built on the robust MERN stack. Offering an extensive array of complimentary courses and tutorials, spanning from the intricacies of computer programming to the art of web development. With PWA support and seamless cross-platform adaptability, DO.er guarantees a versatile and user-friendly learning venture."
+<p align="center">
+  Discover a Universe of Learning
+</p>
+
+<p align="center">
+  Introducing DO.er, your premier Course/Tutorial web app built on the robust MERN stack. Offering an extensive array of complimentary courses and tutorials, spanning from the intricacies of computer programming to the art of web development. With PWA support and seamless cross-platform adaptability, DO.er guarantees a versatile and user-friendly learning venture.
+</p>
 
 ## Features That Captivate
 
@@ -41,3 +51,5 @@ Visit [DO.er](https://www.doer-learnandcode.com) today and unlock a realm of kno
 _"Learning is a journey; allow DO.er to be your guide."_ 🚀
 
 ---
+
+*Logo design by [Your Name](your_portfolio_link_here)*
