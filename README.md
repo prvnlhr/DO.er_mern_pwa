@@ -1,11 +1,15 @@
 <p align="center">
-  <img src="logo_url_here" alt="DO.er Logo">
+  <img height="100" src="https://github.com/prvnlhr/DO.er_mern_pwa/blob/main/client/public/assets/doer.svg" alt="DO.er Logo">
 </p>
 
 <h1 align="center">DO.er - Your MERN-Powered E-Learning Platform</h1>
 
+
 <p align="center">
-  <a href="https://doer.onrender.com/" target="_blank">Explore DO.er</a>
+  <a href="https://doer.onrender.com/" target="_blank">&#128279;
+    <br>
+    Explore DO.er
+  </a>
 </p>
 
 <p align="center">
@@ -52,4 +56,4 @@ _"Learning is a journey; allow DO.er to be your guide."_ 🚀
 
 ---
 
-*Logo design by [Your Name](your_portfolio_link_here)*
+
