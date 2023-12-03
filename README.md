@@ -1,6 +1,4 @@
-<p align="center">
-  <img height="100" src="https://github.com/prvnlhr/DO.er_mern_pwa/blob/main/client/public/assets/doer.svg" alt="DO.er Logo">
-</p>
+
 
 <h1 align="center">DO.er - Your MERN-Powered E-Learning Platform</h1>
 
@@ -55,5 +53,17 @@ Visit [DO.er](https://www.doer-learnandcode.com) today and unlock a realm of kno
 _"Learning is a journey; allow DO.er to be your guide."_ 🚀
 
 ---
+
+<img src="https://github.com/prvnlhr/DO.er_mern_pwa/assets/70936225/e3366df9-20ef-403d-85a0-36acdc3446c4" alt="GIF 1" width="19%"  margin="2%" >
+<img src="https://github.com/prvnlhr/DO.er_mern_pwa/assets/70936225/369a1435-7080-470e-882b-a5e217f1b4e2" alt="GIF 2" width="19%"  margin="2%">
+<img src="https://github.com/prvnlhr/DO.er_mern_pwa/assets/70936225/5b00b822-de40-4b03-8686-a978cc67a6cf" alt="GIF 3" width="19%"  margin="2%">
+<img src="https://github.com/prvnlhr/DO.er_mern_pwa/assets/70936225/bbcdab33-a4cc-4cb6-b676-286aecfc2072" alt="GIF 4" width="19%"  margin="2%">
+<img src="https://github.com/prvnlhr/DO.er_mern_pwa/assets/70936225/2dd310b3-040f-49c1-980d-d0738c2a6043" alt="GIF 5" width="19%"  margin="2%">
+
+<br></br>
+
+![Frame 483](https://github.com/prvnlhr/DO.er_mern_pwa/assets/70936225/7a70a984-86cc-43e3-804e-008917b22979)
+
+
 
 
